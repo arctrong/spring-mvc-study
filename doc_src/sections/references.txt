@@ -1,0 +1,46 @@
+<!--VARIABLES {"title": "References", "SORT_ORDER": "020", "code": "refs"}-->
+
+<a name="ref_1"></a>**[1]** Youtube playlist:
+[Spring MVC for complete beginners :  [Running course]](
+https://www.youtube.com/playlist?list=PL3NrzZBjk6m-OSeL3DRMD_ISa0u-9c1l1),
+10 videos, last updated on Mar 21, 2020
+
+|  | Title | Duration |
+|----:|----|----:|
+<a name="ref_1_1"></a>[1.1] | [Spring MVC course introduction \|\| Understanding the prerequisites \|\| MVC](https://www.youtube.com/watch?v=zCHrZdJODg4&list=PL3NrzZBjk6m-OSeL3DRMD_ISa0u-9c1l1&index=1) | 8:27
+<a name="ref_1_2"></a>[1.2] | [First SPRING MVC Project (SET-UP) Configuring workspace with Spring,Tomcat & Spring doc \|Eclipse/STS](https://www.youtube.com/watch?v=wuskA6DExEk&list=PL3NrzZBjk6m-OSeL3DRMD_ISa0u-9c1l1&index=2) | 9:14
+<a name="ref_1_3"></a>[1.3] | [Setting up Dispatcher Servlet \| What is a Front Controller \| Run first Spring MVC app \| Deep Dive](https://www.youtube.com/watch?v=8dXZZBCFjwk&list=PL3NrzZBjk6m-OSeL3DRMD_ISa0u-9c1l1&index=3) | 32:34
+<a name="ref_1_4"></a>[1.4] | [Spring MVC Controller \| @Controller, @RequestMapping,@ResponseBody \| Component Scan \| MVC Annotation](https://www.youtube.com/watch?v=gq84DReItek&list=PL3NrzZBjk6m-OSeL3DRMD_ISa0u-9c1l1&index=4) | 18:53
+<a name="ref_1_5"></a>[1.5] | [Web container \| WebApplicationContext \| Spring web MVC project flow \| Theory breakdown](https://www.youtube.com/watch?v=dbuSnySZix8&list=PL3NrzZBjk6m-OSeL3DRMD_ISa0u-9c1l1&index=5) | 16:25
+<a name="ref_1_6"></a>[1.6] | [Multi action Controller \|\| @RequestMapping at class level \|\| Spring MVC](https://www.youtube.com/watch?v=Gqcr6g53Mz0&list=PL3NrzZBjk6m-OSeL3DRMD_ISa0u-9c1l1&index=6) | 10:09
+<a name="ref_1_7"></a>[1.7] | [How to change dispatcher servlet context configuration file name ? \|\| Spring MVC](https://www.youtube.com/watch?v=sANzvK3PEOM&list=PL3NrzZBjk6m-OSeL3DRMD_ISa0u-9c1l1&index=7) | 10:03
+<a name="ref_1_8"></a>[1.8] | [Spring MVC  ViewResolver - Tech walkthrough \|\| Create your first View using Spring Framework](https://www.youtube.com/watch?v=5_G1jIiK2hI&list=PL3NrzZBjk6m-OSeL3DRMD_ISa0u-9c1l1&index=8) | 42:17
+<a name="ref_1_9"></a>[1.9] | [Model View Controller: Spring MVC - Full-stack tech walkthrough \|\| Model \|\| Data Flow](https://www.youtube.com/watch?v=Y26LegLMvpw&list=PL3NrzZBjk6m-OSeL3DRMD_ISa0u-9c1l1&index=9) | 57:25
+<a name="ref_1_10"></a>[1.10] | [[INTERMEDIATE] Spring MVC Course Preview \|\| Road map \|\| Application Walkthrough](https://www.youtube.com/watch?v=40YaLHbrwrY&list=PL3NrzZBjk6m-OSeL3DRMD_ISa0u-9c1l1&index=10) | 20:34
+
+<a name="ref_2"></a>**[2]** Youtube playlist:
+[SPRING MVC[ Intermediate]](
+https://www.youtube.com/playlist?list=PL3NrzZBjk6m_2jw8sC0BkEwSPFHxgQDWr),
+17 videos, last updated on Oct 5, 2020
+
+|  | Title | Duration |
+|----:|----|----:|
+<a name="ref_2_1"></a>[2.1] | [[INTERMEDIATE] Spring MVC Course Preview \|\| Road map \|\| Application Walkthrough](https://www.youtube.com/watch?v=40YaLHbrwrY&list=PL3NrzZBjk6m_2jw8sC0BkEwSPFHxgQDWr&index=1) | 20:34
+<a name="ref_2_2"></a>[2.2] | [Spring MVC Java Based Configuration \|\| Game plan \|\| Understanding the wired part \|\| Part 1](https://www.youtube.com/watch?v=LxjxWE1StBk&list=PL3NrzZBjk6m_2jw8sC0BkEwSPFHxgQDWr&index=2) | 21:07
+<a name="ref_2_3"></a>[2.3] | [NO WEB.XML ? \|\| Spring MVC Java based configuration \|\| WebApplicationInitializer \|\| Part 2](https://www.youtube.com/watch?v=bA9wqGUTduw&list=PL3NrzZBjk6m_2jw8sC0BkEwSPFHxgQDWr&index=3) | 20:40
+<a name="ref_2_4"></a>[2.4] | [NO XML - Spring MVC Java-based configuration in 9 steps \|\| Spring Annotation \|\| Part 3](https://www.youtube.com/watch?v=Hk7fRv-GHpM&list=PL3NrzZBjk6m_2jw8sC0BkEwSPFHxgQDWr&index=4) | 55:38
+<a name="ref_2_5"></a>[2.5] | [Configure Dispatcher Servlet in just two lines of code. How does this magic happen? \|\| Spring MVC](https://www.youtube.com/watch?v=lJxUwcmdHro&list=PL3NrzZBjk6m_2jw8sC0BkEwSPFHxgQDWr&index=5) | 47:07
+<a name="ref_2_6"></a>[2.6] | [Data Binding - Full Stack tech walk through\|\| Data Transfer Object in Spring MVC \|\| @ModelAttribute](https://www.youtube.com/watch?v=3x4RoGGpETM&list=PL3NrzZBjk6m_2jw8sC0BkEwSPFHxgQDWr&index=6) | 1:34:06
+<a name="ref_2_7"></a>[2.7] | [Building Form : In Spring Way [Assignment + Solution] \| Spring MVC Form Tag \| @ModelAttribute \| DTO](https://www.youtube.com/watch?v=UVdgA4ANaKM&list=PL3NrzZBjk6m_2jw8sC0BkEwSPFHxgQDWr&index=7) | 1:01:18
+<a name="ref_2_8"></a>[2.8] | [Client-side vs Server-side validation \| Spring MVC Form Validation \| Hibernate Validator \| JSR 380](https://www.youtube.com/watch?v=ot-TI5T7-5M&list=PL3NrzZBjk6m_2jw8sC0BkEwSPFHxgQDWr&index=8) | 1:23:24
+<a name="ref_2_9"></a>[2.9] | [HOW to handle PHONE/ CREDIT CARD user input? Spring MVC / BOOT Formatter \| Explore with debugging.](https://www.youtube.com/watch?v=q9hjjeJA7Yw&list=PL3NrzZBjk6m_2jw8sC0BkEwSPFHxgQDWr&index=9) | 1:54:22
+<a name="ref_2_10"></a>[2.10] | [Develop Custom Validators for Spring Web-app \| A step by step guide to Hibernate Validator[Advanced]](https://www.youtube.com/watch?v=aNpJGvFR5uI&list=PL3NrzZBjk6m_2jw8sC0BkEwSPFHxgQDWr&index=10) | 2:10:40
+<a name="ref_2_11"></a>[2.11] | [[Spring MVC Advanced] Init Binder \| Property Editor \| Converter \| Validator with Real-Time Scenario.](https://www.youtube.com/watch?v=ms4ywje7EYI&list=PL3NrzZBjk6m_2jw8sC0BkEwSPFHxgQDWr&index=11) | 3:08:13
+<a name="ref_2_12"></a>[2.12] | [WHEN we should not transfer data through URL \|\| @PathVariable \|\| Let’s set up the Email Form](https://www.youtube.com/watch?v=xhKP9o9I85g&list=PL3NrzZBjk6m_2jw8sC0BkEwSPFHxgQDWr&index=12) | 59:14
+<a name="ref_2_13"></a>[2.13] | [How exactly the Sessions and Cookies work? \|\| Session Management \|\| Spring MVC \|\| @SessionAttributes](https://www.youtube.com/watch?v=cpFfzE9eGT0&list=PL3NrzZBjk6m_2jw8sC0BkEwSPFHxgQDWr&index=13) | 1:43:18
+<a name="ref_2_14"></a>[2.14] | [@SessionAttributes - Unraveling the mystery \| HttpSession Vs @SessionAttributes \|ConversationalScope](https://www.youtube.com/watch?v=ezty6XhOpF8&list=PL3NrzZBjk6m_2jw8sC0BkEwSPFHxgQDWr&index=14) | 1:58:35
+<a name="ref_2_15"></a>[2.15] | [Send Emails to your App users \|\|Spring MVC \|\| Design the Service Layer with 7 best coding practices.](https://www.youtube.com/watch?v=laZnez5VzV4&list=PL3NrzZBjk6m_2jw8sC0BkEwSPFHxgQDWr&index=15) | 2:40:49
+<a name="ref_2_16"></a>[2.16] | [2 Key reasons to use @ModelAttribute at the Method level \| Spring MVC Interview Questions & Answers](https://www.youtube.com/watch?v=_Nafv53TKYY&list=PL3NrzZBjk6m_2jw8sC0BkEwSPFHxgQDWr&index=16) | 1:10:47
+<a name="ref_2_17"></a>[2.17] | [Spring MVC - Exception Handling \| Top 3 Uses of @ControllerAdvice\|@ExceptionHandler,@ModelAttribute](https://www.youtube.com/watch?v=Suxp_fSMse4&list=PL3NrzZBjk6m_2jw8sC0BkEwSPFHxgQDWr&index=17) | 1:25:05
+
+

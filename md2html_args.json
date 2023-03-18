@@ -1,0 +1,44 @@
+{
+    "options": {
+        "verbose": true
+    },
+    "default": {
+        "input-root": "doc_src",
+        "output-root": "doc/content",
+        "template": "doc_src/templates/multipage.html",
+        "no-css": true,
+        "verbose": true
+    },
+    "documents": [
+        { "input-root": "", "output-root": "", "input": "readme.txt", "title": "About the course", 
+            "page-flows": ["sections", "nav"] },
+        { "input-glob": "sections/*.txt", "page-flows": ["sections", "nav"], 
+            "title-from-variable": "title", "code-from-variable": "code", 
+            "sort-by-variable": "SORT_ORDER" }
+    ],
+    "plugins": {
+        "page-variables": {},
+        "relative-paths": {
+            "markers": ["path"],
+            "paths": {
+                "resource_path": "doc/",
+                "pict": "doc/pict/"
+            }
+        },
+        "page-flows": {
+            "header": [
+                { "link": "readme.html", "title": "About" },
+                { "link": "doc/content/index_page.html", "title": "Index" }
+            ],
+            "useful_links": [
+#                { "link": "https://daringfireball.net/projects/markdown/", "title": "Markdown", "external": true },
+#                { "link": "https://github.com/arctrong/md2html", "title": "md2html", "external": true }
+            ]
+        },
+        "variables": {"logo": "<b><span style=\"color:greenyellow;margin-right:7px;\">Spring Web</span></b>" },
+        "index": {"index": {"output": "index_page.html", "title": "Index", "index-cache": "index_cache.json", 
+                    "index-cache-relative": true, "letters": true, "letters-block": true }
+        },
+        "page-links": { "markers": ["page"] }
+    }
+}

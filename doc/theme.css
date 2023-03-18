@@ -1,0 +1,19 @@
+div.noBullets + ul {
+    list-style-type: none;
+}
+
+pre > code.language-xml {
+    color: darkblue;
+    border: solid 1px darkblue;
+    background-color: aliceblue;
+}
+
+pre>code.language-wrapped-xml {
+    color: darkblue;
+    border: solid 1px darkblue;
+    background-color: aliceblue;
+    white-space: pre-wrap;
+    word-break: break-word;
+    min-width: unset;
+}
+
