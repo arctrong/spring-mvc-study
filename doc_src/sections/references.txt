@@ -43,4 +43,22 @@ https://www.youtube.com/playlist?list=PL3NrzZBjk6m_2jw8sC0BkEwSPFHxgQDWr),
 <a name="ref_2_16"></a>[2.16] | [2 Key reasons to use @ModelAttribute at the Method level \| Spring MVC Interview Questions & Answers](https://www.youtube.com/watch?v=_Nafv53TKYY&list=PL3NrzZBjk6m_2jw8sC0BkEwSPFHxgQDWr&index=16) | 1:10:47
 <a name="ref_2_17"></a>[2.17] | [Spring MVC - Exception Handling \| Top 3 Uses of @ControllerAdvice\|@ExceptionHandler,@ModelAttribute](https://www.youtube.com/watch?v=Suxp_fSMse4&list=PL3NrzZBjk6m_2jw8sC0BkEwSPFHxgQDWr&index=17) | 1:25:05
 
+<a name="ref_3"></a>**[3]** Wikipedia:
+[Jakarta Server Pages](https://en.wikipedia.org/wiki/Jakarta_Server_Pages)
+
+<a name="ref_4"></a>**[4]** Eclipse Jetty documentation:
+[Jetty: The Definitive Reference](https://www.eclipse.org/jetty/documentation/jetty-9/index.html),
+version 9.4.51.v20230217, last updated 2023-02-17 05:32:21 UTC 
+
+
+
+
+
+
+
+
+
+
+
+
 

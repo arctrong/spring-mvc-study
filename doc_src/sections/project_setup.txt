@@ -8,6 +8,8 @@
 [[1.2][]] ???
 
 [1.2]: <!--page refs-->#ref_1_2
+[3]: <!--page refs-->#ref_3
+[4]: <!--page refs-->#ref_4
 
 ----------------------------------------------------------------------------------------------------
 # Install and setup Jetty server
@@ -16,8 +18,8 @@ Home page: <https://www.eclipse.org/jetty/>
 Downloads: <https://www.eclipse.org/jetty/download.php>    
 Checksums: <https://www.eclipse.org/jetty/download_info.php>
 
-Version 9.4.51.v20230217 is used. Following the instructions [here](
-https://www.eclipse.org/jetty/documentation/jetty-9/index.html#quickstart-running-jetty):
+Version 9.4.51.v20230217 is used. Following the instructions [[4][], [Running Jetty](
+https://www.eclipse.org/jetty/documentation/jetty-9/index.html#quickstart-running-jetty)]:
 
 1. Unzip the distribution pack to the directory by choice, e.g. 
     `jetty-distribution-9.4.51.v20230217.zip/jetty-distribution-9.4.51.v20230217` to `jetty_9_4_51`.
@@ -51,7 +53,7 @@ In a browser navigate to <http://localhost:8080/> to see an "Error 404 - Not Fou
 the server press `Ctrl`+`C`.
 
 <a name="activate_jetty_jsp_module"></a>
-As we are going to use JSP, adding the `jsp` module, also see the Jetty documentation:
+As we are going to use JSP, adding the `jsp` module, also see the Jetty documentation [[4][]]:
 
 - [Configuring JSP Support](
     https://www.eclipse.org/jetty/documentation/jetty-9/index.html#configuring-jsp)
@@ -72,7 +74,6 @@ INFO  : Base directory was modified
 
 ----------------------------------------------------------------------------------------------------
 # Initialize Maven project
-
 
 ````wrapped-shell
 >mvn archetype:generate -DarchetypeGroupId=org.apache.maven.archetypes -DarchetypeArtifactId=maven-archetype-webapp -DarchetypeVersion=1.4 -DgroupId=world.someone -DartifactId=spring-mvc-study -DinteractiveMode=false
@@ -109,8 +110,29 @@ After some reformatting and deletion the POM file looks the following way:
         <maven.compiler.source>8</maven.compiler.source>
         <maven.compiler.target>8</maven.compiler.target>
     </properties>
-
+    
+    <build>
+        <finalName>${project.artifactId}</finalName>
+    </build>
 </project>
+````
+
+The `build/finalName` element is added to avoid the version in the artifact war-file name.
+
+Also the sample `index.jsp` file was edited to demonstrate the specific JSP syntax works 
+(also see [[3][]]):
+
+````xml
+<html>
+<body>
+<h2>Hello World!</h2>
+<p>Counting to three:
+<% for (int i=1; i<4; i++) { %>
+    <%= i %>,
+<% } %>
+OK.</p>
+</body>
+</html>
 ````
 
 This simple setup looks like being enough for running in Jetty server. Just need to execute
@@ -118,15 +140,30 @@ the command `mvn clean package` and copy the file `target/spring-mvc-study-1.0-S
 into the directory `%JETTY_BASE%/webapps`. Please make sure that the Jetty `jsp` is activated 
 (see [here](<!--page project_setup-->#activate_jetty_jsp_module)).
 
-Navigate to <http://localhost:8080/spring-mvc-study-1.0-SNAPSHOT/> to see the result:
+Navigate to <http://localhost:8080/spring-mvc-study/> to see the result:
 
 ![](<!--path pict-->hello_world.png)
 
+> Git commit: `90fe9513c818161f0b4044a489963a683b809c1b` the simplest web application
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--
 !!! note
     As for now <https://search.maven.org> redirects to <https://central.sonatype.com/>. 
     To avoid this redirection navigate to <https://search.maven.org/?eh=>.
-
+-->
 
 
 
