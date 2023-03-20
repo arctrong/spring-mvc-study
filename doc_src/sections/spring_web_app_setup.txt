@@ -1,4 +1,4 @@
-<!--VARIABLES {"title": "Spring web application setup", "SORT_ORDER": "040", 
+<!--VARIABLES {"title": "Spring web application setup", "SORT_ORDER": "050", 
 "code": "spring_web_app_setup"}-->
 
 [TOC]
@@ -15,12 +15,6 @@ In this section Spring MVC is added to the basic web project created in the
 [1.2]: <!--page refs-->#ref_1_2
 [3]: <!--page refs-->#ref_3
 [4]: <!--page refs-->#ref_4
-[5]: <!--page refs-->#ref_5
-
-----------------------------------------------------------------------------------------------------
-# JEE standard
-
-See [[5][]] for Java Enterprise Edition evolution overview.
 
 ----------------------------------------------------------------------------------------------------
 # Add Spring
@@ -136,6 +130,29 @@ See the class [`ThingsController`](
 as an example.
 
 > Git commit: `378558ccca90c31e96bf4335fccd489f2e429707` simple spring web app run
+
+----------------------------------------------------------------------------------------------------
+# Change dispatcher servlet context configuration file name
+
+In the file `web.xml` add the following parameters into the `<servlet>` section (in must follow 
+the `<servlet-class>` section):
+
+````xml
+        <init-param>
+            <param-name>contextConfigLocation</param-name>
+            <param-value>/WEB-INF/front-controller-context.xml</param-value>
+        </init-param>
+````
+
+Then the context configuration file must be renamed to `front-controller-context.xml`.
+
+> Git commit: `6e88ef4c5cc3ce4f1401213d9e2c37338179127a` change dispatcher servlet context configuration file name
+> 
+> This commit was reverted right then as we don't need this renaming and it was done for 
+> demonstration only. Probably it's better to follow the *convention over configuration (CoC)*
+> principle whenever it's possible.
+
+
 
 
 

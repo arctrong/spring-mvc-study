@@ -1,4 +1,4 @@
-<!--VARIABLES {"title": "Web application context", "SORT_ORDER": "050",
+<!--VARIABLES {"title": "Web application context", "SORT_ORDER": "060",
 "code": "web_application_context"}-->
 
 [TOC]
@@ -15,7 +15,9 @@
 
 Here were are going to discuss a Spring web application creation and initalization.
 
-The application server (Jetty in our case) uses `web.xml` to identify, load and initialize the
+<!--index ["deployment descriptor", "DD", "web.xml file"]-->
+The application server (Jetty in our case) uses `web.xml` (that is also called
+*deployment descriptor* or *DD*) to identify, load and initialize the
 dispatcher servlet. In our case the servlet class is 
 `org.springframework.web.servlet.DispatcherServlet`. This is done on the server start if the 
 parameter `<load-on-startup>1</load-on-startup>` is specified.

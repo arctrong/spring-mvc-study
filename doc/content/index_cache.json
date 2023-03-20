@@ -23,5 +23,29 @@
       "title": "Spring web application setup"
     }
   ],
-  "doc/content/sections/web_application_context.html": []
+  "doc/content/sections/web_application_context.html": [
+    {
+      "entry": "deployment descriptor",
+      "link": "sections/web_application_context.html#index_entry_index_1",
+      "title": "Web application context"
+    },
+    {
+      "entry": "DD",
+      "link": "sections/web_application_context.html#index_entry_index_1",
+      "title": "Web application context"
+    },
+    {
+      "entry": "web.xml file",
+      "link": "sections/web_application_context.html#index_entry_index_1",
+      "title": "Web application context"
+    }
+  ],
+  "readme.html": [],
+  "doc/content/sections/common_notes.html": [
+    {
+      "entry": "JEE standard",
+      "link": "sections/common_notes.html#index_entry_index_1",
+      "title": "Common notes"
+    }
+  ]
 }

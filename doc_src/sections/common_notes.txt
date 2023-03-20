@@ -1,0 +1,16 @@
+<!--VARIABLES {"title": "Common notes", "SORT_ORDER": "030", "code": "common_notes"}-->
+
+[TOC]
+
+[5]: <!--page refs-->#ref_5
+
+----------------------------------------------------------------------------------------------------
+<!--index JEE standard-->
+# JEE standard
+
+See [[5][]] for Java Enterprise Edition evolution overview.
+
+
+
+
+

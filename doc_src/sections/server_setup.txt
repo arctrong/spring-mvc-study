@@ -1,4 +1,4 @@
-<!--VARIABLES {"title": "Server setup", "SORT_ORDER": "030", "code": "server_setup"}-->
+<!--VARIABLES {"title": "Server setup", "SORT_ORDER": "040", "code": "server_setup"}-->
 
 [TOC]
 
