@@ -22,7 +22,9 @@
             "markers": ["path"],
             "paths": {
                 "resource_path": "doc/",
-                "pict": "doc/pict/"
+                "pict": "doc/pict/",
+                "materials": "materials/",
+                "code": "projects/"
             }
         },
         "page-flows": {

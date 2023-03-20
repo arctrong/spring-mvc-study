@@ -1,0 +1,143 @@
+<!--VARIABLES {"title": "Spring web application setup", "SORT_ORDER": "040", 
+"code": "spring_web_app_setup"}-->
+
+[TOC]
+
+----------------------------------------------------------------------------------------------------
+# About this section
+
+In this section Spring MVC is added to the basic web project created in the 
+[previous section](<!--page server_setup-->).
+
+
+[[1.2][]] ???
+
+[1.2]: <!--page refs-->#ref_1_2
+[3]: <!--page refs-->#ref_3
+[4]: <!--page refs-->#ref_4
+[5]: <!--page refs-->#ref_5
+
+----------------------------------------------------------------------------------------------------
+# JEE standard
+
+See [[5][]] for Java Enterprise Edition evolution overview.
+
+----------------------------------------------------------------------------------------------------
+# Add Spring
+
+Add dependency into the Maven POM:
+
+````xml
+    .  .  .
+    <properties>
+        .  .  .
+        <org.springframework.version>5.3.9</org.springframework.version>
+    </properties>
+    .  .  .
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-webmvc</artifactId>
+            <version>${org.springframework.version}</version>
+        </dependency>
+    </dependencies>
+    .  .  .
+````
+
+After `mvn clean package` and looking into the `target/spring-mvc-study.war` war file we can see
+`WEB-INF\lib\` directory contains files like: `spring-core-5.3.9.jar`, `spring-web-5.3.9.jar`,
+`spring-webmvc-5.3.9.jar` and such other ones.
+
+When running the Jetty server the following error occurs:
+
+````wrapped-shell-error
+.  .  .
+INFO: Initializing Servlet 'front-controller'
+Mar 19, 2023 12:21:22 PM org.springframework.web.servlet.FrameworkServlet initServletBean
+SEVERE: Context initialization failed
+org.springframework.beans.factory.BeanDefinitionStoreException: IOException parsing XML document from ServletContext resource [/WEB-INF/front-controller-servlet.xml]; nested exception is java.io.FileNotFoundException: Could not open ServletContext resource [/WEB-INF/front-controller-servlet.xml]
+.  .  .
+````
+
+So need to add an empty `/WEB-INF/front-controller-servlet.xml` file (taken from the Spring IoC
+XML configuration):
+
+````xml
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd">
+
+</beans>
+````
+
+Now the dispatcher servlet is initialized successfully:
+
+````wrapped-shell
+.  .  .
+INFO: Initializing Servlet 'front-controller'
+Mar 19, 2023 12:30:21 PM org.springframework.web.servlet.FrameworkServlet initServletBean
+INFO: Completed initialization in 240 ms
+.  .  .
+````
+
+But if we open the URL <http://localhost:8080/web-app-spring/> we will see an error 404 page:
+
+![](<!--path pict-->error_404.png)
+
+<!--index ["component-scan, XML"]-->
+That's because no endpoints were adjusted to response our requests. Need to add a controller.
+First need to activate component scan in our XML configuration:
+
+````xml
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        https://www.springframework.org/schema/context/spring-context.xsd">
+
+    <context:component-scan base-package="springmvcstudy.controllers" />
+
+</beans>
+````
+
+<!--index ["@Controller", "@RequestMapping"]-->
+Adding a controller class `springmvcstudy.controllers.HelloController`:
+
+````code
+@Controller
+public class HelloController {
+
+    @RequestMapping("/hello")
+    @ResponseBody
+    public String sayHello() {
+        return "Hi from the " + this.getClass().getSimpleName();
+    }
+}
+````
+
+<!--index ["@ResponseBody"]-->
+The `@ResponseBody` annotation defines sending the return value directly as the response body.
+
+We can write multiple controller classes and multiple handler methods inside a controller.
+
+After rebuilding, running and navigating to <http://localhost:8080/web-app-spring/hello>,
+we can see our first "hello"!
+
+![](<!--path pict-->hello_from_spring.png)
+
+The `@RequestMapping` and `@ResponseBody` annotations may be used on a controller class.
+See the class [`ThingsController`](
+<!--path code-->web-app-spring/src/main/java/springmvcstudy/controllers/ThingsController.java)
+as an example.
+
+> Git commit: `378558ccca90c31e96bf4335fccd489f2e429707` simple spring web app run
+
+
+
+
+

@@ -1,6 +1,27 @@
 {
-  "readme.html": [],
   "doc/content/sections/references.html": [],
-  "doc/content/sections/using_xml.html": [],
-  "doc/content/sections/project_setup.html": []
+  "doc/content/sections/server_setup.html": [],
+  "doc/content/sections/spring_web_app_setup.html": [
+    {
+      "entry": "component-scan, XML",
+      "link": "sections/spring_web_app_setup.html#index_entry_index_1",
+      "title": "Spring web application setup"
+    },
+    {
+      "entry": "@Controller",
+      "link": "sections/spring_web_app_setup.html#index_entry_index_2",
+      "title": "Spring web application setup"
+    },
+    {
+      "entry": "@RequestMapping",
+      "link": "sections/spring_web_app_setup.html#index_entry_index_2",
+      "title": "Spring web application setup"
+    },
+    {
+      "entry": "@ResponseBody",
+      "link": "sections/spring_web_app_setup.html#index_entry_index_3",
+      "title": "Spring web application setup"
+    }
+  ],
+  "doc/content/sections/web_application_context.html": []
 }

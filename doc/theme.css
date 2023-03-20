@@ -17,3 +17,20 @@ pre>code.language-wrapped-xml {
     min-width: unset;
 }
 
+pre>code.language-shell-error {
+    background-color: darkslategray;
+    /* color: coral; */
+    color: #ff6b68;
+    border: solid 1px darkslategray;
+}
+
+pre>code.language-wrapped-shell-error {
+    background-color: darkslategray;
+    /* color: coral; */
+    color: #ff6b68;
+    border: solid 1px darkslategray;
+    white-space: pre-wrap;
+    word-break: break-word;
+    min-width: unset;
+}
+

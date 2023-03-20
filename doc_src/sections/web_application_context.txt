@@ -1,0 +1,47 @@
+<!--VARIABLES {"title": "Web application context", "SORT_ORDER": "050",
+"code": "web_application_context"}-->
+
+[TOC]
+
+----------------------------------------------------------------------------------------------------
+# Materials
+
+[[1.5][]]
+
+[1.5]: <!--page refs-->#ref_1_5
+
+----------------------------------------------------------------------------------------------------
+# Web application context
+
+Here were are going to discuss a Spring web application creation and initalization.
+
+The application server (Jetty in our case) uses `web.xml` to identify, load and initialize the
+dispatcher servlet. In our case the servlet class is 
+`org.springframework.web.servlet.DispatcherServlet`. This is done on the server start if the 
+parameter `<load-on-startup>1</load-on-startup>` is specified.
+
+The dispatcher servlet uses configuration file named with the servlet name followed by 
+`-servlet.xml`. So as our servlet name is `<servlet-name>front-controller</servlet-name>` then
+configuration file name is `front-controller-servlet.xml`.
+
+As the dispatcher servlet gets initialized it finds the corresponding configuration file and 
+create a container out of it. The container type is interface 
+`org.springframework.web.context.WebApplicationContext` that extends 
+`org.springframework.context.ApplicationContext`.
+
+!!! important
+    In a web application it's typically not a developer's responsibility to start and close the 
+    `WebApplicationContext`.
+
+The `@org.springframework.stereotype.Controller` annotation for `WebApplicationContext`
+is analogous to the `org.springframework.stereotype.Component` annotation in 
+`ApplicationContext`.
+
+The URL mappings in the `web.xml` file (the `<servlet-mapping>` section) define what servlet
+will handle particular requests.
+
+
+
+
+
+

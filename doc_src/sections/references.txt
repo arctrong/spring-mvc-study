@@ -50,7 +50,9 @@ https://www.youtube.com/playlist?list=PL3NrzZBjk6m_2jw8sC0BkEwSPFHxgQDWr),
 [Jetty: The Definitive Reference](https://www.eclipse.org/jetty/documentation/jetty-9/index.html),
 version 9.4.51.v20230217, last updated 2023-02-17 05:32:21 UTC 
 
-
+<a name="ref_5"></a>**[5]** Baeldung: [Java EE vs J2EE vs Jakarta EE](
+https://www.baeldung.com/java-enterprise-evolution), 
+[saved](<!--path materials-->Baeldung_Java_EE_vs_J2EE_vs_Jakarta_EE.html)
 
 
 
