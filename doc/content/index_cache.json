@@ -48,5 +48,11 @@
       "title": "Common notes"
     }
   ],
-  "doc/content/sections/view_resolver.html": []
+  "doc/content/sections/view_resolver.html": [
+    {
+      "entry": "view resolver",
+      "link": "sections/view_resolver.html#index_entry_index_1",
+      "title": "View resolver"
+    }
+  ]
 }

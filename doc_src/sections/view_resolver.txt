@@ -87,11 +87,58 @@ the other ones.
     ````wrapped-shell-error
     2023-03-20 12:28:26.293:INFO:oejshC.web_app_spring:qtp2101842856-13: No JSP support.  Check that JSP jars are in lib/jsp and that the JSP option has been specified to start.jar
     ````
-    
+
 > Git commit: `a48ebdb4100ae75236cc2165d4e50b417d1a48a5` specifying direct view file location
 
+----------------------------------------------------------------------------------------------------
+<!--index ["view resolver"]-->
+# Using view resolver
 
+[[1.8][], [18:38](https://youtu.be/5_G1jIiK2hI?t=1118)]
 
+The main idea may be described like this: we have a view file location, e.g. `/view/helloView.jsp`,
+but the controller method returns just an internal part of this location or a *base name*,
+like `helloView`.
+
+![](<!--path pict-->view_resolver.png)
+
+The *view resolver* prepends and appends the *base name* with the **prefix** and the **suffix**
+and returns the full view location.
+
+In Spring MVC the view resolver class is 
+`org.springframework.web.servlet.view.InternalResourceViewResolver`.
+
+So in the dispatcher servlet configuration file [`front-controller-servlet.xml`](
+<!--path code-->web-app-spring/src/main/webapp/WEB-INF/front-controller-servlet.xml)
+we add the following bean:
+
+````xml
+    .  .  .
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="prefix" value="/view/"/>
+        <property name="suffix" value=".jsp"/>
+    </bean>
+    .  .  .
+````
+
+And in the controller [`JspHelloController`](
+<!--path code-->web-app-spring/src/main/java/springmvcstudy/controllers/JspHelloController.java)
+we change the return value from `/view/jspHello.jsp` to `jspHello`:
+
+````code
+    .  .  .
+    @RequestMapping("/hello")
+    public String getJspHello() {
+        return "jspHello";
+    }
+    .  .  .
+````
+
+After that, navigating to <http://localhost:8080/web-app-spring/jsp/hello> gives the same result.
+
+But now if the view directory changes it will require readjustment in only one place.
+
+> Git commit: `d33bc3c9d1ee706a12b84acf3332e9c899325c59` view resolver introduced
 
 
 
