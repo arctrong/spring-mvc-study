@@ -1,0 +1,58 @@
+<!--VARIABLES {"title": "Model", "SORT_ORDER": "080", "code": "model"}-->
+
+[TOC]
+
+----------------------------------------------------------------------------------------------------
+Mar 20, 2023
+
+# Materials
+
+[[1.9][]]
+
+[1.9]: <!--page refs-->#ref_1_9
+
+----------------------------------------------------------------------------------------------------
+<!--index ["model, MVC"]-->
+# Model
+
+**Model** represents data that can be taken from a database or received via an HTML form.
+
+In this part we create two standard pages:
+
+- the first page contains a form with a POST action that sends some data;
+- the second page accepts this data and renders it.
+
+!!! tip
+    To make JSP page resolve EL expressions (like `${name}`) need to add the following directive
+    to this page:
+
+    ````xml
+    .  .  .
+    <%@page isELIgnored="false"%>
+    .  .  .
+    ````
+
+The main artifacts are:
+
+- controller class [`CafeController`](
+    <!--path code-->web-app-spring/src/main/java/springmvcstudy/cafe/controllers/CafeController.java)
+- view [`welcome-page.jsp`](<!--path code-->web-app-spring/src/main/webapp/view/welcome-page.jsp)
+    that contains a form;
+- view [`process-order.jsp`](<!--path code-->web-app-spring/src/main/webapp/view/process-order.jsp)
+    that accepts and renders the form data.
+
+The welcome page URL is <http://localhost:8080/web-app-spring/cafe>:
+
+![](<!--path pict-->my_cafe_welcome_page.png)
+
+The order page URL is <http://localhost:8080/web-app-spring/cafe/processOrder>:
+
+![](<!--path pict-->my_cafe_order_page.png)
+
+> Git commit: `f0d793424cef293a99f6bddb6064fc2d682eecbc` form processing investigated
+
+
+
+
+
+

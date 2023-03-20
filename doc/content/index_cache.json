@@ -54,5 +54,12 @@
       "link": "sections/view_resolver.html#index_entry_index_1",
       "title": "View resolver"
     }
+  ],
+  "doc/content/sections/model.html": [
+    {
+      "entry": "model, MVC",
+      "link": "sections/model.html#index_entry_index_1",
+      "title": "Model"
+    }
   ]
 }
