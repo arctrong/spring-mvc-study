@@ -13,6 +13,7 @@ In this section Spring MVC is added to the basic web project created in the
 [[1.2][]] ???
 
 [1.2]: <!--page refs-->#ref_1_2
+[1.7]: <!--page refs-->#ref_1_7
 [3]: <!--page refs-->#ref_3
 [4]: <!--page refs-->#ref_4
 
@@ -133,6 +134,8 @@ as an example.
 
 ----------------------------------------------------------------------------------------------------
 # Change dispatcher servlet context configuration file name
+
+[[1.7][]]
 
 In the file `web.xml` add the following parameters into the `<servlet>` section (in must follow 
 the `<servlet-class>` section):

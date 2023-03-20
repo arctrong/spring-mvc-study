@@ -1,0 +1,100 @@
+<!--VARIABLES {"title": "View resolver", "SORT_ORDER": "070",
+"code": "view_resolver"}-->
+
+[TOC]
+
+----------------------------------------------------------------------------------------------------
+Mar 20, 2023
+
+# Materials
+
+[[1.8][]]
+
+[1.8]: <!--page refs-->#ref_1_8
+
+----------------------------------------------------------------------------------------------------
+# Specifying direct view file location
+
+Now we create a new controller [`JspHelloController`](
+<!--path code-->web-app-spring/src/main/java/springmvcstudy/controllers/JspHelloController.java):
+
+````code
+@Controller
+@RequestMapping("/jsp")
+public class JspHelloController {
+
+    @RequestMapping("/hello")
+    public String getJspHello() {
+        return "/view/jspHello.jsp";
+    }
+}
+````
+
+Here we remove the `@ResponseBody` annotation that will instruct the Spring MVC framework that
+the method return value is not the exact page content but the view file location instead.
+
+A simple JSP file [`src/main/webapp/view/jspHello.jsp`](
+<!--path code-->web-app-spring/src/main/webapp/view/jspHello.jsp)
+is created:
+
+````xml
+<html><body>
+<h2>Hello from JSP!</h2>
+<p>The generated servlet class is:
+<code><%= this.getClass().getSimpleName() %><code></p>
+</body></html>
+````
+
+!!! important
+    In the file [`web.xml`](<!--path code-->web-app-spring/src/main/webapp/WEB-INF/web.xml)
+    make sure that servlet mapping URL pattern is `/`, not `/*`:
+
+    ````xml
+        .  .  .
+        <servlet-mapping>
+            <servlet-name>front-controller</servlet-name>
+            <url-pattern>/</url-pattern>
+        </servlet-mapping>
+        .  .  .
+    ````
+    
+    Otherwise the Jetty server shows error 404 in the browser and puts the following error
+    in the log:
+    
+    ````wrapped-shell-error
+    Mar 20, 2023 11:05:12 AM org.springframework.web.servlet.DispatcherServlet noHandlerFound
+    WARNING: No mapping for GET /web-app-spring/view/jspHello.jsp
+    ````
+
+After navigating to <http://localhost:8080/web-app-spring/jsp/hello> we see:
+
+![](<!--path pict-->using_view_location.png)
+
+
+## Why this is bad
+
+This approach doesn't use the standard Spring MVC view resolution mechanism.
+The view location is hard coded in the controller and reflects in the page URL. If, for any reason,
+the view file location is changed it will need corresponding changes in different parts of the code.
+Also we are tied to (in this case) to the JSP technology and it will need a lot of work to switch to 
+the other ones.
+
+!!! note
+    JSP pages are processed by the Jetty `jsp` module added when the server was initially adjusted.
+    If the file `%JETTY_BASE%\start.d\jsp.ini` is removed the following error will be logged when
+    a JSP page is accessed:
+    
+    ````wrapped-shell-error
+    2023-03-20 12:28:26.293:INFO:oejshC.web_app_spring:qtp2101842856-13: No JSP support.  Check that JSP jars are in lib/jsp and that the JSP option has been specified to start.jar
+    ````
+    
+> Git commit: `a48ebdb4100ae75236cc2165d4e50b417d1a48a5` specifying direct view file location
+
+
+
+
+
+
+
+
+
