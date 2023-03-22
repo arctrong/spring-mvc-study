@@ -1,0 +1,17 @@
+<!--VARIABLES {"title": "Front controller", "SORT_ORDER": "045", "code": "front_controller"}-->
+
+[TOC]
+
+[1.3]: <!--page refs-->#ref_1_3
+[8]: <!--page refs-->#ref_8
+[9]: <!--page refs-->#ref_9
+
+----------------------------------------------------------------------------------------------------
+<!--index ["front controller"]-->
+# Front controller
+
+The **front controller** is one of the most important parts of a Spring MVC application. The 
+following resources may give more information: [[1.3][]], [[8][]], [[9][]].
+
+
+

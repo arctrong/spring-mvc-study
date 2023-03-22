@@ -76,6 +76,7 @@ INFO  : Base directory was modified
 ````
 
 ----------------------------------------------------------------------------------------------------
+<a name="initialize_web_maven_project"></a>
 # Initialize Maven project
 
 ````wrapped-shell

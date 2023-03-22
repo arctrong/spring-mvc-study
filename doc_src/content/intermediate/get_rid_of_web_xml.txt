@@ -1,0 +1,22 @@
+<!--VARIABLES {"title": "Get rid of web.xml", "SORT_ORDER": "020", "code": "get_rid_of_web_xml"}-->
+
+[TOC]
+
+----------------------------------------------------------------------------------------------------
+Mar 22, 2023
+
+# Project setup
+
+The complete instructions may be found 
+[here](<!--page server_setup-->#initialize_web_maven_project).
+The following is the particular customized command:
+
+````wrapped-shell
+>mvn archetype:generate -DarchetypeGroupId=org.apache.maven.archetypes -DarchetypeArtifactId=maven-archetype-webapp -DarchetypeVersion=1.4 -DgroupId=world.someone -DartifactId=web-app-spring-adv1 -DinteractiveMode=false
+````
+
+Some simple cleaning and reformatting is done. After building and deploying the application 
+the request to <http://localhost:8080/web-app-spring-adv1/> returns our desired hello page.
+
+> Git commit: `51fce12a2a4326e07a0832e6ac1a215dda4117f4` first advanced web application initialized
+

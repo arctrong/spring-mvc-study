@@ -11,42 +11,13 @@ Mar 17, 2023
 
 # About this course
 
-The following two video courses are going to be used: [[1][]], [[2][]].
+This course consists of the following parts:
 
-The first one discusses the most basic things and concepts.
+- [Beginner](<!--page about_part_1-->), the material is [[1][]];
+- [Intermediate](<!--page about_part_2-->), the material is [[2][]].
 
-The second one is declared to cover the following Spring MVC topics:
-
-- Spring MVC Java configuration
-- Exception handling
-- Form validation
-- Data binding
-- Interceptors
-
-Also the following topics are going to be discussed apart of Spring MVC:
-
-- Spring Core
-- Spring JDBC
-- Spring AOP
-- Spring Security
-
-The following general technologies are going to be used:
-
-- Maven
-- Git
-
-And the following topics are going to end up the course:
-
-- Spring ORM
-- Spring REST
-
-Two applications are going to be developed:
-
-- the first one will be attended for understanding the main concepts and will involve less coding;
-- the second one will be more about enhancements and defects fixing and will involve more coding
-    and less discussions.
-    
-The goal is making familiar with the standards.
+Its main goal is understanding the basic concepts of Java web application and practical steps for
+setting up and adjustment of a web application using Spring MVC framework.
 
 ----------------------------------------------------------------------------------------------------
 <!--index ["Spring Boot"]-->

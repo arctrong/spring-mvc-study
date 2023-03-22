@@ -79,5 +79,15 @@
       "title": "Model"
     }
   ],
-  "doc/content/intermediate/first_page.html": []
+  "doc/content/intermediate/first_page.html": [],
+  "doc/content/beginner/about_part_1.html": [],
+  "doc/content/intermediate/about_part_2.html": [],
+  "doc/content/intermediate/get_rid_of_web_xml.html": [],
+  "doc/content/beginner/front_controller.html": [
+    {
+      "entry": "front controller",
+      "link": "beginner/front_controller.html#index_entry_index_1",
+      "title": "Front controller"
+    }
+  ]
 }

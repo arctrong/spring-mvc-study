@@ -1,0 +1,13 @@
+<!--VARIABLES {"title": "About this part", "SORT_ORDER": "010", "code": "about_part_1"}-->
+
+[TOC]
+
+[1]: <!--page refs-->#ref_1
+
+----------------------------------------------------------------------------------------------------
+# About this part
+
+This first, beginner, part of the discusses the most basic things and concepts.
+
+The main material used is [[1][]].
+

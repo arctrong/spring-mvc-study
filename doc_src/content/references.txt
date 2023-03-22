@@ -77,8 +77,12 @@ https://docs.spring.io/spring-framework/docs/5.3.9/reference/html/web.html)
     https://springjava.com/spring-mvc/spring-mvc-with-xml-configuration-example), 
     [saved page](<!--path materials-->Spring_MVC_with_XML_Configuration_Example.htm)
 
+<a name="ref_8"></a>**[8]** Wikipedia:
+[Front controller](https://en.wikipedia.org/wiki/Front_controller)
 
-
+<a name="ref_9"></a>**[9]** Baeldung: [A Guide to the Front Controller Pattern in Java](
+https://www.baeldung.com/java-front-controller-pattern), 
+[saved](<!--path materials-->Baeldung_A_Guide_to_the_Front_Controller_Pattern_in_Java.html)
 
 
 
