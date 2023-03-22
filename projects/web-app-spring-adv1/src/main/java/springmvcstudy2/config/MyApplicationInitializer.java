@@ -1,5 +1,6 @@
 package springmvcstudy2.config;
 
+import org.springframework.core.annotation.Order;
 import org.springframework.web.WebApplicationInitializer;
 import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;
 import org.springframework.web.context.support.XmlWebApplicationContext;
@@ -9,10 +10,15 @@ import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRegistration;
 
-public class MyApplicationInitializer implements WebApplicationInitializer {
+//@Order(1)
+public class MyApplicationInitializer
+//        implements WebApplicationInitializer
+{
 
-    @Override
+//    @Override
     public void onStartup(ServletContext servletContext) throws ServletException {
+
+        System.out.println(this.getClass().getSimpleName() + " onStartup method called");
 
         AnnotationConfigWebApplicationContext webApplicationContext =
                 new AnnotationConfigWebApplicationContext();
