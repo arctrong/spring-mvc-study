@@ -174,10 +174,39 @@ returns a page with content "Hi from the HelloController" (as it did in the prev
 
 [[2.4][], [36:06](https://youtu.be/Hk7fRv-GHpM?t=2166)]
 
+New code-based configuration file [`MyApplicationConfig`](
+<!--path code-->web-app-spring-adv1/src/main/java/springmvcstudy2/config/MyApplicationConfig.java)
+was created:
 
+````code
+@Configuration
+@ComponentScan(basePackages = "springmvcstudy2.controllers")
+public class MyApplicationConfig {
+}
+````
 
+than it was used for initializing the dispatcher servlet web application context (in the 
+[`MyApplicationInitializer`](
+<!--path code-->web-app-spring-adv1/src/main/java/springmvcstudy2/config/MyApplicationInitializer.java)
+file):
 
+````code
+        .  .  .
+        AnnotationConfigWebApplicationContext webApplicationContext =
+                new AnnotationConfigWebApplicationContext();
+        webApplicationContext.register(MyApplicationConfig.class);
+        .  .  .
+````
 
+The dispatcher servlet web application context XML file 
+`/src/main/resources/application-config.xml` was deleted as it's not needed anymore.
+
+> Git commit: `1a79873d1890deede7fe5da2b564acdf5bec7e6c` Spring XML configuration eliminated
+
+----------------------------------------------------------------------------------------------------
+# Create a view
+
+[[2.4][], [43:50](https://youtu.be/Hk7fRv-GHpM?t=2630)]
 
 
 
