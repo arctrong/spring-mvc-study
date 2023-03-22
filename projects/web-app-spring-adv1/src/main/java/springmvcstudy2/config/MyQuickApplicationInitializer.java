@@ -3,7 +3,7 @@ package springmvcstudy2.config;
 import org.springframework.core.annotation.Order;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
-//@Order(2)
+@Order(2)
 public class MyQuickApplicationInitializer extends
         AbstractAnnotationConfigDispatcherServletInitializer {
 

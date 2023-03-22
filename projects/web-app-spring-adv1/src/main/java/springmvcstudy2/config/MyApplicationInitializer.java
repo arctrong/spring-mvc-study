@@ -10,12 +10,10 @@ import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRegistration;
 
-//@Order(1)
-public class MyApplicationInitializer
-//        implements WebApplicationInitializer
-{
+@Order(1)
+public class MyApplicationInitializer implements WebApplicationInitializer {
 
-//    @Override
+    @Override
     public void onStartup(ServletContext servletContext) throws ServletException {
 
         System.out.println(this.getClass().getSimpleName() + " onStartup method called");
