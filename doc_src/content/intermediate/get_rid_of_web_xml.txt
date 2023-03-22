@@ -33,6 +33,10 @@ the request to <http://localhost:8080/web-app-spring-adv1/> returns our desired 
 In this section we are going to get rid of the `web.xml` file. But as this file is a key element
 of a web application, we need to replace it with something that will take up these functions.
 
+!!! hint
+    There's a quicker way of a dispatcher servlet initialization described
+    [here](<!--page get_rid_of_web_xml-->#quicker_web_application_initializer).
+
 The Servlet standard of versions 3.0 and later defines this mechanism by detecting the
 implementations of the `WebApplicationInitializer` interface. This interface has a method 
 `public void onStartup(ServletContext servletContext)` that is called on the web application
@@ -90,8 +94,9 @@ The following steps are going to be done to fix this:
         </dependency>
     ````
 
-- In order to avoid the "webxml attribute is required" error (see above) we need to add the 
-    corresponding configuration into our `maven-war-plugin` definition:
+- <!--index ["failOnMissingWebXml"]-->In order to avoid the "webxml attribute is required" error
+    (see above) we need to add the corresponding configuration into our `maven-war-plugin`
+    definition:
     
     ````xml
             <plugin>
@@ -103,6 +108,10 @@ The following steps are going to be done to fix this:
                 </configuration>
             </plugin>
     ````
+    
+    !!! note
+        Also the `failOnMissingWebXml` parameter may be specified in the POM's `properties`
+        section just the same way it's done in the plugin definition.
 
 After building, deploying and running our application in the Jetty server we see the following 
 in the server log:
@@ -255,6 +264,87 @@ page:
 ![](<!--path pict-->hello_from_code_based.png)
 
 > Git commit: `bceed41baece547af98f5bf88dbac27d133834d6` view created
+
+----------------------------------------------------------------------------------------------------
+<!--index ["AbstractAnnotationConfigDispatcherServletInitializer"]--><a 
+name="quicker_web_application_initializer"></a>
+# Quicker web application initializer
+
+[[2.5][]], also see [[6][], [1.1.4. Servlet Config](
+https://docs.spring.io/spring-framework/docs/5.3.9/reference/html/web.html#mvc-container-config)]
+
+A web application initializer may extend the 
+`org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer`
+class instead of implementing the `org.springframework.web.WebApplicationInitializer`
+interface. This let define configuration in a more declarative way when Spring MVC framework
+takes up all responsibilities for doing actual initialization work.
+
+In our application we are creating another initializer [`MyQuickApplicationInitializer`](
+<!--path code-->web-app-spring-adv1/src/main/java/springmvcstudy2/config/MyQuickApplicationInitializer.java):
+
+````code
+public class MyQuickApplicationInitializer extends
+        AbstractAnnotationConfigDispatcherServletInitializer {
+
+    @Override
+    protected Class<?>[] getRootConfigClasses() {
+        return null;
+    }
+
+    @Override
+    protected Class<?>[] getServletConfigClasses() {
+        return new Class<?>[]{MyApplicationConfig.class};
+    }
+
+    @Override
+    protected String[] getServletMappings() {
+        return new String[]{"/ui/*"};
+    }
+}
+````
+
+The existing one (`MyApplicationInitializer`) is disabled by removing its `implements` clause.
+On the server start the following output shows that the default dispatcher servlet name is 
+`dispatcher`:
+
+````wrapped-shell
+2023-03-23 00:04:33.085:INFO:oejshC.web_app_spring_adv1:Scanner-0: 1 Spring WebApplicationInitializers detected on classpath
+2023-03-23 00:04:33.133:INFO:oejshC.web_app_spring_adv1:Scanner-0: Initializing Spring DispatcherServlet 'dispatcher'
+Mar 23, 2023 12:04:33 AM org.springframework.web.servlet.FrameworkServlet initServletBean
+INFO: Initializing Servlet 'dispatcher'
+Mar 23, 2023 12:04:33 AM org.springframework.web.servlet.FrameworkServlet initServletBean
+INFO: Completed initialization in 585 ms
+````
+
+The application works the same way.
+
+!!! note
+    The `AbstractAnnotationConfigDispatcherServletInitializer` implements the
+    `WebApplicationInitializer` interface.
+
+> Git commit: `bb292b53cf714cf728d9491022d9f40ceab83e57` quicker dispatcher servlet initializer used
+
+----------------------------------------------------------------------------------------------------
+<!--index ["@Order"]-->
+# Several initializers
+
+Several implementations of the `WebApplicationInitializer` interface may exist in the class path
+and all of them will be detected and used by the server. The 
+`@org.springframework.core.annotation.Order` annotation may be used to define the initialization
+order.
+
+The experiment was done that proved that the lower value the `@Order` annotation has the earlier 
+initialization is fulfilled.
+
+The initializers overwriting details were not investigated.
+
+> Git commit: `015781551dda2c8d1c293a4d53168d26789c94ba` several initializers investigation
+
+In the end the first initialized is reverted:
+
+> Git commit: `f72bf85b802ad02c85c341d0df5db40f71668922` the first initializer is reverted
+
+
 
 
 

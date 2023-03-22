@@ -89,8 +89,23 @@
       "title": "Get rid of XML configuration"
     },
     {
-      "entry": "view resolver, code-based",
+      "entry": "failOnMissingWebXml",
       "link": "intermediate/get_rid_of_web_xml.html#index_entry_index_2",
+      "title": "Get rid of XML configuration"
+    },
+    {
+      "entry": "view resolver, code-based",
+      "link": "intermediate/get_rid_of_web_xml.html#index_entry_index_3",
+      "title": "Get rid of XML configuration"
+    },
+    {
+      "entry": "AbstractAnnotationConfigDispatcherServletInitializer",
+      "link": "intermediate/get_rid_of_web_xml.html#index_entry_index_4",
+      "title": "Get rid of XML configuration"
+    },
+    {
+      "entry": "@Order",
+      "link": "intermediate/get_rid_of_web_xml.html#index_entry_index_5",
       "title": "Get rid of XML configuration"
     }
   ],
