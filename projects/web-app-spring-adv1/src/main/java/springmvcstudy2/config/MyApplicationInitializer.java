@@ -1,6 +1,7 @@
 package springmvcstudy2.config;
 
 import org.springframework.web.WebApplicationInitializer;
+import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;
 import org.springframework.web.context.support.XmlWebApplicationContext;
 import org.springframework.web.servlet.DispatcherServlet;
 
@@ -13,8 +14,9 @@ public class MyApplicationInitializer implements WebApplicationInitializer {
     @Override
     public void onStartup(ServletContext servletContext) throws ServletException {
 
-        XmlWebApplicationContext webApplicationContext = new XmlWebApplicationContext();
-        webApplicationContext.setConfigLocation("classpath:application-config.xml");
+        AnnotationConfigWebApplicationContext webApplicationContext =
+                new AnnotationConfigWebApplicationContext();
+        webApplicationContext.register(MyApplicationConfig.class);
 
         DispatcherServlet dispatcherServlet = new DispatcherServlet(webApplicationContext);
 
