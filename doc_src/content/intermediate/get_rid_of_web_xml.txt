@@ -1,4 +1,5 @@
-<!--VARIABLES {"title": "Get rid of web.xml", "SORT_ORDER": "020", "code": "get_rid_of_web_xml"}-->
+<!--VARIABLES {"title": "Get rid of XML configuration", "SORT_ORDER": "020", 
+"code": "get_rid_of_web_xml"}-->
 
 [TOC]
 
@@ -185,8 +186,12 @@ public class MyApplicationConfig {
 }
 ````
 
-than it was used for initializing the dispatcher servlet web application context (in the 
-[`MyApplicationInitializer`](
+!!! note
+    Although this configuration class is working for now, in the future the `@EnableWebMvc`
+    will be required, so it's a good idea to add it now.
+
+Than the above configuration class is used for initializing the dispatcher servlet web application
+context (in the [`MyApplicationInitializer`](
 <!--path code-->web-app-spring-adv1/src/main/java/springmvcstudy2/config/MyApplicationInitializer.java)
 file):
 
@@ -199,7 +204,7 @@ file):
 ````
 
 The dispatcher servlet web application context XML file 
-`/src/main/resources/application-config.xml` was deleted as it's not needed anymore.
+`/src/main/resources/application-config.xml` is deleted as it's not needed anymore.
 
 > Git commit: `1a79873d1890deede7fe5da2b564acdf5bec7e6c` Spring XML configuration eliminated
 
@@ -208,6 +213,48 @@ The dispatcher servlet web application context XML file
 
 [[2.4][], [43:50](https://youtu.be/Hk7fRv-GHpM?t=2630)]
 
+In this section we create a view and tie it up with a controller and a view resolver.
+
+The view is [`hello-page.jsp`](
+<!--path code-->web-app-spring-adv1/src/main/webapp/view/hello-page.jsp) that is pretty much 
+similar to the ones that were created in the beginner part.
+
+The controller method is added in the [`HelloController`](
+<!--path code-->web-app-spring-adv1/src/main/java/springmvcstudy2/controllers/HelloController.java)
+class:
+
+````code
+    .  .  .
+    @RequestMapping("/hello-jsp")
+    public String helloJsp() {
+        return "hello-page";
+    }
+    .  .  .
+````
+
+<!--index ["view resolver, code-based"]-->
+The view resolver is added as a bean into the [`MyApplicationConfig`](
+<!--path code-->web-app-spring-adv1/src/main/java/springmvcstudy2/config/MyApplicationConfig.java)
+class:
+
+````code
+    .  .  .
+    @Bean
+    public InternalResourceViewResolver viewResolver() {
+        InternalResourceViewResolver viewResolver = new InternalResourceViewResolver();
+        viewResolver.setPrefix("/view/");
+        viewResolver.setSuffix(".jsp");
+        return viewResolver;
+    }
+    .  .  .
+````
+
+The URL <http://localhost:8080/web-app-spring-adv1/ui/hello-jsp> is now returning the JSP hello
+page:
+
+![](<!--path pict-->hello_from_code_based.png)
+
+> Git commit: `bceed41baece547af98f5bf88dbac27d133834d6` view created
 
 
 

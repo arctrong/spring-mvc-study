@@ -86,7 +86,12 @@
     {
       "entry": "WebApplicationInitializer interface",
       "link": "intermediate/get_rid_of_web_xml.html#index_entry_index_1",
-      "title": "Get rid of web.xml"
+      "title": "Get rid of XML configuration"
+    },
+    {
+      "entry": "view resolver, code-based",
+      "link": "intermediate/get_rid_of_web_xml.html#index_entry_index_2",
+      "title": "Get rid of XML configuration"
     }
   ],
   "doc/content/beginner/front_controller.html": [
