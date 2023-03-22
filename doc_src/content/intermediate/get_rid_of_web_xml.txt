@@ -118,6 +118,64 @@ The URL <http://localhost:8080/web-app-spring-adv1/> returns the same hello page
 
 > Git commit: `64f362440b71925364539571eb69e54b1d4a68b4` MyApplicationInitializer introduced
 
+----------------------------------------------------------------------------------------------------
+# Adjust dispatcher servlet
+
+The dispatcher servlet is created and adjusted the following way (the class is 
+[`MyApplicationInitializer`](
+<!--path code-->web-app-spring-adv1/src/main/java/springmvcstudy2/config/MyApplicationInitializer.java)):
+
+````code
+public class MyApplicationInitializer implements WebApplicationInitializer {
+
+    @Override
+    public void onStartup(ServletContext servletContext) throws ServletException {
+
+        XmlWebApplicationContext webApplicationContext = new XmlWebApplicationContext();
+        webApplicationContext.setConfigLocation("classpath:application-config.xml");
+
+        DispatcherServlet dispatcherServlet = new DispatcherServlet(webApplicationContext);
+
+        ServletRegistration.Dynamic registration =
+                servletContext.addServlet("front-controller", dispatcherServlet);
+
+        registration.setLoadOnStartup(1);
+        registration.addMapping("/ui/*");
+    }
+}
+````
+
+So by now we've reproduced all the configuration we did with the `web.xml` file.
+
+On application start the following output is shown in the console:
+
+````wrapped-shell
+.  .  .
+2023-03-22 19:18:23.786:INFO:oejshC.web_app_spring_adv1:main: Initializing Spring DispatcherServlet 'front-controller'
+Mar 22, 2023 7:18:23 PM org.springframework.web.servlet.FrameworkServlet initServletBean
+INFO: Initializing Servlet 'front-controller'
+Mar 22, 2023 7:18:24 PM org.springframework.web.servlet.FrameworkServlet initServletBean
+INFO: Completed initialization in 295 ms
+.  .  .
+````
+
+For now we still use an XML dispatcher servlet configuration file, but we we are going to get rid
+of it soon.
+
+Now need to add a simple controller ([`HelloController`](
+<!--path code-->web-app-spring-adv1/src/main/java/springmvcstudy2/controllers/HelloController.java))
+to check it works. After that the URL <http://localhost:8080/web-app-spring-adv1/ui/hello>
+returns a page with content "Hi from the HelloController" (as it did in the previous part).
+
+> Got commit: `ba89f0258f2042feae87b3b39422a9d40f664e91` dispatcher servlet and controller adjusted
+
+----------------------------------------------------------------------------------------------------
+# Get rid of Spring config XML file
+
+[[2.4][], [36:06](https://youtu.be/Hk7fRv-GHpM?t=2166)]
+
+
+
 
 
 
