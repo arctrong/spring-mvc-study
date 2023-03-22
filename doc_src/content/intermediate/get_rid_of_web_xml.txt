@@ -2,10 +2,15 @@
 
 [TOC]
 
+[2.4]: <!--page refs-->#ref_2_4
+[6]: <!--page refs-->#ref_6
+
 ----------------------------------------------------------------------------------------------------
 Mar 22, 2023
 
 # Project setup
+
+[[2.4][], [0:53](https://youtu.be/Hk7fRv-GHpM?t=53)]
 
 The complete instructions may be found 
 [here](<!--page server_setup-->#initialize_web_maven_project).
@@ -19,4 +24,105 @@ Some simple cleaning and reformatting is done. After building and deploying the 
 the request to <http://localhost:8080/web-app-spring-adv1/> returns our desired hello page.
 
 > Git commit: `51fce12a2a4326e07a0832e6ac1a215dda4117f4` first advanced web application initialized
+
+----------------------------------------------------------------------------------------------------
+<!--index ["WebApplicationInitializer interface"]-->
+# Introduce `WebApplicationInitializer`
+
+In this section we are going to get rid of the `web.xml` file. But as this file is a key element
+of a web application, we need to replace it with something that will take up these functions.
+
+The Servlet standard of versions 3.0 and later defines this mechanism by detecting the
+implementations of the `WebApplicationInitializer` interface. This interface has a method 
+`public void onStartup(ServletContext servletContext)` that is called on the web application
+initialization. This method allows defining and setting a dispatcher servlet into the 
+provided `ServletContext` instance.
+
+For more details see:
+
+- The Spring MVC documentation [[6][], [1.1. DispatcherServlet](
+    https://docs.spring.io/spring-framework/docs/5.3.9/reference/html/web.html#mvc-servlet), and 
+    [1.1.4. Servlet Config](
+    https://docs.spring.io/spring-framework/docs/5.3.9/reference/html/web.html#mvc-container-config)]
+- The Javadocs of classes: [`javax.servlet.ServletContext`](
+    https://tomcat.apache.org/tomcat-8.0-doc/servletapi/javax/servlet/ServletContext.html) and
+    [`org.springframework.web.WebApplicationInitializer`](
+    https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/web/WebApplicationInitializer.html)
+
+[[2.4][], [4:11](https://youtu.be/Hk7fRv-GHpM?t=251)]
+
+If we just delete the `web.xml` file, the Maven build will complain:
+
+````wrapped-shell-error
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-war-plugin:2.2:war (default-war) on project web-app-spring-adv1: Error assembling WAR: webxml attribute is required (or pre-existing WEB-INF/web.xml if executing in update mode)
+````
+
+The following steps are going to be done to fix this:
+
+- Add the Spring MVC dependency:
+
+    ````xml
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-webmvc</artifactId>
+            <version>${org.springframework.version}</version>
+        </dependency>
+    ````
+    
+    The version is `5.3.9` as for now. Also see the complete
+    [`pom.xml`](<!--path code-->web-app-spring-adv1/pom.xml) file.
+    
+- Create the web application initializer class [`MyApplicationInitializer`](
+    <!--path code-->web-app-spring-adv1/src/main/java/springmvcstudy2/config/MyApplicationInitializer.java)
+    that implements the `org.springframework.web.WebApplicationInitializer` interface.
+    For the first simple attempt we just log the fact of calling the `onStartup` method.
+    
+- In order to implement the `WebApplicationInitializer` class we need to add the Servlet API 
+    dependency:
+    
+    ````xml
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+            <version>4.0.1</version>
+            <scope>provided</scope>
+        </dependency>
+    ````
+
+- In order to avoid the "webxml attribute is required" error (see above) we need to add the 
+    corresponding configuration into our `maven-war-plugin` definition:
+    
+    ````xml
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+                <version>3.3.2</version>
+                <configuration>
+                    <failOnMissingWebXml>false</failOnMissingWebXml>
+                </configuration>
+            </plugin>
+    ````
+
+After building, deploying and running our application in the Jetty server we see the following 
+in the server log:
+
+````wrapped-shell
+2023-03-22 16:45:14.894:INFO:oejshC.web_app_spring_adv1:main: 1 Spring WebApplicationInitializers detected on classpath
+WebApplicationInitializer introduced!
+````
+
+[[2.4][], [14:36](https://youtu.be/Hk7fRv-GHpM?t=876)]
+
+So as we can see the `MyApplicationInitializer` class was successfully detected and called. 
+The URL <http://localhost:8080/web-app-spring-adv1/> returns the same hello page.
+
+> Git commit: `64f362440b71925364539571eb69e54b1d4a68b4` MyApplicationInitializer introduced
+
+
+
+
+
+
+
+
 

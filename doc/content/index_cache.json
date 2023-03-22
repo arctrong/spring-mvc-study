@@ -82,7 +82,13 @@
   "doc/content/intermediate/first_page.html": [],
   "doc/content/beginner/about_part_1.html": [],
   "doc/content/intermediate/about_part_2.html": [],
-  "doc/content/intermediate/get_rid_of_web_xml.html": [],
+  "doc/content/intermediate/get_rid_of_web_xml.html": [
+    {
+      "entry": "WebApplicationInitializer interface",
+      "link": "intermediate/get_rid_of_web_xml.html#index_entry_index_1",
+      "title": "Get rid of web.xml"
+    }
+  ],
   "doc/content/beginner/front_controller.html": [
     {
       "entry": "front controller",
