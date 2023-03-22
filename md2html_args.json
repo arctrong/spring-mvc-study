@@ -3,7 +3,7 @@
         "verbose": true
     },
     "default": {
-        "input-root": "doc_src",
+        "input-root": "doc_src/content",
         "output-root": "doc/content",
         "template": "doc_src/templates/multipage.html",
         "no-css": true,
@@ -12,7 +12,13 @@
     "documents": [
         { "input-root": "", "output-root": "", "input": "readme.txt", "title": "About the course", 
             "page-flows": ["sections", "nav"] },
-        { "input-glob": "sections/*.txt", "page-flows": ["sections", "nav"], 
+        { "input-glob": "*.txt", "page-flows": ["sections", "nav"], 
+            "title-from-variable": "title", "code-from-variable": "code", 
+            "sort-by-variable": "SORT_ORDER" },
+        { "input-glob": "beginner/*.txt", "page-flows": ["beginner", "nav"], 
+            "title-from-variable": "title", "code-from-variable": "code", 
+            "sort-by-variable": "SORT_ORDER" },
+        { "input-glob": "intermediate/*.txt", "page-flows": ["intermediate", "nav"], 
             "title-from-variable": "title", "code-from-variable": "code", 
             "sort-by-variable": "SORT_ORDER" }
     ],
@@ -33,8 +39,7 @@
                 { "link": "doc/content/index_page.html", "title": "Index" }
             ],
             "useful_links": [
-#                { "link": "https://daringfireball.net/projects/markdown/", "title": "Markdown", "external": true },
-#                { "link": "https://github.com/arctrong/md2html", "title": "md2html", "external": true }
+                { "link": "https://spring.io/", "title": "Spring site", "external": true }
             ]
         },
         "variables": {"logo": "<b><span style=\"color:greenyellow;margin-right:7px;\">Spring Web</span></b>" },

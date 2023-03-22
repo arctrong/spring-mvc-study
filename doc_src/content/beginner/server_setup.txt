@@ -10,6 +10,9 @@ is going to be created and run for a sanity check.
 
 [3]: <!--page refs-->#ref_3
 [4]: <!--page refs-->#ref_4
+[6]: <!--page refs-->#ref_6
+[7.1]: <!--page refs-->#ref_7_1
+[7.2]: <!--page refs-->#ref_7_2
 
 ----------------------------------------------------------------------------------------------------
 # Install and setup Jetty server
@@ -182,11 +185,53 @@ Navigate to <http://localhost:8080/web-app-jetty/> to see the result:
 
 > Git commit: `429b1fd4f65f6182962255078e0d32bd02949b50` simplest web app run in Jetty
 
-!!! note
-    Serving HTML files from inside the WAR files looks like being a tricky thing. See the 
-    StackOverflow question 
-    [Serve HTML files from inside WAR file with Jetty server and Spring MVC](
-    https://stackoverflow.com/questions/75790960/serve-html-files-from-inside-war-file-with-jetty-server-and-spring-mvc).
+----------------------------------------------------------------------------------------------------
+<!--index ["static content"]-->
+# Serving static content
+
+Serving static content from inside the WAR files was discussed in the StackOverflow question 
+[Serve HTML files from inside WAR file with Jetty server and Spring MVC](
+https://stackoverflow.com/questions/75790960/serve-html-files-from-inside-war-file-with-jetty-server-and-spring-mvc).
+
+The suggestion was to follow the instructions at [[6][], [1.11.10. Static Resources](
+https://docs.spring.io/spring-framework/docs/5.3.9/reference/html/web.html#mvc-config-static-resources)], 
+particularly adding the following definitions into the servlet dispatcher XML configuration file
+[`front-controller-servlet.xml`](
+<!--path code-->web-app-spring/src/main/webapp/WEB-INF/front-controller-servlet.xml):
+
+````xml
+    .  .  .
+    <mvc:resources mapping="/html/**" location="/static/"/>
+    <mvc:default-servlet-handler/>
+    .  .  .
+````
+
+<!--index ["mvc namespace"]-->
+The `mvc` namespace should be declared the following way:
+
+````xml
+<beans 
+       .  .  .
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        .  .  .
+        http://www.springframework.org/schema/mvc
+        http://www.springframework.org/schema/mvc/spring-mvc.xsd
+        .  .  .
+        ">
+.  .  .
+````
+
+So the URL <http://localhost:8080/web-app-spring/html/static.html> returns the page
+`src/main/webapp/static/static.html`.
+
+For more details and examples see [[7.1][]] and [[7.2][]].
+
+> Git commit: `32389ab361df68e582006f5c98e8e3aa28a56e32` serving static content added
+
+
+
+
     
 
 

@@ -54,7 +54,28 @@ version 9.4.51.v20230217, last updated 2023-02-17 05:32:21 UTC
 https://www.baeldung.com/java-enterprise-evolution), 
 [saved](<!--path materials-->Baeldung_Java_EE_vs_J2EE_vs_Jakarta_EE.html)
 
+<a name="ref_6"></a>**[6]** [Spring Web MVC official documentation (veersion 5.3.9)](
+https://docs.spring.io/spring-framework/docs/5.3.9/reference/html/web.html)
 
+<a name="ref_7"></a>**[7]** Examples:
+
+<div class="noBullets"></div>
+
+- <a name="ref_7_1"></a>[7.1] [Spring MVC XML Configuration Example](
+    https://memorynotfound.com/spring-mvc-xml-configuration-example/), 
+    [saved page](<!--path materials-->Spring_MVC_XML_Configuration_Example/Spring_MVC_XML_Configuration_Example.htm),    
+    saved demo project [spring-mvc-xml-configuration-example.zip](
+    <!--path materials-->Spring_MVC_XML_Configuration_Example/spring-mvc-xml-configuration-example.zip)
+- <a name="ref_7_2"></a>[7.2] [Spring MVC Static Resources + WebJars + Caching](
+    https://memorynotfound.com/spring-mvc-static-resources-webjars-caching/), 
+    [saved page](<!--path materials-->Spring_MVC_Static_Resources_WebJars_Caching/Spring_MVC_Static_Resources_WebJars_Caching.htm),    
+    saved demo projects: [spring-mvc-static-resouces-webjars-caching-xml-config.zip](
+    <!--path materials-->Spring_MVC_Static_Resources_WebJars_Caching/spring-mvc-static-resouces-webjars-caching-xml-config.zip),
+    [spring-mvc-static-resources-webjars-caching-java-config-example.zip](
+    <!--path materials-->Spring_MVC_Static_Resources_WebJars_Caching/spring-mvc-static-resources-webjars-caching-java-config-example.zip)
+- <a name="ref_7_3"></a>[7.3] [Spring MVC with XML Configuration](
+    https://springjava.com/spring-mvc/spring-mvc-with-xml-configuration-example), 
+    [saved page](<!--path materials-->Spring_MVC_with_XML_Configuration_Example.htm)
 
 
 
