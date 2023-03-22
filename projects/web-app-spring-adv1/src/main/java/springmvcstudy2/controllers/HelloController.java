@@ -12,4 +12,9 @@ public class HelloController {
     public String sayHello() {
         return "Hi from the " + this.getClass().getSimpleName();
     }
+
+    @RequestMapping("/hello-jsp")
+    public String helloJsp() {
+        return "hello-page";
+    }
 }
