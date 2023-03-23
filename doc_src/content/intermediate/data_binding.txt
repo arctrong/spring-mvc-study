@@ -1,0 +1,33 @@
+<!--VARIABLES {"title": "Data binding", "SORT_ORDER": "030", 
+"code": "data_binding"}-->
+
+[TOC]
+
+[2.6]: <!--page refs-->#ref_2_6
+
+----------------------------------------------------------------------------------------------------
+Mar 23, 2023
+
+# About this section
+
+[[2.6][], [2:13](https://youtu.be/3x4RoGGpETM?t=133)]
+
+In this section data communication will be demonstrated using HTML and Spring MVC forms. Also
+different types of models will be discussed.
+
+----------------------------------------------------------------------------------------------------
+# Project setup
+
+Project `web-app-spring-adv1` was copy-pasted to `web-app-spring-adv2` and cleaned up a little bit.
+URL <http://localhost:8080/web-app-spring-adv2/view/hello-page.jsp> may be used for a check.
+
+> Git commit: `f000a2489fd9a080eaf02386c396b5481fa75eea` project 'web-app-spring-adv2' initialized
+
+----------------------------------------------------------------------------------------------------
+# ???
+
+
+
+
+
+
