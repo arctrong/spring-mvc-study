@@ -1,5 +1,8 @@
 package springmvcstudy2.config;
 
+/**
+ * This class was used for demonstration and is not activated now.
+ */
 //@Order(2)
 public class MyQuickApplicationInitializer
 //        extends AbstractAnnotationConfigDispatcherServletInitializer

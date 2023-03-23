@@ -8,7 +8,7 @@ import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRegistration;
 
-//@Order(1)
+//@Order(1) // not required with one initializer
 public class MyApplicationInitializer implements WebApplicationInitializer {
 
     @Override
