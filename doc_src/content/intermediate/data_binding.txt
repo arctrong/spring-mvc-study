@@ -12,8 +12,12 @@ Mar 23, 2023
 
 [[2.6][], [2:13](https://youtu.be/3x4RoGGpETM?t=133)]
 
-In this section data communication will be demonstrated using HTML and Spring MVC forms. Also
-different types of models will be discussed.
+In this section data communication will be demonstrated using:
+
+- HTML forms;
+- and Spring MVC forms.
+
+Also different types of models will be discussed.
 
 ----------------------------------------------------------------------------------------------------
 # Project setup
@@ -24,9 +28,44 @@ URL <http://localhost:8080/web-app-spring-adv2/view/hello-page.jsp> may be used 
 > Git commit: `f000a2489fd9a080eaf02386c396b5481fa75eea` project 'web-app-spring-adv2' initialized
 
 ----------------------------------------------------------------------------------------------------
-# ???
+# Form processing with a `Model`
 
+A similar thing was done [here](<!--page model-->). In this section the following pages are
+created and tied up with the controller methods:
 
+- <http://localhost:8080/web-app-spring-adv2/ui/>
+
+    ![](<!--path pict-->two_names_form.png)
+    
+- <http://localhost:8080/web-app-spring-adv2/ui/calculate-page?name1=bob&name2=alice>
+
+    ![](<!--path pict-->two_names_result.png)
+    
+<!--index ["@RequestParam"]-->
+In this example also the `@org.springframework.web.bind.annotation.RequestParam` annotation is
+used. This annotation is applied to controller method parameters and maps these parameters to
+the HTTP request parameters. Here the example in the file [`MyAppController`](
+<!--path code-->web-app-spring-adv2/src/main/java/springmvcstudy2/controllers/MyAppController.java):
+
+````code
+    .  .  .
+    @RequestMapping("/calculate-page")
+    public String showCalculatePage(@RequestParam("name1") String firstName,
+                                    @RequestParam String name2,
+                                    Model model) {
+        model.addAttribute("firstName", firstName);
+        model.addAttribute("secondName", name2);
+        return "result-page";
+    }
+    .  .  .
+````
+
+> Git commit: `d4c97497cf4bcc5e57b63dd3f2818016cedc950b` two names form created and processed
+
+----------------------------------------------------------------------------------------------------
+# Adding a DTO
+
+[[2.6][], [48:19](https://youtu.be/3x4RoGGpETM?t=2899)]
 
 
 

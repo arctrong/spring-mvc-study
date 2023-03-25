@@ -84,6 +84,9 @@ https://docs.spring.io/spring-framework/docs/5.3.9/reference/html/web.html)
 https://www.baeldung.com/java-front-controller-pattern), 
 [saved](<!--path materials-->Baeldung_A_Guide_to_the_Front_Controller_Pattern_in_Java.html)
 
+<a name="ref_10"></a>**[10]** Spring: [Guides](https://spring.io/guides). Provides a lot of guides
+from simple 20 min "Hello world" examples to 2...3 hours in-depth tutorials.
+
 
 
 

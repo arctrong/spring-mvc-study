@@ -116,5 +116,11 @@
       "title": "Front controller"
     }
   ],
-  "doc/content/intermediate/data_binding.html": []
+  "doc/content/intermediate/data_binding.html": [
+    {
+      "entry": "@RequestParam",
+      "link": "intermediate/data_binding.html#index_entry_index_1",
+      "title": "Data binding"
+    }
+  ]
 }
