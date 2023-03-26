@@ -2,8 +2,8 @@ package springmvcstudy2.model;
 
 public class UserInfoDto {
 
-    private String name1;
-    private String name2;
+    private String name1 = "initial name 1";
+    private String name2 = "initial name 2";
 
     @Override
     public String toString() {

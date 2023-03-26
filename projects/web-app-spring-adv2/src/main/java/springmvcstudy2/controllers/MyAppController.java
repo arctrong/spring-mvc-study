@@ -29,4 +29,18 @@ public class MyAppController {
         model.addAttribute("secondName", dto.getName2());
         return "result-page";
     }
+
+    @RequestMapping("/spring")
+    public String showHomePageSpring(Model model) {
+        UserInfoDto dto = new UserInfoDto();
+        model.addAttribute("userInfo", dto);
+        return "home-page-spring";
+    }
+
+    @RequestMapping("/calculate-page-springs")
+    public String showCalculatePageSpring(UserInfoDto dto, Model model) {
+        model.addAttribute("dto", dto);
+        return "result-page-spring";
+    }
+
 }
