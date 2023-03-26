@@ -1,0 +1,60 @@
+<!--VARIABLES {"title": "Registration form", "SORT_ORDER": "040", "code": "registration_form"}-->
+
+[TOC]
+
+[2.7]: <!--page refs-->#ref_2_7
+
+----------------------------------------------------------------------------------------------------
+Mar 26, 2023
+
+<!--index ["registration form"]-->
+# About this section
+
+[[2.7][]]
+
+here we are going to create a user registration form:
+
+![](<!--path pict-->reg_form.png)
+
+and a successful registration page:
+
+![](<!--path pict-->reg_form_success.png)
+
+----------------------------------------------------------------------------------------------------
+# Simple implementation
+
+The following artifacts may be viewed for the details:
+
+- controller [`RegistrationController`](
+    <!--path code-->web-app-spring-adv2/src/main/java/springmvcstudy2/controllers/RegistrationController.java)
+- DTO [`RegistrationDto`](
+    <!--path code-->web-app-spring-adv2/src/main/java/springmvcstudy2/model/RegistrationDto.java)
+- registration form [`registration-page.jsp`](
+    <!--path code-->web-app-spring-adv2/src/main/webapp/view/registration-page.jsp)
+- registration details page [`registration-success.jsp`](
+    <!--path code-->web-app-spring-adv2/src/main/webapp/view/registration-success.jsp)
+
+<!--index ["JSTL"]-->
+To enable JSTL, the following maven dependency must be added to the POM:
+
+````xml
+        <dependency>
+            <groupId>jstl</groupId>
+            <artifactId>jstl</artifactId>
+            <version>1.2</version>
+        </dependency>
+````
+
+and the following tag library declaration must be added to the JSP page:
+
+````xml
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+````
+
+> Git commit: `37af1551bd32517fd02eae837dee21e035da0a55` simple registration form created
+
+
+
+
+
+

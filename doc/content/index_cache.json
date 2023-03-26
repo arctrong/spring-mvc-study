@@ -137,5 +137,17 @@
       "link": "intermediate/data_binding.html#index_entry_index_4",
       "title": "Data binding"
     }
+  ],
+  "doc/content/intermediate/registration_form.html": [
+    {
+      "entry": "registration form",
+      "link": "intermediate/registration_form.html#index_entry_index_1",
+      "title": "Registration form"
+    },
+    {
+      "entry": "JSTL",
+      "link": "intermediate/registration_form.html#index_entry_index_2",
+      "title": "Registration form"
+    }
   ]
 }
