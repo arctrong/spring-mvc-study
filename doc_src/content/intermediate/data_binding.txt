@@ -4,6 +4,7 @@
 [TOC]
 
 [2.6]: <!--page refs-->#ref_2_6
+[11]: <!--page refs-->#ref_11
 
 ----------------------------------------------------------------------------------------------------
 Mar 23, 2023
@@ -95,9 +96,101 @@ and the result is the same.
 > Git commit: `535ac38da2941822bae538692fec190161d2bf62` DTO used for form data binding
 
 ----------------------------------------------------------------------------------------------------
+<!--index ["forms, Spring MVC"]-->
 # Using Spring MVC form tag
 
-[[2.6][], [1:15:29](https://youtu.be/3x4RoGGpETM?t=4529)]
+[[2.6][], [1:15:29](https://youtu.be/3x4RoGGpETM?t=4529)], also probably [[11][]] may be useful
+as an additional material.
+
+Spring MVC form tag will help us for two-way data binding.
+
+The following tags may be used:
+
+- `form:form`
+- `form:input`
+- `form:radiobutton`
+- `form:select`
+- `form:password`
+- `form:textarea`
+
+Need to activate these tags by adding the following tag library declaration to the JSP file:
+
+````xml
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+````
+
+Two additional controller methods were added into the [`MyAppController`](
+<!--path code-->web-app-spring-adv2/src/main/java/springmvcstudy2/controllers/MyAppController.java)
+controller:
+
+````code
+    .  .  .
+    @RequestMapping("/spring")
+    public String showHomePageSpring(Model model) {
+        UserInfoDto dto = new UserInfoDto();
+        model.addAttribute("userInfo", dto);
+        return "home-page-spring";
+    }
+
+    @RequestMapping("/calculate-page-springs")
+    public String showCalculatePageSpring(UserInfoDto dto, Model model) {
+        model.addAttribute("dto", dto);
+        return "result-page-spring";
+    }
+    .  .  .
+````
+
+Two views were added as well:
+
+- [`home-page-spring.jsp`](
+    <!--path code-->web-app-spring-adv2/src/main/webapp/view/home-page-spring.jsp), the fragment is:
+    
+    ````xml
+    .  .  .
+    <form:form action="calculate-page-springs" method="GET" modelAttribute="userInfo">
+    <p><label for="name1">Name 1: </label><form:input id="name1" path="name1"/></p>
+    <p><label for="name2">Name 2: </label><form:input id="name2" path="name2"/></p>
+    <input type="submit" value="calculate"/>
+    </form:form>
+    .  .  .
+    ````
+
+- [`result-page-spring.jsp`](
+    <!--path code-->web-app-spring-adv2/src/main/webapp/view/result-page-spring.jsp), the fragment is:
+    
+    ````xml
+    .  .  .
+    <p>Name 1 is: ${dto.name1}</p>
+    <p>Name 2 is: ${dto.name2}</p>
+    .  .  .
+    ````
+
+> Git commit: `2b0e4b15df7aac1076902411e6cc99b7c98df631` Spring MVC form tags introduced
+
+Actually with this approach it's not necessary to handle a model object. The controller methods 
+may be significantly simplified like this:
+
+````code
+    .  .  .
+    @RequestMapping("/spring")
+    public String showHomePageSpring(@ModelAttribute("userInfo") UserInfoDto dto) {
+        return "home-page-spring";
+    }
+
+    @RequestMapping("/calculate-page-springs")
+    public String showCalculatePageSpring(@ModelAttribute("dto") UserInfoDto dto) {
+        return "result-page-spring";
+    }
+    .  .  .
+````
+
+> Git commit: `8995a8f64dd67ad319ce7650a4ee330eab28c4b8` controller methods simplified
+
+
+
+
+
+
 
 
 

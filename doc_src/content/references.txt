@@ -87,6 +87,13 @@ https://www.baeldung.com/java-front-controller-pattern),
 <a name="ref_10"></a>**[10]** Spring: [Guides](https://spring.io/guides). Provides a lot of guides
 from simple 20 min "Hello world" examples to 2...3 hours in-depth tutorials.
 
+<a name="ref_11"></a>**[11]** Baeldung: [Getting Started with Forms in Spring MVC](
+https://www.baeldung.com/spring-mvc-form-tutorial), 
+[saved](<!--path materials-->Baeldung_Getting_Started_with_Forms_in_Spring_MVC.html)
+
+
+
+
 
 
 

@@ -131,6 +131,11 @@
       "entry": "DTO, data binding",
       "link": "intermediate/data_binding.html#index_entry_index_3",
       "title": "Data binding"
+    },
+    {
+      "entry": "forms, Spring MVC",
+      "link": "intermediate/data_binding.html#index_entry_index_4",
+      "title": "Data binding"
     }
   ]
 }
