@@ -2,6 +2,7 @@ package springmvcstudy2.controllers;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import springmvcstudy2.model.UserInfoDto;
@@ -31,16 +32,12 @@ public class MyAppController {
     }
 
     @RequestMapping("/spring")
-    public String showHomePageSpring(Model model) {
-        UserInfoDto dto = new UserInfoDto();
-        model.addAttribute("userInfo", dto);
+    public String showHomePageSpring(@ModelAttribute("userInfo") UserInfoDto dto) {
         return "home-page-spring";
     }
 
     @RequestMapping("/calculate-page-springs")
-    public String showCalculatePageSpring(UserInfoDto dto, Model model) {
-        model.addAttribute("dto", dto);
+    public String showCalculatePageSpring(@ModelAttribute("dto") UserInfoDto dto) {
         return "result-page-spring";
     }
-
 }
