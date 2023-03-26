@@ -4,6 +4,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import springmvcstudy2.model.UserInfoDto;
 
 @Controller
 public class MyAppController {
@@ -19,8 +20,13 @@ public class MyAppController {
                                     Model model) {
         model.addAttribute("firstName", firstName);
         model.addAttribute("secondName", name2);
-
         return "result-page";
     }
 
+    @RequestMapping("/calculate-page-dto")
+    public String showCalculatePageDto(UserInfoDto dto, Model model) {
+        model.addAttribute("firstName", dto.getName1());
+        model.addAttribute("secondName", dto.getName2());
+        return "result-page";
+    }
 }

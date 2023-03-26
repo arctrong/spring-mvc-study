@@ -9,7 +9,7 @@
 <h1>Home page</h1>
 <hr/>
 
-<form action="calculate-page" method="GET">
+<form action="calculate-page-dto" method="GET">
 <p><label for="name1">Name 1: </label><input id="name1" name="name1"/></p>
 <p><label for="name2">Name 2: </label><input id="name2" name="name2"/></p>
 <input type="submit" value="calculate"/>
