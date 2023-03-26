@@ -118,8 +118,18 @@
   ],
   "doc/content/intermediate/data_binding.html": [
     {
-      "entry": "@RequestParam",
+      "entry": "model, data binding",
       "link": "intermediate/data_binding.html#index_entry_index_1",
+      "title": "Data binding"
+    },
+    {
+      "entry": "@RequestParam",
+      "link": "intermediate/data_binding.html#index_entry_index_2",
+      "title": "Data binding"
+    },
+    {
+      "entry": "DTO, data binding",
+      "link": "intermediate/data_binding.html#index_entry_index_3",
       "title": "Data binding"
     }
   ]

@@ -28,6 +28,7 @@ URL <http://localhost:8080/web-app-spring-adv2/view/hello-page.jsp> may be used 
 > Git commit: `f000a2489fd9a080eaf02386c396b5481fa75eea` project 'web-app-spring-adv2' initialized
 
 ----------------------------------------------------------------------------------------------------
+<!--index ["model, data binding"]-->
 # Form processing with a `Model`
 
 A similar thing was done [here](<!--page model-->). In this section the following pages are
@@ -63,10 +64,40 @@ the HTTP request parameters. Here the example in the file [`MyAppController`](
 > Git commit: `d4c97497cf4bcc5e57b63dd3f2818016cedc950b` two names form created and processed
 
 ----------------------------------------------------------------------------------------------------
+<!--index ["DTO, data binding"]-->
 # Adding a DTO
 
 [[2.6][], [48:19](https://youtu.be/3x4RoGGpETM?t=2899)]
 
+In the [`MyAppController`](
+<!--path code-->web-app-spring-adv2/src/main/java/springmvcstudy2/controllers/MyAppController.java)
+controller a new method is added:
+
+````code
+    .  .  .
+    @RequestMapping("/calculate-page-dto")
+    public String showCalculatePageDto(UserInfoDto dto, Model model) {
+        model.addAttribute("firstName", dto.getName1());
+        model.addAttribute("secondName", dto.getName2());
+        return "result-page";
+    }
+    .  .  .
+````
+
+It uses the parameter `dto` of a newly created class [`UserInfoDto`](
+<!--path code-->web-app-spring-adv2/src/main/java/springmvcstudy2/model/UserInfoDto.java)
+that is a simple POJO with fields, setters and getters. the content of this object is filled 
+by the Spring MVC framework.
+
+The new URL is <http://localhost:8080/web-app-spring-adv2/ui/calculate-page-dto?name1=alice&name2=bob>
+and the result is the same.
+
+> Git commit: `535ac38da2941822bae538692fec190161d2bf62` DTO used for form data binding
+
+----------------------------------------------------------------------------------------------------
+# Using Spring MVC form tag
+
+[[2.6][], [1:15:29](https://youtu.be/3x4RoGGpETM?t=4529)]
 
 
 
