@@ -3,6 +3,7 @@
 [TOC]
 
 [2.7]: <!--page refs-->#ref_2_7
+[2.8]: <!--page refs-->#ref_2_8
 
 ----------------------------------------------------------------------------------------------------
 Mar 26, 2023
@@ -52,6 +53,47 @@ and the following tag library declaration must be added to the JSP page:
 ````
 
 > Git commit: `37af1551bd32517fd02eae837dee21e035da0a55` simple registration form created
+
+----------------------------------------------------------------------------------------------------
+<!--index ["validation, forms"]-->
+# Form validation
+
+[[2.8][]]
+
+## Why server-side validation
+
+Why we need a server side validation rather than client side one? If we add a simple validation 
+in JavaScript like this (see the [`home-page.jsp`](
+    <!--path code-->web-app-spring-adv2/src/main/webapp/view/home-page.jsp) file):
+
+````code
+<script type="text/javascript">
+function validateUserName() {
+    if (document.getElementById("name1").value.length > 1) {
+        return true
+    } else {
+        alert("The user name must be at least 2 character long!")
+        return false
+    }
+}
+</script>
+.  .  .
+<form action="calculate-page-dto" method="GET" onsubmit="return validateUserName()">
+.  .  .
+````
+
+This validation rule will work but a user may easily break it using, e.g., a debugger tool in their
+browser.
+
+So we need to perform validation on the server where users cannot manipulate the code.
+
+> Git commit: `ecc1819727ac509d8be35d521787c5e0b13b7953` client-side validation
+
+
+## Introducing bean validation API
+
+[[2.8][], [30:51](https://youtu.be/ot-TI5T7-5M?t=1851)]
+
 
 
 
