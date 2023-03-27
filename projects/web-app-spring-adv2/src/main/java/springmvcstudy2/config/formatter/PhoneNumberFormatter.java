@@ -9,7 +9,7 @@ public class PhoneNumberFormatter implements Formatter<PhoneDto> {
 
     @Override
     public String print(PhoneDto object, Locale locale) {
-        return null;
+        return object.getCountryCode() + "-" + object.getUserNumber();
     }
 
     @Override
