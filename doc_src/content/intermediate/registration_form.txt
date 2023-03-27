@@ -7,7 +7,7 @@
 ----------------------------------------------------------------------------------------------------
 Mar 26, 2023
 
-<!--index ["registration form"]-->
+<!--index ["registration form"]--><a name="registration_forms"></a>
 # About this section
 
 [[2.7][]]

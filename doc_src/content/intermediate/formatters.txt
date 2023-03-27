@@ -45,9 +45,70 @@ discussed later.
 > Git commit: `5a14f9a34017c2c5e63c04cf25ec035718df987d` composite DTOs implemented
 
 ----------------------------------------------------------------------------------------------------
-# Introducing formatter
+<!--index ["Formatter"]-->
+# Introducing `Formatter`
 
 [[2.9][], [35:27](https://youtu.be/q9hjjeJA7Yw?t=2127)]
+
+The `org.springframework.format.Formatter` interface is used in Spring MVC and Spring Boot as well.
+
+the implementation [`PhoneNumberFormatter`](
+<!--path code-->web-app-spring-adv2/src/main/java/springmvcstudy2/config/formatter/PhoneNumberFormatter.java)
+is created:
+
+````code
+public class PhoneNumberFormatter implements Formatter<PhoneDto> {
+
+    @Override
+    public String print(PhoneDto object, Locale locale) {
+        return null;
+    }
+
+    @Override
+    public PhoneDto parse(String text, Locale locale) {
+        System.out.println("inside PhoneNumberFormatter#parse");
+        String[] split = text.replaceAll("\\s", "").split("-");
+        PhoneDto phoneDto = new PhoneDto();
+        phoneDto.setCountryCode(split[0]);
+        phoneDto.setUserNumber(split[1]);
+        return phoneDto;
+    }
+}
+````
+
+Looks like the `print` will not be used for converting from a `PhoneDto` to a `String`, so 
+`PhoneDto#toString()` method is used instead:
+
+````code
+    @Override
+    public String toString() {
+        return this.getCountryCode() + "-" + this.getUserNumber();
+    }
+````
+
+<!--index ["WebMvcConfigurer interface"]-->
+To register a `Formatter` in the [`MyApplicationConfig`](
+<!--path code-->web-app-spring-adv2/src/main/java/springmvcstudy2/config/MyApplicationConfig.java)
+configuration the configuration class must implement the interface
+`org.springframework.web.servlet.config.annotation.WebMvcConfigurer`. The registration is done
+like this:
+
+````code
+    @Override
+    public void addFormatters(FormatterRegistry registry) {
+        registry.addFormatter(new PhoneNumberFormatter());
+    }
+````
+
+!!! note
+    When an implementation of the `org.springframework.format.Parser#parse` method returns `null`
+    a `NullPointerException` exception is output to the log.
+
+The pictures are not going to be demonstrated as they are not changed very much. The previous 
+versions od these forms can be view [here](<!--page registration_form-->#registration_forms).
+
+> Git commit: `5d9d526ce3ef71d5d231c5d1e2230ff77e4c50c3` Spring NVC Formatter used
+
 
 
 

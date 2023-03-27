@@ -197,6 +197,16 @@
       "entry": "composite DTOs",
       "link": "intermediate/formatters.html#index_entry_index_1",
       "title": "Spring MVC Formatter"
+    },
+    {
+      "entry": "Formatter",
+      "link": "intermediate/formatters.html#index_entry_index_2",
+      "title": "Spring MVC Formatter"
+    },
+    {
+      "entry": "WebMvcConfigurer interface",
+      "link": "intermediate/formatters.html#index_entry_index_3",
+      "title": "Spring MVC Formatter"
     }
   ]
 }
