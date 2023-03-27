@@ -1,5 +1,6 @@
 package springmvcstudy2.model;
 
+import javax.validation.constraints.AssertTrue;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
@@ -8,7 +9,13 @@ public class UserInfoValidatedDto {
     @NotBlank(message = " * can't be blank")
     @Size(min = 3, max = 10, message = " * must have 3 to 10 characters")
     private String name1;
+
+    @NotBlank(message = " * can't be blank")
+    @Size(min = 3, max = 10, message = " * must have 3 to 10 characters")
     private String name2;
+
+    @AssertTrue(message = " * Only humans are allowed to use this site")
+    private boolean notARobot;
 
     @Override
     public String toString() {
@@ -32,5 +39,13 @@ public class UserInfoValidatedDto {
 
     public void setName2(String name2) {
         this.name2 = name2;
+    }
+
+    public boolean isNotARobot() {
+        return notARobot;
+    }
+
+    public void setNotARobot(boolean notARobot) {
+        this.notARobot = notARobot;
     }
 }

@@ -14,10 +14,17 @@ body {background-color: aliceblue;}
 <hr/>
 
 <form:form action="validate-submit" method="GET" modelAttribute="dto">
-<p><label for="name1">Name 1: </label><form:input id="name1" path="name1"/>
-<form:errors path="name1" cssClass="error"/></p>
-<p><label for="name2">Name 2: </label><form:input id="name2" path="name2"/></p>
-<input type="submit" value="calculate"/>
+    <p><label for="name1">Name 1: </label><form:input id="name1" path="name1"/>
+    <form:errors path="name1" cssClass="error"/></p>
+
+    <p><label for="name2">Name 2: </label><form:input id="name2" path="name2"/>
+    <form:errors path="name2" cssClass="error"/></p>
+
+    <p><form:checkbox path="notARobot" id="notARobot"/>
+    <label for="notARobot">I am not a robot</label>
+    <form:errors path="notARobot" cssClass="error"/></p>
+
+    <input type="submit" value="calculate"/>
 </form:form>
 
 </body></html>
