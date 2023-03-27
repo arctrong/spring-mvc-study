@@ -91,6 +91,30 @@ from simple 20 min "Hello world" examples to 2...3 hours in-depth tutorials.
 https://www.baeldung.com/spring-mvc-form-tutorial), 
 [saved](<!--path materials-->Baeldung_Getting_Started_with_Forms_in_Spring_MVC.html)
 
+<a name="ref_12"></a>**[12]** Java Community Process (JCP):
+
+<div class="noBullets"></div>
+
+- <a name="ref_12_1"></a>[12.1] [Main page](https://jcp.org/en/home/index)
+- <a name="ref_12_2"></a>[12.2] [JSR 303: Bean Validation](https://jcp.org/en/jsr/detail?id=303),
+    also [here](https://beanvalidation.org/1.0/spec/)
+- <a name="ref_12_3"></a>[12.3] [JSR 349: Bean Validation 1.1](https://jcp.org/en/jsr/detail?id=349),
+    also [here](https://beanvalidation.org/1.1/)
+- <a name="ref_12_4"></a>[12.4] [JSR 380: Bean Validation 2.0](https://jcp.org/en/jsr/detail?id=380),
+    also [here](https://beanvalidation.org/2.0-jsr380/)
+
+<a name="ref_13"></a>**[13]** Baeldung: [Java Bean Validation Basics](
+https://www.baeldung.com/javax-validation), 
+[saved](<!--path materials-->Baeldung_Java_Bean_Validation_Basics.html)
+
+<a name="ref_14"></a>**[14]** JSR 380 (Bean Validation) implementations:
+
+<div class="noBullets"></div>
+
+- <a name="ref_14_1"></a>[14.1] Hibernate Validator: [HTML](
+    https://docs.jboss.org/hibernate/stable/validator/reference/en-US/html_single/?v=8.0),
+    [PDF](https://docs.jboss.org/hibernate/validator/8.0/reference/en-US/pdf/hibernate_validator_reference.pdf)
+- <a name="ref_14_2"></a>[14.2] [Apache BVal](https://bval.apache.org/mvnsite/index.html)
 
 
 

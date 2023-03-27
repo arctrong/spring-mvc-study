@@ -3,6 +3,7 @@
 [TOC]
 
 [5]: <!--page refs-->#ref_5
+[12]: <!--page refs-->#ref_12
 
 ----------------------------------------------------------------------------------------------------
 <!--index JEE standard-->
@@ -10,7 +11,11 @@
 
 See [[5][]] for Java Enterprise Edition evolution overview.
 
+----------------------------------------------------------------------------------------------------
+<!--index ["Java Community Process", "JCP"]--><a name="jcp"></a>
+# Java Community Process (JCP)
 
+The process used by community for suggesting reviewing and implementing new features in Java.
 
-
+See [[12][]].
 

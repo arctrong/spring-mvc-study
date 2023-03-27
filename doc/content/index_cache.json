@@ -12,6 +12,16 @@
       "entry": "JEE standard",
       "link": "common_notes.html#index_entry_index_1",
       "title": "Common notes"
+    },
+    {
+      "entry": "Java Community Process",
+      "link": "common_notes.html#index_entry_index_2",
+      "title": "Common notes"
+    },
+    {
+      "entry": "JCP",
+      "link": "common_notes.html#index_entry_index_2",
+      "title": "Common notes"
     }
   ],
   "doc/content/beginner/server_setup.html": [
@@ -152,6 +162,31 @@
     {
       "entry": "validation, forms",
       "link": "intermediate/registration_form.html#index_entry_index_3",
+      "title": "Registration form"
+    },
+    {
+      "entry": "@EnableWebMvc",
+      "link": "intermediate/registration_form.html#index_entry_index_4",
+      "title": "Registration form"
+    },
+    {
+      "entry": "@NotBlank",
+      "link": "intermediate/registration_form.html#index_entry_index_5",
+      "title": "Registration form"
+    },
+    {
+      "entry": "@Length",
+      "link": "intermediate/registration_form.html#index_entry_index_5",
+      "title": "Registration form"
+    },
+    {
+      "entry": "@Valid",
+      "link": "intermediate/registration_form.html#index_entry_index_6",
+      "title": "Registration form"
+    },
+    {
+      "entry": "BindingResult",
+      "link": "intermediate/registration_form.html#index_entry_index_6",
       "title": "Registration form"
     }
   ]
