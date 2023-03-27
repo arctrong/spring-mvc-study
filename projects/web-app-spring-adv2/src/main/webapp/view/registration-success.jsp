@@ -21,5 +21,8 @@ ${hobby}<c:if test="${!loop.last}">, </c:if>
 </c:forEach>
 <br/>
 <strong>Gender:</strong> ${userReg.gender}<br/>
+<strong>Age:</strong> ${userReg.age}<br/>
+<strong>Email:</strong> ${userReg.communicationDto.email}<br/>
+<!-- <strong>Phone:</strong> ${userReg.communicationDto.phone}<br/> -->
 
 </body></html>

@@ -30,6 +30,12 @@
 <form:radiobutton path="gender" id="female" value="F"/><label for="female">Female</label>
 </p>
 
+</p><label for="age">Age: </label><form:input id="age" path="age"/></p>
+
+<p>Communication:</p>
+</p><label for="email">Email: </label><form:input id="email" path="communicationDto.email"/></p>
+<!-- </p><label for="phone">Phone: </label><form:input id="phone" path="communicationDto.phone"/></p> -->
+
 <input type="submit" value="register"/>
 </form:form>
 
