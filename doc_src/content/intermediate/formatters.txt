@@ -76,7 +76,7 @@ public class PhoneNumberFormatter implements Formatter<PhoneDto> {
 }
 ````
 
-Looks like the `print` will not be used for converting from a `PhoneDto` to a `String`, so 
+Looks like the `print()` method will not be used for converting from a `PhoneDto` to a `String`, so 
 `PhoneDto#toString()` method is used instead:
 
 ````code
@@ -85,6 +85,10 @@ Looks like the `print` will not be used for converting from a `PhoneDto` to a `S
         return this.getCountryCode() + "-" + this.getUserNumber();
     }
 ````
+
+!!! note
+    The `print()` method is used for the other purpose that is described 
+    [here](<!--page formatters-->#using_print_mathod).
 
 <!--index ["WebMvcConfigurer interface"]-->
 To register a `Formatter` in the [`MyApplicationConfig`](
@@ -109,9 +113,47 @@ versions od these forms can be view [here](<!--page registration_form-->#registr
 
 > Git commit: `5d9d526ce3ef71d5d231c5d1e2230ff77e4c50c3` Spring NVC Formatter used
 
+----------------------------------------------------------------------------------------------------
+<a name="using_print_mathod"></a>
+# Using the `print()` method
 
+[[2.9][], [1:06:47](https://youtu.be/q9hjjeJA7Yw?t=4007)]
 
+The print method is used when the form is populated with the model object that is already filled up,
+e.g. taken from a database. For demonstration the controller method `showRegistrationPage` of
+the controller [`RegistrationController`](
+<!--path code-->web-app-spring-adv2/src/main/java/springmvcstudy2/controllers/RegistrationController.java)
+is changed to prepopulate the phone number:
 
+````code
+    @RequestMapping("/register")
+    public String showRegistrationPage(@ModelAttribute("userReg") RegistrationDto userReg) {
+
+        CommunicationDto communicationDto = new CommunicationDto();
+        PhoneDto phoneDto = new PhoneDto();
+        phoneDto.setCountryCode("000");
+        phoneDto.setUserNumber("0000000000");
+        communicationDto.setPhone(phoneDto);
+        userReg.setCommunicationDto(communicationDto);
+
+        return "registration-page";
+    }
+````
+
+The `print()` method of the formatter [`PhoneNumberFormatter`](
+<!--path code-->web-app-spring-adv2/src/main/java/springmvcstudy2/config/formatter/PhoneNumberFormatter.java)
+is changed like this:
+
+````code
+    @Override
+    public String print(PhoneDto object, Locale locale) {
+        return object.getCountryCode() + "-" + object.getUserNumber();
+    }
+````
+
+So now when the form is initially loaded the phone number is "000-0000000000".
+
+> Git commit: `8d937092461422607d8595e0eb3c91ad7db42a56` formatter print() method demonstrated
 
 
 
