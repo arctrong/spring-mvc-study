@@ -1,0 +1,62 @@
+<!--VARIABLES {"title": "Spring MVC Formatter", "SORT_ORDER": "060", "code": "formatters"}-->
+
+[TOC]
+
+[2.9]: <!--page refs-->#ref_2_9
+
+----------------------------------------------------------------------------------------------------
+Mar 27, 2023
+
+<!--index ["composite DTOs"]-->
+# Adding internal DTOs
+
+[[2.9][], [6:21](https://youtu.be/q9hjjeJA7Yw?t=381)]
+
+A new DTO [`CommunicationDto`](
+<!--path code-->web-app-spring-adv2/src/main/java/springmvcstudy2/model/CommunicationDto.java)
+is created and added as the field `communicationDto` in the [`RegistrationDto`](
+<!--path code-->web-app-spring-adv2/src/main/java/springmvcstudy2/model/RegistrationDto.java)
+DTO.
+
+[`PhoneDto`](
+<!--path code-->web-app-spring-adv2/src/main/java/springmvcstudy2/model/PhoneDto.java) is created
+and added to the `CommunicationDto`. This DTO contains two fields `countryCode` and `userNumber`
+but we will try to represent it in the view as a single text input field.
+
+The views [`registration-page.jsp`](
+<!--path code-->web-app-spring-adv2/src/main/webapp/view/registration-page.jsp)
+and [`registration-success.jsp`](
+<!--path code-->web-app-spring-adv2/src/main/webapp/view/registration-success.jsp)
+are updated to reflect the corresponding fields.
+
+In the view the email field is accessed the following way:
+
+````xml
+.  .  .
+</p><label for="email">Email: </label><form:input id="email" path="communicationDto.email"/></p>
+.  .  .
+````
+
+But this does not work for the `communicationDto.phone` field as it's not a `String`.
+On the other hand the field `private int age;` is accepted successfully as Spring MVC can
+automatically convert some known data types. The solution about the `phone` field is going to be 
+discussed later.
+
+> Git commit: `5a14f9a34017c2c5e63c04cf25ec035718df987d` composite DTOs implemented
+
+----------------------------------------------------------------------------------------------------
+# Introducing formatter
+
+[[2.9][], [35:27](https://youtu.be/q9hjjeJA7Yw?t=2127)]
+
+
+
+
+
+
+
+
+
+
+
+

@@ -191,5 +191,12 @@
       "link": "intermediate/form_validation.html#index_entry_index_4",
       "title": "Form validation"
     }
+  ],
+  "doc/content/intermediate/formatters.html": [
+    {
+      "entry": "composite DTOs",
+      "link": "intermediate/formatters.html#index_entry_index_1",
+      "title": "Spring MVC Formatter"
+    }
   ]
 }
