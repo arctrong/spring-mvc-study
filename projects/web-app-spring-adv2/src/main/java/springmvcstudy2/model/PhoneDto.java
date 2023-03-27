@@ -20,4 +20,9 @@ public class PhoneDto {
     public void setUserNumber(String userNumber) {
         this.userNumber = userNumber;
     }
+
+    @Override
+    public String toString() {
+        return this.getCountryCode() + "-" + this.getUserNumber();
+    }
 }
