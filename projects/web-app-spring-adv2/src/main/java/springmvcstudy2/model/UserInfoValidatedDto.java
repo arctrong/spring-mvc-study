@@ -1,13 +1,12 @@
 package springmvcstudy2.model;
 
-import org.hibernate.validator.constraints.Length;
-
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 
 public class UserInfoValidatedDto {
 
     @NotBlank(message = " * can't be blank")
-    @Length(min = 3, message = " * must have at least 3 characters")
+    @Size(min = 3, max = 10, message = " * must have 3 to 10 characters")
     private String name1;
     private String name2;
 
