@@ -158,36 +158,38 @@
       "entry": "JSTL",
       "link": "intermediate/registration_form.html#index_entry_index_2",
       "title": "Registration form"
-    },
+    }
+  ],
+  "doc/content/intermediate/form_validation.html": [
     {
       "entry": "validation, forms",
-      "link": "intermediate/registration_form.html#index_entry_index_3",
-      "title": "Registration form"
+      "link": "intermediate/form_validation.html#index_entry_index_1",
+      "title": "Form validation"
     },
     {
       "entry": "@EnableWebMvc",
-      "link": "intermediate/registration_form.html#index_entry_index_4",
-      "title": "Registration form"
+      "link": "intermediate/form_validation.html#index_entry_index_2",
+      "title": "Form validation"
     },
     {
       "entry": "@NotBlank",
-      "link": "intermediate/registration_form.html#index_entry_index_5",
-      "title": "Registration form"
+      "link": "intermediate/form_validation.html#index_entry_index_3",
+      "title": "Form validation"
     },
     {
       "entry": "@Length",
-      "link": "intermediate/registration_form.html#index_entry_index_5",
-      "title": "Registration form"
+      "link": "intermediate/form_validation.html#index_entry_index_3",
+      "title": "Form validation"
     },
     {
       "entry": "@Valid",
-      "link": "intermediate/registration_form.html#index_entry_index_6",
-      "title": "Registration form"
+      "link": "intermediate/form_validation.html#index_entry_index_4",
+      "title": "Form validation"
     },
     {
       "entry": "BindingResult",
-      "link": "intermediate/registration_form.html#index_entry_index_6",
-      "title": "Registration form"
+      "link": "intermediate/form_validation.html#index_entry_index_4",
+      "title": "Form validation"
     }
   ]
 }
