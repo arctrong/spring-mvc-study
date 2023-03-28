@@ -361,4 +361,79 @@ By the URL <http://localhost:8080/web-app-spring-adv2/ui/register> we can confir
 > Git commit: `b0c9041b5224fdc73eb96b051423520f80bc0daf` custom validator is applied to the "Age" field
 
 
+<!--index ["message externalization"]-->
+## Externalizing messages
+
+[[2.10][], [1:39:47](https://youtu.be/aNpJGvFR5uI?t=5987)]
+
+Here the error message is going to be defined in a `*.properties` file.
+
+In the [`@Age`](
+<!--path code-->web-app-spring-adv2/src/main/java/springmvcstudy2/validators/Age.java)
+annotation we redefine the message like this:
+
+````code
+    .  .  .
+    String message() default "{invalidAgeMessage}";
+    .  .  .
+````
+
+Then creating the [`messages.properties`](
+<!--path code-->web-app-spring-adv2/src/main/resources/messages.properties) file inside the 
+`src/main/resources` directory:
+
+````
+invalidAgeMessage=age should be between {lower} and {upper}
+````
+
+In the Spring MVC configuration class [`MyApplicationConfig`](
+<!--path code-->web-app-spring-adv2/src/main/java/springmvcstudy2/config/MyApplicationConfig.java)
+adding the following code:
+
+````code
+    .  .  .
+    public MessageSource messageSource() {
+        ResourceBundleMessageSource messageSource = new ResourceBundleMessageSource();
+        messageSource.setBasenames("messages");
+        return messageSource;
+    }
+
+    public LocalValidatorFactoryBean validator() {
+        LocalValidatorFactoryBean localValidatorFactoryBean = new LocalValidatorFactoryBean();
+        localValidatorFactoryBean.setValidationMessageSource(messageSource());
+        return localValidatorFactoryBean;
+    }
+    .  .  .
+    @Override
+    public Validator getValidator() {
+        return validator();
+    }
+    .  .  .
+````
+
+The method `getValidator()` overwrites the corresponding method of the `WebMvcConfigurer` interface.
+There's not much explanation about this code, just can confirm it works.
+
+In the [`RegistrationDto`](
+<!--path code-->web-app-spring-adv2/src/main/java/springmvcstudy2/model/RegistrationDto.java)
+DTO class removing the explicit message to check that the default message is used:
+
+````code
+    .  .  .
+    @Age(lower = 20, upper = 70)
+    private Integer age;
+    .  .  .
+````
+
+> Git commit: `15f922dd56577e9eb093a97741e7ea85c3f02d33` error message externalized
+
+
+
+
+
+
+
+
+
+
 
