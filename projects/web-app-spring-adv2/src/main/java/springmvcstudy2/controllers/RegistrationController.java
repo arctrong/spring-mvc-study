@@ -1,8 +1,11 @@
 package springmvcstudy2.controllers;
 
+import org.springframework.beans.propertyeditors.StringTrimmerEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.ObjectError;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import springmvcstudy2.model.CommunicationDto;
@@ -35,5 +38,13 @@ public class RegistrationController {
             return "registration-page";
         }
         return "registration-success";
+    }
+
+    @InitBinder
+    public void initBinder(WebDataBinder dataBinder) {
+        System.out.println("inside @InitBinder method");
+//        dataBinder.setDisallowedFields("name");
+        StringTrimmerEditor trimmerEditor = new StringTrimmerEditor(true);
+        dataBinder.registerCustomEditor(String.class, "name", trimmerEditor);
     }
 }

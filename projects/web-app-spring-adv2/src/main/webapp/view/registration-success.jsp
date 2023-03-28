@@ -11,7 +11,7 @@
 <hr/>
 
 <p>The details are:</p>
-<strong>Name:</strong> ${userReg.name}<br/>
+<strong>Name:</strong> [${userReg.name}]<br/>
 <strong>User name:</strong> ${userReg.userName}<br/>
 <strong>Password:</strong> *****<br/>
 <strong>Country:</strong> ${userReg.country}<br/>

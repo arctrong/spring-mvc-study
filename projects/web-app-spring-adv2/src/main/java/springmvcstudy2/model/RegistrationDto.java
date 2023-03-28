@@ -2,8 +2,11 @@ package springmvcstudy2.model;
 
 import springmvcstudy2.validators.Age;
 
+import javax.validation.constraints.NotEmpty;
+
 public class RegistrationDto {
 
+    @NotEmpty
     private String name;
     private String userName;
     private char[] password;
