@@ -1,11 +1,16 @@
 package springmvcstudy2.controllers;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import springmvcstudy2.model.CommunicationDto;
 import springmvcstudy2.model.PhoneDto;
 import springmvcstudy2.model.RegistrationDto;
+
+import javax.validation.Valid;
+import java.util.List;
 
 @Controller
 public class RegistrationController {
@@ -24,7 +29,11 @@ public class RegistrationController {
     }
 
     @RequestMapping("/registration-success")
-    public String processUserRegistration(@ModelAttribute("userReg") RegistrationDto userReg) {
+    public String processUserRegistration(@Valid @ModelAttribute("userReg") RegistrationDto userReg,
+                                          BindingResult result) {
+        if (result.hasErrors()) {
+            return "registration-page";
+        }
         return "registration-success";
     }
 }

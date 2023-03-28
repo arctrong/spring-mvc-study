@@ -4,7 +4,10 @@
 <!DOCTYPE html>
 <html><head><meta charset="UTF-8">
 <title>Registration</title>
-<style>body {background-color: lemonchiffon; text-align: center;}</style>
+<style>
+body {background-color: lemonchiffon; text-align: center;}
+.error {color: red; position: fixed; text-align: left; margin-left: 20px;}
+</style>
 </head><body>
 
 <h1>Please register here</h1>
@@ -30,7 +33,8 @@
 <form:radiobutton path="gender" id="female" value="F"/><label for="female">Female</label>
 </p>
 
-</p><label for="age">Age: </label><form:input id="age" path="age"/></p>
+</p><label for="age">Age: </label><form:input id="age" path="age"/>
+<form:errors path="age" cssClass="error"/></p>
 
 <p>Communication:</p>
 </p><label for="email">Email: </label><form:input id="email" path="communicationDto.email"/>&nbsp;

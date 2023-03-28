@@ -1,5 +1,7 @@
 package springmvcstudy2.model;
 
+import springmvcstudy2.validators.Age;
+
 public class RegistrationDto {
 
     private String name;
@@ -8,7 +10,9 @@ public class RegistrationDto {
     private String country;
     private String[] hobbies;
     private String gender;
-    private int age;
+
+    @Age(lower = 20, upper = 70, message = "should be between {lower} and {upper}")
+    private Integer age;
 
     private CommunicationDto communicationDto;
 
@@ -67,11 +71,11 @@ public class RegistrationDto {
         this.communicationDto = communicationDto;
     }
 
-    public int getAge() {
+    public Integer getAge() {
         return age;
     }
 
-    public void setAge(int age) {
+    public void setAge(Integer age) {
         this.age = age;
     }
 }
