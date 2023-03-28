@@ -16,7 +16,8 @@ body {background-color: lemonchiffon; text-align: center;}
 <form:form action="registration-success" method="GET" modelAttribute="userReg">
 </p><label for="name">Name: </label><form:input id="name" path="name"/>
 <form:errors path="name" cssClass="error"/></p>
-</p><label for="userName">User name: </label><form:input id="userName" path="userName"/></p>
+</p><label for="userName">User name: </label><form:input id="userName" path="userName"/>
+<form:errors path="userName" cssClass="error"/></p>
 </p><label for="password">Password: </label><form:password id="password" path="password"/></p>
 </p><label for="country">Country: </label><form:select id="country" path="country">
 <form:option value="AV" label="Avalon"/>

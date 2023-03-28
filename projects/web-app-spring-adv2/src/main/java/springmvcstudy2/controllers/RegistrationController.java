@@ -3,7 +3,6 @@ package springmvcstudy2.controllers;
 import org.springframework.beans.propertyeditors.StringTrimmerEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
-import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -12,9 +11,9 @@ import springmvcstudy2.model.CommunicationDto;
 import springmvcstudy2.model.PhoneDto;
 import springmvcstudy2.model.RegistrationDto;
 import springmvcstudy2.propertyeditor.NamePropertyEditor;
+import springmvcstudy2.validators.UserNameValidator;
 
 import javax.validation.Valid;
-import java.util.List;
 
 @Controller
 public class RegistrationController {
@@ -48,5 +47,6 @@ public class RegistrationController {
         StringTrimmerEditor trimmerEditor = new StringTrimmerEditor(true);
         dataBinder.registerCustomEditor(String.class, "name", trimmerEditor);
         dataBinder.registerCustomEditor(String.class, "name", new NamePropertyEditor());
+        dataBinder.addValidators(new UserNameValidator());
     }
 }
