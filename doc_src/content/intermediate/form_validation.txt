@@ -3,6 +3,7 @@
 [TOC]
 
 [2.8]: <!--page refs-->#ref_2_8
+[2.10]: <!--page refs-->#ref_2_10
 [13]: <!--page refs-->#ref_13
 [14]: <!--page refs-->#ref_14
 
@@ -19,7 +20,7 @@ Mar 27, 2023
 
 Why we need a server side validation rather than client side one? If we add a simple validation 
 in JavaScript like this (see the [`home-page.jsp`](
-    <!--path code-->web-app-spring-adv2/src/main/webapp/view/home-page.jsp) file):
+<!--path code-->web-app-spring-adv2/src/main/webapp/view/home-page.jsp) file):
 
 ````code
 <script type="text/javascript">
@@ -45,6 +46,7 @@ So we need to perform validation on the server where users cannot manipulate the
 > Git commit: `ecc1819727ac509d8be35d521787c5e0b13b7953` client-side validation
 
 
+<a name="bean_validation_api"></a>
 ## Introducing bean validation API
 
 [[2.8][], [30:51](https://youtu.be/ot-TI5T7-5M?t=1851)]
@@ -117,6 +119,9 @@ Validation rules are defined in the DTO:
     private String name1;
     .  .  .
 ````
+
+!!! note
+    See [[13][]] for more validation rules like `@Email`, `@Past`, `@Future` etc.
 
 The controller has the following controller methods:
 
@@ -202,7 +207,158 @@ Another checkbox "I am not a robot" added and the other input field is validated
 
 > Git commit: `b5a88ff0cdb251e3f4480bd6fabba3c8cc7f440f` final steps
 
+----------------------------------------------------------------------------------------------------
+# Validation messages
 
+If when using the `@Size` annotation we don't specify the `message` argument then the default
+message, like "size must be between 3 and 10", will be used. Some hints about the way it works
+may be found in the following files:
+
+- `validation-api-2.0.1.Final.jar!/javax/validation/constraints/Size.class:13` see the 
+ `javax.validation.constraints.Size#message` method definition;
+- `hibernate-validator-6.1.6.Final.jar!/org/hibernate/validator/ValidationMessages.properties:22`
+    where the following property is defined:
+    
+    ````
+    javax.validation.constraints.Size.message = size must be between {min} and {max}
+    ````
+    
+As it's implemented this way, we can use parameters like `{min}` and `{max}` in our messages like this:
+
+````code
+    @Size(min = 3, max = 10, message = " * must have from {min} to {max} characters")
+````
+
+> Git commit: `2e827339401f29efb950b8ae912f46124d4dad9a` validation messages customization investigated
+    
+----------------------------------------------------------------------------------------------------
+Mar 27, 2023
+
+# Custom validators
+
+[[2.10][]]
+
+!!! note
+    This part of development is being done after some additional fields ("Age", "Email", "Phone")
+    are added to the registration form. See [here](<!--page formatters-->).
+
+So far we used the Hibernate implementation of validators (also see [here](
+<!--page form_validation-->#bean_validation_api)). Now we are going to implement our custom
+validator constraint.
+
+## The requirements
+
+[[2.10][], [11:31](https://youtu.be/aNpJGvFR5uI?t=691)]
+
+The following form will be used for demonstration:
+
+![](<!--path pict-->custom_validation_rules.png)
+
+The "Phone" field will be validated. The rules are:
+
+- phone number length must be 10
+- only digits are allowed
+- `null` is not allowed 
+
+
+## Implementation
+
+[[2.10][], [15:06](https://youtu.be/aNpJGvFR5uI?t=906)]
+
+First implement a simpler `@AgeValidator`. Existing validators code is investigated in this part
+of the video. The coding itself is going to be started after the following time stamp.
+
+[[2.10][], [55:52](https://youtu.be/aNpJGvFR5uI?t=3352)]
+
+Creating the [`@Age`](
+<!--path code-->web-app-spring-adv2/src/main/java/springmvcstudy2/validators/Age.java)
+annotation:
+
+````code
+@Documented
+@Retention(RetentionPolicy.RUNTIME)
+@Target(ElementType.FIELD)
+@Constraint(validatedBy = AgeValidator.class)
+public @interface Age {
+
+    String message() default "Age should be between {lower}-{upper}";
+    int lower() default 18;
+    int upper() default 60;
+
+    java.lang.Class<?>[] groups() default {};
+    java.lang.Class<? extends javax.validation.Payload>[] payload() default {};
+}
+````
+
+The `groups()` and `payload()` fields are copied from the existing
+`@javax.validation.constraints.NotBlank` annotation.
+
+Creating the [`AgeValidator`](
+<!--path code-->web-app-spring-adv2/src/main/java/springmvcstudy2/validators/AgeValidator.java)
+validator class:
+
+````code
+public class AgeValidator implements ConstraintValidator<Age, Integer> {
+
+    private int lower;
+    private int upper;
+
+    @Override
+    public boolean isValid(Integer age, ConstraintValidatorContext constraintValidatorContext) {
+        return age != null && age >= this.lower && age <= this.upper;
+    }
+
+    @Override
+    public void initialize(Age age) {
+        this.lower = age.lower();
+        this.upper = age.upper();
+    }
+}
+````
+
+In the [`RegistrationDto`](
+<!--path code-->web-app-spring-adv2/src/main/java/springmvcstudy2/model/RegistrationDto.java)
+DTO class adding the newly created annotation to the field `age`:
+
+````code
+    .  .  .
+    @Age(lower = 20, upper = 70, message = "should be between {lower} and {upper}")
+    private Integer age;
+    .  .  .
+````
+
+As the `ConstraintValidator` interface cannot accept primitive type parameters, changing the `age`
+field type from `int` to `Integer`.
+
+Editing the [`RegistrationController`](
+<!--path code-->web-app-spring-adv2/src/main/java/springmvcstudy2/controllers/RegistrationController.java)
+corresponding controller method:
+
+````code
+    @RequestMapping("/registration-success")
+    public String processUserRegistration(@Valid @ModelAttribute("userReg") RegistrationDto userReg,
+                                          BindingResult result) {
+        if (result.hasErrors()) {
+            return "registration-page";
+        }
+        return "registration-success";
+    }
+}
+````
+
+Updating the [`registration-page.jsp`](
+<!--path code-->web-app-spring-adv2/src/main/webapp/view/registration-page.jsp)
+view to make it show the error messages:
+
+````xml
+</p><label for="age">Age: </label><form:input id="age" path="age"/>
+<form:errors path="age" cssClass="error"/></p>
+````
+
+By the URL <http://localhost:8080/web-app-spring-adv2/ui/register> we can confirm that the 
+"Age" field is validated.
+
+> Git commit: `b0c9041b5224fdc73eb96b051423520f80bc0daf` custom validator is applied to the "Age" field
 
 
 

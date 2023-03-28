@@ -5,6 +5,8 @@
 [2]: <!--page refs-->#ref_2
 
 ----------------------------------------------------------------------------------------------------
+Mar 22, 2023
+
 # About this part
 
 The second part of the course, called intermediate, is presented in the material [[2][]] and 

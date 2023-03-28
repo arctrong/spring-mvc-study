@@ -76,6 +76,10 @@ public class PhoneNumberFormatter implements Formatter<PhoneDto> {
 }
 ````
 
+!!! note
+    Spring MVC will only call the `parse()` method if the parsing is required. It will not call it
+    if a user entered nothing to the corresponding field.
+
 Looks like the `print()` method will not be used for converting from a `PhoneDto` to a `String`, so 
 `PhoneDto#toString()` method is used instead:
 
@@ -155,9 +159,13 @@ So now when the form is initially loaded the phone number is "000-0000000000".
 
 > Git commit: `8d937092461422607d8595e0eb3c91ad7db42a56` formatter print() method demonstrated
 
+----------------------------------------------------------------------------------------------------
+# Using Locale
 
+[[2.9][], [1:40:35](https://youtu.be/q9hjjeJA7Yw?t=6035)]
 
-
+At this time stamp the money amount conversion and presentation is discussed, but it's not going
+to be followed as it's a little bit out of scope of the current goals.
 
 
 
