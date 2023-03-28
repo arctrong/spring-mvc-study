@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import springmvcstudy2.model.CommunicationDto;
 import springmvcstudy2.model.PhoneDto;
 import springmvcstudy2.model.RegistrationDto;
+import springmvcstudy2.propertyeditor.NamePropertyEditor;
 
 import javax.validation.Valid;
 import java.util.List;
@@ -46,5 +47,6 @@ public class RegistrationController {
 //        dataBinder.setDisallowedFields("name");
         StringTrimmerEditor trimmerEditor = new StringTrimmerEditor(true);
         dataBinder.registerCustomEditor(String.class, "name", trimmerEditor);
+        dataBinder.registerCustomEditor(String.class, "name", new NamePropertyEditor());
     }
 }
