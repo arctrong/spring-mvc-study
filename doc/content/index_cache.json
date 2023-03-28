@@ -229,6 +229,11 @@
       "entry": "PropertyEditorSupport",
       "link": "intermediate/advanced.html#index_entry_index_3",
       "title": "Spring MVC advanced"
+    },
+    {
+      "entry": "Converter interface",
+      "link": "intermediate/advanced.html#index_entry_index_4",
+      "title": "Spring MVC advanced"
     }
   ]
 }

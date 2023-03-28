@@ -13,6 +13,9 @@ Mar 28, 2023
 The *property editors* described in this section have the same functions as the *formatters* 
 described [here](<!--page formatters-->). 
 
+Another alternative is the `Converter` interface described 
+[here](<!--page advanced-->#converter_interface).
+
 ----------------------------------------------------------------------------------------------------
 <!--index ["@InitBinder"]-->
 # InitBinder introduction
@@ -142,11 +145,21 @@ class:
 
 > Git commit: `8e545bf252eed82ecc3cb873937c975470860df2` custom property editor implemented
 
+----------------------------------------------------------------------------------------------------
+<!--index Converter interface--><a name="converter_interface"></a>
+# `Converter` interface
 
+[[2.11][], [1:52:49](https://youtu.be/ms4ywje7EYI?t=6769)]
 
+There's yet another mechanism for converting --- the parameterized
+`org.springframework.core.convert.converter.Converter` interface that has the `convert()` method
+that concrete converters must override and where actual conversion is performed.
+The converters must be added in the configuration class like [`MyApplicationConfig`](
+<!--path code-->web-app-spring-adv2/src/main/java/springmvcstudy2/config/MyApplicationConfig.java)
+in the `addFormatters()` method using the `FormatterRegistry#addConverter` method.
 
-
-
+The `Converter` interface has only a one-way conversion method. For the reverse conversion another 
+converter must be created.
 
 
 

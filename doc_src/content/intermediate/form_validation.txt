@@ -4,6 +4,7 @@
 
 [2.8]: <!--page refs-->#ref_2_8
 [2.10]: <!--page refs-->#ref_2_10
+[2.11]: <!--page refs-->#ref_2_11
 [13]: <!--page refs-->#ref_13
 [14]: <!--page refs-->#ref_14
 
@@ -426,6 +427,75 @@ DTO class removing the explicit message to check that the default message is use
 ````
 
 > Git commit: `15f922dd56577e9eb093a97741e7ea85c3f02d33` error message externalized
+
+----------------------------------------------------------------------------------------------------
+Mar 28, 2023
+
+# Spring framework validation API
+
+[[2.11][], [2:03:53](https://youtu.be/ms4ywje7EYI?t=7433)]
+
+!!! note
+    This part is described not in the order it has in the original course.
+
+The requirements are going to be fulfilled about the "User name" field:
+
+- it should not be empty;
+- it should contain an underscore (_).
+
+Creating a validator class [`UserNameValidator`](
+<!--path code-->web-app-spring-adv2/src/main/java/springmvcstudy2/validators/UserNameValidator.java):
+
+````code
+public class UserNameValidator implements Validator {
+
+    @Override
+    public boolean supports(Class<?> clazz) {
+        return RegistrationDto.class.equals(clazz);
+    }
+
+    @Override
+    public void validate(Object target, Errors errors) {
+        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "userName",
+                "userName.empty", "User name should not be empty");
+        String userName = ((RegistrationDto) target).getUserName();
+        if (!userName.contains("_")) {
+            errors.rejectValue("userName", "userName.invalidString",
+                    "User name should contain an underscore (_)");
+        }
+    }
+}
+````
+
+The implemented interface is `org.springframework.validation.Validator`.
+The `supports()` method decides whether the DTO object must be validated by this validator.
+
+The validator is added in the [`RegistrationController`](
+<!--path code-->web-app-spring-adv2/src/main/java/springmvcstudy2/controllers/RegistrationController.java):
+
+````code
+    .  .  .
+    @InitBinder
+    public void initBinder(WebDataBinder dataBinder) {
+        .  .  .
+        dataBinder.addValidators(new UserNameValidator());
+    }
+    .  .  .
+````
+
+The URL is <http://localhost:8080/web-app-spring-adv2/ui/register>.
+
+> Git commit: `781dcbe7466b52bbd9d9dabe4889b32929d9ddc5` Spring framawork validator used
+
+
+
+
+
+
+[[2.11][], [2:28:28](https://youtu.be/ms4ywje7EYI?t=8908)]
+
+
+
 
 
 
