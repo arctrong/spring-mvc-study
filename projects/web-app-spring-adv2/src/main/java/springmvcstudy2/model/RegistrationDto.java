@@ -11,7 +11,7 @@ public class RegistrationDto {
     private String[] hobbies;
     private String gender;
 
-    @Age(lower = 20, upper = 70, message = "should be between {lower} and {upper}")
+    @Age(lower = 20, upper = 70)
     private Integer age;
 
     private CommunicationDto communicationDto;
