@@ -54,7 +54,7 @@ version 9.4.51.v20230217, last updated 2023-02-17 05:32:21 UTC
 https://www.baeldung.com/java-enterprise-evolution), 
 [saved](<!--path materials-->Baeldung_Java_EE_vs_J2EE_vs_Jakarta_EE.html)
 
-<a name="ref_6"></a>**[6]** [Spring Web MVC official documentation (veersion 5.3.9)](
+<a name="ref_6"></a>**[6]** [Spring Web MVC official documentation (version 5.3.9)](
 https://docs.spring.io/spring-framework/docs/5.3.9/reference/html/web.html)
 
 <a name="ref_7"></a>**[7]** Examples:
@@ -116,7 +116,8 @@ https://www.baeldung.com/javax-validation),
     [PDF](https://docs.jboss.org/hibernate/validator/8.0/reference/en-US/pdf/hibernate_validator_reference.pdf)
 - <a name="ref_14_2"></a>[14.2] [Apache BVal](https://bval.apache.org/mvnsite/index.html)
 
-
+<a name="ref_15"></a>**[15]** [Spring Framework Core Documentation, 5.3.9](
+https://docs.spring.io/spring-framework/docs/5.3.9/reference/html/core.html)
 
 
 

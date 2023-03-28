@@ -1,0 +1,152 @@
+<!--VARIABLES {"title": "Spring MVC advanced", "SORT_ORDER": "070", "code": "advanced"}-->
+
+[TOC]
+
+[2.11]: <!--page refs-->#ref_2_11
+[15]: <!--page refs-->#ref_15
+
+----------------------------------------------------------------------------------------------------
+Mar 28, 2023
+
+# Preliminary note
+
+The *property editors* described in this section have the same functions as the *formatters* 
+described [here](<!--page formatters-->). 
+
+----------------------------------------------------------------------------------------------------
+<!--index ["@InitBinder"]-->
+# InitBinder introduction
+
+[[2.11][], [5:30](https://youtu.be/ms4ywje7EYI?t=330)]
+
+In the [`RegistrationController`](
+<!--path code-->web-app-spring-adv2/src/main/java/springmvcstudy2/controllers/RegistrationController.java)
+class add the following method:
+
+````code
+    .  .  .
+    @InitBinder
+    public void initBinder(WebDataBinder dataBinder) {
+        System.out.println("inside @InitBinder method");
+        dataBinder.setDisallowedFields("name");
+    }
+    .  .  .
+````
+
+The annotation we use is `@org.springframework.web.bind.annotation.InitBinder`. 
+
+This method will be called each time any request handler method of this controller is called.
+In this example it removes the field named `name` from the data model.
+
+!!! note
+    Actually this field is sent in the URL
+    `http://localhost:8080/web-app-spring-adv2/ui/registration-success?name=aaaaa&userName=bbbbb&...`,
+    it's just not shown on the page.
+    
+> Git commit: `79b9c52328730769fd4f43190a81e98357105220` property editor basics
+    
+----------------------------------------------------------------------------------------------------
+<!--index ["property editor"]-->
+# Property editor
+
+[[2.11][], [31:51](https://youtu.be/ms4ywje7EYI?t=1911)]
+
+In the [`RegistrationController`](
+<!--path code-->web-app-spring-adv2/src/main/java/springmvcstudy2/controllers/RegistrationController.java)
+class `@InitBinder` annotated method register a `StringTrimmerEditor`:
+
+````code
+    .  .  .
+    @InitBinder
+    public void initBinder(WebDataBinder dataBinder) {
+        System.out.println("inside @InitBinder method");
+        StringTrimmerEditor trimmerEditor = new StringTrimmerEditor(true);
+        dataBinder.registerCustomEditor(String.class, "name", trimmerEditor);
+    }
+    .  .  .
+````
+
+Then the value of the `name` field will be trimmed. This is a simple example demonstrating the 
+property editor concept.
+
+If a text is entered into a text field that represent, for example, an integer model field, the 
+property editing concept works for transformation. There's a default data binder that was
+implicitly used in our previous examples. But just the simplest automatic data binding is 
+activated by default. For more complex cases we need to write our custom data binders.
+
+The `WebDataBinder` object allow us registering:
+
+- custom editors;
+- validators;
+- "required" properties;
+- allowed/disallowed properties.
+
+----------------------------------------------------------------------------------------------------
+# Built-in property editors
+
+[[2.11][], [43:35](https://youtu.be/ms4ywje7EYI?t=2615)]
+
+For the Built-in property editors list see [[15][], 
+[3.3.2. Built-in `PropertyEditor` Implementations](
+https://docs.spring.io/spring-framework/docs/5.3.9/reference/html/core.html#beans-beans-conversion)].
+
+Some demonstration is done in the video about the property editor usage that are too long and
+not so much important for the goals of this course.
+
+----------------------------------------------------------------------------------------------------
+# Writing a custom property editor
+
+[[2.11][], [1:11:18](https://youtu.be/ms4ywje7EYI?t=4278)]
+
+We are going to convert the "Name" field to upper case. It's pretty simple. First create a new 
+property editor [`NamePropertyEditor`](
+<!--path code-->web-app-spring-adv2/src/main/java/springmvcstudy2/propertyeditor/NamePropertyEditor.java):
+
+<!--index ["PropertyEditorSupport"]-->
+````code
+public class NamePropertyEditor extends PropertyEditorSupport {
+
+    @Override
+    public void setAsText(String text) throws IllegalArgumentException {
+        setValue(text.toUpperCase());
+    }
+}
+````
+
+The `setValue()` method comes from the `java.beans.PropertyEditorSupport` base class.
+
+!!! note
+    The `PropertyEditorSupport` class has the method `getAsText()` that id analogous to the 
+    method `print()` of the `Formatter` interface (see 
+    [here](<!--page formatters-->#using_print_mathod)).
+
+Then we just add the newly created property editor to the [`RegistrationController`](
+<!--path code-->web-app-spring-adv2/src/main/java/springmvcstudy2/controllers/RegistrationController.java)
+class:
+
+````code
+    .  .  .
+    @InitBinder
+    public void initBinder(WebDataBinder dataBinder) {
+        System.out.println("inside @InitBinder method");
+        StringTrimmerEditor trimmerEditor = new StringTrimmerEditor(true);
+        dataBinder.registerCustomEditor(String.class, "name", trimmerEditor);
+        dataBinder.registerCustomEditor(String.class, "name", new NamePropertyEditor());
+    }
+    .  .  .
+````
+
+!!! note
+    Looks like the previous `StringTrimmerEditor` property editor stops working after registering
+    a new property editor.
+
+> Git commit: `8e545bf252eed82ecc3cb873937c975470860df2` custom property editor implemented
+
+
+
+
+
+
+
+
+

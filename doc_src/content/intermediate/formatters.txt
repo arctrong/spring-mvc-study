@@ -7,6 +7,12 @@
 ----------------------------------------------------------------------------------------------------
 Mar 27, 2023
 
+# Preliminary note
+
+The *formatters* described in this section have the same functions as the *property editors*
+described [here](<!--page advanced-->). 
+
+----------------------------------------------------------------------------------------------------
 <!--index ["composite DTOs"]-->
 # Adding internal DTOs
 

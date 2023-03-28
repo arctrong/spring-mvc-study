@@ -213,5 +213,22 @@
       "link": "intermediate/formatters.html#index_entry_index_3",
       "title": "Spring MVC Formatter"
     }
+  ],
+  "doc/content/intermediate/advanced.html": [
+    {
+      "entry": "@InitBinder",
+      "link": "intermediate/advanced.html#index_entry_index_1",
+      "title": "Spring MVC advanced"
+    },
+    {
+      "entry": "property editor",
+      "link": "intermediate/advanced.html#index_entry_index_2",
+      "title": "Spring MVC advanced"
+    },
+    {
+      "entry": "PropertyEditorSupport",
+      "link": "intermediate/advanced.html#index_entry_index_3",
+      "title": "Spring MVC advanced"
+    }
   ]
 }
