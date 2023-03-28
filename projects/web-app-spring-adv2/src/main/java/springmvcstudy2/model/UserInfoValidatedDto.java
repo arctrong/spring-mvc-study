@@ -7,11 +7,11 @@ import javax.validation.constraints.Size;
 public class UserInfoValidatedDto {
 
     @NotBlank(message = " * can't be blank")
-    @Size(min = 3, max = 10, message = " * must have 3 to 10 characters")
+    @Size(min = 3, max = 10, message = " * must have from {min} to {max} characters")
     private String name1;
 
     @NotBlank(message = " * can't be blank")
-    @Size(min = 3, max = 10, message = " * must have 3 to 10 characters")
+    @Size(min = 3, max = 10)
     private String name2;
 
     @AssertTrue(message = " * Only humans are allowed to use this site")
