@@ -43,6 +43,8 @@ public class RegistrationController {
         emailValidator.validate(userReg, result);
 
         if (result.hasErrors()) {
+            System.out.println("VALIDATION: registration form has errors:");
+            result.getAllErrors().forEach(System.out::println);
             return "registration-page";
         }
         return "registration-success";
