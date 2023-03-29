@@ -35,6 +35,9 @@ public class RegistrationController {
     @RequestMapping("/registration-success")
     public String processUserRegistration(@Valid @ModelAttribute("userReg") RegistrationDto userReg,
                                           BindingResult result) {
+        EmailValidator emailValidator = new EmailValidator();
+        emailValidator.validate(userReg, result);
+
         if (result.hasErrors()) {
             return "registration-page";
         }
@@ -49,6 +52,6 @@ public class RegistrationController {
         dataBinder.registerCustomEditor(String.class, "name", trimmerEditor);
         dataBinder.registerCustomEditor(String.class, "name", new NamePropertyEditor());
         dataBinder.addValidators(new UserNameValidator());
-        dataBinder.addValidators(new EmailValidator());
+//        dataBinder.addValidators(new EmailValidator());
     }
 }
