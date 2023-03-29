@@ -195,6 +195,16 @@
       "entry": "message externalization",
       "link": "intermediate/form_validation.html#index_entry_index_5",
       "title": "Form validation"
+    },
+    {
+      "entry": "placeholders, in properties files",
+      "link": "intermediate/form_validation.html#index_entry_index_6",
+      "title": "Form validation"
+    },
+    {
+      "entry": "type mismatch problems",
+      "link": "intermediate/form_validation.html#index_entry_index_7",
+      "title": "Form validation"
     }
   ],
   "doc/content/intermediate/formatters.html": [

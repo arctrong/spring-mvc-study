@@ -387,6 +387,10 @@ Then creating the [`messages.properties`](
 invalidAgeMessage=age should be between {lower} and {upper}
 ````
 
+!!! note
+    See [here](<!--page form_validation-->#placeholders_in_properties_files) for more details
+    about *placeholders* usage.
+
 In the Spring MVC configuration class [`MyApplicationConfig`](
 <!--path code-->web-app-spring-adv2/src/main/java/springmvcstudy2/config/MyApplicationConfig.java)
 adding the following code:
@@ -524,7 +528,98 @@ The URL is the same --- <http://localhost:8080/web-app-spring-adv2/ui/register>.
 
 > Git commit: `bc802fbeb9cbf98f3ecb75a7ac02931e5bf118a8` properties file used for error messages
 
+----------------------------------------------------------------------------------------------------
+# Calling validators manually
 
+[[2.11][], [2:38:20](https://youtu.be/ms4ywje7EYI?t=9500)]
+
+Comment out the line
+
+````code
+//        dataBinder.addValidators(new EmailValidator());
+````
+
+in the `@InitBinder` annotated method in the [`RegistrationController`](
+<!--path code-->web-app-spring-adv2/src/main/java/springmvcstudy2/controllers/RegistrationController.java).
+
+Add the following call to the corresponding controller method:
+
+````code
+        EmailValidator emailValidator = new EmailValidator();
+        emailValidator.validate(userReg, result);
+````
+
+> Git commit: `8174ad083bc415c0f7870bdc91d0019e299a564f` email validator used manually
+
+To avoid creating the validator object on every request make the [`EmailValidator`](
+<!--path code-->web-app-spring-adv2/src/main/java/springmvcstudy2/validators/EmailValidator.java)
+a component (with the `@Component` annotation) and add the autowired field to the controller class:
+
+````code
+    @Autowired
+    private EmailValidator emailValidator;
+````
+
+Also need to update the component scan base package list in the configuration class 
+[`MyApplicationConfig`](
+<!--path code-->web-app-spring-adv2/src/main/java/springmvcstudy2/config/MyApplicationConfig.java):
+
+````code
+@ComponentScan(basePackages = {"springmvcstudy2.controllers", "springmvcstudy2.validators"})
+````
+
+The both above variations work as before. The URL is 
+<http://localhost:8080/web-app-spring-adv2/ui/register>.
+
+> Git commit: `59d483e0ce7dbc6efce6e5c50ac59b2f9b5909e9` email validator used manually (with autowiring)
+
+----------------------------------------------------------------------------------------------------
+<!--index ["placeholders, in properties files"]--><a name="placeholders_in_properties_files"></a>
+# Using placeholders in properties files
+
+[[2.11][], [2:47:55](https://youtu.be/ms4ywje7EYI?t=10075)]
+
+*Placeholders* may be defined in property files and used inside messages in the validation
+annotations.
+
+In the [`messages.properties`](
+<!--path code-->web-app-spring-adv2/src/main/resources/messages.properties) file making the 
+following changes:
+
+````
+invalidAgeMessage={0} should be between {1} and {2}
+.  .  .
+should_not_be_blank=Field ''{0}'' SHOULD NOT BE BLANK
+age=USER AGE
+````
+
+In the [`RegistrationDto`](
+<!--path code-->web-app-spring-adv2/src/main/java/springmvcstudy2/model/RegistrationDto.java)
+using this property via a placeholder:
+
+````code
+    @NotEmpty(message = "{should_not_be_blank}")
+    private String name;
+````
+
+So the result is:
+
+- for the "Name" field: "Field 'name' SHOULD NOT BE BLANK"
+- for the "Age" field: "USER AGE should be between 20 and 70"
+
+!!! important
+    The numbered message argument placeholders are sorted by their names, e.g. an argument named
+    "max" precedes an argument named "min".
+
+The URL is <http://localhost:8080/web-app-spring-adv2/ui/register>.
+
+> Git commit: `606c127f52ba035e593edec8ec60f20552916595` placeholders used
+
+----------------------------------------------------------------------------------------------------
+<!--index ["type mismatch problems"]-->
+# Dealing with type mismatch problems
+
+[[2.11][], [3:01:15](https://youtu.be/ms4ywje7EYI?t=10875)]
 
 
 
