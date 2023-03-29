@@ -6,7 +6,7 @@ import javax.validation.constraints.NotEmpty;
 
 public class RegistrationDto {
 
-    @NotEmpty
+    @NotEmpty(message = "{should_not_be_blank}")
     private String name;
     private String userName;
     private char[] password;
