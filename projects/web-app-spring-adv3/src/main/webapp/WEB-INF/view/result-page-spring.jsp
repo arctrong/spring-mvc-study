@@ -11,5 +11,10 @@
 
 <p>Name 1 is: ${dto.name1}</p>
 <p>Name 2 is: ${dto.name2}</p>
+<p>Result is: ${result}</p>
+
+<p><a href="#">Send result to your email</a></p>
+
+
 
 </body></html>
