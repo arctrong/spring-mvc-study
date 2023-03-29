@@ -38,7 +38,7 @@ body {background-color: lemonchiffon; text-align: center;}
 </p><label for="age">Age: </label><form:input id="age" path="age"/>
 <form:errors path="age" cssClass="error"/></p>
 
-<p>Communication:</p>
+<p><strong>Communication:</strong></p>
 </p><label for="email">Email: </label><form:input id="email" path="communicationDto.email"/>
 <form:errors path="communicationDto.email" cssClass="error"/></p>
 </p><label for="phone">Phone: </label><form:input id="phone" path="communicationDto.phone"/></p>

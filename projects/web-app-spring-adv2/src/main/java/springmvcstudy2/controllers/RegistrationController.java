@@ -1,5 +1,6 @@
 package springmvcstudy2.controllers;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.StringTrimmerEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -19,6 +20,9 @@ import javax.validation.Valid;
 @Controller
 public class RegistrationController {
 
+    @Autowired
+    private EmailValidator emailValidator;
+
     @RequestMapping("/register")
     public String showRegistrationPage(@ModelAttribute("userReg") RegistrationDto userReg) {
 
@@ -35,7 +39,7 @@ public class RegistrationController {
     @RequestMapping("/registration-success")
     public String processUserRegistration(@Valid @ModelAttribute("userReg") RegistrationDto userReg,
                                           BindingResult result) {
-        EmailValidator emailValidator = new EmailValidator();
+
         emailValidator.validate(userReg, result);
 
         if (result.hasErrors()) {

@@ -1,10 +1,12 @@
 package springmvcstudy2.validators;
 
+import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
 import org.springframework.validation.ValidationUtils;
 import org.springframework.validation.Validator;
 import springmvcstudy2.model.RegistrationDto;
 
+@Component
 public class EmailValidator implements Validator {
 
     @Override

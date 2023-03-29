@@ -15,7 +15,7 @@ import springmvcstudy2.config.formatter.PhoneNumberFormatter;
 
 @EnableWebMvc
 @Configuration
-@ComponentScan(basePackages = "springmvcstudy2.controllers")
+@ComponentScan(basePackages = {"springmvcstudy2.controllers", "springmvcstudy2.validators"})
 public class MyApplicationConfig implements WebMvcConfigurer {
 
     @Bean
