@@ -34,6 +34,7 @@
 
     <build>
         <finalName>${project.artifactId}</finalName>
+        <directory>${TMP_MAVEN_BUILDS_DIR}${project.artifactId}</directory>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
