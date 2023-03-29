@@ -415,6 +415,10 @@ adding the following code:
 The method `getValidator()` overwrites the corresponding method of the `WebMvcConfigurer` interface.
 There's not much explanation about this code, just can confirm it works.
 
+!!! important
+    The `@Bean` annotation must be added to the `messageSource()` method. Its absence will cause
+    problems in the future.
+
 In the [`RegistrationDto`](
 <!--path code-->web-app-spring-adv2/src/main/java/springmvcstudy2/model/RegistrationDto.java)
 DTO class removing the explicit message to check that the default message is used:
@@ -488,14 +492,37 @@ The URL is <http://localhost:8080/web-app-spring-adv2/ui/register>.
 > Git commit: `781dcbe7466b52bbd9d9dabe4889b32929d9ddc5` Spring framawork validator used
 
 
-
-
-
+## Using property file
 
 [[2.11][], [2:28:28](https://youtu.be/ms4ywje7EYI?t=8908)]
 
+Here we add another validator that checks that the email ends with some certain text.
 
+The coding part is pretty much the same as it was before, just several things must be pointed out.
 
+The new [`EmailValidator`](
+<!--path code-->web-app-spring-adv2/src/main/java/springmvcstudy2/validators/EmailValidator.java):
+
+````code
+    .  .  .
+    @Override
+    public void validate(Object target, Errors errors) {
+        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "communicationDto.email", "email.empty");
+        String email = ((RegistrationDto) target).getCommunicationDto().getEmail();
+        if (!email.endsWith("@certain-domain.com")) {
+            errors.rejectValue("communicationDto.email", "email.invalidDomain");
+        }
+    }
+    .  .  .
+````
+
+The difference is that the error messages are omitted, they will be taken from the properties file
+[`messages.properties`](
+<!--path code-->web-app-spring-adv2/src/main/resources/messages.properties).
+
+The URL is the same --- <http://localhost:8080/web-app-spring-adv2/ui/register>.
+
+> Git commit: `bc802fbeb9cbf98f3ecb75a7ac02931e5bf118a8` properties file used for error messages
 
 
 
