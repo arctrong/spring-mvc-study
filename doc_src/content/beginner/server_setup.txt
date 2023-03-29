@@ -115,12 +115,18 @@ After some reformatting and deleting unnecessary things the `pom.xml` file looks
 
     <build>
         <finalName>${project.artifactId}</finalName>
+        <directory>${TMP_MAVEN_BUILDS_DIR}${project.artifactId}</directory>
     </build>
 </project>
 
 ````
 
 The `build/finalName` element is added to avoid the version in the artifact war-file name.
+
+The `build/directory` element is added to bring the generated artifacts out of the working project
+directory. This will significantly reduce a possible backup size. The environment variable 
+`TMP_MAVEN_BUILDS_DIR` must be defined in the system. Such solution should hardly be applied 
+in real projects.
 
 The deployment descriptor look like this:
 
@@ -167,8 +173,9 @@ artifact:
 >mvn clean package
 ````
 
-Copy the file `target/web-app-jetty.war` into the `%JETTY_BASE%/webapps` directory. Make sure
-that the Jetty `jsp` is activated (see [here](<!--page server_setup-->#activate_jetty_jsp_module)).
+Copy the file `web-app-jetty.war` from the current target directory into the `%JETTY_BASE%/webapps`
+directory. Make sure that the Jetty `jsp` is activated 
+(see [here](<!--page server_setup-->#activate_jetty_jsp_module)).
 Stop the Jetty server by pressing `Ctrl`+`C`, if it's running, and start it again:
 
 ````shell
@@ -184,7 +191,8 @@ Navigate to <http://localhost:8080/web-app-jetty/> to see the result:
     to the `webapps` directory may be enough. The Jetty server will automatically detect this 
     replacement and reload the application in about 5 sec.
 
-> Git commit: `429b1fd4f65f6182962255078e0d32bd02949b50` simplest web app run in Jetty
+> Git commit: `429b1fd4f65f6182962255078e0d32bd02949b50` simplest web app run in Jetty    
+> Git commit: `38af79b94dec0dd45bc785e5e3ae08fa5b2e4411` Maven target directories redefined
 
 ----------------------------------------------------------------------------------------------------
 <!--index ["static content"]-->
