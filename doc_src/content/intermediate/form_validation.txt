@@ -644,9 +644,11 @@ typeMismatch.java.lang.Integer=Field {0} should be a valid number
 
 As the result, the message now is: 
 <span style="color:red;">Field USER AGE should be a valid number</span>, that is much more 
-polite to the user.
+polite to the users.
 
+The URL is <http://localhost:8080/web-app-spring-adv2/ui/register>.
 
+> Git commit: `7d5cffdb51061f794a6a69b550da9e806ba4ae00` type mismatch problem handled
 
 
 
