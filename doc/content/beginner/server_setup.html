@@ -50,6 +50,7 @@ class="header_item" href="../index_page.html">Index</a>
 <div class="sidebar_item"><a href="../intermediate/registration_form.html">Registration form</a></div>
 <div class="sidebar_item"><a href="../intermediate/form_validation.html">Form validation</a></div>
 <div class="sidebar_item"><a href="../intermediate/formatters.html">Spring MVC Formatter</a></div>
+<div class="sidebar_item"><a href="../intermediate/send_email.html">Send email</a></div>
             <h3>Useful links</h3>
             <div class="sidebar_item"><a href="https://spring.io/">Spring site</a></div>
         </td></tr>
@@ -197,7 +198,8 @@ artifact:</p>
 <pre class="highlight"><code class="language-shell">&gt;cd web-app-jetty
 
 &gt;mvn clean package</code></pre>
-<p>Copy the file <code>web-app-jetty.war</code> from the current target directory into the <code>%JETTY_BASE%/webapps</code>
+<p><a name="project_start_on_server"></a>
+Copy the file <code>web-app-jetty.war</code> from the current target directory into the <code>%JETTY_BASE%/webapps</code>
 directory. Make sure that the Jetty <code>jsp</code> is activated 
 (see <a href="server_setup.html#activate_jetty_jsp_module">here</a>).
 Stop the Jetty server by pressing <code>Ctrl</code>+<code>C</code>, if it's running, and start it again:</p>

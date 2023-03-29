@@ -1,0 +1,73 @@
+<!--VARIABLES {"title": "Send email", "SORT_ORDER": "070", "code": "send_email"}-->
+
+[TOC]
+
+[2.12]: <!--page refs-->#ref_2_12
+
+----------------------------------------------------------------------------------------------------
+Mar 29, 2023
+
+# Project arrangements
+
+Maven project `web-app-spring-adv2` was copied to `web-app-spring-adv3` to leave the previous
+changes untouched.
+
+----------------------------------------------------------------------------------------------------
+# Creating the forms
+
+[[2.12][], [7:56](https://youtu.be/xhKP9o9I85g?t=476)]
+
+On the existing view [`result-page-spring.jsp`](
+<!--path code-->web-app-spring-adv2/src/main/webapp/view/result-page-spring.jsp)
+adding a link for sending an email:
+
+![](<!--path pict-->send_email_01.png)
+
+The URL is [http://localhost:8080/web-app-spring-adv3/ui/validate-submit?...](
+http://localhost:8080/web-app-spring-adv3/ui/validate-submit?name1=Bob&name2=Claudia&notARobot=true&_notARobot=on).
+
+The email inputting form [`send-email-page.jsp`](
+<!--path code-->web-app-spring-adv3/src/main/webapp/WEB-INF/view/send-email-page.jsp)
+is created:
+
+![](<!--path pict-->send_email_02.png)
+
+The URL is <http://localhost:8080/web-app-spring-adv3/ui/sendEmail>.
+
+The email sending successful page [`process-email-page.jsp`](
+<!--path code-->web-app-spring-adv3/src/main/webapp/WEB-INF/view/process-email-page.jsp)
+is created:
+
+![](<!--path pict-->send_email_03.png)
+
+The URL is <http://localhost:8080/web-app-spring-adv3/ui/process-email?userEmail=myemail%40domain.com>.
+
+The controller is [`EmailController`](
+<!--path code-->web-app-spring-adv3/src/main/java/springmvcstudy2/controllers/EmailController.java).
+
+the model DTO is [`SendEmailDto`](
+<!--path code-->web-app-spring-adv3/src/main/java/springmvcstudy2/model/SendEmailDto.java).
+
+See the below commit for the implementation details.
+
+> Git commit: `c23f1c1ba16e42cc1b8a702951b488830930c8ac` send email skeleton forms created
+
+See [here](<!--page server_setup-->#project_start_on_server) for information about the project start.
+
+----------------------------------------------------------------------------------------------------
+# Section 2
+
+[[2.12][], [26:35](https://youtu.be/xhKP9o9I85g?t=1595)]
+
+
+
+
+
+
+
+
+
+
+
+
+

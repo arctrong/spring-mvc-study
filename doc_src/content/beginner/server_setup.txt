@@ -173,6 +173,7 @@ artifact:
 >mvn clean package
 ````
 
+<a name="project_start_on_server"></a>
 Copy the file `web-app-jetty.war` from the current target directory into the `%JETTY_BASE%/webapps`
 directory. Make sure that the Jetty `jsp` is activated 
 (see [here](<!--page server_setup-->#activate_jetty_jsp_module)).
