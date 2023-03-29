@@ -24,6 +24,7 @@
       "title": "Common notes"
     }
   ],
+  "doc/content/beginner/about_part_1.html": [],
   "doc/content/beginner/server_setup.html": [
     {
       "entry": "static content",
@@ -34,6 +35,13 @@
       "entry": "mvc namespace",
       "link": "beginner/server_setup.html#index_entry_index_2",
       "title": "Server setup"
+    }
+  ],
+  "doc/content/beginner/front_controller.html": [
+    {
+      "entry": "front controller",
+      "link": "beginner/front_controller.html#index_entry_index_1",
+      "title": "Front controller"
     }
   ],
   "doc/content/beginner/spring_web_app_setup.html": [
@@ -89,8 +97,6 @@
       "title": "Model"
     }
   ],
-  "doc/content/intermediate/first_page.html": [],
-  "doc/content/beginner/about_part_1.html": [],
   "doc/content/intermediate/about_part_2.html": [],
   "doc/content/intermediate/get_rid_of_web_xml.html": [
     {
@@ -117,13 +123,6 @@
       "entry": "@Order",
       "link": "intermediate/get_rid_of_web_xml.html#index_entry_index_5",
       "title": "Get rid of XML configuration"
-    }
-  ],
-  "doc/content/beginner/front_controller.html": [
-    {
-      "entry": "front controller",
-      "link": "beginner/front_controller.html#index_entry_index_1",
-      "title": "Front controller"
     }
   ],
   "doc/content/intermediate/data_binding.html": [
@@ -222,28 +221,26 @@
       "entry": "WebMvcConfigurer interface",
       "link": "intermediate/formatters.html#index_entry_index_3",
       "title": "Spring MVC Formatter"
-    }
-  ],
-  "doc/content/intermediate/advanced.html": [
+    },
     {
       "entry": "@InitBinder",
-      "link": "intermediate/advanced.html#index_entry_index_1",
-      "title": "Spring MVC advanced"
+      "link": "intermediate/formatters.html#index_entry_index_4",
+      "title": "Spring MVC Formatter"
     },
     {
       "entry": "property editor",
-      "link": "intermediate/advanced.html#index_entry_index_2",
-      "title": "Spring MVC advanced"
+      "link": "intermediate/formatters.html#index_entry_index_5",
+      "title": "Spring MVC Formatter"
     },
     {
       "entry": "PropertyEditorSupport",
-      "link": "intermediate/advanced.html#index_entry_index_3",
-      "title": "Spring MVC advanced"
+      "link": "intermediate/formatters.html#index_entry_index_6",
+      "title": "Spring MVC Formatter"
     },
     {
       "entry": "Converter interface",
-      "link": "intermediate/advanced.html#index_entry_index_4",
-      "title": "Spring MVC advanced"
+      "link": "intermediate/formatters.html#index_entry_index_7",
+      "title": "Spring MVC Formatter"
     }
   ]
 }

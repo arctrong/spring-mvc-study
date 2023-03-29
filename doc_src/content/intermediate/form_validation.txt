@@ -247,20 +247,6 @@ So far we used the Hibernate implementation of validators (also see [here](
 <!--page form_validation-->#bean_validation_api)). Now we are going to implement our custom
 validator constraint.
 
-## The requirements
-
-[[2.10][], [11:31](https://youtu.be/aNpJGvFR5uI?t=691)]
-
-The following form will be used for demonstration:
-
-![](<!--path pict-->custom_validation_rules.png)
-
-The "Phone" field will be validated. The rules are:
-
-- phone number length must be 10
-- only digits are allowed
-- `null` is not allowed 
-
 
 ## Implementation
 
@@ -604,8 +590,8 @@ using this property via a placeholder:
 
 So the result is:
 
-- for the "Name" field: "Field 'name' SHOULD NOT BE BLANK"
-- for the "Age" field: "USER AGE should be between 20 and 70"
+- for the "Name" field: "<span style="color:red;">Field 'name' SHOULD NOT BE BLANK</span>"
+- for the "Age" field: "<span style="color:red;">USER AGE should be between 20 and 70</span>"
 
 !!! important
     The numbered message argument placeholders are sorted by their names, e.g. an argument named
