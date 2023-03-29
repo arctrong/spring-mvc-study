@@ -11,6 +11,7 @@ import springmvcstudy2.model.CommunicationDto;
 import springmvcstudy2.model.PhoneDto;
 import springmvcstudy2.model.RegistrationDto;
 import springmvcstudy2.propertyeditor.NamePropertyEditor;
+import springmvcstudy2.validators.EmailValidator;
 import springmvcstudy2.validators.UserNameValidator;
 
 import javax.validation.Valid;
@@ -48,5 +49,6 @@ public class RegistrationController {
         dataBinder.registerCustomEditor(String.class, "name", trimmerEditor);
         dataBinder.registerCustomEditor(String.class, "name", new NamePropertyEditor());
         dataBinder.addValidators(new UserNameValidator());
+        dataBinder.addValidators(new EmailValidator());
     }
 }

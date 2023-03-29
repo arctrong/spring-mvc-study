@@ -26,6 +26,7 @@ public class MyApplicationConfig implements WebMvcConfigurer {
         return viewResolver;
     }
 
+    @Bean
     public MessageSource messageSource() {
         ResourceBundleMessageSource messageSource = new ResourceBundleMessageSource();
         messageSource.setBasenames("messages");
