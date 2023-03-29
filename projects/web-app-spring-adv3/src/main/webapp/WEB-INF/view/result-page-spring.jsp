@@ -11,9 +11,9 @@
 
 <p>Name 1 is: ${dto.name1}</p>
 <p>Name 2 is: ${dto.name2}</p>
-<p>Result is: ${result}</p>
+<p>Result is: ${result} GOOD</p>
 
-<p><a href="#">Send result to your email</a></p>
+<p><a href="${pageContext.request.contextPath}/ui/sendEmail">Send result to your email</a></p>
 
 
 
