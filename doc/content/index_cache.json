@@ -243,5 +243,21 @@
       "title": "Spring MVC Formatter"
     }
   ],
-  "doc/content/intermediate/send_email.html": []
+  "doc/content/intermediate/send_email.html": [
+    {
+      "entry": "pageContext, variable",
+      "link": "intermediate/send_email.html#index_entry_index_1",
+      "title": "Send email"
+    },
+    {
+      "entry": "path variables",
+      "link": "intermediate/send_email.html#index_entry_index_2",
+      "title": "Send email"
+    },
+    {
+      "entry": "@PathVariable",
+      "link": "intermediate/send_email.html#index_entry_index_2",
+      "title": "Send email"
+    }
+  ]
 }

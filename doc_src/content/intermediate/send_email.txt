@@ -23,6 +23,9 @@ adding a link for sending an email:
 
 ![](<!--path pict-->send_email_01.png)
 
+<!--index ["pageContext, variable"]-->
+The `pageContext` is an implicit variable accessible in all JSP pages.
+
 The URL is [http://localhost:8080/web-app-spring-adv3/ui/validate-submit?...](
 http://localhost:8080/web-app-spring-adv3/ui/validate-submit?name1=Bob&name2=Claudia&notARobot=true&_notARobot=on).
 
@@ -55,19 +58,47 @@ See the below commit for the implementation details.
 See [here](<!--page server_setup-->#project_start_on_server) for information about the project start.
 
 ----------------------------------------------------------------------------------------------------
-# Section 2
+<!--index ["path variables", "@PathVariable"]-->
+# Using path variables
 
 [[2.12][], [26:35](https://youtu.be/xhKP9o9I85g?t=1595)]
 
+Here we are going to send the user name parameter through URL path.
 
+In the [`result-page-spring.jsp`](
+<!--path code-->web-app-spring-adv2/src/main/webapp/view/result-page-spring.jsp)
+view adding a variable path segment to the link URL:
 
+````xml
+<p><a href="${pageContext.request.contextPath}/ui/sendEmail/${dto.name1}"
+>Send result to your email</a></p>
+````
 
+In the [`EmailController`](
+<!--path code-->web-app-spring-adv3/src/main/java/springmvcstudy2/controllers/EmailController.java)
+class do some modification to the corresponding controller method:
 
+````code
+    @RequestMapping("/sendEmail/{userName}")
+    public String sendEmail(@PathVariable String userName, Model model) {
+        model.addAttribute("sendEmailDto", new SendEmailDto());
+        model.addAttribute("userName", userName);
+        return "send-email-page";
+    }
+````
 
+As we explicitly added a `Model` argument we now need to populate it completely.
 
+In the [`send-email-page.jsp`](
+<!--path code-->web-app-spring-adv3/src/main/webapp/WEB-INF/view/send-email-page.jsp)
+using the new model attribute:
 
+````xml
+.  .  .
+<h1>Hi ${userName}!</h1>
+.  .  .
+````
 
-
-
+> Git commit: `236fe6a16456e9d45e935d6849e5adb8bb1eb7e8` path variable used
 
 
