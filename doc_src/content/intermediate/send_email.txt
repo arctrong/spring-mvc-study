@@ -91,6 +91,9 @@ As we explicitly added a `Model` argument we now need to populate it completely.
 Also the `@PathVariable` annotation may have a parameter specifying the path variable name
 if it differs from the method parameter name.
 
+After that is done, the URL will become like this:
+<http://localhost:8080/web-app-spring-adv3/ui/sendEmail/Bob>.
+
 In the [`send-email-page.jsp`](
 <!--path code-->web-app-spring-adv3/src/main/webapp/WEB-INF/view/send-email-page.jsp)
 using the new model attribute:
@@ -127,6 +130,18 @@ class):
 # Why not to send data in the URL?
 
 [[2.12][], [50:47](https://youtu.be/xhKP9o9I85g?t=3047)]
+
+There are some problems with sending data through the URL:
+
+- The data must be sent throughout all the pages that need this data.
+- If the link is bookmarked of sent to the other user it will contain irrelevant data.
+
+The solution will be discussed in the upcoming sections.
+
+
+
+
+
 
 
 

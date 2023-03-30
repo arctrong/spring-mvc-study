@@ -1,0 +1,29 @@
+<!--VARIABLES {"title": "Sessions and cookies", "SORT_ORDER": "080", "code": "sessions_and_cookies"}-->
+
+[TOC]
+
+[2.13]: <!--page refs-->#ref_2_13
+[16]: <!--page refs-->#ref_16
+
+----------------------------------------------------------------------------------------------------
+Mar 30, 2023
+
+<!--index ["sessions, HTTP", "cookies, HTTP"]-->
+# What is session and cookies
+
+[[2.13][]]
+
+HTTP is a stateless protocol so it doesn't save information between the requests. **Cookies**
+were invented in maybe 1995 to fill this gap.
+
+Also see [[16][]].
+
+----------------------------------------------------------------------------------------------------
+# The requirements
+
+[[2.13][], [12:23](https://youtu.be/cpFfzE9eGT0?t=743)]
+
+
+
+
+

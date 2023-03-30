@@ -259,5 +259,17 @@
       "link": "intermediate/send_email.html#index_entry_index_2",
       "title": "Send email"
     }
+  ],
+  "doc/content/intermediate/sessions_and_cookies.html": [
+    {
+      "entry": "sessions, HTTP",
+      "link": "intermediate/sessions_and_cookies.html#index_entry_index_1",
+      "title": "Sessions and cookies"
+    },
+    {
+      "entry": "cookies, HTTP",
+      "link": "intermediate/sessions_and_cookies.html#index_entry_index_1",
+      "title": "Sessions and cookies"
+    }
   ]
 }

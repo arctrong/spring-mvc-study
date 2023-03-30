@@ -39,7 +39,7 @@
                 { "link": "doc/content/index_page.html", "title": "Index" }
             ],
             "useful_links": [
-                { "link": "https://spring.io/", "title": "Spring site", "external": true }
+#                { "link": "https://spring.io/", "title": "Spring site", "external": true }
             ]
         },
         "variables": {"logo": "<b><span style=\"color:greenyellow;margin-right:7px;\">Spring Web</span></b>" },
