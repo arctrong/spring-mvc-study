@@ -7,13 +7,15 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import springmvcstudy2.model.SendEmailDto;
 
+import java.util.Map;
+
 @Controller
 public class EmailController {
 
     @RequestMapping("/sendEmail/{userName}")
-    public String sendEmail(@PathVariable String userName, Model model) {
+    public String sendEmail(@PathVariable Map<String, String> pathVariables, Model model) {
         model.addAttribute("sendEmailDto", new SendEmailDto());
-        model.addAttribute("userName", userName);
+        model.addAttribute("userName", pathVariables.get("userName"));
         return "send-email-page";
     }
 
