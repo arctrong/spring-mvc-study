@@ -67,7 +67,11 @@ class="header_item" href="../index_page.html">Index</a>
 <ul>
 <li><a href="#project-arrangements">Project arrangements</a></li>
 <li><a href="#creating-the-forms">Creating the forms</a></li>
-<li><a href="#using-path-variables">Using path variables</a></li>
+<li><a href="#using-path-variables">Using path variables</a><ul>
+<li><a href="#using-a-map">Using a Map</a></li>
+</ul>
+</li>
+<li><a href="#why-not-to-send-data-in-the-url">Why not to send data in the URL?</a></li>
 </ul>
 </div>
 <hr />
@@ -116,7 +120,9 @@ class do some modification to the corresponding controller method:</p>
         model.addAttribute("userName", userName);
         return "send-email-page";
     }</code></pre>
-<p>As we explicitly added a <code>Model</code> argument we now need to populate it completely.</p>
+<p>As we explicitly added a <code>Model</code> argument we now need to populate it completely.
+Also the <code>@PathVariable</code> annotation may have a parameter specifying the path variable name
+if it differs from the method parameter name.</p>
 <p>In the <a href="../../../projects/web-app-spring-adv3/src/main/webapp/WEB-INF/view/send-email-page.jsp"><code>send-email-page.jsp</code></a>
 using the new model attribute:</p>
 <pre class="highlight"><code class="language-xml">.  .  .
@@ -125,6 +131,22 @@ using the new model attribute:</p>
 <blockquote>
 <p>Git commit: <code>236fe6a16456e9d45e935d6849e5adb8bb1eb7e8</code> path variable used</p>
 </blockquote>
+<h2 id="using-a-map">Using a <code>Map</code></h2>
+<p>[<a href="../references.html#ref_2_12">2.12</a>, <a href="https://youtu.be/xhKP9o9I85g?t=2857">47:37</a>]</p>
+<p>The alternative path variable access method is using a <code>Map</code> (see the <a href="../../../projects/web-app-spring-adv3/src/main/java/springmvcstudy2/controllers/EmailController.java"><code>EmailController</code></a>
+class):</p>
+<pre class="highlight"><code class="language-code">    @RequestMapping("/sendEmail/{userName}")
+    public String sendEmail(@PathVariable Map&lt;String, String&gt; pathVariables, Model model) {
+        model.addAttribute("sendEmailDto", new SendEmailDto());
+        model.addAttribute("userName", pathVariables.get("userName"));
+        return "send-email-page";
+    }</code></pre>
+<blockquote>
+<p>Git commit: <code>cb8843c8ea7c29ae9f62b19fa915e14a8d9c74e4</code> path variable used with a Map</p>
+</blockquote>
+<hr />
+<h1 id="why-not-to-send-data-in-the-url">Why not to send data in the URL?</h1>
+<p>[<a href="../references.html#ref_2_12">2.12</a>, <a href="https://youtu.be/xhKP9o9I85g?t=3047">50:47</a>]</p>
 <p>&nbsp;</p>
 <hr />
 

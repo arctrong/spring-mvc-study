@@ -88,6 +88,8 @@ class do some modification to the corresponding controller method:
 ````
 
 As we explicitly added a `Model` argument we now need to populate it completely.
+Also the `@PathVariable` annotation may have a parameter specifying the path variable name
+if it differs from the method parameter name.
 
 In the [`send-email-page.jsp`](
 <!--path code-->web-app-spring-adv3/src/main/webapp/WEB-INF/view/send-email-page.jsp)
@@ -100,5 +102,31 @@ using the new model attribute:
 ````
 
 > Git commit: `236fe6a16456e9d45e935d6849e5adb8bb1eb7e8` path variable used
+
+
+## Using a `Map`
+
+[[2.12][], [47:37](https://youtu.be/xhKP9o9I85g?t=2857)]
+
+The alternative path variable access method is using a `Map` (see the [`EmailController`](
+<!--path code-->web-app-spring-adv3/src/main/java/springmvcstudy2/controllers/EmailController.java)
+class):
+
+````code
+    @RequestMapping("/sendEmail/{userName}")
+    public String sendEmail(@PathVariable Map<String, String> pathVariables, Model model) {
+        model.addAttribute("sendEmailDto", new SendEmailDto());
+        model.addAttribute("userName", pathVariables.get("userName"));
+        return "send-email-page";
+    }
+````
+
+> Git commit: `cb8843c8ea7c29ae9f62b19fa915e14a8d9c74e4` path variable used with a Map
+
+----------------------------------------------------------------------------------------------------
+# Why not to send data in the URL?
+
+[[2.12][], [50:47](https://youtu.be/xhKP9o9I85g?t=3047)]
+
 
 
