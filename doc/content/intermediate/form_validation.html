@@ -113,7 +113,8 @@ function validateUserName() {
 browser.</p>
 <p>So we need to perform validation on the server where users cannot manipulate the code.</p>
 <blockquote>
-<p>Git commit: <code>ecc1819727ac509d8be35d521787c5e0b13b7953</code> client-side validation</p>
+<p>Git commit: <a href="../patches/ecc1819727ac509d8be35d521787c5e0b13b7953.html"><code>ecc1819727ac509d8be35d521787c5e0b13b7953</code></a>
+client-side validation</p>
 </blockquote>
 <p><a name="bean_validation_api"></a></p>
 <h2 id="introducing-bean-validation-api">Introducing bean validation API</h2>
@@ -204,7 +205,8 @@ Field error in object 'dto' on field 'name1': rejected value []; codes [NotBlank
 <p>The <code>&lt;form:errors path="name1"/&gt;</code> element outputs the list of errors (if any) for the specified 
 field.</p>
 <blockquote>
-<p>Git commit: <code>764155fd65a55162d5e23e6501eb4cd1bdbc11ed</code> server-side form validation implemented</p>
+<p>Git commit: <a href="../patches/764155fd65a55162d5e23e6501eb4cd1bdbc11ed.html"><code>764155fd65a55162d5e23e6501eb4cd1bdbc11ed</code></a>
+server-side form validation implemented</p>
 </blockquote>
 <p>The URL is <a href="http://localhost:8080/web-app-spring-adv2/ui/validate">http://localhost:8080/web-app-spring-adv2/ui/validate</a>:</p>
 <p><img alt="" src="../../pict/validated_form.png" /></p>
@@ -214,7 +216,8 @@ field.</p>
 <p>[<a href="../references.html#ref_2_8">2.8</a>, <a href="https://youtu.be/ot-TI5T7-5M?t=3609">1:00:09</a>]</p>
 <p>The following commit makes the form look a little bit better.</p>
 <blockquote>
-<p>Git commit: <code>bab5cc787395af429e3bad90239a3b6f2ee4264b</code> form styling performed</p>
+<p>Git commit: <a href="../patches/bab5cc787395af429e3bad90239a3b6f2ee4264b.html"><code>bab5cc787395af429e3bad90239a3b6f2ee4264b</code></a>
+form styling performed</p>
 </blockquote>
 <hr />
 <h1 id="combine-front-end-and-back-end-validations">Combine front-end and back-end validations</h1>
@@ -228,7 +231,8 @@ the validation rules in a browser. It's not going to be reproduced, see
 <p>[<a href="../references.html#ref_2_8">2.8</a>, <a href="https://youtu.be/ot-TI5T7-5M?t=4321">1:12:01</a>]</p>
 <p>Another checkbox "I am not a robot" added and the other input field is validated.</p>
 <blockquote>
-<p>Git commit: <code>b5a88ff0cdb251e3f4480bd6fabba3c8cc7f440f</code> final steps</p>
+<p>Git commit: <a href="../patches/b5a88ff0cdb251e3f4480bd6fabba3c8cc7f440f.html"><code>b5a88ff0cdb251e3f4480bd6fabba3c8cc7f440f</code></a>
+final steps</p>
 </blockquote>
 <hr />
 <h1 id="validation-messages">Validation messages</h1>
@@ -247,7 +251,8 @@ may be found in the following files:</p>
 <p>As it's implemented this way, we can use parameters like <code>{min}</code> and <code>{max}</code> in our messages like this:</p>
 <pre class="highlight"><code class="language-code">    @Size(min = 3, max = 10, message = " * must have from {min} to {max} characters")</code></pre>
 <blockquote>
-<p>Git commit: <code>2e827339401f29efb950b8ae912f46124d4dad9a</code> validation messages customization investigated</p>
+<p>Git commit: <a href="../patches/2e827339401f29efb950b8ae912f46124d4dad9a.html"><code>2e827339401f29efb950b8ae912f46124d4dad9a</code></a>
+validation messages customization investigated</p>
 </blockquote>
 <hr />
 <p>Mar 27, 2023</p>
@@ -326,7 +331,8 @@ view to make it show the error messages:</p>
 <p>By the URL <a href="http://localhost:8080/web-app-spring-adv2/ui/register">http://localhost:8080/web-app-spring-adv2/ui/register</a> we can confirm that the 
 "Age" field is validated.</p>
 <blockquote>
-<p>Git commit: <code>b0c9041b5224fdc73eb96b051423520f80bc0daf</code> custom validator is applied to the "Age" field</p>
+<p>Git commit: <a href="../patches/b0c9041b5224fdc73eb96b051423520f80bc0daf.html"><code>b0c9041b5224fdc73eb96b051423520f80bc0daf</code></a>
+custom validator is applied to the "Age" field</p>
 </blockquote>
 <p><a name="index_entry_index_5"></a></p>
 <h2 id="externalizing-messages">Externalizing messages</h2>
@@ -379,7 +385,8 @@ DTO class removing the explicit message to check that the default message is use
     private Integer age;
     .  .  .</code></pre>
 <blockquote>
-<p>Git commit: <code>15f922dd56577e9eb093a97741e7ea85c3f02d33</code> error message externalized</p>
+<p>Git commit: <a href="../patches/15f922dd56577e9eb093a97741e7ea85c3f02d33.html"><code>15f922dd56577e9eb093a97741e7ea85c3f02d33</code></a>
+error message externalized</p>
 </blockquote>
 <hr />
 <p>Mar 28, 2023</p>
@@ -425,7 +432,8 @@ The <code>supports()</code> method decides whether the DTO object must be valida
     .  .  .</code></pre>
 <p>The URL is <a href="http://localhost:8080/web-app-spring-adv2/ui/register">http://localhost:8080/web-app-spring-adv2/ui/register</a>.</p>
 <blockquote>
-<p>Git commit: <code>781dcbe7466b52bbd9d9dabe4889b32929d9ddc5</code> Spring framawork validator used</p>
+<p>Git commit: <a href="../patches/781dcbe7466b52bbd9d9dabe4889b32929d9ddc5.html"><code>781dcbe7466b52bbd9d9dabe4889b32929d9ddc5</code></a>
+Spring framawork validator used</p>
 </blockquote>
 <h2 id="using-property-file">Using property file</h2>
 <p>[<a href="../references.html#ref_2_11">2.11</a>, <a href="https://youtu.be/ms4ywje7EYI?t=8908">2:28:28</a>]</p>
@@ -446,7 +454,8 @@ The <code>supports()</code> method decides whether the DTO object must be valida
 <a href="../../../projects/web-app-spring-adv2/src/main/resources/messages.properties"><code>messages.properties</code></a>.</p>
 <p>The URL is the same &mdash; <a href="http://localhost:8080/web-app-spring-adv2/ui/register">http://localhost:8080/web-app-spring-adv2/ui/register</a>.</p>
 <blockquote>
-<p>Git commit: <code>bc802fbeb9cbf98f3ecb75a7ac02931e5bf118a8</code> properties file used for error messages</p>
+<p>Git commit: <a href="../patches/bc802fbeb9cbf98f3ecb75a7ac02931e5bf118a8.html"><code>bc802fbeb9cbf98f3ecb75a7ac02931e5bf118a8</code></a>
+properties file used for error messages</p>
 </blockquote>
 <hr />
 <h1 id="calling-validators-manually">Calling validators manually</h1>
@@ -458,7 +467,8 @@ The <code>supports()</code> method decides whether the DTO object must be valida
 <pre class="highlight"><code class="language-code">        EmailValidator emailValidator = new EmailValidator();
         emailValidator.validate(userReg, result);</code></pre>
 <blockquote>
-<p>Git commit: <code>8174ad083bc415c0f7870bdc91d0019e299a564f</code> email validator used manually</p>
+<p>Git commit: <a href="../patches/8174ad083bc415c0f7870bdc91d0019e299a564f.html"><code>8174ad083bc415c0f7870bdc91d0019e299a564f</code></a>
+email validator used manually</p>
 </blockquote>
 <p>To avoid creating the validator object on every request make the <a href="../../../projects/web-app-spring-adv2/src/main/java/springmvcstudy2/validators/EmailValidator.java"><code>EmailValidator</code></a>
 a component (with the <code>@Component</code> annotation) and add the autowired field to the controller class:</p>
@@ -470,7 +480,8 @@ a component (with the <code>@Component</code> annotation) and add the autowired 
 <p>The both above variations work as before. The URL is 
 <a href="http://localhost:8080/web-app-spring-adv2/ui/register">http://localhost:8080/web-app-spring-adv2/ui/register</a>.</p>
 <blockquote>
-<p>Git commit: <code>59d483e0ce7dbc6efce6e5c50ac59b2f9b5909e9</code> email validator used manually (with autowiring)</p>
+<p>Git commit: <a href="../patches/59d483e0ce7dbc6efce6e5c50ac59b2f9b5909e9.html"><code>59d483e0ce7dbc6efce6e5c50ac59b2f9b5909e9</code></a>
+email validator used manually (with autowiring)</p>
 </blockquote>
 <hr />
 <p><a name="index_entry_index_6"></a><a name="placeholders_in_properties_files"></a></p>
@@ -500,7 +511,8 @@ using this property via a placeholder:</p>
 </div>
 <p>The URL is <a href="http://localhost:8080/web-app-spring-adv2/ui/register">http://localhost:8080/web-app-spring-adv2/ui/register</a>.</p>
 <blockquote>
-<p>Git commit: <code>606c127f52ba035e593edec8ec60f20552916595</code> placeholders used</p>
+<p>Git commit: <a href="../patches/606c127f52ba035e593edec8ec60f20552916595.html"><code>606c127f52ba035e593edec8ec60f20552916595</code></a>
+placeholders used</p>
 </blockquote>
 <hr />
 <p><a name="index_entry_index_7"></a></p>
@@ -522,7 +534,8 @@ property into our properties file <a href="../../../projects/web-app-spring-adv2
 polite to the users.</p>
 <p>The URL is <a href="http://localhost:8080/web-app-spring-adv2/ui/register">http://localhost:8080/web-app-spring-adv2/ui/register</a>.</p>
 <blockquote>
-<p>Git commit: <code>7d5cffdb51061f794a6a69b550da9e806ba4ae00</code> type mismatch problem handled</p>
+<p>Git commit: <a href="../patches/7d5cffdb51061f794a6a69b550da9e806ba4ae00.html"><code>7d5cffdb51061f794a6a69b550da9e806ba4ae00</code></a>
+type mismatch problem handled</p>
 </blockquote>
 <p>&nbsp;</p>
 <hr />

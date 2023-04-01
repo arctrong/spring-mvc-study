@@ -26,7 +26,9 @@ Also different types of models will be discussed.
 Project `web-app-spring-adv1` was copy-pasted to `web-app-spring-adv2` and cleaned up a little bit.
 URL <http://localhost:8080/web-app-spring-adv2/view/hello-page.jsp> may be used for a check.
 
-> Git commit: `f000a2489fd9a080eaf02386c396b5481fa75eea` project 'web-app-spring-adv2' initialized
+> Git commit: [`f000a2489fd9a080eaf02386c396b5481fa75eea`](
+> <!--path patches-->f000a2489fd9a080eaf02386c396b5481fa75eea.html)
+> project 'web-app-spring-adv2' initialized
 
 ----------------------------------------------------------------------------------------------------
 <!--index ["model, data binding"]-->
@@ -62,7 +64,9 @@ the HTTP request parameters. Here the example in the file [`MyAppController`](
     .  .  .
 ````
 
-> Git commit: `d4c97497cf4bcc5e57b63dd3f2818016cedc950b` two names form created and processed
+> Git commit: [`d4c97497cf4bcc5e57b63dd3f2818016cedc950b`](
+> <!--path patches-->d4c97497cf4bcc5e57b63dd3f2818016cedc950b.html)
+> two names form created and processed
 
 ----------------------------------------------------------------------------------------------------
 <!--index ["DTO, data binding"]-->
@@ -93,7 +97,9 @@ by the Spring MVC framework.
 The new URL is <http://localhost:8080/web-app-spring-adv2/ui/calculate-page-dto?name1=alice&name2=bob>
 and the result is the same.
 
-> Git commit: `535ac38da2941822bae538692fec190161d2bf62` DTO used for form data binding
+> Git commit: [`535ac38da2941822bae538692fec190161d2bf62`](
+> <!--path patches-->535ac38da2941822bae538692fec190161d2bf62.html)
+> DTO used for form data binding
 
 ----------------------------------------------------------------------------------------------------
 <!--index ["forms, Spring MVC"]-->
@@ -165,7 +171,9 @@ Two views were added as well:
     .  .  .
     ````
 
-> Git commit: `2b0e4b15df7aac1076902411e6cc99b7c98df631` Spring MVC form tags introduced
+> Git commit: [`2b0e4b15df7aac1076902411e6cc99b7c98df631`](
+> <!--path patches-->2b0e4b15df7aac1076902411e6cc99b7c98df631.html)
+> Spring MVC form tags introduced
 
 Actually with this approach it's not necessary to handle a model object. The controller methods 
 may be significantly simplified like this:
@@ -184,7 +192,9 @@ may be significantly simplified like this:
     .  .  .
 ````
 
-> Git commit: `8995a8f64dd67ad319ce7650a4ee330eab28c4b8` controller methods simplified
+> Git commit: [`8995a8f64dd67ad319ce7650a4ee330eab28c4b8`](
+> <!--path patches-->8995a8f64dd67ad319ce7650a4ee330eab28c4b8.html)
+> controller methods simplified
 
 
 

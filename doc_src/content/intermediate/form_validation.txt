@@ -44,7 +44,9 @@ browser.
 
 So we need to perform validation on the server where users cannot manipulate the code.
 
-> Git commit: `ecc1819727ac509d8be35d521787c5e0b13b7953` client-side validation
+> Git commit: [`ecc1819727ac509d8be35d521787c5e0b13b7953`](
+> <!--path patches-->ecc1819727ac509d8be35d521787c5e0b13b7953.html)
+> client-side validation
 
 
 <a name="bean_validation_api"></a>
@@ -172,7 +174,9 @@ The JSP form looks like this:
 The `<form:errors path="name1"/>` element outputs the list of errors (if any) for the specified 
 field.
 
-> Git commit: `764155fd65a55162d5e23e6501eb4cd1bdbc11ed` server-side form validation implemented
+> Git commit: [`764155fd65a55162d5e23e6501eb4cd1bdbc11ed`](
+> <!--path patches-->764155fd65a55162d5e23e6501eb4cd1bdbc11ed.html)
+> server-side form validation implemented
 
 The URL is <http://localhost:8080/web-app-spring-adv2/ui/validate>:
 
@@ -187,7 +191,9 @@ This snapshot was taken after the following styling is done.
 
 The following commit makes the form look a little bit better.
 
-> Git commit: `bab5cc787395af429e3bad90239a3b6f2ee4264b` form styling performed
+> Git commit: [`bab5cc787395af429e3bad90239a3b6f2ee4264b`](
+> <!--path patches-->bab5cc787395af429e3bad90239a3b6f2ee4264b.html)
+> form styling performed
 
 ----------------------------------------------------------------------------------------------------
 # Combine front-end and back-end validations
@@ -206,7 +212,9 @@ the validation rules in a browser. It's not going to be reproduced, see
 
 Another checkbox "I am not a robot" added and the other input field is validated.
 
-> Git commit: `b5a88ff0cdb251e3f4480bd6fabba3c8cc7f440f` final steps
+> Git commit: [`b5a88ff0cdb251e3f4480bd6fabba3c8cc7f440f`](
+> <!--path patches-->b5a88ff0cdb251e3f4480bd6fabba3c8cc7f440f.html)
+> final steps
 
 ----------------------------------------------------------------------------------------------------
 # Validation messages
@@ -230,7 +238,9 @@ As it's implemented this way, we can use parameters like `{min}` and `{max}` in 
     @Size(min = 3, max = 10, message = " * must have from {min} to {max} characters")
 ````
 
-> Git commit: `2e827339401f29efb950b8ae912f46124d4dad9a` validation messages customization investigated
+> Git commit: [`2e827339401f29efb950b8ae912f46124d4dad9a`](
+> <!--path patches-->2e827339401f29efb950b8ae912f46124d4dad9a.html)
+> validation messages customization investigated
     
 ----------------------------------------------------------------------------------------------------
 Mar 27, 2023
@@ -345,7 +355,9 @@ view to make it show the error messages:
 By the URL <http://localhost:8080/web-app-spring-adv2/ui/register> we can confirm that the 
 "Age" field is validated.
 
-> Git commit: `b0c9041b5224fdc73eb96b051423520f80bc0daf` custom validator is applied to the "Age" field
+> Git commit: [`b0c9041b5224fdc73eb96b051423520f80bc0daf`](
+> <!--path patches-->b0c9041b5224fdc73eb96b051423520f80bc0daf.html)
+> custom validator is applied to the "Age" field
 
 
 <!--index ["message externalization"]-->
@@ -420,7 +432,9 @@ DTO class removing the explicit message to check that the default message is use
     .  .  .
 ````
 
-> Git commit: `15f922dd56577e9eb093a97741e7ea85c3f02d33` error message externalized
+> Git commit: [`15f922dd56577e9eb093a97741e7ea85c3f02d33`](
+> <!--path patches-->15f922dd56577e9eb093a97741e7ea85c3f02d33.html)
+> error message externalized
 
 ----------------------------------------------------------------------------------------------------
 Mar 28, 2023
@@ -479,7 +493,9 @@ The validator is added in the [`RegistrationController`](
 
 The URL is <http://localhost:8080/web-app-spring-adv2/ui/register>.
 
-> Git commit: `781dcbe7466b52bbd9d9dabe4889b32929d9ddc5` Spring framawork validator used
+> Git commit: [`781dcbe7466b52bbd9d9dabe4889b32929d9ddc5`](
+> <!--path patches-->781dcbe7466b52bbd9d9dabe4889b32929d9ddc5.html)
+> Spring framawork validator used
 
 
 ## Using property file
@@ -512,7 +528,9 @@ The difference is that the error messages are omitted, they will be taken from t
 
 The URL is the same --- <http://localhost:8080/web-app-spring-adv2/ui/register>.
 
-> Git commit: `bc802fbeb9cbf98f3ecb75a7ac02931e5bf118a8` properties file used for error messages
+> Git commit: [`bc802fbeb9cbf98f3ecb75a7ac02931e5bf118a8`](
+> <!--path patches-->bc802fbeb9cbf98f3ecb75a7ac02931e5bf118a8.html)
+> properties file used for error messages
 
 ----------------------------------------------------------------------------------------------------
 # Calling validators manually
@@ -535,7 +553,9 @@ Add the following call to the corresponding controller method:
         emailValidator.validate(userReg, result);
 ````
 
-> Git commit: `8174ad083bc415c0f7870bdc91d0019e299a564f` email validator used manually
+> Git commit: [`8174ad083bc415c0f7870bdc91d0019e299a564f`](
+> <!--path patches-->8174ad083bc415c0f7870bdc91d0019e299a564f.html)
+> email validator used manually
 
 To avoid creating the validator object on every request make the [`EmailValidator`](
 <!--path code-->web-app-spring-adv2/src/main/java/springmvcstudy2/validators/EmailValidator.java)
@@ -557,7 +577,9 @@ Also need to update the component scan base package list in the configuration cl
 The both above variations work as before. The URL is 
 <http://localhost:8080/web-app-spring-adv2/ui/register>.
 
-> Git commit: `59d483e0ce7dbc6efce6e5c50ac59b2f9b5909e9` email validator used manually (with autowiring)
+> Git commit: [`59d483e0ce7dbc6efce6e5c50ac59b2f9b5909e9`](
+> <!--path patches-->59d483e0ce7dbc6efce6e5c50ac59b2f9b5909e9.html)
+> email validator used manually (with autowiring)
 
 ----------------------------------------------------------------------------------------------------
 <!--index ["placeholders, in properties files"]--><a name="placeholders_in_properties_files"></a>
@@ -599,7 +621,9 @@ So the result is:
 
 The URL is <http://localhost:8080/web-app-spring-adv2/ui/register>.
 
-> Git commit: `606c127f52ba035e593edec8ec60f20552916595` placeholders used
+> Git commit: [`606c127f52ba035e593edec8ec60f20552916595`](
+> <!--path patches-->606c127f52ba035e593edec8ec60f20552916595.html)
+> placeholders used
 
 ----------------------------------------------------------------------------------------------------
 <!--index ["type mismatch problems"]-->
@@ -634,7 +658,9 @@ polite to the users.
 
 The URL is <http://localhost:8080/web-app-spring-adv2/ui/register>.
 
-> Git commit: `7d5cffdb51061f794a6a69b550da9e806ba4ae00` type mismatch problem handled
+> Git commit: [`7d5cffdb51061f794a6a69b550da9e806ba4ae00`](
+> <!--path patches-->7d5cffdb51061f794a6a69b550da9e806ba4ae00.html)
+> type mismatch problem handled
 
 
 

@@ -25,7 +25,9 @@ The following is the particular customized command:
 Some simple cleaning and reformatting is done. After building and deploying the application 
 the request to <http://localhost:8080/web-app-spring-adv1/> returns our desired hello page.
 
-> Git commit: `51fce12a2a4326e07a0832e6ac1a215dda4117f4` first advanced web application initialized
+> Git commit: [`51fce12a2a4326e07a0832e6ac1a215dda4117f4`](
+> <!--path patches-->51fce12a2a4326e07a0832e6ac1a215dda4117f4.html)
+> first advanced web application initialized
 
 ----------------------------------------------------------------------------------------------------
 <!--index ["WebApplicationInitializer interface"]-->
@@ -127,7 +129,9 @@ WebApplicationInitializer introduced!
 So as we can see the `MyApplicationInitializer` class was successfully detected and called. 
 The URL <http://localhost:8080/web-app-spring-adv1/> returns the same hello page.
 
-> Git commit: `64f362440b71925364539571eb69e54b1d4a68b4` MyApplicationInitializer introduced
+> Git commit: [`64f362440b71925364539571eb69e54b1d4a68b4`](
+> <!--path patches-->64f362440b71925364539571eb69e54b1d4a68b4.html)
+> MyApplicationInitializer introduced
 
 ----------------------------------------------------------------------------------------------------
 # Adjust dispatcher servlet
@@ -216,7 +220,9 @@ file):
 The dispatcher servlet web application context XML file 
 `/src/main/resources/application-config.xml` is deleted as it's not needed anymore.
 
-> Git commit: `1a79873d1890deede7fe5da2b564acdf5bec7e6c` Spring XML configuration eliminated
+> Git commit: [`1a79873d1890deede7fe5da2b564acdf5bec7e6c`](
+> <!--path patches-->1a79873d1890deede7fe5da2b564acdf5bec7e6c.html)
+> Spring XML configuration eliminated
 
 ----------------------------------------------------------------------------------------------------
 # Create a view
@@ -264,7 +270,9 @@ page:
 
 ![](<!--path pict-->hello_from_code_based.png)
 
-> Git commit: `bceed41baece547af98f5bf88dbac27d133834d6` view created
+> Git commit: [`bceed41baece547af98f5bf88dbac27d133834d6`](
+> <!--path patches-->bceed41baece547af98f5bf88dbac27d133834d6.html)
+> view created
 
 ----------------------------------------------------------------------------------------------------
 <!--index ["AbstractAnnotationConfigDispatcherServletInitializer"]--><a 
@@ -323,7 +331,9 @@ The application works the same way.
     The `AbstractAnnotationConfigDispatcherServletInitializer` implements the
     `WebApplicationInitializer` interface.
 
-> Git commit: `bb292b53cf714cf728d9491022d9f40ceab83e57` quicker dispatcher servlet initializer used
+> Git commit: [`bb292b53cf714cf728d9491022d9f40ceab83e57`](
+> <!--path patches-->bb292b53cf714cf728d9491022d9f40ceab83e57.html)
+> quicker dispatcher servlet initializer used
 
 ----------------------------------------------------------------------------------------------------
 <!--index ["@Order"]-->
@@ -339,11 +349,15 @@ initialization is fulfilled.
 
 The initializers overwriting details were not investigated.
 
-> Git commit: `015781551dda2c8d1c293a4d53168d26789c94ba` several initializers investigation
+> Git commit: [`015781551dda2c8d1c293a4d53168d26789c94ba`](
+> <!--path patches-->015781551dda2c8d1c293a4d53168d26789c94ba.html)
+> several initializers investigation
 
 In the end the first initialized is reverted:
 
-> Git commit: `f72bf85b802ad02c85c341d0df5db40f71668922` the first initializer is reverted
+> Git commit: [`f72bf85b802ad02c85c341d0df5db40f71668922`](
+> <!--path patches-->f72bf85b802ad02c85c341d0df5db40f71668922.html)
+> the first initializer is reverted
 
 
 

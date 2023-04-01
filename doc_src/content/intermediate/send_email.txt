@@ -53,7 +53,9 @@ the model DTO is [`SendEmailDto`](
 
 See the below commit for the implementation details.
 
-> Git commit: `c23f1c1ba16e42cc1b8a702951b488830930c8ac` send email skeleton forms created
+> Git commit: [`c23f1c1ba16e42cc1b8a702951b488830930c8ac`](
+> <!--path patches-->c23f1c1ba16e42cc1b8a702951b488830930c8ac.html)
+> send email skeleton forms created
 
 See [here](<!--page server_setup-->#project_start_on_server) for information about the project start.
 

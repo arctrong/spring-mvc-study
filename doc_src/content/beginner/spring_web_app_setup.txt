@@ -133,7 +133,9 @@ See the class [`ThingsController`](
 <!--path code-->web-app-spring/src/main/java/springmvcstudy/controllers/ThingsController.java)
 as an example.
 
-> Git commit: `378558ccca90c31e96bf4335fccd489f2e429707` simple spring web app run
+> Git commit: [`378558ccca90c31e96bf4335fccd489f2e429707`](
+> <!--path patches-->378558ccca90c31e96bf4335fccd489f2e429707.html)
+> simple spring web app run
 
 ----------------------------------------------------------------------------------------------------
 # Change dispatcher servlet context configuration file name
@@ -152,7 +154,9 @@ the `<servlet-class>` section):
 
 Then the context configuration file must be renamed to `front-controller-context.xml`.
 
-> Git commit: `6e88ef4c5cc3ce4f1401213d9e2c37338179127a` change dispatcher servlet context configuration file name
+> Git commit: [`6e88ef4c5cc3ce4f1401213d9e2c37338179127a`](
+> <!--path patches-->6e88ef4c5cc3ce4f1401213d9e2c37338179127a.html)
+> change dispatcher servlet context configuration file name
 > 
 > This commit was reverted right then as we don't need this renaming and it was done for 
 > demonstration only. Probably it's better to follow the *convention over configuration (CoC)*

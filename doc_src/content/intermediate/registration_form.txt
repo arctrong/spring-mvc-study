@@ -51,7 +51,9 @@ and the following tag library declaration must be added to the JSP page:
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 ````
 
-> Git commit: `37af1551bd32517fd02eae837dee21e035da0a55` simple registration form created
+> Git commit: [`37af1551bd32517fd02eae837dee21e035da0a55`](
+> <!--path patches-->37af1551bd32517fd02eae837dee21e035da0a55.html)
+> simple registration form created
 
 
 

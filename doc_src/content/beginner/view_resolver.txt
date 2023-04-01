@@ -88,7 +88,9 @@ the other ones.
     2023-03-20 12:28:26.293:INFO:oejshC.web_app_spring:qtp2101842856-13: No JSP support.  Check that JSP jars are in lib/jsp and that the JSP option has been specified to start.jar
     ````
 
-> Git commit: `a48ebdb4100ae75236cc2165d4e50b417d1a48a5` specifying direct view file location
+> Git commit: [`a48ebdb4100ae75236cc2165d4e50b417d1a48a5`](
+> <!--path patches-->a48ebdb4100ae75236cc2165d4e50b417d1a48a5.html)
+> specifying direct view file location
 
 ----------------------------------------------------------------------------------------------------
 <!--index ["view resolver"]-->
@@ -138,7 +140,9 @@ After that, navigating to <http://localhost:8080/web-app-spring/jsp/hello> gives
 
 But now if the view directory changes it will require readjustment in only one place.
 
-> Git commit: `d33bc3c9d1ee706a12b84acf3332e9c899325c59` view resolver introduced
+> Git commit: [`d33bc3c9d1ee706a12b84acf3332e9c899325c59`](
+> <!--path patches-->d33bc3c9d1ee706a12b84acf3332e9c899325c59.html)
+> view resolver introduced
 
 
 
