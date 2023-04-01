@@ -1,0 +1,113 @@
+<!--VARIABLES {"title": "Patch 236fe6a16456e9d45e935d6849e5adb8bb1eb7e8"}--> 
+<div class="patch_block">
+
+<span class="diff">diff --git a/projects/web-app-spring-adv3/src/main/java/springmvcstudy2/controllers/EmailController.java b/projects/web-app-spring-adv3/src/main/java/springmvcstudy2/controllers/EmailController.java</span><br />
+
+<span class="index">index 84d253d..e661f73 100644</span><br />
+
+<span class="tree_minuses">--- a/projects/web-app-spring-adv3/src/main/java/springmvcstudy2/controllers/EmailController.java</span><br />
+
+<span class="tree_pluses">+++ b/projects/web-app-spring-adv3/src/main/java/springmvcstudy2/controllers/EmailController.java</span><br />
+
+<span class="two_ats">@@ -1,15 +1,19 @@</span><br />
+
+<span> package springmvcstudy2.controllers;</span><br />
+
+<span> </span><br />
+
+<span> import org.springframework.stereotype.Controller;</span><br />
+
+<ins>+import org.springframework.ui.Model;</ins><br />
+
+<span> import org.springframework.web.bind.annotation.ModelAttribute;</span><br />
+
+<ins>+import org.springframework.web.bind.annotation.PathVariable;</ins><br />
+
+<span> import org.springframework.web.bind.annotation.RequestMapping;</span><br />
+
+<span> import springmvcstudy2.model.SendEmailDto;</span><br />
+
+<span> </span><br />
+
+<span> @Controller</span><br />
+
+<span> public class EmailController {</span><br />
+
+<span> </span><br />
+
+<del>-    @RequestMapping(&quot;/sendEmail&quot;)</del><br />
+
+<del>-    public String sendEmail(@ModelAttribute SendEmailDto sendEmailDto) {</del><br />
+
+<ins>+    @RequestMapping(&quot;/sendEmail/{userName}&quot;)</ins><br />
+
+<ins>+    public String sendEmail(@PathVariable String userName, Model model) {</ins><br />
+
+<ins>+        model.addAttribute(&quot;sendEmailDto&quot;, new SendEmailDto());</ins><br />
+
+<ins>+        model.addAttribute(&quot;userName&quot;, userName);</ins><br />
+
+<span>         return &quot;send-email-page&quot;;</span><br />
+
+<span>     }</span><br />
+
+<span> </span><br />
+
+<span class="diff">diff --git a/projects/web-app-spring-adv3/src/main/webapp/WEB-INF/view/result-page-spring.jsp b/projects/web-app-spring-adv3/src/main/webapp/WEB-INF/view/result-page-spring.jsp</span><br />
+
+<span class="index">index c28ff38..a7c6f18 100644</span><br />
+
+<span class="tree_minuses">--- a/projects/web-app-spring-adv3/src/main/webapp/WEB-INF/view/result-page-spring.jsp</span><br />
+
+<span class="tree_pluses">+++ b/projects/web-app-spring-adv3/src/main/webapp/WEB-INF/view/result-page-spring.jsp</span><br />
+
+<span class="two_ats">@@ -13,8 +13,7 @@</span><br />
+
+<span> &lt;p&gt;Name 2 is: ${dto.name2}&lt;/p&gt;</span><br />
+
+<span> &lt;p&gt;Result is: ${result} GOOD&lt;/p&gt;</span><br />
+
+<span> </span><br />
+
+<del>-&lt;p&gt;&lt;a href=&quot;${pageContext.request.contextPath}/ui/sendEmail&quot;&gt;Send result to your email&lt;/a&gt;&lt;/p&gt;</del><br />
+
+<del>-</del><br />
+
+<del>-</del><br />
+
+<ins>+&lt;p&gt;&lt;a href=&quot;${pageContext.request.contextPath}/ui/sendEmail/${dto.name1}&quot;</ins><br />
+
+<ins>+&gt;Send result to your email&lt;/a&gt;&lt;/p&gt;</ins><br />
+
+<span> </span><br />
+
+<span> &lt;/body&gt;&lt;/html&gt;</span><br />
+
+<span class="diff">diff --git a/projects/web-app-spring-adv3/src/main/webapp/WEB-INF/view/send-email-page.jsp b/projects/web-app-spring-adv3/src/main/webapp/WEB-INF/view/send-email-page.jsp</span><br />
+
+<span class="index">index a5e5337..0fcfee7 100644</span><br />
+
+<span class="tree_minuses">--- a/projects/web-app-spring-adv3/src/main/webapp/WEB-INF/view/send-email-page.jsp</span><br />
+
+<span class="tree_pluses">+++ b/projects/web-app-spring-adv3/src/main/webapp/WEB-INF/view/send-email-page.jsp</span><br />
+
+<span class="two_ats">@@ -10,7 +10,7 @@ body {background-color: #d2efc5;}</span><br />
+
+<span> &lt;/style&gt;</span><br />
+
+<span> &lt;/head&gt;&lt;body&gt;</span><br />
+
+<span> </span><br />
+
+<del>-&lt;h1&gt;Hi ??? !&lt;/h1&gt;</del><br />
+
+<ins>+&lt;h1&gt;Hi ${userName}!&lt;/h1&gt;</ins><br />
+
+<span> &lt;h2&gt;Send result to your email.&lt;/h2&gt;</span><br />
+
+<span> </span><br />
+
+<span> &lt;form:form action=&quot;process-email&quot; method=&quot;GET&quot; modelAttribute=&quot;sendEmailDto&quot;&gt;</span><br />
+
+</div>
+

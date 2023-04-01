@@ -1,0 +1,49 @@
+<!--VARIABLES {"title": "Patch cb8843c8ea7c29ae9f62b19fa915e14a8d9c74e4"}--> 
+<div class="patch_block">
+
+<span class="diff">diff --git a/projects/web-app-spring-adv3/src/main/java/springmvcstudy2/controllers/EmailController.java b/projects/web-app-spring-adv3/src/main/java/springmvcstudy2/controllers/EmailController.java</span><br />
+
+<span class="index">index e661f73..c804002 100644</span><br />
+
+<span class="tree_minuses">--- a/projects/web-app-spring-adv3/src/main/java/springmvcstudy2/controllers/EmailController.java</span><br />
+
+<span class="tree_pluses">+++ b/projects/web-app-spring-adv3/src/main/java/springmvcstudy2/controllers/EmailController.java</span><br />
+
+<span class="two_ats">@@ -7,13 +7,15 @@ import org.springframework.web.bind.annotation.PathVariable;</span><br />
+
+<span> import org.springframework.web.bind.annotation.RequestMapping;</span><br />
+
+<span> import springmvcstudy2.model.SendEmailDto;</span><br />
+
+<span> </span><br />
+
+<ins>+import java.util.Map;</ins><br />
+
+<ins>+</ins><br />
+
+<span> @Controller</span><br />
+
+<span> public class EmailController {</span><br />
+
+<span> </span><br />
+
+<span>     @RequestMapping(&quot;/sendEmail/{userName}&quot;)</span><br />
+
+<del>-    public String sendEmail(@PathVariable String userName, Model model) {</del><br />
+
+<ins>+    public String sendEmail(@PathVariable Map&lt;String, String&gt; pathVariables, Model model) {</ins><br />
+
+<span>         model.addAttribute(&quot;sendEmailDto&quot;, new SendEmailDto());</span><br />
+
+<del>-        model.addAttribute(&quot;userName&quot;, userName);</del><br />
+
+<ins>+        model.addAttribute(&quot;userName&quot;, pathVariables.get(&quot;userName&quot;));</ins><br />
+
+<span>         return &quot;send-email-page&quot;;</span><br />
+
+<span>     }</span><br />
+
+<span> </span><br />
+
+</div>
+

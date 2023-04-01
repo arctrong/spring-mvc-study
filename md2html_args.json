@@ -20,7 +20,12 @@
             "sort-by-variable": "SORT_ORDER" },
         { "input-glob": "intermediate/*.txt", "page-flows": ["intermediate", "nav"], 
             "title-from-variable": "title", "code-from-variable": "code", 
-            "sort-by-variable": "SORT_ORDER" }
+            "sort-by-variable": "SORT_ORDER" },
+            
+        { "input-root": "doc_src", "output-root": "doc/content", 
+            "add-link-css": ["doc/patch.css"],
+            "input-glob": "patches/*.txt", "page-flows": [], "title-from-variable": "title" }
+            
     ],
     "plugins": {
         "page-variables": {},
@@ -30,7 +35,8 @@
                 "resource_path": "doc/",
                 "pict": "doc/pict/",
                 "materials": "materials/",
-                "code": "projects/"
+                "code": "projects/",
+                "patches": "doc/content/patches/"
             }
         },
         "page-flows": {
