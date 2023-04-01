@@ -39,12 +39,31 @@ The added cookie is sent by the browser with every subsequent request so it can 
 page like the one that is returned by the `/validate` endpoint.
 
 ----------------------------------------------------------------------------------------------------
-# ???
+<!--index ["@CookieValue"]-->
+# Managing cookies using Spring
 
 [[2.13][], [37:28](https://youtu.be/cpFfzE9eGT0?t=2248)]
 
+The above method is much inconvenient especially when used in a lot of controllers. The Spring 
+`@CookieValue` annotation may help simplify this task (see the [`EmailController`](
+<!--path code-->web-app-spring-adv3/src/main/java/springmvcstudy2/controllers/EmailController.java)
+class):
 
+````code
+    @RequestMapping("/sendEmail")
+    public String sendEmail(@CookieValue("myApp.userName") String userName, Model model) {
+        model.addAttribute("sendEmailDto", new SendEmailDto());
+        model.addAttribute("userName", userName);
+        return "send-email-page";
+    }
+````
 
+> Git commit: [`fe7f898864fc585ea03e2e6e195c46e9700cf9ac`](
+> <!--path patches-->fe7f898864fc585ea03e2e6e195c46e9700cf9ac.html)
+> using @CookieValue annotation
 
+----------------------------------------------------------------------------------------------------
+# Problems with cookies
 
+[[2.13][], [43:25](https://youtu.be/cpFfzE9eGT0?t=2605)]
 

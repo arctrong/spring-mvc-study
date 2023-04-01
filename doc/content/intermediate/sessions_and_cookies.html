@@ -65,7 +65,8 @@ class="header_item" href="../index_page.html">Index</a>
 <ul>
 <li><a href="#what-is-session-and-cookies">What is session and cookies</a></li>
 <li><a href="#implement-cookies-transfer">Implement cookies transfer</a></li>
-<li><a href="#_1">???</a></li>
+<li><a href="#managing-cookies-using-spring">Managing cookies using Spring</a></li>
+<li><a href="#problems-with-cookies">Problems with cookies</a></li>
 </ul>
 </div>
 <hr />
@@ -91,8 +92,25 @@ object that is provided by Spring MVC via the corresponding controller method pa
 <p>The added cookie is sent by the browser with every subsequent request so it can be used on every
 page like the one that is returned by the <code>/validate</code> endpoint.</p>
 <hr />
-<h1 id="_1">???</h1>
+<p><a name="index_entry_index_2"></a></p>
+<h1 id="managing-cookies-using-spring">Managing cookies using Spring</h1>
 <p>[<a href="../references.html#ref_2_13">2.13</a>, <a href="https://youtu.be/cpFfzE9eGT0?t=2248">37:28</a>]</p>
+<p>The above method is much inconvenient especially when used in a lot of controllers. The Spring 
+<code>@CookieValue</code> annotation may help simplify this task (see the <a href="../../../projects/web-app-spring-adv3/src/main/java/springmvcstudy2/controllers/EmailController.java"><code>EmailController</code></a>
+class):</p>
+<pre class="highlight"><code class="language-code">    @RequestMapping("/sendEmail")
+    public String sendEmail(@CookieValue("myApp.userName") String userName, Model model) {
+        model.addAttribute("sendEmailDto", new SendEmailDto());
+        model.addAttribute("userName", userName);
+        return "send-email-page";
+    }</code></pre>
+<blockquote>
+<p>Git commit: <a href="../patches/fe7f898864fc585ea03e2e6e195c46e9700cf9ac.html"><code>fe7f898864fc585ea03e2e6e195c46e9700cf9ac</code></a>
+using @CookieValue annotation</p>
+</blockquote>
+<hr />
+<h1 id="problems-with-cookies">Problems with cookies</h1>
+<p>[<a href="../references.html#ref_2_13">2.13</a>, <a href="https://youtu.be/cpFfzE9eGT0?t=2605">43:25</a>]</p>
 <p>&nbsp;</p>
 <hr />
 
