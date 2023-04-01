@@ -1,0 +1,95 @@
+<!--VARIABLES {"title": "Patch bab5cc787395af429e3bad90239a3b6f2ee4264b"}--> 
+<div class="patch_block">
+
+<span class="diff">diff --git a/projects/web-app-spring-adv2/src/main/java/springmvcstudy2/model/UserInfoValidatedDto.java b/projects/web-app-spring-adv2/src/main/java/springmvcstudy2/model/UserInfoValidatedDto.java</span><br />
+
+<span class="index">index 3588bc6..86e8a5c 100644</span><br />
+
+<span class="tree_minuses">--- a/projects/web-app-spring-adv2/src/main/java/springmvcstudy2/model/UserInfoValidatedDto.java</span><br />
+
+<span class="tree_pluses">+++ b/projects/web-app-spring-adv2/src/main/java/springmvcstudy2/model/UserInfoValidatedDto.java</span><br />
+
+<span class="two_ats">@@ -1,13 +1,12 @@</span><br />
+
+<span> package springmvcstudy2.model;</span><br />
+
+<span> </span><br />
+
+<del>-import org.hibernate.validator.constraints.Length;</del><br />
+
+<del>-</del><br />
+
+<span> import javax.validation.constraints.NotBlank;</span><br />
+
+<ins>+import javax.validation.constraints.Size;</ins><br />
+
+<span> </span><br />
+
+<span> public class UserInfoValidatedDto {</span><br />
+
+<span> </span><br />
+
+<span>     @NotBlank(message = &quot; * can&#x27;t be blank&quot;)</span><br />
+
+<del>-    @Length(min = 3, message = &quot; * must have at least 3 characters&quot;)</del><br />
+
+<ins>+    @Size(min = 3, max = 10, message = &quot; * must have 3 to 10 characters&quot;)</ins><br />
+
+<span>     private String name1;</span><br />
+
+<span>     private String name2;</span><br />
+
+<span> </span><br />
+
+<span class="diff">diff --git a/projects/web-app-spring-adv2/src/main/webapp/view/home-page-validated.jsp b/projects/web-app-spring-adv2/src/main/webapp/view/home-page-validated.jsp</span><br />
+
+<span class="index">index 14cc658..a82cec8 100644</span><br />
+
+<span class="tree_minuses">--- a/projects/web-app-spring-adv2/src/main/webapp/view/home-page-validated.jsp</span><br />
+
+<span class="tree_pluses">+++ b/projects/web-app-spring-adv2/src/main/webapp/view/home-page-validated.jsp</span><br />
+
+<span class="two_ats">@@ -4,7 +4,10 @@</span><br />
+
+<span> &lt;!DOCTYPE html&gt;</span><br />
+
+<span> &lt;html&gt;&lt;head&gt;&lt;meta charset=&quot;UTF-8&quot;&gt;</span><br />
+
+<span> &lt;title&gt;Home page (validated)&lt;/title&gt;</span><br />
+
+<del>-&lt;style&gt;body {background-color: aliceblue;}&lt;/style&gt;</del><br />
+
+<ins>+&lt;style&gt;</ins><br />
+
+<ins>+body {background-color: aliceblue;}</ins><br />
+
+<ins>+.error {color: red; position: fixed; text-align: left; margin-left: 20px;}</ins><br />
+
+<ins>+&lt;/style&gt;</ins><br />
+
+<span> &lt;/head&gt;&lt;body&gt;</span><br />
+
+<span> </span><br />
+
+<span> &lt;h1&gt;Home page (validated)&lt;/h1&gt;</span><br />
+
+<span class="two_ats">@@ -12,7 +15,7 @@</span><br />
+
+<span> </span><br />
+
+<span> &lt;form:form action=&quot;validate-submit&quot; method=&quot;GET&quot; modelAttribute=&quot;dto&quot;&gt;</span><br />
+
+<span> &lt;p&gt;&lt;label for=&quot;name1&quot;&gt;Name 1: &lt;/label&gt;&lt;form:input id=&quot;name1&quot; path=&quot;name1&quot;/&gt;</span><br />
+
+<del>-&lt;form:errors path=&quot;name1&quot;/&gt;&lt;/p&gt;</del><br />
+
+<ins>+&lt;form:errors path=&quot;name1&quot; cssClass=&quot;error&quot;/&gt;&lt;/p&gt;</ins><br />
+
+<span> &lt;p&gt;&lt;label for=&quot;name2&quot;&gt;Name 2: &lt;/label&gt;&lt;form:input id=&quot;name2&quot; path=&quot;name2&quot;/&gt;&lt;/p&gt;</span><br />
+
+<span> &lt;input type=&quot;submit&quot; value=&quot;calculate&quot;/&gt;</span><br />
+
+<span> &lt;/form:form&gt;</span><br />
+
+</div>
+

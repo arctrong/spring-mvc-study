@@ -1,0 +1,159 @@
+<!--VARIABLES {"title": "Patch 15f922dd56577e9eb093a97741e7ea85c3f02d33"}--> 
+<div class="patch_block">
+
+<span class="diff">diff --git a/projects/web-app-spring-adv2/src/main/java/springmvcstudy2/config/MyApplicationConfig.java b/projects/web-app-spring-adv2/src/main/java/springmvcstudy2/config/MyApplicationConfig.java</span><br />
+
+<span class="index">index 20b1ce1..44ed9aa 100644</span><br />
+
+<span class="tree_minuses">--- a/projects/web-app-spring-adv2/src/main/java/springmvcstudy2/config/MyApplicationConfig.java</span><br />
+
+<span class="tree_pluses">+++ b/projects/web-app-spring-adv2/src/main/java/springmvcstudy2/config/MyApplicationConfig.java</span><br />
+
+<span class="two_ats">@@ -1,9 +1,13 @@</span><br />
+
+<span> package springmvcstudy2.config;</span><br />
+
+<span> </span><br />
+
+<ins>+import org.springframework.context.MessageSource;</ins><br />
+
+<span> import org.springframework.context.annotation.Bean;</span><br />
+
+<span> import org.springframework.context.annotation.ComponentScan;</span><br />
+
+<span> import org.springframework.context.annotation.Configuration;</span><br />
+
+<ins>+import org.springframework.context.support.ResourceBundleMessageSource;</ins><br />
+
+<span> import org.springframework.format.FormatterRegistry;</span><br />
+
+<ins>+import org.springframework.validation.Validator;</ins><br />
+
+<ins>+import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;</ins><br />
+
+<span> import org.springframework.web.servlet.config.annotation.EnableWebMvc;</span><br />
+
+<span> import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;</span><br />
+
+<span> import org.springframework.web.servlet.view.InternalResourceViewResolver;</span><br />
+
+<span class="two_ats">@@ -22,8 +26,25 @@ public class MyApplicationConfig implements WebMvcConfigurer {</span><br />
+
+<span>         return viewResolver;</span><br />
+
+<span>     }</span><br />
+
+<span> </span><br />
+
+<ins>+    public MessageSource messageSource() {</ins><br />
+
+<ins>+        ResourceBundleMessageSource messageSource = new ResourceBundleMessageSource();</ins><br />
+
+<ins>+        messageSource.setBasenames(&quot;messages&quot;);</ins><br />
+
+<ins>+        return messageSource;</ins><br />
+
+<ins>+    }</ins><br />
+
+<ins>+</ins><br />
+
+<ins>+    public LocalValidatorFactoryBean validator() {</ins><br />
+
+<ins>+        LocalValidatorFactoryBean localValidatorFactoryBean = new LocalValidatorFactoryBean();</ins><br />
+
+<ins>+        localValidatorFactoryBean.setValidationMessageSource(messageSource());</ins><br />
+
+<ins>+        return localValidatorFactoryBean;</ins><br />
+
+<ins>+    }</ins><br />
+
+<ins>+</ins><br />
+
+<span>     @Override</span><br />
+
+<span>     public void addFormatters(FormatterRegistry registry) {</span><br />
+
+<span>         registry.addFormatter(new PhoneNumberFormatter());</span><br />
+
+<span>     }</span><br />
+
+<ins>+</ins><br />
+
+<ins>+    @Override</ins><br />
+
+<ins>+    public Validator getValidator() {</ins><br />
+
+<ins>+        return validator();</ins><br />
+
+<ins>+    }</ins><br />
+
+<span> }</span><br />
+
+<span class="diff">diff --git a/projects/web-app-spring-adv2/src/main/java/springmvcstudy2/model/RegistrationDto.java b/projects/web-app-spring-adv2/src/main/java/springmvcstudy2/model/RegistrationDto.java</span><br />
+
+<span class="index">index 4ae96b2..1aa3ae5 100644</span><br />
+
+<span class="tree_minuses">--- a/projects/web-app-spring-adv2/src/main/java/springmvcstudy2/model/RegistrationDto.java</span><br />
+
+<span class="tree_pluses">+++ b/projects/web-app-spring-adv2/src/main/java/springmvcstudy2/model/RegistrationDto.java</span><br />
+
+<span class="two_ats">@@ -11,7 +11,7 @@ public class RegistrationDto {</span><br />
+
+<span>     private String[] hobbies;</span><br />
+
+<span>     private String gender;</span><br />
+
+<span> </span><br />
+
+<del>-    @Age(lower = 20, upper = 70, message = &quot;should be between {lower} and {upper}&quot;)</del><br />
+
+<ins>+    @Age(lower = 20, upper = 70)</ins><br />
+
+<span>     private Integer age;</span><br />
+
+<span> </span><br />
+
+<span>     private CommunicationDto communicationDto;</span><br />
+
+<span class="diff">diff --git a/projects/web-app-spring-adv2/src/main/java/springmvcstudy2/validators/Age.java b/projects/web-app-spring-adv2/src/main/java/springmvcstudy2/validators/Age.java</span><br />
+
+<span class="index">index 24ae486..2f06c74 100644</span><br />
+
+<span class="tree_minuses">--- a/projects/web-app-spring-adv2/src/main/java/springmvcstudy2/validators/Age.java</span><br />
+
+<span class="tree_pluses">+++ b/projects/web-app-spring-adv2/src/main/java/springmvcstudy2/validators/Age.java</span><br />
+
+<span class="two_ats">@@ -13,7 +13,7 @@ import java.lang.annotation.Target;</span><br />
+
+<span> @Constraint(validatedBy = AgeValidator.class)</span><br />
+
+<span> public @interface Age {</span><br />
+
+<span> </span><br />
+
+<del>-    String message() default &quot;Age should be between {lower}-{upper}&quot;;</del><br />
+
+<ins>+    String message() default &quot;{invalidAgeMessage}&quot;;</ins><br />
+
+<span>     int lower() default 18;</span><br />
+
+<span>     int upper() default 60;</span><br />
+
+<span> </span><br />
+
+<span class="diff">diff --git a/projects/web-app-spring-adv2/src/main/resources/messages.properties b/projects/web-app-spring-adv2/src/main/resources/messages.properties</span><br />
+
+<span>new file mode 100644</span><br />
+
+<span class="index">index 0000000..1838e52</span><br />
+
+<span class="tree_minuses">--- /dev/null</span><br />
+
+<span class="tree_pluses">+++ b/projects/web-app-spring-adv2/src/main/resources/messages.properties</span><br />
+
+<span class="two_ats">@@ -0,0 +1 @@</span><br />
+
+<ins>+invalidAgeMessage=age should be between {lower} and {upper}</ins><br />
+
+</div>
+

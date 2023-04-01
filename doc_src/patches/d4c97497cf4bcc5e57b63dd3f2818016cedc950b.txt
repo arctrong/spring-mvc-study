@@ -1,0 +1,185 @@
+<!--VARIABLES {"title": "Patch d4c97497cf4bcc5e57b63dd3f2818016cedc950b"}--> 
+<div class="patch_block">
+
+<span class="diff">diff --git a/projects/web-app-spring-adv2/src/main/java/springmvcstudy2/config/MyApplicationConfig.java b/projects/web-app-spring-adv2/src/main/java/springmvcstudy2/config/MyApplicationConfig.java</span><br />
+
+<span class="index">index 586d873..b53864b 100644</span><br />
+
+<span class="tree_minuses">--- a/projects/web-app-spring-adv2/src/main/java/springmvcstudy2/config/MyApplicationConfig.java</span><br />
+
+<span class="tree_pluses">+++ b/projects/web-app-spring-adv2/src/main/java/springmvcstudy2/config/MyApplicationConfig.java</span><br />
+
+<span class="two_ats">@@ -6,7 +6,7 @@ import org.springframework.context.annotation.Configuration;</span><br />
+
+<span> import org.springframework.web.servlet.config.annotation.EnableWebMvc;</span><br />
+
+<span> import org.springframework.web.servlet.view.InternalResourceViewResolver;</span><br />
+
+<span> </span><br />
+
+<del>-@EnableWebMvc</del><br />
+
+<ins>+//@EnableWebMvc</ins><br />
+
+<span> @Configuration</span><br />
+
+<span> @ComponentScan(basePackages = &quot;springmvcstudy2.controllers&quot;)</span><br />
+
+<span> public class MyApplicationConfig {</span><br />
+
+<span class="diff">diff --git a/projects/web-app-spring-adv2/src/main/java/springmvcstudy2/controllers/MyAppController.java b/projects/web-app-spring-adv2/src/main/java/springmvcstudy2/controllers/MyAppController.java</span><br />
+
+<span>new file mode 100644</span><br />
+
+<span class="index">index 0000000..24e02d3</span><br />
+
+<span class="tree_minuses">--- /dev/null</span><br />
+
+<span class="tree_pluses">+++ b/projects/web-app-spring-adv2/src/main/java/springmvcstudy2/controllers/MyAppController.java</span><br />
+
+<span class="two_ats">@@ -0,0 +1,26 @@</span><br />
+
+<ins>+package springmvcstudy2.controllers;</ins><br />
+
+<ins>+</ins><br />
+
+<ins>+import org.springframework.stereotype.Controller;</ins><br />
+
+<ins>+import org.springframework.ui.Model;</ins><br />
+
+<ins>+import org.springframework.web.bind.annotation.RequestMapping;</ins><br />
+
+<ins>+import org.springframework.web.bind.annotation.RequestParam;</ins><br />
+
+<ins>+</ins><br />
+
+<ins>+@Controller</ins><br />
+
+<ins>+public class MyAppController {</ins><br />
+
+<ins>+</ins><br />
+
+<ins>+    @RequestMapping(&quot;/&quot;)</ins><br />
+
+<ins>+    public String showHomePage() {</ins><br />
+
+<ins>+        return &quot;home-page&quot;;</ins><br />
+
+<ins>+    }</ins><br />
+
+<ins>+</ins><br />
+
+<ins>+    @RequestMapping(&quot;/calculate-page&quot;)</ins><br />
+
+<ins>+    public String showCalculatePage(@RequestParam(&quot;name1&quot;) String firstName,</ins><br />
+
+<ins>+                                    @RequestParam String name2,</ins><br />
+
+<ins>+                                    Model model) {</ins><br />
+
+<ins>+        model.addAttribute(&quot;firstName&quot;, firstName);</ins><br />
+
+<ins>+        model.addAttribute(&quot;secondName&quot;, name2);</ins><br />
+
+<ins>+</ins><br />
+
+<ins>+        return &quot;result-page&quot;;</ins><br />
+
+<ins>+    }</ins><br />
+
+<ins>+</ins><br />
+
+<ins>+}</ins><br />
+
+<span class="diff">diff --git a/projects/web-app-spring-adv2/src/main/webapp/view/home-page.jsp b/projects/web-app-spring-adv2/src/main/webapp/view/home-page.jsp</span><br />
+
+<span>new file mode 100644</span><br />
+
+<span class="index">index 0000000..58d0471</span><br />
+
+<span class="tree_minuses">--- /dev/null</span><br />
+
+<span class="tree_pluses">+++ b/projects/web-app-spring-adv2/src/main/webapp/view/home-page.jsp</span><br />
+
+<span class="two_ats">@@ -0,0 +1,18 @@</span><br />
+
+<ins>+&lt;%@ page language=&quot;java&quot; contentType=&quot;text/html; charset=UTF-8&quot; pageEncoding=&quot;UTF-8&quot;%&gt;</ins><br />
+
+<ins>+&lt;%@page isELIgnored=&quot;false&quot;%&gt;</ins><br />
+
+<ins>+&lt;!DOCTYPE html&gt;</ins><br />
+
+<ins>+&lt;html&gt;&lt;head&gt;&lt;meta charset=&quot;UTF-8&quot;&gt;</ins><br />
+
+<ins>+&lt;title&gt;Home page&lt;/title&gt;</ins><br />
+
+<ins>+&lt;style&gt;body {background-color: aliceblue;}&lt;/style&gt;</ins><br />
+
+<ins>+&lt;/head&gt;&lt;body&gt;</ins><br />
+
+<ins>+</ins><br />
+
+<ins>+&lt;h1&gt;Home page&lt;/h1&gt;</ins><br />
+
+<ins>+&lt;hr/&gt;</ins><br />
+
+<ins>+</ins><br />
+
+<ins>+&lt;form action=&quot;calculate-page&quot; method=&quot;GET&quot;&gt;</ins><br />
+
+<ins>+&lt;p&gt;&lt;label for=&quot;name1&quot;&gt;Name 1: &lt;/label&gt;&lt;input id=&quot;name1&quot; name=&quot;name1&quot;/&gt;&lt;/p&gt;</ins><br />
+
+<ins>+&lt;p&gt;&lt;label for=&quot;name2&quot;&gt;Name 2: &lt;/label&gt;&lt;input id=&quot;name2&quot; name=&quot;name2&quot;/&gt;&lt;/p&gt;</ins><br />
+
+<ins>+&lt;input type=&quot;submit&quot; value=&quot;calculate&quot;/&gt;</ins><br />
+
+<ins>+&lt;/form&gt;</ins><br />
+
+<ins>+</ins><br />
+
+<ins>+&lt;/body&gt;&lt;/html&gt;</ins><br />
+
+<span class="diff">diff --git a/projects/web-app-spring-adv2/src/main/webapp/view/result-page.jsp b/projects/web-app-spring-adv2/src/main/webapp/view/result-page.jsp</span><br />
+
+<span>new file mode 100644</span><br />
+
+<span class="index">index 0000000..8c3a990</span><br />
+
+<span class="tree_minuses">--- /dev/null</span><br />
+
+<span class="tree_pluses">+++ b/projects/web-app-spring-adv2/src/main/webapp/view/result-page.jsp</span><br />
+
+<span class="two_ats">@@ -0,0 +1,15 @@</span><br />
+
+<ins>+&lt;%@ page language=&quot;java&quot; contentType=&quot;text/html; charset=UTF-8&quot; pageEncoding=&quot;UTF-8&quot;%&gt;</ins><br />
+
+<ins>+&lt;%@page isELIgnored=&quot;false&quot;%&gt;</ins><br />
+
+<ins>+&lt;!DOCTYPE html&gt;</ins><br />
+
+<ins>+&lt;html&gt;&lt;head&gt;&lt;meta charset=&quot;UTF-8&quot;&gt;</ins><br />
+
+<ins>+&lt;title&gt;Result page&lt;/title&gt;</ins><br />
+
+<ins>+&lt;style&gt;body {background-color: aliceblue;}&lt;/style&gt;</ins><br />
+
+<ins>+&lt;/head&gt;&lt;body&gt;</ins><br />
+
+<ins>+</ins><br />
+
+<ins>+&lt;h1&gt;Result page&lt;/h1&gt;</ins><br />
+
+<ins>+&lt;hr/&gt;</ins><br />
+
+<ins>+</ins><br />
+
+<ins>+&lt;p&gt;Name 1 is: ${firstName}&lt;/p&gt;</ins><br />
+
+<ins>+&lt;p&gt;Name 2 is: ${secondName}&lt;/p&gt;</ins><br />
+
+<ins>+</ins><br />
+
+<ins>+&lt;/body&gt;&lt;/html&gt;</ins><br />
+
+</div>
+

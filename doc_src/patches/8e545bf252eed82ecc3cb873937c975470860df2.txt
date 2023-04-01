@@ -1,0 +1,77 @@
+<!--VARIABLES {"title": "Patch 8e545bf252eed82ecc3cb873937c975470860df2"}--> 
+<div class="patch_block">
+
+<span class="diff">diff --git a/projects/web-app-spring-adv2/src/main/java/springmvcstudy2/controllers/RegistrationController.java b/projects/web-app-spring-adv2/src/main/java/springmvcstudy2/controllers/RegistrationController.java</span><br />
+
+<span class="index">index cd9ade5..4df96ee 100644</span><br />
+
+<span class="tree_minuses">--- a/projects/web-app-spring-adv2/src/main/java/springmvcstudy2/controllers/RegistrationController.java</span><br />
+
+<span class="tree_pluses">+++ b/projects/web-app-spring-adv2/src/main/java/springmvcstudy2/controllers/RegistrationController.java</span><br />
+
+<span class="two_ats">@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;</span><br />
+
+<span> import springmvcstudy2.model.CommunicationDto;</span><br />
+
+<span> import springmvcstudy2.model.PhoneDto;</span><br />
+
+<span> import springmvcstudy2.model.RegistrationDto;</span><br />
+
+<ins>+import springmvcstudy2.propertyeditor.NamePropertyEditor;</ins><br />
+
+<span> </span><br />
+
+<span> import javax.validation.Valid;</span><br />
+
+<span> import java.util.List;</span><br />
+
+<span class="two_ats">@@ -46,5 +47,6 @@ public class RegistrationController {</span><br />
+
+<span> //        dataBinder.setDisallowedFields(&quot;name&quot;);</span><br />
+
+<span>         StringTrimmerEditor trimmerEditor = new StringTrimmerEditor(true);</span><br />
+
+<span>         dataBinder.registerCustomEditor(String.class, &quot;name&quot;, trimmerEditor);</span><br />
+
+<ins>+        dataBinder.registerCustomEditor(String.class, &quot;name&quot;, new NamePropertyEditor());</ins><br />
+
+<span>     }</span><br />
+
+<span> }</span><br />
+
+<span class="diff">diff --git a/projects/web-app-spring-adv2/src/main/java/springmvcstudy2/propertyeditor/NamePropertyEditor.java b/projects/web-app-spring-adv2/src/main/java/springmvcstudy2/propertyeditor/NamePropertyEditor.java</span><br />
+
+<span>new file mode 100644</span><br />
+
+<span class="index">index 0000000..2a8e64d</span><br />
+
+<span class="tree_minuses">--- /dev/null</span><br />
+
+<span class="tree_pluses">+++ b/projects/web-app-spring-adv2/src/main/java/springmvcstudy2/propertyeditor/NamePropertyEditor.java</span><br />
+
+<span class="two_ats">@@ -0,0 +1,11 @@</span><br />
+
+<ins>+package springmvcstudy2.propertyeditor;</ins><br />
+
+<ins>+</ins><br />
+
+<ins>+import java.beans.PropertyEditorSupport;</ins><br />
+
+<ins>+</ins><br />
+
+<ins>+public class NamePropertyEditor extends PropertyEditorSupport {</ins><br />
+
+<ins>+</ins><br />
+
+<ins>+    @Override</ins><br />
+
+<ins>+    public void setAsText(String text) throws IllegalArgumentException {</ins><br />
+
+<ins>+        setValue(text.toUpperCase());</ins><br />
+
+<ins>+    }</ins><br />
+
+<ins>+}</ins><br />
+
+</div>
+

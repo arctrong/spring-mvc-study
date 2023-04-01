@@ -1,0 +1,61 @@
+<!--VARIABLES {"title": "Patch 7d5cffdb51061f794a6a69b550da9e806ba4ae00"}--> 
+<div class="patch_block">
+
+<span class="diff">diff --git a/projects/web-app-spring-adv2/src/main/java/springmvcstudy2/controllers/RegistrationController.java b/projects/web-app-spring-adv2/src/main/java/springmvcstudy2/controllers/RegistrationController.java</span><br />
+
+<span class="index">index cee886d..6cab4d1 100644</span><br />
+
+<span class="tree_minuses">--- a/projects/web-app-spring-adv2/src/main/java/springmvcstudy2/controllers/RegistrationController.java</span><br />
+
+<span class="tree_pluses">+++ b/projects/web-app-spring-adv2/src/main/java/springmvcstudy2/controllers/RegistrationController.java</span><br />
+
+<span class="two_ats">@@ -43,6 +43,8 @@ public class RegistrationController {</span><br />
+
+<span>         emailValidator.validate(userReg, result);</span><br />
+
+<span> </span><br />
+
+<span>         if (result.hasErrors()) {</span><br />
+
+<ins>+            System.out.println(&quot;VALIDATION: registration form has errors:&quot;);</ins><br />
+
+<ins>+            result.getAllErrors().forEach(System.out::println);</ins><br />
+
+<span>             return &quot;registration-page&quot;;</span><br />
+
+<span>         }</span><br />
+
+<span>         return &quot;registration-success&quot;;</span><br />
+
+<span class="diff">diff --git a/projects/web-app-spring-adv2/src/main/resources/messages.properties b/projects/web-app-spring-adv2/src/main/resources/messages.properties</span><br />
+
+<span class="index">index d8819a3..c9749a0 100644</span><br />
+
+<span class="tree_minuses">--- a/projects/web-app-spring-adv2/src/main/resources/messages.properties</span><br />
+
+<span class="tree_pluses">+++ b/projects/web-app-spring-adv2/src/main/resources/messages.properties</span><br />
+
+<span class="two_ats">@@ -1,5 +1,6 @@</span><br />
+
+<span> invalidAgeMessage={0} should be between {1} and {2}</span><br />
+
+<del>-email.empty=&quot;Email should not be empty&quot;</del><br />
+
+<del>-email.invalidDomain=&quot;Email should end with &#x27;@certain-domain.com&#x27;&quot;</del><br />
+
+<ins>+email.empty=Email should not be empty</ins><br />
+
+<ins>+email.invalidDomain=Email should end with &#x27;@certain-domain.com&#x27;</ins><br />
+
+<span> should_not_be_blank=Field &#x27;&#x27;{0}&#x27;&#x27; SHOULD NOT BE BLANK</span><br />
+
+<del>-age=USER AGE</del><br />
+
+<span>\ No newline at end of file</span><br />
+
+<ins>+age=USER AGE</ins><br />
+
+<ins>+typeMismatch.java.lang.Integer=Field {0} should be a valid number</ins><br />
+
+</div>
+

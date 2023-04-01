@@ -1,0 +1,173 @@
+<!--VARIABLES {"title": "Patch 2b0e4b15df7aac1076902411e6cc99b7c98df631"}--> 
+<div class="patch_block">
+
+<span class="diff">diff --git a/projects/web-app-spring-adv2/src/main/java/springmvcstudy2/controllers/MyAppController.java b/projects/web-app-spring-adv2/src/main/java/springmvcstudy2/controllers/MyAppController.java</span><br />
+
+<span class="index">index 2ea18fe..01becc6 100644</span><br />
+
+<span class="tree_minuses">--- a/projects/web-app-spring-adv2/src/main/java/springmvcstudy2/controllers/MyAppController.java</span><br />
+
+<span class="tree_pluses">+++ b/projects/web-app-spring-adv2/src/main/java/springmvcstudy2/controllers/MyAppController.java</span><br />
+
+<span class="two_ats">@@ -29,4 +29,18 @@ public class MyAppController {</span><br />
+
+<span>         model.addAttribute(&quot;secondName&quot;, dto.getName2());</span><br />
+
+<span>         return &quot;result-page&quot;;</span><br />
+
+<span>     }</span><br />
+
+<ins>+</ins><br />
+
+<ins>+    @RequestMapping(&quot;/spring&quot;)</ins><br />
+
+<ins>+    public String showHomePageSpring(Model model) {</ins><br />
+
+<ins>+        UserInfoDto dto = new UserInfoDto();</ins><br />
+
+<ins>+        model.addAttribute(&quot;userInfo&quot;, dto);</ins><br />
+
+<ins>+        return &quot;home-page-spring&quot;;</ins><br />
+
+<ins>+    }</ins><br />
+
+<ins>+</ins><br />
+
+<ins>+    @RequestMapping(&quot;/calculate-page-springs&quot;)</ins><br />
+
+<ins>+    public String showCalculatePageSpring(UserInfoDto dto, Model model) {</ins><br />
+
+<ins>+        model.addAttribute(&quot;dto&quot;, dto);</ins><br />
+
+<ins>+        return &quot;result-page-spring&quot;;</ins><br />
+
+<ins>+    }</ins><br />
+
+<ins>+</ins><br />
+
+<span> }</span><br />
+
+<span class="diff">diff --git a/projects/web-app-spring-adv2/src/main/java/springmvcstudy2/model/UserInfoDto.java b/projects/web-app-spring-adv2/src/main/java/springmvcstudy2/model/UserInfoDto.java</span><br />
+
+<span class="index">index c71ded8..74f346e 100644</span><br />
+
+<span class="tree_minuses">--- a/projects/web-app-spring-adv2/src/main/java/springmvcstudy2/model/UserInfoDto.java</span><br />
+
+<span class="tree_pluses">+++ b/projects/web-app-spring-adv2/src/main/java/springmvcstudy2/model/UserInfoDto.java</span><br />
+
+<span class="two_ats">@@ -2,8 +2,8 @@ package springmvcstudy2.model;</span><br />
+
+<span> </span><br />
+
+<span> public class UserInfoDto {</span><br />
+
+<span> </span><br />
+
+<del>-    private String name1;</del><br />
+
+<del>-    private String name2;</del><br />
+
+<ins>+    private String name1 = &quot;initial name 1&quot;;</ins><br />
+
+<ins>+    private String name2 = &quot;initial name 2&quot;;</ins><br />
+
+<span> </span><br />
+
+<span>     @Override</span><br />
+
+<span>     public String toString() {</span><br />
+
+<span class="diff">diff --git a/projects/web-app-spring-adv2/src/main/webapp/view/home-page-spring.jsp b/projects/web-app-spring-adv2/src/main/webapp/view/home-page-spring.jsp</span><br />
+
+<span>new file mode 100644</span><br />
+
+<span class="index">index 0000000..645142d</span><br />
+
+<span class="tree_minuses">--- /dev/null</span><br />
+
+<span class="tree_pluses">+++ b/projects/web-app-spring-adv2/src/main/webapp/view/home-page-spring.jsp</span><br />
+
+<span class="two_ats">@@ -0,0 +1,19 @@</span><br />
+
+<ins>+&lt;%@ page language=&quot;java&quot; contentType=&quot;text/html; charset=UTF-8&quot; pageEncoding=&quot;UTF-8&quot;%&gt;</ins><br />
+
+<ins>+&lt;%@ taglib prefix=&quot;form&quot; uri=&quot;http://www.springframework.org/tags/form&quot;%&gt;</ins><br />
+
+<ins>+&lt;%@page isELIgnored=&quot;false&quot;%&gt;</ins><br />
+
+<ins>+&lt;!DOCTYPE html&gt;</ins><br />
+
+<ins>+&lt;html&gt;&lt;head&gt;&lt;meta charset=&quot;UTF-8&quot;&gt;</ins><br />
+
+<ins>+&lt;title&gt;Home page (Spring)&lt;/title&gt;</ins><br />
+
+<ins>+&lt;style&gt;body {background-color: aliceblue;}&lt;/style&gt;</ins><br />
+
+<ins>+&lt;/head&gt;&lt;body&gt;</ins><br />
+
+<ins>+</ins><br />
+
+<ins>+&lt;h1&gt;Home page with Spring form&lt;/h1&gt;</ins><br />
+
+<ins>+&lt;hr/&gt;</ins><br />
+
+<ins>+</ins><br />
+
+<ins>+&lt;form:form action=&quot;calculate-page-springs&quot; method=&quot;GET&quot; modelAttribute=&quot;userInfo&quot;&gt;</ins><br />
+
+<ins>+&lt;p&gt;&lt;label for=&quot;name1&quot;&gt;Name 1: &lt;/label&gt;&lt;form:input id=&quot;name1&quot; path=&quot;name1&quot;/&gt;&lt;/p&gt;</ins><br />
+
+<ins>+&lt;p&gt;&lt;label for=&quot;name2&quot;&gt;Name 2: &lt;/label&gt;&lt;form:input id=&quot;name2&quot; path=&quot;name2&quot;/&gt;&lt;/p&gt;</ins><br />
+
+<ins>+&lt;input type=&quot;submit&quot; value=&quot;calculate&quot;/&gt;</ins><br />
+
+<ins>+&lt;/form:form&gt;</ins><br />
+
+<ins>+</ins><br />
+
+<ins>+&lt;/body&gt;&lt;/html&gt;</ins><br />
+
+<span class="diff">diff --git a/projects/web-app-spring-adv2/src/main/webapp/view/result-page-spring.jsp b/projects/web-app-spring-adv2/src/main/webapp/view/result-page-spring.jsp</span><br />
+
+<span>new file mode 100644</span><br />
+
+<span class="index">index 0000000..10f1288</span><br />
+
+<span class="tree_minuses">--- /dev/null</span><br />
+
+<span class="tree_pluses">+++ b/projects/web-app-spring-adv2/src/main/webapp/view/result-page-spring.jsp</span><br />
+
+<span class="two_ats">@@ -0,0 +1,15 @@</span><br />
+
+<ins>+&lt;%@ page language=&quot;java&quot; contentType=&quot;text/html; charset=UTF-8&quot; pageEncoding=&quot;UTF-8&quot;%&gt;</ins><br />
+
+<ins>+&lt;%@page isELIgnored=&quot;false&quot;%&gt;</ins><br />
+
+<ins>+&lt;!DOCTYPE html&gt;</ins><br />
+
+<ins>+&lt;html&gt;&lt;head&gt;&lt;meta charset=&quot;UTF-8&quot;&gt;</ins><br />
+
+<ins>+&lt;title&gt;Result page (Spring)&lt;/title&gt;</ins><br />
+
+<ins>+&lt;style&gt;body {background-color: aliceblue;}&lt;/style&gt;</ins><br />
+
+<ins>+&lt;/head&gt;&lt;body&gt;</ins><br />
+
+<ins>+</ins><br />
+
+<ins>+&lt;h1&gt;Result page (Spring)&lt;/h1&gt;</ins><br />
+
+<ins>+&lt;hr/&gt;</ins><br />
+
+<ins>+</ins><br />
+
+<ins>+&lt;p&gt;Name 1 is: ${dto.name1}&lt;/p&gt;</ins><br />
+
+<ins>+&lt;p&gt;Name 2 is: ${dto.name2}&lt;/p&gt;</ins><br />
+
+<ins>+</ins><br />
+
+<ins>+&lt;/body&gt;&lt;/html&gt;</ins><br />
+
+</div>
+

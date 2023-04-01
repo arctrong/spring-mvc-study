@@ -1,0 +1,55 @@
+<!--VARIABLES {"title": "Patch 606c127f52ba035e593edec8ec60f20552916595"}--> 
+<div class="patch_block">
+
+<span class="diff">diff --git a/projects/web-app-spring-adv2/src/main/java/springmvcstudy2/model/RegistrationDto.java b/projects/web-app-spring-adv2/src/main/java/springmvcstudy2/model/RegistrationDto.java</span><br />
+
+<span class="index">index 52e6145..c16a645 100644</span><br />
+
+<span class="tree_minuses">--- a/projects/web-app-spring-adv2/src/main/java/springmvcstudy2/model/RegistrationDto.java</span><br />
+
+<span class="tree_pluses">+++ b/projects/web-app-spring-adv2/src/main/java/springmvcstudy2/model/RegistrationDto.java</span><br />
+
+<span class="two_ats">@@ -6,7 +6,7 @@ import javax.validation.constraints.NotEmpty;</span><br />
+
+<span> </span><br />
+
+<span> public class RegistrationDto {</span><br />
+
+<span> </span><br />
+
+<del>-    @NotEmpty</del><br />
+
+<ins>+    @NotEmpty(message = &quot;{should_not_be_blank}&quot;)</ins><br />
+
+<span>     private String name;</span><br />
+
+<span>     private String userName;</span><br />
+
+<span>     private char[] password;</span><br />
+
+<span class="diff">diff --git a/projects/web-app-spring-adv2/src/main/resources/messages.properties b/projects/web-app-spring-adv2/src/main/resources/messages.properties</span><br />
+
+<span class="index">index c35ebeb..d8819a3 100644</span><br />
+
+<span class="tree_minuses">--- a/projects/web-app-spring-adv2/src/main/resources/messages.properties</span><br />
+
+<span class="tree_pluses">+++ b/projects/web-app-spring-adv2/src/main/resources/messages.properties</span><br />
+
+<span class="two_ats">@@ -1,3 +1,5 @@</span><br />
+
+<del>-invalidAgeMessage=age should be between {lower} and {upper}</del><br />
+
+<ins>+invalidAgeMessage={0} should be between {1} and {2}</ins><br />
+
+<span> email.empty=&quot;Email should not be empty&quot;</span><br />
+
+<span> email.invalidDomain=&quot;Email should end with &#x27;@certain-domain.com&#x27;&quot;</span><br />
+
+<ins>+should_not_be_blank=Field &#x27;&#x27;{0}&#x27;&#x27; SHOULD NOT BE BLANK</ins><br />
+
+<ins>+age=USER AGE</ins><br />
+
+<span>\ No newline at end of file</span><br />
+
+</div>
+

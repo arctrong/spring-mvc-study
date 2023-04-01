@@ -1,0 +1,67 @@
+<!--VARIABLES {"title": "Patch 8995a8f64dd67ad319ce7650a4ee330eab28c4b8"}--> 
+<div class="patch_block">
+
+<span class="diff">diff --git a/projects/web-app-spring-adv2/src/main/java/springmvcstudy2/controllers/MyAppController.java b/projects/web-app-spring-adv2/src/main/java/springmvcstudy2/controllers/MyAppController.java</span><br />
+
+<span class="index">index 01becc6..420f8eb 100644</span><br />
+
+<span class="tree_minuses">--- a/projects/web-app-spring-adv2/src/main/java/springmvcstudy2/controllers/MyAppController.java</span><br />
+
+<span class="tree_pluses">+++ b/projects/web-app-spring-adv2/src/main/java/springmvcstudy2/controllers/MyAppController.java</span><br />
+
+<span class="two_ats">@@ -2,6 +2,7 @@ package springmvcstudy2.controllers;</span><br />
+
+<span> </span><br />
+
+<span> import org.springframework.stereotype.Controller;</span><br />
+
+<span> import org.springframework.ui.Model;</span><br />
+
+<ins>+import org.springframework.web.bind.annotation.ModelAttribute;</ins><br />
+
+<span> import org.springframework.web.bind.annotation.RequestMapping;</span><br />
+
+<span> import org.springframework.web.bind.annotation.RequestParam;</span><br />
+
+<span> import springmvcstudy2.model.UserInfoDto;</span><br />
+
+<span class="two_ats">@@ -31,16 +32,12 @@ public class MyAppController {</span><br />
+
+<span>     }</span><br />
+
+<span> </span><br />
+
+<span>     @RequestMapping(&quot;/spring&quot;)</span><br />
+
+<del>-    public String showHomePageSpring(Model model) {</del><br />
+
+<del>-        UserInfoDto dto = new UserInfoDto();</del><br />
+
+<del>-        model.addAttribute(&quot;userInfo&quot;, dto);</del><br />
+
+<ins>+    public String showHomePageSpring(@ModelAttribute(&quot;userInfo&quot;) UserInfoDto dto) {</ins><br />
+
+<span>         return &quot;home-page-spring&quot;;</span><br />
+
+<span>     }</span><br />
+
+<span> </span><br />
+
+<span>     @RequestMapping(&quot;/calculate-page-springs&quot;)</span><br />
+
+<del>-    public String showCalculatePageSpring(UserInfoDto dto, Model model) {</del><br />
+
+<del>-        model.addAttribute(&quot;dto&quot;, dto);</del><br />
+
+<ins>+    public String showCalculatePageSpring(@ModelAttribute(&quot;dto&quot;) UserInfoDto dto) {</ins><br />
+
+<span>         return &quot;result-page-spring&quot;;</span><br />
+
+<span>     }</span><br />
+
+<del>-</del><br />
+
+<span> }</span><br />
+
+</div>
+

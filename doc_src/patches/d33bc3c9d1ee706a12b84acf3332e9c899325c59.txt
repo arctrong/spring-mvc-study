@@ -1,0 +1,57 @@
+<!--VARIABLES {"title": "Patch d33bc3c9d1ee706a12b84acf3332e9c899325c59"}--> 
+<div class="patch_block">
+
+<span class="diff">diff --git a/projects/web-app-spring/src/main/java/springmvcstudy/controllers/JspHelloController.java b/projects/web-app-spring/src/main/java/springmvcstudy/controllers/JspHelloController.java</span><br />
+
+<span class="index">index 7db89b7..8a01b42 100644</span><br />
+
+<span class="tree_minuses">--- a/projects/web-app-spring/src/main/java/springmvcstudy/controllers/JspHelloController.java</span><br />
+
+<span class="tree_pluses">+++ b/projects/web-app-spring/src/main/java/springmvcstudy/controllers/JspHelloController.java</span><br />
+
+<span class="two_ats">@@ -9,6 +9,6 @@ public class JspHelloController {</span><br />
+
+<span> </span><br />
+
+<span>     @RequestMapping(&quot;/hello&quot;)</span><br />
+
+<span>     public String getJspHello() {</span><br />
+
+<del>-        return &quot;/view/jspHello.jsp&quot;;</del><br />
+
+<ins>+        return &quot;jspHello&quot;;</ins><br />
+
+<span>     }</span><br />
+
+<span> }</span><br />
+
+<span class="diff">diff --git a/projects/web-app-spring/src/main/webapp/WEB-INF/front-controller-servlet.xml b/projects/web-app-spring/src/main/webapp/WEB-INF/front-controller-servlet.xml</span><br />
+
+<span class="index">index c93fd1f..fb685e3 100644</span><br />
+
+<span class="tree_minuses">--- a/projects/web-app-spring/src/main/webapp/WEB-INF/front-controller-servlet.xml</span><br />
+
+<span class="tree_pluses">+++ b/projects/web-app-spring/src/main/webapp/WEB-INF/front-controller-servlet.xml</span><br />
+
+<span class="two_ats">@@ -9,4 +9,9 @@</span><br />
+
+<span> </span><br />
+
+<span>     &lt;context:component-scan base-package=&quot;springmvcstudy.controllers&quot; /&gt;</span><br />
+
+<span> </span><br />
+
+<ins>+    &lt;bean class=&quot;org.springframework.web.servlet.view.InternalResourceViewResolver&quot;&gt;</ins><br />
+
+<ins>+        &lt;property name=&quot;prefix&quot; value=&quot;/view/&quot;/&gt;</ins><br />
+
+<ins>+        &lt;property name=&quot;suffix&quot; value=&quot;.jsp&quot;/&gt;</ins><br />
+
+<ins>+    &lt;/bean&gt;</ins><br />
+
+<ins>+</ins><br />
+
+<span> &lt;/beans&gt;</span><br />
+
+</div>
+

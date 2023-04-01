@@ -1,0 +1,173 @@
+<!--VARIABLES {"title": "Patch f72bf85b802ad02c85c341d0df5db40f71668922"}--> 
+<div class="patch_block">
+
+<span class="diff">diff --git a/projects/web-app-spring-adv1/src/main/java/springmvcstudy2/config/MyApplicationInitializer.java b/projects/web-app-spring-adv1/src/main/java/springmvcstudy2/config/MyApplicationInitializer.java</span><br />
+
+<span class="index">index 7887974..ac6e8f7 100644</span><br />
+
+<span class="tree_minuses">--- a/projects/web-app-spring-adv1/src/main/java/springmvcstudy2/config/MyApplicationInitializer.java</span><br />
+
+<span class="tree_pluses">+++ b/projects/web-app-spring-adv1/src/main/java/springmvcstudy2/config/MyApplicationInitializer.java</span><br />
+
+<span class="two_ats">@@ -1,16 +1,14 @@</span><br />
+
+<span> package springmvcstudy2.config;</span><br />
+
+<span> </span><br />
+
+<del>-import org.springframework.core.annotation.Order;</del><br />
+
+<span> import org.springframework.web.WebApplicationInitializer;</span><br />
+
+<span> import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;</span><br />
+
+<del>-import org.springframework.web.context.support.XmlWebApplicationContext;</del><br />
+
+<span> import org.springframework.web.servlet.DispatcherServlet;</span><br />
+
+<span> </span><br />
+
+<span> import javax.servlet.ServletContext;</span><br />
+
+<span> import javax.servlet.ServletException;</span><br />
+
+<span> import javax.servlet.ServletRegistration;</span><br />
+
+<span> </span><br />
+
+<del>-@Order(1)</del><br />
+
+<ins>+//@Order(1)</ins><br />
+
+<span> public class MyApplicationInitializer implements WebApplicationInitializer {</span><br />
+
+<span> </span><br />
+
+<span>     @Override</span><br />
+
+<span class="diff">diff --git a/projects/web-app-spring-adv1/src/main/java/springmvcstudy2/config/MyQuickApplicationInitializer.java b/projects/web-app-spring-adv1/src/main/java/springmvcstudy2/config/MyQuickApplicationInitializer.java</span><br />
+
+<span class="index">index 5513037..b119c97 100644</span><br />
+
+<span class="tree_minuses">--- a/projects/web-app-spring-adv1/src/main/java/springmvcstudy2/config/MyQuickApplicationInitializer.java</span><br />
+
+<span class="tree_pluses">+++ b/projects/web-app-spring-adv1/src/main/java/springmvcstudy2/config/MyQuickApplicationInitializer.java</span><br />
+
+<span class="two_ats">@@ -1,24 +1,22 @@</span><br />
+
+<span> package springmvcstudy2.config;</span><br />
+
+<span> </span><br />
+
+<del>-import org.springframework.core.annotation.Order;</del><br />
+
+<del>-import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;</del><br />
+
+<ins>+//@Order(2)</ins><br />
+
+<ins>+public class MyQuickApplicationInitializer</ins><br />
+
+<ins>+//        extends AbstractAnnotationConfigDispatcherServletInitializer</ins><br />
+
+<ins>+{</ins><br />
+
+<span> </span><br />
+
+<del>-@Order(2)</del><br />
+
+<del>-public class MyQuickApplicationInitializer extends</del><br />
+
+<del>-        AbstractAnnotationConfigDispatcherServletInitializer {</del><br />
+
+<del>-</del><br />
+
+<del>-    @Override</del><br />
+
+<ins>+//    @Override</ins><br />
+
+<span>     protected Class&lt;?&gt;[] getRootConfigClasses() {</span><br />
+
+<span>         return null;</span><br />
+
+<span>     }</span><br />
+
+<span> </span><br />
+
+<del>-    @Override</del><br />
+
+<ins>+//    @Override</ins><br />
+
+<span>     protected Class&lt;?&gt;[] getServletConfigClasses() {</span><br />
+
+<span>         System.out.println(this.getClass().getSimpleName() + &quot; getServletConfigClasses method called&quot;);</span><br />
+
+<span>         return new Class&lt;?&gt;[]{MyApplicationConfig.class};</span><br />
+
+<span>     }</span><br />
+
+<span> </span><br />
+
+<del>-    @Override</del><br />
+
+<ins>+//    @Override</ins><br />
+
+<span>     protected String[] getServletMappings() {</span><br />
+
+<span>         System.out.println(this.getClass().getSimpleName() + &quot; getServletMappings method called&quot;);</span><br />
+
+<span>         return new String[]{&quot;/ui/*&quot;, &quot;/ui1/*&quot;};</span><br />
+
+<span class="diff">diff --git a/projects/web-app-spring-adv1/src/main/java/springmvcstudy2/controllers/HelloController.java b/projects/web-app-spring-adv1/src/main/java/springmvcstudy2/controllers/HelloController.java</span><br />
+
+<span class="index">index 3264476..271a0c4 100644</span><br />
+
+<span class="tree_minuses">--- a/projects/web-app-spring-adv1/src/main/java/springmvcstudy2/controllers/HelloController.java</span><br />
+
+<span class="tree_pluses">+++ b/projects/web-app-spring-adv1/src/main/java/springmvcstudy2/controllers/HelloController.java</span><br />
+
+<span class="two_ats">@@ -2,16 +2,15 @@ package springmvcstudy2.controllers;</span><br />
+
+<span> </span><br />
+
+<span> import org.springframework.stereotype.Controller;</span><br />
+
+<span> import org.springframework.web.bind.annotation.RequestMapping;</span><br />
+
+<del>-import org.springframework.web.bind.annotation.ResponseBody;</del><br />
+
+<span> </span><br />
+
+<span> @Controller</span><br />
+
+<span> public class HelloController {</span><br />
+
+<span> </span><br />
+
+<del>-    @RequestMapping(&quot;/hello&quot;)</del><br />
+
+<del>-    @ResponseBody</del><br />
+
+<del>-    public String sayHello() {</del><br />
+
+<del>-        return &quot;Hi from the &quot; + this.getClass().getSimpleName();</del><br />
+
+<del>-    }</del><br />
+
+<ins>+//    @RequestMapping(&quot;/hello&quot;)</ins><br />
+
+<ins>+//    @ResponseBody</ins><br />
+
+<ins>+//    public String sayHello() {</ins><br />
+
+<ins>+//        return &quot;Hi from the &quot; + this.getClass().getSimpleName();</ins><br />
+
+<ins>+//    }</ins><br />
+
+<span> </span><br />
+
+<span>     @RequestMapping(&quot;/hello-jsp&quot;)</span><br />
+
+<span>     public String helloJsp() {</span><br />
+
+</div>
+

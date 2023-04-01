@@ -1,0 +1,159 @@
+<!--VARIABLES {"title": "Patch 535ac38da2941822bae538692fec190161d2bf62"}--> 
+<div class="patch_block">
+
+<span class="diff">diff --git a/projects/web-app-spring-adv2/src/main/java/springmvcstudy2/controllers/MyAppController.java b/projects/web-app-spring-adv2/src/main/java/springmvcstudy2/controllers/MyAppController.java</span><br />
+
+<span class="index">index 24e02d3..2ea18fe 100644</span><br />
+
+<span class="tree_minuses">--- a/projects/web-app-spring-adv2/src/main/java/springmvcstudy2/controllers/MyAppController.java</span><br />
+
+<span class="tree_pluses">+++ b/projects/web-app-spring-adv2/src/main/java/springmvcstudy2/controllers/MyAppController.java</span><br />
+
+<span class="two_ats">@@ -4,6 +4,7 @@ import org.springframework.stereotype.Controller;</span><br />
+
+<span> import org.springframework.ui.Model;</span><br />
+
+<span> import org.springframework.web.bind.annotation.RequestMapping;</span><br />
+
+<span> import org.springframework.web.bind.annotation.RequestParam;</span><br />
+
+<ins>+import springmvcstudy2.model.UserInfoDto;</ins><br />
+
+<span> </span><br />
+
+<span> @Controller</span><br />
+
+<span> public class MyAppController {</span><br />
+
+<span class="two_ats">@@ -19,8 +20,13 @@ public class MyAppController {</span><br />
+
+<span>                                     Model model) {</span><br />
+
+<span>         model.addAttribute(&quot;firstName&quot;, firstName);</span><br />
+
+<span>         model.addAttribute(&quot;secondName&quot;, name2);</span><br />
+
+<del>-</del><br />
+
+<span>         return &quot;result-page&quot;;</span><br />
+
+<span>     }</span><br />
+
+<span> </span><br />
+
+<ins>+    @RequestMapping(&quot;/calculate-page-dto&quot;)</ins><br />
+
+<ins>+    public String showCalculatePageDto(UserInfoDto dto, Model model) {</ins><br />
+
+<ins>+        model.addAttribute(&quot;firstName&quot;, dto.getName1());</ins><br />
+
+<ins>+        model.addAttribute(&quot;secondName&quot;, dto.getName2());</ins><br />
+
+<ins>+        return &quot;result-page&quot;;</ins><br />
+
+<ins>+    }</ins><br />
+
+<span> }</span><br />
+
+<span class="diff">diff --git a/projects/web-app-spring-adv2/src/main/java/springmvcstudy2/model/UserInfoDto.java b/projects/web-app-spring-adv2/src/main/java/springmvcstudy2/model/UserInfoDto.java</span><br />
+
+<span>new file mode 100644</span><br />
+
+<span class="index">index 0000000..c71ded8</span><br />
+
+<span class="tree_minuses">--- /dev/null</span><br />
+
+<span class="tree_pluses">+++ b/projects/web-app-spring-adv2/src/main/java/springmvcstudy2/model/UserInfoDto.java</span><br />
+
+<span class="two_ats">@@ -0,0 +1,31 @@</span><br />
+
+<ins>+package springmvcstudy2.model;</ins><br />
+
+<ins>+</ins><br />
+
+<ins>+public class UserInfoDto {</ins><br />
+
+<ins>+</ins><br />
+
+<ins>+    private String name1;</ins><br />
+
+<ins>+    private String name2;</ins><br />
+
+<ins>+</ins><br />
+
+<ins>+    @Override</ins><br />
+
+<ins>+    public String toString() {</ins><br />
+
+<ins>+        return &quot;UserInfoDto{&quot; +</ins><br />
+
+<ins>+                &quot;name1=&#x27;&quot; + name1 + &#x27;\&#x27;&#x27; +</ins><br />
+
+<ins>+                &quot;, name2=&#x27;&quot; + name2 + &#x27;\&#x27;&#x27; +</ins><br />
+
+<ins>+                &#x27;}&#x27;;</ins><br />
+
+<ins>+    }</ins><br />
+
+<ins>+</ins><br />
+
+<ins>+    public String getName1() {</ins><br />
+
+<ins>+        return name1;</ins><br />
+
+<ins>+    }</ins><br />
+
+<ins>+</ins><br />
+
+<ins>+    public void setName1(String name1) {</ins><br />
+
+<ins>+        this.name1 = name1;</ins><br />
+
+<ins>+    }</ins><br />
+
+<ins>+</ins><br />
+
+<ins>+    public String getName2() {</ins><br />
+
+<ins>+        return name2;</ins><br />
+
+<ins>+    }</ins><br />
+
+<ins>+</ins><br />
+
+<ins>+    public void setName2(String name2) {</ins><br />
+
+<ins>+        this.name2 = name2;</ins><br />
+
+<ins>+    }</ins><br />
+
+<ins>+}</ins><br />
+
+<span class="diff">diff --git a/projects/web-app-spring-adv2/src/main/webapp/view/home-page.jsp b/projects/web-app-spring-adv2/src/main/webapp/view/home-page.jsp</span><br />
+
+<span class="index">index 58d0471..e3b12b7 100644</span><br />
+
+<span class="tree_minuses">--- a/projects/web-app-spring-adv2/src/main/webapp/view/home-page.jsp</span><br />
+
+<span class="tree_pluses">+++ b/projects/web-app-spring-adv2/src/main/webapp/view/home-page.jsp</span><br />
+
+<span class="two_ats">@@ -9,7 +9,7 @@</span><br />
+
+<span> &lt;h1&gt;Home page&lt;/h1&gt;</span><br />
+
+<span> &lt;hr/&gt;</span><br />
+
+<span> </span><br />
+
+<del>-&lt;form action=&quot;calculate-page&quot; method=&quot;GET&quot;&gt;</del><br />
+
+<ins>+&lt;form action=&quot;calculate-page-dto&quot; method=&quot;GET&quot;&gt;</ins><br />
+
+<span> &lt;p&gt;&lt;label for=&quot;name1&quot;&gt;Name 1: &lt;/label&gt;&lt;input id=&quot;name1&quot; name=&quot;name1&quot;/&gt;&lt;/p&gt;</span><br />
+
+<span> &lt;p&gt;&lt;label for=&quot;name2&quot;&gt;Name 2: &lt;/label&gt;&lt;input id=&quot;name2&quot; name=&quot;name2&quot;/&gt;&lt;/p&gt;</span><br />
+
+<span> &lt;input type=&quot;submit&quot; value=&quot;calculate&quot;/&gt;</span><br />
+
+</div>
+

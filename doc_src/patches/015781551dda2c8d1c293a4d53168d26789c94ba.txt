@@ -1,0 +1,71 @@
+<!--VARIABLES {"title": "Patch 015781551dda2c8d1c293a4d53168d26789c94ba"}--> 
+<div class="patch_block">
+
+<span class="diff">diff --git a/projects/web-app-spring-adv1/src/main/java/springmvcstudy2/config/MyApplicationInitializer.java b/projects/web-app-spring-adv1/src/main/java/springmvcstudy2/config/MyApplicationInitializer.java</span><br />
+
+<span class="index">index 6f644a8..7887974 100644</span><br />
+
+<span class="tree_minuses">--- a/projects/web-app-spring-adv1/src/main/java/springmvcstudy2/config/MyApplicationInitializer.java</span><br />
+
+<span class="tree_pluses">+++ b/projects/web-app-spring-adv1/src/main/java/springmvcstudy2/config/MyApplicationInitializer.java</span><br />
+
+<span class="two_ats">@@ -10,12 +10,10 @@ import javax.servlet.ServletContext;</span><br />
+
+<span> import javax.servlet.ServletException;</span><br />
+
+<span> import javax.servlet.ServletRegistration;</span><br />
+
+<span> </span><br />
+
+<del>-//@Order(1)</del><br />
+
+<del>-public class MyApplicationInitializer</del><br />
+
+<del>-//        implements WebApplicationInitializer</del><br />
+
+<del>-{</del><br />
+
+<ins>+@Order(1)</ins><br />
+
+<ins>+public class MyApplicationInitializer implements WebApplicationInitializer {</ins><br />
+
+<span> </span><br />
+
+<del>-//    @Override</del><br />
+
+<ins>+    @Override</ins><br />
+
+<span>     public void onStartup(ServletContext servletContext) throws ServletException {</span><br />
+
+<span> </span><br />
+
+<span>         System.out.println(this.getClass().getSimpleName() + &quot; onStartup method called&quot;);</span><br />
+
+<span class="diff">diff --git a/projects/web-app-spring-adv1/src/main/java/springmvcstudy2/config/MyQuickApplicationInitializer.java b/projects/web-app-spring-adv1/src/main/java/springmvcstudy2/config/MyQuickApplicationInitializer.java</span><br />
+
+<span class="index">index fe45c93..5513037 100644</span><br />
+
+<span class="tree_minuses">--- a/projects/web-app-spring-adv1/src/main/java/springmvcstudy2/config/MyQuickApplicationInitializer.java</span><br />
+
+<span class="tree_pluses">+++ b/projects/web-app-spring-adv1/src/main/java/springmvcstudy2/config/MyQuickApplicationInitializer.java</span><br />
+
+<span class="two_ats">@@ -3,7 +3,7 @@ package springmvcstudy2.config;</span><br />
+
+<span> import org.springframework.core.annotation.Order;</span><br />
+
+<span> import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;</span><br />
+
+<span> </span><br />
+
+<del>-//@Order(2)</del><br />
+
+<ins>+@Order(2)</ins><br />
+
+<span> public class MyQuickApplicationInitializer extends</span><br />
+
+<span>         AbstractAnnotationConfigDispatcherServletInitializer {</span><br />
+
+<span> </span><br />
+
+</div>
+

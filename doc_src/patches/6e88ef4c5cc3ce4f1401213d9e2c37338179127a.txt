@@ -1,0 +1,43 @@
+<!--VARIABLES {"title": "Patch 6e88ef4c5cc3ce4f1401213d9e2c37338179127a"}--> 
+<div class="patch_block">
+
+<span class="diff">diff --git a/projects/web-app-spring/src/main/webapp/WEB-INF/front-controller-servlet.xml b/projects/web-app-spring/src/main/webapp/WEB-INF/front-controller-context.xml</span><br />
+
+<span>similarity index 100%</span><br />
+
+<span>rename from projects/web-app-spring/src/main/webapp/WEB-INF/front-controller-servlet.xml</span><br />
+
+<span>rename to projects/web-app-spring/src/main/webapp/WEB-INF/front-controller-context.xml</span><br />
+
+<span class="diff">diff --git a/projects/web-app-spring/src/main/webapp/WEB-INF/web.xml b/projects/web-app-spring/src/main/webapp/WEB-INF/web.xml</span><br />
+
+<span class="index">index 15d153b..692e7c1 100644</span><br />
+
+<span class="tree_minuses">--- a/projects/web-app-spring/src/main/webapp/WEB-INF/web.xml</span><br />
+
+<span class="tree_pluses">+++ b/projects/web-app-spring/src/main/webapp/WEB-INF/web.xml</span><br />
+
+<span class="two_ats">@@ -6,6 +6,10 @@</span><br />
+
+<span>     &lt;servlet&gt;</span><br />
+
+<span>         &lt;servlet-name&gt;front-controller&lt;/servlet-name&gt;</span><br />
+
+<span>         &lt;servlet-class&gt;org.springframework.web.servlet.DispatcherServlet&lt;/servlet-class&gt;</span><br />
+
+<ins>+        &lt;init-param&gt;</ins><br />
+
+<ins>+            &lt;param-name&gt;contextConfigLocation&lt;/param-name&gt;</ins><br />
+
+<ins>+            &lt;param-value&gt;/WEB-INF/front-controller-context.xml&lt;/param-value&gt;</ins><br />
+
+<ins>+        &lt;/init-param&gt;</ins><br />
+
+<span>         &lt;load-on-startup&gt;1&lt;/load-on-startup&gt;</span><br />
+
+<span>     &lt;/servlet&gt;</span><br />
+
+<span> </span><br />
+
+</div>
+

@@ -1,0 +1,277 @@
+<!--VARIABLES {"title": "Patch 378558ccca90c31e96bf4335fccd489f2e429707"}--> 
+<div class="patch_block">
+
+<span class="diff">diff --git a/projects/web-app-spring/pom.xml b/projects/web-app-spring/pom.xml</span><br />
+
+<span>new file mode 100644</span><br />
+
+<span class="index">index 0000000..dced6ea</span><br />
+
+<span class="tree_minuses">--- /dev/null</span><br />
+
+<span class="tree_pluses">+++ b/projects/web-app-spring/pom.xml</span><br />
+
+<span class="two_ats">@@ -0,0 +1,31 @@</span><br />
+
+<ins>+&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</ins><br />
+
+<ins>+&lt;project xmlns=&quot;http://maven.apache.org/POM/4.0.0&quot;</ins><br />
+
+<ins>+         xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</ins><br />
+
+<ins>+         xsi:schemaLocation=&quot;http://maven.apache.org/POM/4.0.0</ins><br />
+
+<ins>+            http://maven.apache.org/xsd/maven-4.0.0.xsd&quot;&gt;</ins><br />
+
+<ins>+    &lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt;</ins><br />
+
+<ins>+</ins><br />
+
+<ins>+    &lt;groupId&gt;world.someone&lt;/groupId&gt;</ins><br />
+
+<ins>+    &lt;artifactId&gt;web-app-spring&lt;/artifactId&gt;</ins><br />
+
+<ins>+    &lt;version&gt;1.0-SNAPSHOT&lt;/version&gt;</ins><br />
+
+<ins>+    &lt;packaging&gt;war&lt;/packaging&gt;</ins><br />
+
+<ins>+</ins><br />
+
+<ins>+    &lt;properties&gt;</ins><br />
+
+<ins>+        &lt;project.build.sourceEncoding&gt;UTF-8&lt;/project.build.sourceEncoding&gt;</ins><br />
+
+<ins>+        &lt;maven.compiler.source&gt;8&lt;/maven.compiler.source&gt;</ins><br />
+
+<ins>+        &lt;maven.compiler.target&gt;8&lt;/maven.compiler.target&gt;</ins><br />
+
+<ins>+        &lt;org.springframework.version&gt;5.3.9&lt;/org.springframework.version&gt;</ins><br />
+
+<ins>+    &lt;/properties&gt;</ins><br />
+
+<ins>+</ins><br />
+
+<ins>+    &lt;dependencies&gt;</ins><br />
+
+<ins>+        &lt;dependency&gt;</ins><br />
+
+<ins>+            &lt;groupId&gt;org.springframework&lt;/groupId&gt;</ins><br />
+
+<ins>+            &lt;artifactId&gt;spring-webmvc&lt;/artifactId&gt;</ins><br />
+
+<ins>+            &lt;version&gt;${org.springframework.version}&lt;/version&gt;</ins><br />
+
+<ins>+        &lt;/dependency&gt;</ins><br />
+
+<ins>+    &lt;/dependencies&gt;</ins><br />
+
+<ins>+</ins><br />
+
+<ins>+    &lt;build&gt;</ins><br />
+
+<ins>+        &lt;finalName&gt;${project.artifactId}&lt;/finalName&gt;</ins><br />
+
+<ins>+    &lt;/build&gt;</ins><br />
+
+<ins>+&lt;/project&gt;</ins><br />
+
+<span class="diff">diff --git a/projects/web-app-spring/src/main/java/springmvcstudy/controllers/HelloController.java b/projects/web-app-spring/src/main/java/springmvcstudy/controllers/HelloController.java</span><br />
+
+<span>new file mode 100644</span><br />
+
+<span class="index">index 0000000..3edecf1</span><br />
+
+<span class="tree_minuses">--- /dev/null</span><br />
+
+<span class="tree_pluses">+++ b/projects/web-app-spring/src/main/java/springmvcstudy/controllers/HelloController.java</span><br />
+
+<span class="two_ats">@@ -0,0 +1,15 @@</span><br />
+
+<ins>+package springmvcstudy.controllers;</ins><br />
+
+<ins>+</ins><br />
+
+<ins>+import org.springframework.stereotype.Controller;</ins><br />
+
+<ins>+import org.springframework.web.bind.annotation.RequestMapping;</ins><br />
+
+<ins>+import org.springframework.web.bind.annotation.ResponseBody;</ins><br />
+
+<ins>+</ins><br />
+
+<ins>+@Controller</ins><br />
+
+<ins>+public class HelloController {</ins><br />
+
+<ins>+</ins><br />
+
+<ins>+    @RequestMapping(&quot;/hello&quot;)</ins><br />
+
+<ins>+    @ResponseBody</ins><br />
+
+<ins>+    public String sayHello() {</ins><br />
+
+<ins>+        return &quot;Hi from the &quot; + this.getClass().getSimpleName();</ins><br />
+
+<ins>+    }</ins><br />
+
+<ins>+}</ins><br />
+
+<span class="diff">diff --git a/projects/web-app-spring/src/main/java/springmvcstudy/controllers/ThingsController.java b/projects/web-app-spring/src/main/java/springmvcstudy/controllers/ThingsController.java</span><br />
+
+<span>new file mode 100644</span><br />
+
+<span class="index">index 0000000..ac51edd</span><br />
+
+<span class="tree_minuses">--- /dev/null</span><br />
+
+<span class="tree_pluses">+++ b/projects/web-app-spring/src/main/java/springmvcstudy/controllers/ThingsController.java</span><br />
+
+<span class="two_ats">@@ -0,0 +1,31 @@</span><br />
+
+<ins>+package springmvcstudy.controllers;</ins><br />
+
+<ins>+</ins><br />
+
+<ins>+import org.springframework.stereotype.Controller;</ins><br />
+
+<ins>+import org.springframework.web.bind.annotation.RequestMapping;</ins><br />
+
+<ins>+import org.springframework.web.bind.annotation.ResponseBody;</ins><br />
+
+<ins>+</ins><br />
+
+<ins>+@Controller</ins><br />
+
+<ins>+@RequestMapping(&quot;/things&quot;)</ins><br />
+
+<ins>+@ResponseBody</ins><br />
+
+<ins>+public class ThingsController {</ins><br />
+
+<ins>+</ins><br />
+
+<ins>+    @RequestMapping</ins><br />
+
+<ins>+    public String getThingList() {</ins><br />
+
+<ins>+        return &quot;pen, pencil, book&quot;;</ins><br />
+
+<ins>+    }</ins><br />
+
+<ins>+</ins><br />
+
+<ins>+    @RequestMapping(&quot;/pen&quot;)</ins><br />
+
+<ins>+    public String getPen() {</ins><br />
+
+<ins>+        return &quot;Here is your pen!&quot;;</ins><br />
+
+<ins>+    }</ins><br />
+
+<ins>+</ins><br />
+
+<ins>+    @RequestMapping(&quot;/pencil&quot;)</ins><br />
+
+<ins>+    public String getPencil() {</ins><br />
+
+<ins>+        return &quot;Here is your pencil!&quot;;</ins><br />
+
+<ins>+    }</ins><br />
+
+<ins>+</ins><br />
+
+<ins>+    @RequestMapping(&quot;/book&quot;)</ins><br />
+
+<ins>+    public String getBook() {</ins><br />
+
+<ins>+        return &quot;Here is your book!&quot;;</ins><br />
+
+<ins>+    }</ins><br />
+
+<ins>+}</ins><br />
+
+<span class="diff">diff --git a/projects/web-app-spring/src/main/webapp/WEB-INF/front-controller-servlet.xml b/projects/web-app-spring/src/main/webapp/WEB-INF/front-controller-servlet.xml</span><br />
+
+<span>new file mode 100644</span><br />
+
+<span class="index">index 0000000..c93fd1f</span><br />
+
+<span class="tree_minuses">--- /dev/null</span><br />
+
+<span class="tree_pluses">+++ b/projects/web-app-spring/src/main/webapp/WEB-INF/front-controller-servlet.xml</span><br />
+
+<span class="two_ats">@@ -0,0 +1,12 @@</span><br />
+
+<ins>+&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</ins><br />
+
+<ins>+&lt;beans xmlns=&quot;http://www.springframework.org/schema/beans&quot;</ins><br />
+
+<ins>+       xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</ins><br />
+
+<ins>+       xmlns:context=&quot;http://www.springframework.org/schema/context&quot;</ins><br />
+
+<ins>+       xsi:schemaLocation=&quot;http://www.springframework.org/schema/beans</ins><br />
+
+<ins>+        https://www.springframework.org/schema/beans/spring-beans.xsd</ins><br />
+
+<ins>+        http://www.springframework.org/schema/context</ins><br />
+
+<ins>+        https://www.springframework.org/schema/context/spring-context.xsd&quot;&gt;</ins><br />
+
+<ins>+</ins><br />
+
+<ins>+    &lt;context:component-scan base-package=&quot;springmvcstudy.controllers&quot; /&gt;</ins><br />
+
+<ins>+</ins><br />
+
+<ins>+&lt;/beans&gt;</ins><br />
+
+<span class="diff">diff --git a/projects/web-app-spring/src/main/webapp/WEB-INF/web.xml b/projects/web-app-spring/src/main/webapp/WEB-INF/web.xml</span><br />
+
+<span>new file mode 100644</span><br />
+
+<span class="index">index 0000000..15d153b</span><br />
+
+<span class="tree_minuses">--- /dev/null</span><br />
+
+<span class="tree_pluses">+++ b/projects/web-app-spring/src/main/webapp/WEB-INF/web.xml</span><br />
+
+<span class="two_ats">@@ -0,0 +1,17 @@</span><br />
+
+<ins>+&lt;!DOCTYPE web-app PUBLIC &quot;-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN&quot;</ins><br />
+
+<ins>+        &quot;http://java.sun.com/dtd/web-app_2_3.dtd&quot;&gt;</ins><br />
+
+<ins>+&lt;web-app&gt;</ins><br />
+
+<ins>+    &lt;display-name&gt;Spring Web Example Application&lt;/display-name&gt;</ins><br />
+
+<ins>+</ins><br />
+
+<ins>+    &lt;servlet&gt;</ins><br />
+
+<ins>+        &lt;servlet-name&gt;front-controller&lt;/servlet-name&gt;</ins><br />
+
+<ins>+        &lt;servlet-class&gt;org.springframework.web.servlet.DispatcherServlet&lt;/servlet-class&gt;</ins><br />
+
+<ins>+        &lt;load-on-startup&gt;1&lt;/load-on-startup&gt;</ins><br />
+
+<ins>+    &lt;/servlet&gt;</ins><br />
+
+<ins>+</ins><br />
+
+<ins>+    &lt;servlet-mapping&gt;</ins><br />
+
+<ins>+        &lt;servlet-name&gt;front-controller&lt;/servlet-name&gt;</ins><br />
+
+<ins>+        &lt;url-pattern&gt;/*&lt;/url-pattern&gt;</ins><br />
+
+<ins>+    &lt;/servlet-mapping&gt;</ins><br />
+
+<ins>+</ins><br />
+
+<ins>+&lt;/web-app&gt;</ins><br />
+
+</div>
+

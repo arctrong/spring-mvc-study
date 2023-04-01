@@ -1,0 +1,121 @@
+<!--VARIABLES {"title": "Patch 1a79873d1890deede7fe5da2b564acdf5bec7e6c"}--> 
+<div class="patch_block">
+
+<span class="diff">diff --git a/projects/web-app-spring-adv1/src/main/java/springmvcstudy2/config/MyApplicationConfig.java b/projects/web-app-spring-adv1/src/main/java/springmvcstudy2/config/MyApplicationConfig.java</span><br />
+
+<span>new file mode 100644</span><br />
+
+<span class="index">index 0000000..5f869ab</span><br />
+
+<span class="tree_minuses">--- /dev/null</span><br />
+
+<span class="tree_pluses">+++ b/projects/web-app-spring-adv1/src/main/java/springmvcstudy2/config/MyApplicationConfig.java</span><br />
+
+<span class="two_ats">@@ -0,0 +1,9 @@</span><br />
+
+<ins>+package springmvcstudy2.config;</ins><br />
+
+<ins>+</ins><br />
+
+<ins>+import org.springframework.context.annotation.ComponentScan;</ins><br />
+
+<ins>+import org.springframework.context.annotation.Configuration;</ins><br />
+
+<ins>+</ins><br />
+
+<ins>+@Configuration</ins><br />
+
+<ins>+@ComponentScan(basePackages = &quot;springmvcstudy2.controllers&quot;)</ins><br />
+
+<ins>+public class MyApplicationConfig {</ins><br />
+
+<ins>+}</ins><br />
+
+<span class="diff">diff --git a/projects/web-app-spring-adv1/src/main/java/springmvcstudy2/config/MyApplicationInitializer.java b/projects/web-app-spring-adv1/src/main/java/springmvcstudy2/config/MyApplicationInitializer.java</span><br />
+
+<span class="index">index 2010793..b2edb94 100644</span><br />
+
+<span class="tree_minuses">--- a/projects/web-app-spring-adv1/src/main/java/springmvcstudy2/config/MyApplicationInitializer.java</span><br />
+
+<span class="tree_pluses">+++ b/projects/web-app-spring-adv1/src/main/java/springmvcstudy2/config/MyApplicationInitializer.java</span><br />
+
+<span class="two_ats">@@ -1,6 +1,7 @@</span><br />
+
+<span> package springmvcstudy2.config;</span><br />
+
+<span> </span><br />
+
+<span> import org.springframework.web.WebApplicationInitializer;</span><br />
+
+<ins>+import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;</ins><br />
+
+<span> import org.springframework.web.context.support.XmlWebApplicationContext;</span><br />
+
+<span> import org.springframework.web.servlet.DispatcherServlet;</span><br />
+
+<span> </span><br />
+
+<span class="two_ats">@@ -13,8 +14,9 @@ public class MyApplicationInitializer implements WebApplicationInitializer {</span><br />
+
+<span>     @Override</span><br />
+
+<span>     public void onStartup(ServletContext servletContext) throws ServletException {</span><br />
+
+<span> </span><br />
+
+<del>-        XmlWebApplicationContext webApplicationContext = new XmlWebApplicationContext();</del><br />
+
+<del>-        webApplicationContext.setConfigLocation(&quot;classpath:application-config.xml&quot;);</del><br />
+
+<ins>+        AnnotationConfigWebApplicationContext webApplicationContext =</ins><br />
+
+<ins>+                new AnnotationConfigWebApplicationContext();</ins><br />
+
+<ins>+        webApplicationContext.register(MyApplicationConfig.class);</ins><br />
+
+<span> </span><br />
+
+<span>         DispatcherServlet dispatcherServlet = new DispatcherServlet(webApplicationContext);</span><br />
+
+<span> </span><br />
+
+<span class="diff">diff --git a/projects/web-app-spring-adv1/src/main/resources/application-config.xml b/projects/web-app-spring-adv1/src/main/resources/application-config.xml</span><br />
+
+<span>deleted file mode 100644</span><br />
+
+<span class="index">index ce12331..0000000</span><br />
+
+<span class="tree_minuses">--- a/projects/web-app-spring-adv1/src/main/resources/application-config.xml</span><br />
+
+<span class="tree_pluses">+++ /dev/null</span><br />
+
+<span class="two_ats">@@ -1,13 +0,0 @@</span><br />
+
+<del>-&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</del><br />
+
+<del>-&lt;beans xmlns=&quot;http://www.springframework.org/schema/beans&quot;</del><br />
+
+<del>-       xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</del><br />
+
+<del>-       xmlns:context=&quot;http://www.springframework.org/schema/context&quot;</del><br />
+
+<del>-       xsi:schemaLocation=&quot;http://www.springframework.org/schema/beans</del><br />
+
+<del>-        https://www.springframework.org/schema/beans/spring-beans.xsd</del><br />
+
+<del>-        http://www.springframework.org/schema/context</del><br />
+
+<del>-        https://www.springframework.org/schema/context/spring-context.xsd</del><br />
+
+<del>-        &quot;&gt;</del><br />
+
+<del>-</del><br />
+
+<del>-    &lt;context:component-scan base-package=&quot;springmvcstudy2.controllers&quot;/&gt;</del><br />
+
+<del>-</del><br />
+
+<del>-&lt;/beans&gt;</del><br />
+
+</div>
+

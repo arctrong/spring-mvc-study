@@ -1,0 +1,121 @@
+<!--VARIABLES {"title": "Patch bceed41baece547af98f5bf88dbac27d133834d6"}--> 
+<div class="patch_block">
+
+<span class="diff">diff --git a/projects/web-app-spring-adv1/src/main/java/springmvcstudy2/config/MyApplicationConfig.java b/projects/web-app-spring-adv1/src/main/java/springmvcstudy2/config/MyApplicationConfig.java</span><br />
+
+<span class="index">index 5f869ab..bb84f92 100644</span><br />
+
+<span class="tree_minuses">--- a/projects/web-app-spring-adv1/src/main/java/springmvcstudy2/config/MyApplicationConfig.java</span><br />
+
+<span class="tree_pluses">+++ b/projects/web-app-spring-adv1/src/main/java/springmvcstudy2/config/MyApplicationConfig.java</span><br />
+
+<span class="two_ats">@@ -1,9 +1,19 @@</span><br />
+
+<span> package springmvcstudy2.config;</span><br />
+
+<span> </span><br />
+
+<ins>+import org.springframework.context.annotation.Bean;</ins><br />
+
+<span> import org.springframework.context.annotation.ComponentScan;</span><br />
+
+<span> import org.springframework.context.annotation.Configuration;</span><br />
+
+<ins>+import org.springframework.web.servlet.view.InternalResourceViewResolver;</ins><br />
+
+<span> </span><br />
+
+<span> @Configuration</span><br />
+
+<span> @ComponentScan(basePackages = &quot;springmvcstudy2.controllers&quot;)</span><br />
+
+<span> public class MyApplicationConfig {</span><br />
+
+<ins>+</ins><br />
+
+<ins>+    @Bean</ins><br />
+
+<ins>+    public InternalResourceViewResolver viewResolver() {</ins><br />
+
+<ins>+        InternalResourceViewResolver viewResolver = new InternalResourceViewResolver();</ins><br />
+
+<ins>+        viewResolver.setPrefix(&quot;/view/&quot;);</ins><br />
+
+<ins>+        viewResolver.setSuffix(&quot;.jsp&quot;);</ins><br />
+
+<ins>+        return viewResolver;</ins><br />
+
+<ins>+    }</ins><br />
+
+<span> }</span><br />
+
+<span class="diff">diff --git a/projects/web-app-spring-adv1/src/main/java/springmvcstudy2/controllers/HelloController.java b/projects/web-app-spring-adv1/src/main/java/springmvcstudy2/controllers/HelloController.java</span><br />
+
+<span class="index">index 2832e88..3264476 100644</span><br />
+
+<span class="tree_minuses">--- a/projects/web-app-spring-adv1/src/main/java/springmvcstudy2/controllers/HelloController.java</span><br />
+
+<span class="tree_pluses">+++ b/projects/web-app-spring-adv1/src/main/java/springmvcstudy2/controllers/HelloController.java</span><br />
+
+<span class="two_ats">@@ -12,4 +12,9 @@ public class HelloController {</span><br />
+
+<span>     public String sayHello() {</span><br />
+
+<span>         return &quot;Hi from the &quot; + this.getClass().getSimpleName();</span><br />
+
+<span>     }</span><br />
+
+<ins>+</ins><br />
+
+<ins>+    @RequestMapping(&quot;/hello-jsp&quot;)</ins><br />
+
+<ins>+    public String helloJsp() {</ins><br />
+
+<ins>+        return &quot;hello-page&quot;;</ins><br />
+
+<ins>+    }</ins><br />
+
+<span> }</span><br />
+
+<span class="diff">diff --git a/projects/web-app-spring-adv1/src/main/webapp/view/hello-page.jsp b/projects/web-app-spring-adv1/src/main/webapp/view/hello-page.jsp</span><br />
+
+<span>new file mode 100644</span><br />
+
+<span class="index">index 0000000..1983f97</span><br />
+
+<span class="tree_minuses">--- /dev/null</span><br />
+
+<span class="tree_pluses">+++ b/projects/web-app-spring-adv1/src/main/webapp/view/hello-page.jsp</span><br />
+
+<span class="two_ats">@@ -0,0 +1,14 @@</span><br />
+
+<ins>+&lt;%@ page language=&quot;java&quot; contentType=&quot;text/html; charset=UTF-8&quot; pageEncoding=&quot;UTF-8&quot;%&gt;</ins><br />
+
+<ins>+&lt;%@page isELIgnored=&quot;false&quot;%&gt;</ins><br />
+
+<ins>+&lt;!DOCTYPE html&gt;</ins><br />
+
+<ins>+&lt;html&gt;&lt;head&gt;&lt;meta charset=&quot;UTF-8&quot;&gt;</ins><br />
+
+<ins>+&lt;title&gt;Hello page&lt;/title&gt;</ins><br />
+
+<ins>+&lt;style&gt;body {background-color: aliceblue;}&lt;/style&gt;</ins><br />
+
+<ins>+&lt;/head&gt;&lt;body&gt;</ins><br />
+
+<ins>+</ins><br />
+
+<ins>+&lt;h1&gt;Hello page&lt;/h1&gt;</ins><br />
+
+<ins>+&lt;hr/&gt;</ins><br />
+
+<ins>+&lt;p&gt;The generated servlet class is:</ins><br />
+
+<ins>+&lt;code&gt;&lt;%= this.getClass().getSimpleName() %&gt;&lt;/code&gt;&lt;/p&gt;</ins><br />
+
+<ins>+</ins><br />
+
+<ins>+&lt;/body&gt;&lt;/html&gt;</ins><br />
+
+</div>
+

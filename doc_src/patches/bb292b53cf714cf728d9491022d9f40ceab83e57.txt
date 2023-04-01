@@ -1,0 +1,203 @@
+<!--VARIABLES {"title": "Patch bb292b53cf714cf728d9491022d9f40ceab83e57"}--> 
+<div class="patch_block">
+
+<span class="diff">diff --git a/projects/web-app-spring-adv1/pom.xml b/projects/web-app-spring-adv1/pom.xml</span><br />
+
+<span class="index">index cd7cc4e..163dccb 100644</span><br />
+
+<span class="tree_minuses">--- a/projects/web-app-spring-adv1/pom.xml</span><br />
+
+<span class="tree_pluses">+++ b/projects/web-app-spring-adv1/pom.xml</span><br />
+
+<span class="two_ats">@@ -14,6 +14,7 @@</span><br />
+
+<span>         &lt;project.build.sourceEncoding&gt;UTF-8&lt;/project.build.sourceEncoding&gt;</span><br />
+
+<span>         &lt;maven.compiler.source&gt;8&lt;/maven.compiler.source&gt;</span><br />
+
+<span>         &lt;maven.compiler.target&gt;8&lt;/maven.compiler.target&gt;</span><br />
+
+<ins>+        &lt;failOnMissingWebXml&gt;false&lt;/failOnMissingWebXml&gt;</ins><br />
+
+<span>         &lt;org.springframework.version&gt;5.3.9&lt;/org.springframework.version&gt;</span><br />
+
+<span>     &lt;/properties&gt;</span><br />
+
+<span> </span><br />
+
+<span class="two_ats">@@ -38,9 +39,6 @@</span><br />
+
+<span>                 &lt;groupId&gt;org.apache.maven.plugins&lt;/groupId&gt;</span><br />
+
+<span>                 &lt;artifactId&gt;maven-war-plugin&lt;/artifactId&gt;</span><br />
+
+<span>                 &lt;version&gt;3.3.2&lt;/version&gt;</span><br />
+
+<del>-                &lt;configuration&gt;</del><br />
+
+<del>-                    &lt;failOnMissingWebXml&gt;false&lt;/failOnMissingWebXml&gt;</del><br />
+
+<del>-                &lt;/configuration&gt;</del><br />
+
+<span>             &lt;/plugin&gt;</span><br />
+
+<span>         &lt;/plugins&gt;</span><br />
+
+<span>     &lt;/build&gt;</span><br />
+
+<span class="diff">diff --git a/projects/web-app-spring-adv1/src/main/java/springmvcstudy2/config/MyApplicationConfig.java b/projects/web-app-spring-adv1/src/main/java/springmvcstudy2/config/MyApplicationConfig.java</span><br />
+
+<span class="index">index bb84f92..586d873 100644</span><br />
+
+<span class="tree_minuses">--- a/projects/web-app-spring-adv1/src/main/java/springmvcstudy2/config/MyApplicationConfig.java</span><br />
+
+<span class="tree_pluses">+++ b/projects/web-app-spring-adv1/src/main/java/springmvcstudy2/config/MyApplicationConfig.java</span><br />
+
+<span class="two_ats">@@ -3,8 +3,10 @@ package springmvcstudy2.config;</span><br />
+
+<span> import org.springframework.context.annotation.Bean;</span><br />
+
+<span> import org.springframework.context.annotation.ComponentScan;</span><br />
+
+<span> import org.springframework.context.annotation.Configuration;</span><br />
+
+<ins>+import org.springframework.web.servlet.config.annotation.EnableWebMvc;</ins><br />
+
+<span> import org.springframework.web.servlet.view.InternalResourceViewResolver;</span><br />
+
+<span> </span><br />
+
+<ins>+@EnableWebMvc</ins><br />
+
+<span> @Configuration</span><br />
+
+<span> @ComponentScan(basePackages = &quot;springmvcstudy2.controllers&quot;)</span><br />
+
+<span> public class MyApplicationConfig {</span><br />
+
+<span class="diff">diff --git a/projects/web-app-spring-adv1/src/main/java/springmvcstudy2/config/MyApplicationInitializer.java b/projects/web-app-spring-adv1/src/main/java/springmvcstudy2/config/MyApplicationInitializer.java</span><br />
+
+<span class="index">index b2edb94..6f644a8 100644</span><br />
+
+<span class="tree_minuses">--- a/projects/web-app-spring-adv1/src/main/java/springmvcstudy2/config/MyApplicationInitializer.java</span><br />
+
+<span class="tree_pluses">+++ b/projects/web-app-spring-adv1/src/main/java/springmvcstudy2/config/MyApplicationInitializer.java</span><br />
+
+<span class="two_ats">@@ -1,5 +1,6 @@</span><br />
+
+<span> package springmvcstudy2.config;</span><br />
+
+<span> </span><br />
+
+<ins>+import org.springframework.core.annotation.Order;</ins><br />
+
+<span> import org.springframework.web.WebApplicationInitializer;</span><br />
+
+<span> import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;</span><br />
+
+<span> import org.springframework.web.context.support.XmlWebApplicationContext;</span><br />
+
+<span class="two_ats">@@ -9,11 +10,16 @@ import javax.servlet.ServletContext;</span><br />
+
+<span> import javax.servlet.ServletException;</span><br />
+
+<span> import javax.servlet.ServletRegistration;</span><br />
+
+<span> </span><br />
+
+<del>-public class MyApplicationInitializer implements WebApplicationInitializer {</del><br />
+
+<ins>+//@Order(1)</ins><br />
+
+<ins>+public class MyApplicationInitializer</ins><br />
+
+<ins>+//        implements WebApplicationInitializer</ins><br />
+
+<ins>+{</ins><br />
+
+<span> </span><br />
+
+<del>-    @Override</del><br />
+
+<ins>+//    @Override</ins><br />
+
+<span>     public void onStartup(ServletContext servletContext) throws ServletException {</span><br />
+
+<span> </span><br />
+
+<ins>+        System.out.println(this.getClass().getSimpleName() + &quot; onStartup method called&quot;);</ins><br />
+
+<ins>+</ins><br />
+
+<span>         AnnotationConfigWebApplicationContext webApplicationContext =</span><br />
+
+<span>                 new AnnotationConfigWebApplicationContext();</span><br />
+
+<span>         webApplicationContext.register(MyApplicationConfig.class);</span><br />
+
+<span class="diff">diff --git a/projects/web-app-spring-adv1/src/main/java/springmvcstudy2/config/MyQuickApplicationInitializer.java b/projects/web-app-spring-adv1/src/main/java/springmvcstudy2/config/MyQuickApplicationInitializer.java</span><br />
+
+<span>new file mode 100644</span><br />
+
+<span class="index">index 0000000..fe45c93</span><br />
+
+<span class="tree_minuses">--- /dev/null</span><br />
+
+<span class="tree_pluses">+++ b/projects/web-app-spring-adv1/src/main/java/springmvcstudy2/config/MyQuickApplicationInitializer.java</span><br />
+
+<span class="two_ats">@@ -0,0 +1,26 @@</span><br />
+
+<ins>+package springmvcstudy2.config;</ins><br />
+
+<ins>+</ins><br />
+
+<ins>+import org.springframework.core.annotation.Order;</ins><br />
+
+<ins>+import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;</ins><br />
+
+<ins>+</ins><br />
+
+<ins>+//@Order(2)</ins><br />
+
+<ins>+public class MyQuickApplicationInitializer extends</ins><br />
+
+<ins>+        AbstractAnnotationConfigDispatcherServletInitializer {</ins><br />
+
+<ins>+</ins><br />
+
+<ins>+    @Override</ins><br />
+
+<ins>+    protected Class&lt;?&gt;[] getRootConfigClasses() {</ins><br />
+
+<ins>+        return null;</ins><br />
+
+<ins>+    }</ins><br />
+
+<ins>+</ins><br />
+
+<ins>+    @Override</ins><br />
+
+<ins>+    protected Class&lt;?&gt;[] getServletConfigClasses() {</ins><br />
+
+<ins>+        System.out.println(this.getClass().getSimpleName() + &quot; getServletConfigClasses method called&quot;);</ins><br />
+
+<ins>+        return new Class&lt;?&gt;[]{MyApplicationConfig.class};</ins><br />
+
+<ins>+    }</ins><br />
+
+<ins>+</ins><br />
+
+<ins>+    @Override</ins><br />
+
+<ins>+    protected String[] getServletMappings() {</ins><br />
+
+<ins>+        System.out.println(this.getClass().getSimpleName() + &quot; getServletMappings method called&quot;);</ins><br />
+
+<ins>+        return new String[]{&quot;/ui/*&quot;, &quot;/ui1/*&quot;};</ins><br />
+
+<ins>+    }</ins><br />
+
+<ins>+}</ins><br />
+
+</div>
+
