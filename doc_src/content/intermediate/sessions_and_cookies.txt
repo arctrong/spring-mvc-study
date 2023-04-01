@@ -25,10 +25,21 @@ Also see [[16][]].
 
 This is the first simple implementation that is probably not to be used in production.
 
+> Git commit: [`84ef7a5077be8aebf246e238b4f66d4efc2f220a`](
+> <!--path patches-->84ef7a5077be8aebf246e238b4f66d4efc2f220a.html)
+> first simple cookie usage demonstrated
 
+In the `/validate-submit` endpoint we create a `Cookie` and add it to the `HttpServletResponse`
+object that is provided by Spring MVC via the corresponding controller method parameter 
+`response`. After the response is received the added cookie may be viewed in the debugger (F12):
 
+![](<!--path pict-->debug_cookies.png)
 
+The added cookie is sent by the browser with every subsequent request so it can be used on every
+page like the one that is returned by the `/validate` endpoint.
 
+----------------------------------------------------------------------------------------------------
+# ???
 
 [[2.13][], [37:28](https://youtu.be/cpFfzE9eGT0?t=2248)]
 

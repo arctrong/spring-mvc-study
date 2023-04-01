@@ -65,6 +65,7 @@ class="header_item" href="../index_page.html">Index</a>
 <ul>
 <li><a href="#what-is-session-and-cookies">What is session and cookies</a></li>
 <li><a href="#implement-cookies-transfer">Implement cookies transfer</a></li>
+<li><a href="#_1">???</a></li>
 </ul>
 </div>
 <hr />
@@ -79,6 +80,18 @@ were invented in maybe 1995 to fill this gap.</p>
 <h1 id="implement-cookies-transfer">Implement cookies transfer</h1>
 <p>[<a href="../references.html#ref_2_13">2.13</a>, <a href="https://youtu.be/cpFfzE9eGT0?t=743">12:23</a>]</p>
 <p>This is the first simple implementation that is probably not to be used in production.</p>
+<blockquote>
+<p>Git commit: <a href="../patches/84ef7a5077be8aebf246e238b4f66d4efc2f220a.html"><code>84ef7a5077be8aebf246e238b4f66d4efc2f220a</code></a>
+first simple cookie usage demonstrated</p>
+</blockquote>
+<p>In the <code>/validate-submit</code> endpoint we create a <code>Cookie</code> and add it to the <code>HttpServletResponse</code>
+object that is provided by Spring MVC via the corresponding controller method parameter 
+<code>response</code>. After the response is received the added cookie may be viewed in the debugger (F12):</p>
+<p><img alt="" src="../../pict/debug_cookies.png" /></p>
+<p>The added cookie is sent by the browser with every subsequent request so it can be used on every
+page like the one that is returned by the <code>/validate</code> endpoint.</p>
+<hr />
+<h1 id="_1">???</h1>
 <p>[<a href="../references.html#ref_2_13">2.13</a>, <a href="https://youtu.be/cpFfzE9eGT0?t=2248">37:28</a>]</p>
 <p>&nbsp;</p>
 <hr />
