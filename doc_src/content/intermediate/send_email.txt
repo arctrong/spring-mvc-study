@@ -104,7 +104,9 @@ using the new model attribute:
 .  .  .
 ````
 
-> Git commit: `236fe6a16456e9d45e935d6849e5adb8bb1eb7e8` path variable used
+> Git commit: [`236fe6a16456e9d45e935d6849e5adb8bb1eb7e8`](
+> <!--path patches-->236fe6a16456e9d45e935d6849e5adb8bb1eb7e8.html)
+> path variable used
 
 
 ## Using a `Map`
@@ -124,7 +126,9 @@ class):
     }
 ````
 
-> Git commit: `cb8843c8ea7c29ae9f62b19fa915e14a8d9c74e4` path variable used with a Map
+> Git commit: [`cb8843c8ea7c29ae9f62b19fa915e14a8d9c74e4`](
+> <!--path patches-->cb8843c8ea7c29ae9f62b19fa915e14a8d9c74e4.html)
+> path variable used with a Map
 
 ----------------------------------------------------------------------------------------------------
 # Why not to send data in the URL?

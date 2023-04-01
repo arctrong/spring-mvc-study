@@ -19,9 +19,19 @@ were invented in maybe 1995 to fill this gap.
 Also see [[16][]].
 
 ----------------------------------------------------------------------------------------------------
-# The requirements
+# Implement cookies transfer
 
 [[2.13][], [12:23](https://youtu.be/cpFfzE9eGT0?t=743)]
+
+This is the first simple implementation that is probably not to be used in production.
+
+
+
+
+
+
+[[2.13][], [37:28](https://youtu.be/cpFfzE9eGT0?t=2248)]
+
 
 
 
