@@ -8,7 +8,7 @@
 ----------------------------------------------------------------------------------------------------
 Mar 30, 2023
 
-<!--index ["sessions, HTTP", "cookies, HTTP"]-->
+<!--index ["cookies, HTTP"]-->
 # What is session and cookies
 
 [[2.13][]]
@@ -63,7 +63,34 @@ class):
 > using @CookieValue annotation
 
 ----------------------------------------------------------------------------------------------------
-# Problems with cookies
+<!--index ["sessions, HTTP"]-->
+# Using sessions
 
 [[2.13][], [43:25](https://youtu.be/cpFfzE9eGT0?t=2605)]
+
+Cookies are stored inside the client's computer and the client may not allow to drop such kind
+of litter inside their system.
+
+Cooking processing may be costly as they are just text files. Complex structures may be have
+very large size. Also cookies may have size limitation.
+
+<p><img src="<!--path pict-->session_cookie_sequence.png" class="floatRight" /></p>
+
+To address these problems there is an alternative called **sessions**.
+
+A client sends a request. The application doesn't send the whole set of data to the client
+but instead saves the session state in the database and returns to the client a response with above
+single session ID.
+
+On a next request the session ID cookie is sent back to the application that retrieves the session
+state by this session ID and returns to the client the customized response.
+
+<p style="clear: both;"></p>
+
+
+
+
+
+
+
 

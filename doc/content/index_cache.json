@@ -262,11 +262,6 @@
   ],
   "doc/content/intermediate/sessions_and_cookies.html": [
     {
-      "entry": "sessions, HTTP",
-      "link": "intermediate/sessions_and_cookies.html#index_entry_index_1",
-      "title": "Sessions and cookies"
-    },
-    {
       "entry": "cookies, HTTP",
       "link": "intermediate/sessions_and_cookies.html#index_entry_index_1",
       "title": "Sessions and cookies"
@@ -274,6 +269,11 @@
     {
       "entry": "@CookieValue",
       "link": "intermediate/sessions_and_cookies.html#index_entry_index_2",
+      "title": "Sessions and cookies"
+    },
+    {
+      "entry": "sessions, HTTP",
+      "link": "intermediate/sessions_and_cookies.html#index_entry_index_3",
       "title": "Sessions and cookies"
     }
   ],

@@ -66,7 +66,7 @@ class="header_item" href="../index_page.html">Index</a>
 <li><a href="#what-is-session-and-cookies">What is session and cookies</a></li>
 <li><a href="#implement-cookies-transfer">Implement cookies transfer</a></li>
 <li><a href="#managing-cookies-using-spring">Managing cookies using Spring</a></li>
-<li><a href="#problems-with-cookies">Problems with cookies</a></li>
+<li><a href="#using-sessions">Using sessions</a></li>
 </ul>
 </div>
 <hr />
@@ -109,8 +109,22 @@ class):</p>
 using @CookieValue annotation</p>
 </blockquote>
 <hr />
-<h1 id="problems-with-cookies">Problems with cookies</h1>
+<p><a name="index_entry_index_3"></a></p>
+<h1 id="using-sessions">Using sessions</h1>
 <p>[<a href="../references.html#ref_2_13">2.13</a>, <a href="https://youtu.be/cpFfzE9eGT0?t=2605">43:25</a>]</p>
+<p>Cookies are stored inside the client's computer and the client may not allow to drop such kind
+of litter inside their system.</p>
+<p>Cooking processing may be costly as they are just text files. Complex structures may be have
+very large size. Also cookies may have size limitation.</p>
+<p><img src="../../pict/session_cookie_sequence.png" class="floatRight" /></p>
+
+<p>To address these problems there is an alternative called <strong>sessions</strong>.</p>
+<p>A client sends a request. The application doesn't send the whole set of data to the client
+but instead saves the session state in the database and returns to the client a response with above
+single session ID.</p>
+<p>On a next request the session ID cookie is sent back to the application that retrieves the session
+state by this session ID and returns to the client the customized response.</p>
+<p style="clear: both;"></p>
 <p>&nbsp;</p>
 <hr />
 
