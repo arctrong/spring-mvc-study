@@ -13,7 +13,7 @@
 <p>Name 2 is: ${dto.name2}</p>
 <p>Result is: ${result} GOOD</p>
 
-<p><a href="${pageContext.request.contextPath}/ui/sendEmail/${dto.name1}"
+<p><a href="${pageContext.request.contextPath}/ui/sendEmail"
 >Send result to your email</a></p>
 
 </body></html>
