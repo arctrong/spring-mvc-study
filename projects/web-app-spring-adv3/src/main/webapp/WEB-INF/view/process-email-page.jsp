@@ -6,7 +6,7 @@
 <style>body {background-color: #d2efc5;}</style>
 </head><body>
 
-<h1>Hi ??? !</h1>
+<h1>Hi ${userName}!</h1>
 
 <h2>Email was successfully sent to ${sendEmailDto.userEmail}</h2>
 
