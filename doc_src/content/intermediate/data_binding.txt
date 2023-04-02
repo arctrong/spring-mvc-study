@@ -175,6 +175,7 @@ Two views were added as well:
 > <!--path patches-->2b0e4b15df7aac1076902411e6cc99b7c98df631.html)
 > Spring MVC form tags introduced
 
+<!--index ["@ModelAttribute"]-->
 Actually with this approach it's not necessary to handle a model object. The controller methods 
 may be significantly simplified like this:
 
@@ -191,6 +192,11 @@ may be significantly simplified like this:
     }
     .  .  .
 ````
+
+!!! note
+    Looks like the `@ModelAttribute` annotation **requires** the argument. There were cases
+    when it didn't work without arguments even if the parameter name matched the attribute name
+    like in the second example where the both names are `dto`.
 
 > Git commit: [`8995a8f64dd67ad319ce7650a4ee330eab28c4b8`](
 > <!--path patches-->8995a8f64dd67ad319ce7650a4ee330eab28c4b8.html)

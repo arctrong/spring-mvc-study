@@ -5,7 +5,7 @@ div.sidebar + p {
 div.patch_block {
     font-family: Consolas, Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace, sans-serif;
     font-size: 16px;
-    width: 878px;
+    width: 886px;
     word-break: break-word;
     background-color: aliceblue;
     padding: 7px;
@@ -13,12 +13,15 @@ div.patch_block {
 
 div.patch_block span, div.patch_block ins, div.patch_block del {
     white-space: pre-wrap;
-
 }
 
 
 div.patch_block .diff {
-    background-color: #9accf8;
+    background-color: steelblue;
+    display: inline-block;
+    color: white;
+    margin-top: 20px;
+    margin-bottom: 10px;
 }
 
 div.patch_block .index {

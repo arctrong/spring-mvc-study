@@ -1,0 +1,257 @@
+<!--VARIABLES {"title": "Patch 82d604c452010585bc401a28bb02907f8c378314"}--> 
+<div class="patch_block">
+
+<span class="diff">diff --git a/projects/web-app-spring-adv3/src/main/java/springmvcstudy2/controllers/EmailController.java b/projects/web-app-spring-adv3/src/main/java/springmvcstudy2/controllers/EmailController.java</span><br />
+
+<span class="index">index 8a52a75..e061d6c 100644</span><br />
+
+<span class="tree_minuses">--- a/projects/web-app-spring-adv3/src/main/java/springmvcstudy2/controllers/EmailController.java</span><br />
+
+<span class="tree_pluses">+++ b/projects/web-app-spring-adv3/src/main/java/springmvcstudy2/controllers/EmailController.java</span><br />
+
+<span class="two_ats">@@ -6,8 +6,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;</span><br />
+
+<span> import org.springframework.web.bind.annotation.RequestMapping;</span><br />
+
+<span> import springmvcstudy2.model.SendEmailDto;</span><br />
+
+<span> </span><br />
+
+<del>-import javax.servlet.http.HttpSession;</del><br />
+
+<del>-</del><br />
+
+<span> @Controller</span><br />
+
+<span> public class EmailController {</span><br />
+
+<span> </span><br />
+
+<span class="two_ats">@@ -18,9 +16,7 @@ public class EmailController {</span><br />
+
+<span>     }</span><br />
+
+<span> </span><br />
+
+<span>     @RequestMapping(&quot;/process-email&quot;)</span><br />
+
+<del>-    public String processEmail(@ModelAttribute SendEmailDto sendEmailDto,</del><br />
+
+<del>-                               HttpSession session, Model model) {</del><br />
+
+<del>-        model.addAttribute(&quot;userName&quot;, &quot;dear &quot; + session.getAttribute(&quot;userName&quot;));</del><br />
+
+<ins>+    public String processEmail(@ModelAttribute SendEmailDto sendEmailDto) {</ins><br />
+
+<span>         return &quot;process-email-page&quot;;</span><br />
+
+<span>     }</span><br />
+
+<span> }</span><br />
+
+<span class="diff">diff --git a/projects/web-app-spring-adv3/src/main/java/springmvcstudy2/controllers/ValidatedController.java b/projects/web-app-spring-adv3/src/main/java/springmvcstudy2/controllers/ValidatedController.java</span><br />
+
+<span class="index">index 3fb7dc0..9325e42 100644</span><br />
+
+<span class="tree_minuses">--- a/projects/web-app-spring-adv3/src/main/java/springmvcstudy2/controllers/ValidatedController.java</span><br />
+
+<span class="tree_pluses">+++ b/projects/web-app-spring-adv3/src/main/java/springmvcstudy2/controllers/ValidatedController.java</span><br />
+
+<span class="two_ats">@@ -1,35 +1,35 @@</span><br />
+
+<span> package springmvcstudy2.controllers;</span><br />
+
+<span> </span><br />
+
+<span> import org.springframework.stereotype.Controller;</span><br />
+
+<ins>+import org.springframework.ui.Model;</ins><br />
+
+<span> import org.springframework.validation.BindingResult;</span><br />
+
+<span> import org.springframework.web.bind.annotation.ModelAttribute;</span><br />
+
+<span> import org.springframework.web.bind.annotation.RequestMapping;</span><br />
+
+<ins>+import org.springframework.web.bind.annotation.SessionAttributes;</ins><br />
+
+<span> import springmvcstudy2.model.UserInfoValidatedDto;</span><br />
+
+<span> </span><br />
+
+<del>-import javax.servlet.http.HttpSession;</del><br />
+
+<span> import javax.validation.Valid;</span><br />
+
+<span> </span><br />
+
+<span> @Controller</span><br />
+
+<ins>+@SessionAttributes(&quot;userInfoDto&quot;)</ins><br />
+
+<span> public class ValidatedController {</span><br />
+
+<span> </span><br />
+
+<span>     @RequestMapping(&quot;/validate&quot;)</span><br />
+
+<del>-    public String showHomePageSpring(@ModelAttribute(&quot;dto&quot;) UserInfoValidatedDto dto) {</del><br />
+
+<ins>+    public String showHomePageSpring(Model model) {</ins><br />
+
+<ins>+        model.addAttribute(&quot;userInfoDto&quot;, new UserInfoValidatedDto());</ins><br />
+
+<span>         return &quot;home-page-validated&quot;;</span><br />
+
+<span>     }</span><br />
+
+<span> </span><br />
+
+<span>     @RequestMapping(&quot;/validate-submit&quot;)</span><br />
+
+<del>-    public String showCalculatePageSpring(@Valid @ModelAttribute(&quot;dto&quot;) UserInfoValidatedDto dto,</del><br />
+
+<del>-                                          BindingResult result,</del><br />
+
+<del>-                                          HttpSession session) {</del><br />
+
+<ins>+    public String showCalculatePageSpring(</ins><br />
+
+<ins>+            @Valid @ModelAttribute(&quot;userInfoDto&quot;) UserInfoValidatedDto userInfoDto,</ins><br />
+
+<ins>+            BindingResult result) {</ins><br />
+
+<span>         System.out.println(&quot;showCalculatePageSpring called&quot;);</span><br />
+
+<span>         if (result.hasErrors()) {</span><br />
+
+<span>             System.out.println(&quot;VALIDATION: form has errors&quot;);</span><br />
+
+<span>             result.getAllErrors().forEach(System.out::println);</span><br />
+
+<span>             return &quot;home-page-validated&quot;;</span><br />
+
+<span>         }</span><br />
+
+<del>-</del><br />
+
+<del>-        session.setAttribute(&quot;userName&quot;, dto.getName1());</del><br />
+
+<del>-</del><br />
+
+<span>         return &quot;result-page-spring&quot;;</span><br />
+
+<span>     }</span><br />
+
+<span> }</span><br />
+
+<span class="diff">diff --git a/projects/web-app-spring-adv3/src/main/webapp/WEB-INF/view/home-page-validated.jsp b/projects/web-app-spring-adv3/src/main/webapp/WEB-INF/view/home-page-validated.jsp</span><br />
+
+<span class="index">index 4b6c5bc..0c87018 100644</span><br />
+
+<span class="tree_minuses">--- a/projects/web-app-spring-adv3/src/main/webapp/WEB-INF/view/home-page-validated.jsp</span><br />
+
+<span class="tree_pluses">+++ b/projects/web-app-spring-adv3/src/main/webapp/WEB-INF/view/home-page-validated.jsp</span><br />
+
+<span class="two_ats">@@ -13,7 +13,7 @@ body {background-color: aliceblue;}</span><br />
+
+<span> &lt;h1&gt;Home page (validated)&lt;/h1&gt;</span><br />
+
+<span> &lt;hr/&gt;</span><br />
+
+<span> </span><br />
+
+<del>-&lt;form:form action=&quot;validate-submit&quot; method=&quot;GET&quot; modelAttribute=&quot;dto&quot;&gt;</del><br />
+
+<ins>+&lt;form:form action=&quot;validate-submit&quot; method=&quot;GET&quot; modelAttribute=&quot;userInfoDto&quot;&gt;</ins><br />
+
+<span>     &lt;p&gt;&lt;label for=&quot;name1&quot;&gt;Name 1: &lt;/label&gt;&lt;form:input id=&quot;name1&quot; path=&quot;name1&quot;/&gt;</span><br />
+
+<span>     &lt;form:errors path=&quot;name1&quot; cssClass=&quot;error&quot;/&gt;&lt;/p&gt;</span><br />
+
+<span> </span><br />
+
+<span class="diff">diff --git a/projects/web-app-spring-adv3/src/main/webapp/WEB-INF/view/process-email-page.jsp b/projects/web-app-spring-adv3/src/main/webapp/WEB-INF/view/process-email-page.jsp</span><br />
+
+<span class="index">index 461cd91..6e8984d 100644</span><br />
+
+<span class="tree_minuses">--- a/projects/web-app-spring-adv3/src/main/webapp/WEB-INF/view/process-email-page.jsp</span><br />
+
+<span class="tree_pluses">+++ b/projects/web-app-spring-adv3/src/main/webapp/WEB-INF/view/process-email-page.jsp</span><br />
+
+<span class="two_ats">@@ -6,7 +6,7 @@</span><br />
+
+<span> &lt;style&gt;body {background-color: #d2efc5;}&lt;/style&gt;</span><br />
+
+<span> &lt;/head&gt;&lt;body&gt;</span><br />
+
+<span> </span><br />
+
+<del>-&lt;h1&gt;Hi ${userName}!&lt;/h1&gt;</del><br />
+
+<ins>+&lt;h1&gt;Hi ${userInfoDto.name1}!&lt;/h1&gt;</ins><br />
+
+<span> </span><br />
+
+<span> &lt;h2&gt;Email was successfully sent to ${sendEmailDto.userEmail}&lt;/h2&gt;</span><br />
+
+<span> </span><br />
+
+<span class="diff">diff --git a/projects/web-app-spring-adv3/src/main/webapp/WEB-INF/view/result-page-spring.jsp b/projects/web-app-spring-adv3/src/main/webapp/WEB-INF/view/result-page-spring.jsp</span><br />
+
+<span class="index">index b8e630a..e52589e 100644</span><br />
+
+<span class="tree_minuses">--- a/projects/web-app-spring-adv3/src/main/webapp/WEB-INF/view/result-page-spring.jsp</span><br />
+
+<span class="tree_pluses">+++ b/projects/web-app-spring-adv3/src/main/webapp/WEB-INF/view/result-page-spring.jsp</span><br />
+
+<span class="two_ats">@@ -9,8 +9,8 @@</span><br />
+
+<span> &lt;h1&gt;Result page (Spring)&lt;/h1&gt;</span><br />
+
+<span> &lt;hr/&gt;</span><br />
+
+<span> </span><br />
+
+<del>-&lt;p&gt;Name 1 is: ${dto.name1}&lt;/p&gt;</del><br />
+
+<del>-&lt;p&gt;Name 2 is: ${dto.name2}&lt;/p&gt;</del><br />
+
+<ins>+&lt;p&gt;Name 1 is: ${userInfoDto.name1}&lt;/p&gt;</ins><br />
+
+<ins>+&lt;p&gt;Name 2 is: ${userInfoDto.name2}&lt;/p&gt;</ins><br />
+
+<span> &lt;p&gt;Result is: ${result} GOOD&lt;/p&gt;</span><br />
+
+<span> </span><br />
+
+<span> &lt;p&gt;&lt;a href=&quot;${pageContext.request.contextPath}/ui/sendEmail&quot;</span><br />
+
+<span class="diff">diff --git a/projects/web-app-spring-adv3/src/main/webapp/WEB-INF/view/send-email-page.jsp b/projects/web-app-spring-adv3/src/main/webapp/WEB-INF/view/send-email-page.jsp</span><br />
+
+<span class="index">index 0fcfee7..7103bc0 100644</span><br />
+
+<span class="tree_minuses">--- a/projects/web-app-spring-adv3/src/main/webapp/WEB-INF/view/send-email-page.jsp</span><br />
+
+<span class="tree_pluses">+++ b/projects/web-app-spring-adv3/src/main/webapp/WEB-INF/view/send-email-page.jsp</span><br />
+
+<span class="two_ats">@@ -10,7 +10,7 @@ body {background-color: #d2efc5;}</span><br />
+
+<span> &lt;/style&gt;</span><br />
+
+<span> &lt;/head&gt;&lt;body&gt;</span><br />
+
+<span> </span><br />
+
+<del>-&lt;h1&gt;Hi ${userName}!&lt;/h1&gt;</del><br />
+
+<ins>+&lt;h1&gt;Hi ${userInfoDto.name1}!&lt;/h1&gt;</ins><br />
+
+<span> &lt;h2&gt;Send result to your email.&lt;/h2&gt;</span><br />
+
+<span> </span><br />
+
+<span> &lt;form:form action=&quot;process-email&quot; method=&quot;GET&quot; modelAttribute=&quot;sendEmailDto&quot;&gt;</span><br />
+
+</div>
+

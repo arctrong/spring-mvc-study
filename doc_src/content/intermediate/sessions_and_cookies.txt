@@ -137,12 +137,98 @@ may be huge, it's not recommended to store unnecessary data in sessions.
 > <!--path patches-->41ac2ee44af044b776a036a7bd891d9cf4347cf5.html)
 > session usage demonstrated
 
-
-
+----------------------------------------------------------------------------------------------------
+# Session timeout
 
 [[2.13][], [1:21:08](https://youtu.be/cpFfzE9eGT0?t=4868)]
 
+!!! note
+    The `javax.servlet.http.HttpSession` is not a part of Spring.
 
+<!--index ["timeout, session", "session timeout"]-->
+It may be unreasonable or even impossible to hold used session data forever. To limit the storage
+period of time (in minutes) the following parameter may be used in the `web.xml` file:
+
+````xml
+<session-config> 
+    <session-timeout>20</session-timeout>
+</session-config>
+````
+
+In the code-based configuration (e.g. in the [`ValidatedController`](
+<!--path code-->web-app-spring-adv3/src/main/java/springmvcstudy2/controllers/ValidatedController.java)
+class) the `javax.servlet.http.HttpSession` object may be used for that
+(in seconds):
+
+````code
+    @RequestMapping("/validate-submit")
+    public String showCalculatePageSpring(@Valid @ModelAttribute("dto") UserInfoValidatedDto dto, 
+                                          HttpSession session) {
+    
+        session.setAttribute("userName", dto.getName1());
+        session.setMaxInactiveInterval(20);
+        
+        return "result-page-spring";
+    }
+````
+
+It's proved that after 20 seconds of inactivity the session attribute `userName` is no longer
+available. We are now not going to preserve this code in the project.
+
+----------------------------------------------------------------------------------------------------
+<!--index ["@SessionAttributes"]-->
+# Using `@SessionAttributes` annotation
+
+[[2.13][], [1:26:59](https://youtu.be/cpFfzE9eGT0?t=5219)]
+
+!!! note
+    Using the following approach may be pretty tricky and may take much time for investigation of
+    possible errors. It needs further exploration and consideration.
+
+The `@org.springframework.web.bind.annotation.SessionAttributes` annotation is added to the 
+[`ValidatedController`](
+<!--path code-->web-app-spring-adv3/src/main/java/springmvcstudy2/controllers/ValidatedController.java)
+class:
+
+````code
+@Controller
+@SessionAttributes("userInfoDto")
+public class ValidatedController {
+
+    @RequestMapping("/validate")
+    public String showHomePageSpring(Model model) {
+        model.addAttribute("userInfoDto", new UserInfoValidatedDto());
+        return "home-page-validated";
+    }
+    .  .  .
+````
+
+!!! note
+    Multiple model attributes may be specified in the `@SessionAttributes` annotation. 
+    Also see [[2.13][], [1:39:39](https://youtu.be/cpFfzE9eGT0?t=5979)].
+
+In the [`EmailController`](
+<!--path code-->web-app-spring-adv3/src/main/java/springmvcstudy2/controllers/EmailController.java)
+we just remove the explicit session handling code.
+
+In the views:
+
+- [`send-email-page.jsp`](
+    <!--path code-->web-app-spring-adv3/src/main/webapp/WEB-INF/view/send-email-page.jsp) and
+- [`process-email-page.jsp`](
+    <!--path code-->web-app-spring-adv3/src/main/webapp/WEB-INF/view/process-email-page.jsp)
+   
+We just use the specified session attribute like this:
+
+````xml
+.  .  .
+<h1>Hi ${userInfoDto.name1}!</h1>
+.  .  .
+````
+    
+> Git commit: [`82d604c452010585bc401a28bb02907f8c378314`](
+> <!--path patches-->82d604c452010585bc401a28bb02907f8c378314.html)
+> @SessionAttributes annotation used
 
 
 

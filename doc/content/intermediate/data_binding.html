@@ -201,7 +201,8 @@ controller:</p>
 <p>Git commit: <a href="../patches/2b0e4b15df7aac1076902411e6cc99b7c98df631.html"><code>2b0e4b15df7aac1076902411e6cc99b7c98df631</code></a>
 Spring MVC form tags introduced</p>
 </blockquote>
-<p>Actually with this approach it's not necessary to handle a model object. The controller methods 
+<p><a name="index_entry_index_5"></a>
+Actually with this approach it's not necessary to handle a model object. The controller methods 
 may be significantly simplified like this:</p>
 <pre class="highlight"><code class="language-code">    .  .  .
     @RequestMapping("/spring")
@@ -214,6 +215,12 @@ may be significantly simplified like this:</p>
         return "result-page-spring";
     }
     .  .  .</code></pre>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Looks like the <code>@ModelAttribute</code> annotation <strong>requires</strong> the argument. There were cases
+when it didn't work without arguments even if the parameter name matched the attribute name
+like in the second example where the both names are <code>dto</code>.</p>
+</div>
 <blockquote>
 <p>Git commit: <a href="../patches/8995a8f64dd67ad319ce7650a4ee330eab28c4b8.html"><code>8995a8f64dd67ad319ce7650a4ee330eab28c4b8</code></a>
 controller methods simplified</p>

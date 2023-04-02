@@ -67,6 +67,8 @@ class="header_item" href="../index_page.html">Index</a>
 <li><a href="#implement-cookies-transfer">Implement cookies transfer</a></li>
 <li><a href="#managing-cookies-using-spring">Managing cookies using Spring</a></li>
 <li><a href="#using-sessions">Using sessions</a></li>
+<li><a href="#session-timeout">Session timeout</a></li>
+<li><a href="#using-sessionattributes-annotation">Using @SessionAttributes annotation</a></li>
 </ul>
 </div>
 <hr />
@@ -160,7 +162,75 @@ may be huge, it's not recommended to store unnecessary data in sessions.</p>
 <p>Git commit: <a href="../patches/41ac2ee44af044b776a036a7bd891d9cf4347cf5.html"><code>41ac2ee44af044b776a036a7bd891d9cf4347cf5</code></a>
 session usage demonstrated</p>
 </blockquote>
+<hr />
+<h1 id="session-timeout">Session timeout</h1>
 <p>[<a href="../references.html#ref_2_13">2.13</a>, <a href="https://youtu.be/cpFfzE9eGT0?t=4868">1:21:08</a>]</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The <code>javax.servlet.http.HttpSession</code> is not a part of Spring.</p>
+</div>
+<p><a name="index_entry_index_4"></a>
+It may be unreasonable or even impossible to hold used session data forever. To limit the storage
+period of time (in minutes) the following parameter may be used in the <code>web.xml</code> file:</p>
+<pre class="highlight"><code class="language-xml">&lt;session-config&gt; 
+    &lt;session-timeout&gt;20&lt;/session-timeout&gt;
+&lt;/session-config&gt;</code></pre>
+<p>In the code-based configuration (e.g. in the <a href="../../../projects/web-app-spring-adv3/src/main/java/springmvcstudy2/controllers/ValidatedController.java"><code>ValidatedController</code></a>
+class) the <code>javax.servlet.http.HttpSession</code> object may be used for that
+(in seconds):</p>
+<pre class="highlight"><code class="language-code">    @RequestMapping("/validate-submit")
+    public String showCalculatePageSpring(@Valid @ModelAttribute("dto") UserInfoValidatedDto dto, 
+                                          HttpSession session) {
+
+        session.setAttribute("userName", dto.getName1());
+        session.setMaxInactiveInterval(20);
+
+        return "result-page-spring";
+    }</code></pre>
+<p>It's proved that after 20 seconds of inactivity the session attribute <code>userName</code> is no longer
+available. We are now not going to preserve this code in the project.</p>
+<hr />
+<p><a name="index_entry_index_5"></a></p>
+<h1 id="using-sessionattributes-annotation">Using <code>@SessionAttributes</code> annotation</h1>
+<p>[<a href="../references.html#ref_2_13">2.13</a>, <a href="https://youtu.be/cpFfzE9eGT0?t=5219">1:26:59</a>]</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Using the following approach may be pretty tricky and may take much time for investigation of
+possible errors. It needs further exploration and consideration.</p>
+</div>
+<p>The <code>@org.springframework.web.bind.annotation.SessionAttributes</code> annotation is added to the 
+<a href="../../../projects/web-app-spring-adv3/src/main/java/springmvcstudy2/controllers/ValidatedController.java"><code>ValidatedController</code></a>
+class:</p>
+<pre class="highlight"><code class="language-code">@Controller
+@SessionAttributes("userInfoDto")
+public class ValidatedController {
+
+    @RequestMapping("/validate")
+    public String showHomePageSpring(Model model) {
+        model.addAttribute("userInfoDto", new UserInfoValidatedDto());
+        return "home-page-validated";
+    }
+    .  .  .</code></pre>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Multiple model attributes may be specified in the <code>@SessionAttributes</code> annotation. 
+Also see [<a href="../references.html#ref_2_13">2.13</a>, <a href="https://youtu.be/cpFfzE9eGT0?t=5979">1:39:39</a>].</p>
+</div>
+<p>In the <a href="../../../projects/web-app-spring-adv3/src/main/java/springmvcstudy2/controllers/EmailController.java"><code>EmailController</code></a>
+we just remove the explicit session handling code.</p>
+<p>In the views:</p>
+<ul>
+<li><a href="../../../projects/web-app-spring-adv3/src/main/webapp/WEB-INF/view/send-email-page.jsp"><code>send-email-page.jsp</code></a> and</li>
+<li><a href="../../../projects/web-app-spring-adv3/src/main/webapp/WEB-INF/view/process-email-page.jsp"><code>process-email-page.jsp</code></a></li>
+</ul>
+<p>We just use the specified session attribute like this:</p>
+<pre class="highlight"><code class="language-xml">.  .  .
+&lt;h1&gt;Hi ${userInfoDto.name1}!&lt;/h1&gt;
+.  .  .</code></pre>
+<blockquote>
+<p>Git commit: <a href="../patches/82d604c452010585bc401a28bb02907f8c378314.html"><code>82d604c452010585bc401a28bb02907f8c378314</code></a>
+@SessionAttributes annotation used</p>
+</blockquote>
 <p>&nbsp;</p>
 <hr />
 
