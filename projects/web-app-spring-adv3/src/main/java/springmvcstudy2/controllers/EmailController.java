@@ -6,8 +6,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import springmvcstudy2.model.SendEmailDto;
 
-import javax.servlet.http.HttpSession;
-
 @Controller
 public class EmailController {
 
@@ -18,9 +16,7 @@ public class EmailController {
     }
 
     @RequestMapping("/process-email")
-    public String processEmail(@ModelAttribute SendEmailDto sendEmailDto,
-                               HttpSession session, Model model) {
-        model.addAttribute("userName", "dear " + session.getAttribute("userName"));
+    public String processEmail(@ModelAttribute SendEmailDto sendEmailDto) {
         return "process-email-page";
     }
 }

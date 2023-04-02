@@ -10,7 +10,7 @@ body {background-color: #d2efc5;}
 </style>
 </head><body>
 
-<h1>Hi ${userName}!</h1>
+<h1>Hi ${userInfoDto.name1}!</h1>
 <h2>Send result to your email.</h2>
 
 <form:form action="process-email" method="GET" modelAttribute="sendEmailDto">

@@ -9,8 +9,8 @@
 <h1>Result page (Spring)</h1>
 <hr/>
 
-<p>Name 1 is: ${dto.name1}</p>
-<p>Name 2 is: ${dto.name2}</p>
+<p>Name 1 is: ${userInfoDto.name1}</p>
+<p>Name 2 is: ${userInfoDto.name2}</p>
 <p>Result is: ${result} GOOD</p>
 
 <p><a href="${pageContext.request.contextPath}/ui/sendEmail"

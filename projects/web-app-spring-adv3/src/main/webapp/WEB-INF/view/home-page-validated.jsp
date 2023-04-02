@@ -13,7 +13,7 @@ body {background-color: aliceblue;}
 <h1>Home page (validated)</h1>
 <hr/>
 
-<form:form action="validate-submit" method="GET" modelAttribute="dto">
+<form:form action="validate-submit" method="GET" modelAttribute="userInfoDto">
     <p><label for="name1">Name 1: </label><form:input id="name1" path="name1"/>
     <form:errors path="name1" cssClass="error"/></p>
 
