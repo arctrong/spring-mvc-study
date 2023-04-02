@@ -63,6 +63,8 @@ class):
 > using @CookieValue annotation
 
 ----------------------------------------------------------------------------------------------------
+Apr 1, 2023
+
 <!--index ["sessions, HTTP"]-->
 # Using sessions
 
@@ -86,6 +88,60 @@ On a next request the session ID cookie is sent back to the application that ret
 state by this session ID and returns to the client the customized response.
 
 <p style="clear: both;"></p>
+
+In the [`ValidatedController`](
+<!--path code-->web-app-spring-adv3/src/main/java/springmvcstudy2/controllers/ValidatedController.java)
+class using setting a session attribute:
+
+````code
+    @RequestMapping("/validate-submit")
+    public String showCalculatePageSpring(<...>,
+                                          HttpSession session) {
+        .  .  .
+        session.setAttribute("userName", dto.getName1());
+        return "result-page-spring";
+    }
+````
+
+Then this attribute may be used on the JSP page like [`process-email-page.jsp`](
+<!--path code-->web-app-spring-adv3/src/main/webapp/WEB-INF/view/process-email-page.jsp):
+
+````xml
+.  .  .
+<h1>Hi ${userName}!</h1>
+.  .  .
+````
+
+Or the session attributes may be transformed and set into the model likes it's don in the
+[`EmailController`](
+<!--path code-->web-app-spring-adv3/src/main/java/springmvcstudy2/controllers/EmailController.java)
+class:
+
+````code
+    @RequestMapping("/process-email")
+    public String processEmail(@ModelAttribute SendEmailDto sendEmailDto,
+                               HttpSession session, Model model) {
+        model.addAttribute("userName", "dear " + session.getAttribute("userName"));
+        return "process-email-page";
+    }
+````
+
+!!! important
+    On a JSP page, when resolving a placeholder variable, first an attempt is done to find this
+    variable in the model and if not found then it's searched in the session.
+
+As servers have still limited storage capacity and the number of requests and different sessions 
+may be huge, it's not recommended to store unnecessary data in sessions.
+
+> Git commit: [`41ac2ee44af044b776a036a7bd891d9cf4347cf5`](
+> <!--path patches-->41ac2ee44af044b776a036a7bd891d9cf4347cf5.html)
+> session usage demonstrated
+
+
+
+
+[[2.13][], [1:21:08](https://youtu.be/cpFfzE9eGT0?t=4868)]
+
 
 
 

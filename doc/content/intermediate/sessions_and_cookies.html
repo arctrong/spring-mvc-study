@@ -109,6 +109,7 @@ class):</p>
 using @CookieValue annotation</p>
 </blockquote>
 <hr />
+<p>Apr 1, 2023</p>
 <p><a name="index_entry_index_3"></a></p>
 <h1 id="using-sessions">Using sessions</h1>
 <p>[<a href="../references.html#ref_2_13">2.13</a>, <a href="https://youtu.be/cpFfzE9eGT0?t=2605">43:25</a>]</p>
@@ -125,6 +126,41 @@ single session ID.</p>
 <p>On a next request the session ID cookie is sent back to the application that retrieves the session
 state by this session ID and returns to the client the customized response.</p>
 <p style="clear: both;"></p>
+
+<p>In the <a href="../../../projects/web-app-spring-adv3/src/main/java/springmvcstudy2/controllers/ValidatedController.java"><code>ValidatedController</code></a>
+class using setting a session attribute:</p>
+<pre class="highlight"><code class="language-code">    @RequestMapping("/validate-submit")
+    public String showCalculatePageSpring(&lt;...&gt;,
+                                          HttpSession session) {
+        .  .  .
+        session.setAttribute("userName", dto.getName1());
+        return "result-page-spring";
+    }</code></pre>
+<p>Then this attribute may be used on the JSP page like <a href="../../../projects/web-app-spring-adv3/src/main/webapp/WEB-INF/view/process-email-page.jsp"><code>process-email-page.jsp</code></a>:</p>
+<pre class="highlight"><code class="language-xml">.  .  .
+&lt;h1&gt;Hi ${userName}!&lt;/h1&gt;
+.  .  .</code></pre>
+<p>Or the session attributes may be transformed and set into the model likes it's don in the
+<a href="../../../projects/web-app-spring-adv3/src/main/java/springmvcstudy2/controllers/EmailController.java"><code>EmailController</code></a>
+class:</p>
+<pre class="highlight"><code class="language-code">    @RequestMapping("/process-email")
+    public String processEmail(@ModelAttribute SendEmailDto sendEmailDto,
+                               HttpSession session, Model model) {
+        model.addAttribute("userName", "dear " + session.getAttribute("userName"));
+        return "process-email-page";
+    }</code></pre>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>On a JSP page, when resolving a placeholder variable, first an attempt is done to find this
+variable in the model and if not found then it's searched in the session.</p>
+</div>
+<p>As servers have still limited storage capacity and the number of requests and different sessions 
+may be huge, it's not recommended to store unnecessary data in sessions.</p>
+<blockquote>
+<p>Git commit: <a href="../patches/41ac2ee44af044b776a036a7bd891d9cf4347cf5.html"><code>41ac2ee44af044b776a036a7bd891d9cf4347cf5</code></a>
+session usage demonstrated</p>
+</blockquote>
+<p>[<a href="../references.html#ref_2_13">2.13</a>, <a href="https://youtu.be/cpFfzE9eGT0?t=4868">1:21:08</a>]</p>
 <p>&nbsp;</p>
 <hr />
 
