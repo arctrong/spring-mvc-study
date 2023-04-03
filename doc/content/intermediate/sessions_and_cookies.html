@@ -74,6 +74,7 @@ class="header_item" href="../index_page.html">Index</a>
 <li><a href="#adding-conversational-scope">Adding conversational scope</a></li>
 <li><a href="#specify-scope-explicitly-in-jsp-page">Specify scope explicitly in JSP page</a></li>
 <li><a href="#get-things-simpler">Get things simpler</a></li>
+<li><a href="#completing-the-conversation">Completing the conversation</a></li>
 </ul>
 </li>
 </ul>
@@ -343,7 +344,27 @@ looked up in the request scope and then, if not found, in the session scope.</p>
 <p>Git commit: <a href="../patches/e51ab82cd5dbff738d0564796176a933e39987be.html"><code>e51ab82cd5dbff738d0564796176a933e39987be</code></a>
 all attributes added to the session scope</p>
 </blockquote>
+<p><a name="index_entry_index_9"></a></p>
+<h2 id="completing-the-conversation">Completing the conversation</h2>
 <p>[<a href="../references.html#ref_2_14">2.14</a>, <a href="https://youtu.be/ezty6XhOpF8?t=2704">45:04</a>]</p>
+<p>In the second handler method adding a <code>org.springframework.web.bind.support.SessionStatus</code> 
+parameter and using it for the session completion:</p>
+<pre class="highlight"><code class="language-code">    @RequestMapping("/second")
+    public String secondHandler(SessionStatus status) {
+        status.setComplete();
+        return "index";
+    }
+
+    @RequestMapping("/third")
+    public String thirdHandler() {
+        return "index";
+    }</code></pre>
+<p>After that, in the third handler method the session attributes will be absent.</p>
+<blockquote>
+<p>Git commit: <a href="../patches/2977906fc61c5574f67e1db43f7ed544a2fbae5d.html"><code>2977906fc61c5574f67e1db43f7ed544a2fbae5d</code></a>
+conversation completing demonstrated</p>
+</blockquote>
+<p>[<a href="../references.html#ref_2_14">2.14</a>, <a href="https://youtu.be/ezty6XhOpF8?t=3821">1:03:41</a>]</p>
 <p>&nbsp;</p>
 <hr />
 

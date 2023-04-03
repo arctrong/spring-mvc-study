@@ -390,13 +390,34 @@ looked up in the request scope and then, if not found, in the session scope.
 > all attributes added to the session scope
 
 
+<!--index ["SessionStatus object", "session completion"]-->
+## Completing the conversation
 
 [[2.14][], [45:04](https://youtu.be/ezty6XhOpF8?t=2704)]
 
+In the second handler method adding a `org.springframework.web.bind.support.SessionStatus` 
+parameter and using it for the session completion:
 
+````code
+    @RequestMapping("/second")
+    public String secondHandler(SessionStatus status) {
+        status.setComplete();
+        return "index";
+    }
 
+    @RequestMapping("/third")
+    public String thirdHandler() {
+        return "index";
+    }
+````
 
+After that, in the third handler method the session attributes will be absent.
 
+> Git commit: [`2977906fc61c5574f67e1db43f7ed544a2fbae5d`](
+> <!--path patches-->2977906fc61c5574f67e1db43f7ed544a2fbae5d.html)
+> conversation completing demonstrated
+
+[[2.14][], [1:03:41](https://youtu.be/ezty6XhOpF8?t=3821)]
 
 
 
