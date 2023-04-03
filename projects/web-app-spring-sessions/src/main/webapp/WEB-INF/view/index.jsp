@@ -16,7 +16,8 @@ body {background-color: plum;}
 <hr />
 <p>
 <a href="${pageContext.request.contextPath}/ui/first">First</a> |
-<a href="${pageContext.request.contextPath}/ui/second">Second</a>
+<a href="${pageContext.request.contextPath}/ui/second">Second</a> |
+<a href="${pageContext.request.contextPath}/ui/third">Third</a>
 </p>
 
 </body></html>
