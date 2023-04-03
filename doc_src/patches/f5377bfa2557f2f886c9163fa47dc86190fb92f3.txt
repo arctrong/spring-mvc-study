@@ -1,0 +1,49 @@
+<!--VARIABLES {"title": "Patch f5377bfa2557f2f886c9163fa47dc86190fb92f3"}--> 
+<div class="patch_block">
+
+<span class="diff">diff --git a/projects/web-app-spring-sessions/src/main/java/springmvcstudy/controllers/SecondController.java b/projects/web-app-spring-sessions/src/main/java/springmvcstudy/controllers/SecondController.java</span><br />
+
+<span class="index">index 2155d0d..932e0da 100644</span><br />
+
+<span class="tree_minuses">--- a/projects/web-app-spring-sessions/src/main/java/springmvcstudy/controllers/SecondController.java</span><br />
+
+<span class="tree_pluses">+++ b/projects/web-app-spring-sessions/src/main/java/springmvcstudy/controllers/SecondController.java</span><br />
+
+<span class="two_ats">@@ -3,14 +3,15 @@ package springmvcstudy.controllers;</span><br />
+
+<span> import org.springframework.stereotype.Controller;</span><br />
+
+<span> import org.springframework.ui.Model;</span><br />
+
+<span> import org.springframework.web.bind.annotation.RequestMapping;</span><br />
+
+<ins>+import org.springframework.web.bind.annotation.SessionAttribute;</ins><br />
+
+<span> </span><br />
+
+<span> @Controller</span><br />
+
+<span> public class SecondController {</span><br />
+
+<span> </span><br />
+
+<span>     @RequestMapping(&quot;/normalMethod&quot;)</span><br />
+
+<del>-    public String normalHandler(Model model) {</del><br />
+
+<del>-        String firstName = (String) model.getAttribute(&quot;firstName&quot;);</del><br />
+
+<ins>+    public String normalHandler(@SessionAttribute(&quot;firstName&quot;) String firstName, Model model) {</ins><br />
+
+<span>         System.out.println(&quot;Inside normal handler firstName=&quot; + firstName);</span><br />
+
+<ins>+        model.addAttribute(&quot;firstName&quot;, &quot;Dear &quot; + firstName);</ins><br />
+
+<span>         return &quot;index&quot;;</span><br />
+
+<span>     }</span><br />
+
+<span> }</span><br />
+
+</div>
+

@@ -75,6 +75,8 @@ class="header_item" href="../index_page.html">Index</a>
 <li><a href="#specify-scope-explicitly-in-jsp-page">Specify scope explicitly in JSP page</a></li>
 <li><a href="#get-things-simpler">Get things simpler</a></li>
 <li><a href="#completing-the-conversation">Completing the conversation</a></li>
+<li><a href="#restrictions-on-sessionattributes-annotation">Restrictions on @SessionAttributes annotation</a></li>
+<li><a href="#httpsession-vs-sessionattribute">HttpSession vs @SessionAttribute</a></li>
 </ul>
 </li>
 </ul>
@@ -364,7 +366,58 @@ parameter and using it for the session completion:</p>
 <p>Git commit: <a href="../patches/2977906fc61c5574f67e1db43f7ed544a2fbae5d.html"><code>2977906fc61c5574f67e1db43f7ed544a2fbae5d</code></a>
 conversation completing demonstrated</p>
 </blockquote>
+<h2 id="restrictions-on-sessionattributes-annotation">Restrictions on <code>@SessionAttributes</code> annotation</h2>
 <p>[<a href="../references.html#ref_2_14">2.14</a>, <a href="https://youtu.be/ezty6XhOpF8?t=3821">1:03:41</a>]</p>
+<p>Javadoc of <code>org.springframework.web.bind.annotation.SessionAttributes</code> states that usage of
+conversation scope with <code>@SessionAttributes</code> annotation among different controllers may be buggy.
+For exchanging data between different controllers it's better to use 
+<code>javax.servlet.http.HttpSession</code> object or solutions like Spring authentication that is going
+to be discussed later.</p>
+<p>Addin a new controller:</p>
+<pre class="highlight"><code class="language-code">@Controller
+public class SecondController {
+
+    @RequestMapping("/normalMethod")
+    public String normalHandler(Model model) {
+        String firstName = (String) model.getAttribute("firstName");
+        System.out.println("Inside normal handler firstName=" + firstName);
+        return "index";
+    }
+}</code></pre>
+<p>In the handler method <code>normalHandler</code> the <code>firstName</code> attribute will be absent:</p>
+<pre class="highlight"><code class="language-shell">Inside normal handler firstName=null</code></pre>
+<p>But in the JSP view the corresponding attributes will be taken from the session.</p>
+<p>Let's try to fix it:</p>
+<pre class="highlight"><code class="language-code">@Controller
+public class SecondController {
+
+    @RequestMapping("/normalMethod")
+    public String normalHandler(@SessionAttribute("firstName") String firstName, Model model) {
+        System.out.println("Inside normal handler firstName=" + firstName);
+        model.addAttribute("firstName", "Dear " + firstName);
+        return "index";
+    }
+}</code></pre>
+<p>This will work:</p>
+<pre class="highlight"><code class="language-shell">Inside normal handler firstName=Jan</code></pre>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><a name="index_entry_index_10"></a>
+Mind the fact that <code>@org.springframework.web.bind.annotation.SessionAttribute</code> is a different 
+annotation.</p>
+</div>
+<p>But there may be problems like the following. The solution works if we navigate from the first
+handler method to the normal method of the second controller (see the picture below). </p>
+<p><img alt="" src="../../pict/conversational_scope.png" /></p>
+<p>But if we navigate to the normal method from the second handler method (where the session is
+completed) the following error will be returned:</p>
+<pre class="highlight"><code>HTTP ERROR 400 Missing session attribute 'firstName' of type String</code></pre>
+<blockquote>
+<p>Git commit: <a href="../patches/f5377bfa2557f2f886c9163fa47dc86190fb92f3.html"><code>f5377bfa2557f2f886c9163fa47dc86190fb92f3</code></a>
+problem with @SessionAttribute annotation</p>
+</blockquote>
+<h2 id="httpsession-vs-sessionattribute"><code>HttpSession</code> vs <code>@SessionAttribute</code></h2>
+<p>[<a href="../references.html#ref_2_14">2.14</a>, <a href="https://youtu.be/ezty6XhOpF8?t=5621">1:33:41</a>]</p>
 <p>&nbsp;</p>
 <hr />
 

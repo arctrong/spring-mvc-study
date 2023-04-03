@@ -417,12 +417,88 @@ After that, in the third handler method the session attributes will be absent.
 > <!--path patches-->2977906fc61c5574f67e1db43f7ed544a2fbae5d.html)
 > conversation completing demonstrated
 
+
+## Restrictions on `@SessionAttributes` annotation
+
 [[2.14][], [1:03:41](https://youtu.be/ezty6XhOpF8?t=3821)]
 
+Javadoc of `org.springframework.web.bind.annotation.SessionAttributes` states that usage of
+conversation scope with `@SessionAttributes` annotation among different controllers may be buggy.
+For exchanging data between different controllers it's better to use 
+`javax.servlet.http.HttpSession` object or solutions like Spring authentication that is going
+to be discussed later.
+
+Addin a new controller:
+
+````code
+@Controller
+public class SecondController {
+
+    @RequestMapping("/normalMethod")
+    public String normalHandler(Model model) {
+        String firstName = (String) model.getAttribute("firstName");
+        System.out.println("Inside normal handler firstName=" + firstName);
+        return "index";
+    }
+}
+````
+
+In the handler method `normalHandler` the `firstName` attribute will be absent:
+
+````shell
+Inside normal handler firstName=null
+````
+
+But in the JSP view the corresponding attributes will be taken from the session.
 
 
 
+Let's try to fix it:
 
+````code
+@Controller
+public class SecondController {
+
+    @RequestMapping("/normalMethod")
+    public String normalHandler(@SessionAttribute("firstName") String firstName, Model model) {
+        System.out.println("Inside normal handler firstName=" + firstName);
+        model.addAttribute("firstName", "Dear " + firstName);
+        return "index";
+    }
+}
+````
+
+This will work:
+
+````shell
+Inside normal handler firstName=Jan
+````
+
+!!! note
+    <!--index ["@SessionAttribute"]-->
+    Mind the fact that `@org.springframework.web.bind.annotation.SessionAttribute` is a different 
+    annotation.
+
+But there may be problems like the following. The solution works if we navigate from the first
+handler method to the normal method of the second controller (see the picture below). 
+
+![](<!--path pict-->conversational_scope.png)
+
+But if we navigate to the normal method from the second handler method (where the session is
+completed) the following error will be returned:
+
+````
+HTTP ERROR 400 Missing session attribute 'firstName' of type String
+````
+
+> Git commit: [`f5377bfa2557f2f886c9163fa47dc86190fb92f3`](
+> <!--path patches-->f5377bfa2557f2f886c9163fa47dc86190fb92f3.html)
+> problem with @SessionAttribute annotation
+
+
+## `HttpSession` vs `@SessionAttribute`
+
+[[2.14][], [1:33:41](https://youtu.be/ezty6XhOpF8?t=5621)]
 
 
 
