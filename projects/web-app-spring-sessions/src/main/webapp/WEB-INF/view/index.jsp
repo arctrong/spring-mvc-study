@@ -13,6 +13,7 @@ body {background-color: plum;}
 <hr />
 <strong>First name: </strong>${firstName}<br />
 <strong>Last name: </strong>${lastName}<br />
+<strong>Address: </strong>${address}<br />
 <hr />
 <p>
 <a href="${pageContext.request.contextPath}/ui/first">First</a> |

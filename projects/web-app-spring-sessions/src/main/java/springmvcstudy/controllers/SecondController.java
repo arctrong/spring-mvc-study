@@ -5,13 +5,15 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttribute;
 
+import javax.servlet.http.HttpSession;
+
 @Controller
 public class SecondController {
 
     @RequestMapping("/normalMethod")
-    public String normalHandler(@SessionAttribute("firstName") String firstName, Model model) {
-        System.out.println("Inside normal handler firstName=" + firstName);
-        model.addAttribute("firstName", "Dear " + firstName);
+    public String normalHandler(HttpSession session, Model model) {
+        String address = (String) session.getAttribute("address");
+        model.addAttribute("address", address + " - Normal");
         return "index";
     }
 }
