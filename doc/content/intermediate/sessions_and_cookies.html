@@ -69,6 +69,10 @@ class="header_item" href="../index_page.html">Index</a>
 <li><a href="#using-sessions">Using sessions</a></li>
 <li><a href="#session-timeout">Session timeout</a></li>
 <li><a href="#using-sessionattributes-annotation">Using @SessionAttributes annotation</a></li>
+<li><a href="#conversational-scope">Conversational scope</a><ul>
+<li><a href="#request-scope">Request scope</a></li>
+</ul>
+</li>
 </ul>
 </div>
 <hr />
@@ -196,7 +200,8 @@ available. We are now not going to preserve this code in the project.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Using the following approach may be pretty tricky and may take much time for investigation of
-possible errors. It needs further exploration and consideration.</p>
+possible errors. See <a href="sessions_and_cookies.html#conversational_scope">here</a> for more
+extensive explanation.</p>
 </div>
 <p>The <code>@org.springframework.web.bind.annotation.SessionAttributes</code> annotation is added to the 
 <a href="../../../projects/web-app-spring-adv3/src/main/java/springmvcstudy2/controllers/ValidatedController.java"><code>ValidatedController</code></a>
@@ -231,6 +236,50 @@ we just remove the explicit session handling code.</p>
 <p>Git commit: <a href="../patches/82d604c452010585bc401a28bb02907f8c378314.html"><code>82d604c452010585bc401a28bb02907f8c378314</code></a>
 @SessionAttributes annotation used</p>
 </blockquote>
+<hr />
+<p>Apr 3, 2023</p>
+<p><a name="index_entry_index_6"></a><a name="conversational_scope"></a></p>
+<h1 id="conversational-scope">Conversational scope</h1>
+<p>new simple project created to make the description more clear. The URL is 
+<a href="http://localhost:8080/web-app-spring-sessions/ui/first">http://localhost:8080/web-app-spring-sessions/ui/first</a>.</p>
+<p>[<a href="../references.html#ref_2_14">2.14</a>, <a href="https://youtu.be/ezty6XhOpF8?t=40">0:40</a>]</p>
+<blockquote>
+<p>Git commit: <a href="../patches/92ef2e0ce13ce794115d2d47695b80ec1b2d8ea4.html"><code>92ef2e0ce13ce794115d2d47695b80ec1b2d8ea4</code></a>
+new project created for sessions investigation</p>
+</blockquote>
+<p><a name="index_entry_index_7"></a></p>
+<h2 id="request-scope">Request scope</h2>
+<p>[<a href="../references.html#ref_2_14">2.14</a>, <a href="https://youtu.be/ezty6XhOpF8?t=247">4:07</a>]</p>
+<p>This narration is going to be done for further comparison with the upper level scope.</p>
+<p>Request scope defines data that is valid during a single request handling process, e.g. from the
+request receipt to the response result sending. As the request is processed (like the rendered view
+is sent to the client) the request scope is destroyed.</p>
+<p>Two controller methods are defined:</p>
+<pre class="highlight"><code class="language-code">    @RequestMapping("/first")
+    public String firstHandler(Model model) {
+        model.addAttribute("firstName", "Jan");
+        model.addAttribute("lastName", "Hus");
+        return "index";
+    }
+
+    @RequestMapping("/second")
+    public String secondHandler(Model model) {
+        String firstName = (String) model.getAttribute("firstName");
+        System.out.println("firstName=" + firstName);
+        return "index";
+    }</code></pre>
+<p>The first one sets two model attributes and the second one tries to asses it. The <code>Model</code> object
+here has the request scope so the instances are different for the two requests and so in the
+second method the requested attribute is absent:</p>
+<pre class="highlight"><code class="language-shell">firstName=null</code></pre>
+<p>The page is going to look like this:</p>
+<p><img alt="" src="../../pict/request_scope.png" /></p>
+<p>The first URL is <a href="http://localhost:8080/web-app-spring-sessions/ui/first">http://localhost:8080/web-app-spring-sessions/ui/first</a>.</p>
+<blockquote>
+<p>Git commit: <a href="../patches/705e5a346357e303c5b7dec577c7e82bcf1592a5.html"><code>705e5a346357e303c5b7dec577c7e82bcf1592a5</code></a>
+request scope demonstrated</p>
+</blockquote>
+<p>[<a href="../references.html#ref_2_14">2.14</a>, <a href="https://youtu.be/ezty6XhOpF8?t=977">16:17</a>]</p>
 <p>&nbsp;</p>
 <hr />
 

@@ -3,6 +3,7 @@
 [TOC]
 
 [2.13]: <!--page refs-->#ref_2_13
+[2.14]: <!--page refs-->#ref_2_14
 [16]: <!--page refs-->#ref_16
 
 ----------------------------------------------------------------------------------------------------
@@ -183,7 +184,8 @@ available. We are now not going to preserve this code in the project.
 
 !!! note
     Using the following approach may be pretty tricky and may take much time for investigation of
-    possible errors. It needs further exploration and consideration.
+    possible errors. See [here](<!--page sessions_and_cookies-->#conversational_scope) for more
+    extensive explanation.
 
 The `@org.springframework.web.bind.annotation.SessionAttributes` annotation is added to the 
 [`ValidatedController`](
@@ -230,9 +232,69 @@ We just use the specified session attribute like this:
 > <!--path patches-->82d604c452010585bc401a28bb02907f8c378314.html)
 > @SessionAttributes annotation used
 
+----------------------------------------------------------------------------------------------------
+Apr 3, 2023
+
+<!--index ["conversational scope"]--><a name="conversational_scope"></a>
+# Conversational scope
+
+new simple project created to make the description more clear. The URL is 
+<http://localhost:8080/web-app-spring-sessions/ui/first>.
+
+[[2.14][], [0:40](https://youtu.be/ezty6XhOpF8?t=40)]
+
+> Git commit: [`92ef2e0ce13ce794115d2d47695b80ec1b2d8ea4`](
+> <!--path patches-->92ef2e0ce13ce794115d2d47695b80ec1b2d8ea4.html)
+> new project created for sessions investigation
 
 
+<!--index ["request scope"]-->
+## Request scope
 
+[[2.14][], [4:07](https://youtu.be/ezty6XhOpF8?t=247)]
 
+This narration is going to be done for further comparison with the upper level scope.
+
+Request scope defines data that is valid during a single request handling process, e.g. from the
+request receipt to the response result sending. As the request is processed (like the rendered view
+is sent to the client) the request scope is destroyed.
+
+Two controller methods are defined:
+
+````code
+    @RequestMapping("/first")
+    public String firstHandler(Model model) {
+        model.addAttribute("firstName", "Jan");
+        model.addAttribute("lastName", "Hus");
+        return "index";
+    }
+
+    @RequestMapping("/second")
+    public String secondHandler(Model model) {
+        String firstName = (String) model.getAttribute("firstName");
+        System.out.println("firstName=" + firstName);
+        return "index";
+    }
+````
+
+The first one sets two model attributes and the second one tries to asses it. The `Model` object
+here has the request scope so the instances are different for the two requests and so in the
+second method the requested attribute is absent:
+
+````shell
+firstName=null
+````
+
+The page is going to look like this:
+
+![](<!--path pict-->request_scope.png)
+
+The first URL is <http://localhost:8080/web-app-spring-sessions/ui/first>.
+
+> Git commit: [`705e5a346357e303c5b7dec577c7e82bcf1592a5`](
+> <!--path patches-->705e5a346357e303c5b7dec577c7e82bcf1592a5.html)
+> request scope demonstrated
+
+[[2.14][], [16:17](https://youtu.be/ezty6XhOpF8?t=977)]
 
 
