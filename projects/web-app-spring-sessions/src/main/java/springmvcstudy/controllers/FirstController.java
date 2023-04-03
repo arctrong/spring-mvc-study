@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 @Controller
-@SessionAttributes("firstName")
+@SessionAttributes({"firstName", "lastName"})
 public class FirstController {
 
     @RequestMapping("/first")
@@ -17,9 +17,7 @@ public class FirstController {
     }
 
     @RequestMapping("/second")
-    public String secondHandler(Model model) {
-        String firstName = (String) model.getAttribute("firstName");
-        System.out.println("firstName=" + firstName);
+    public String secondHandler() {
         return "index";
     }
 }

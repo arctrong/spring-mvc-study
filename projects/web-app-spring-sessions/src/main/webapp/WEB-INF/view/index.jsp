@@ -13,9 +13,6 @@ body {background-color: plum;}
 <hr />
 <strong>First name: </strong>${firstName}<br />
 <strong>Last name: </strong>${lastName}<br />
-<br />
-<strong>First name from the request: </strong>${requestScope.firstName}<br />
-<strong>First name from the session: </strong>${sessionScope.firstName}<br />
 <hr />
 <p>
 <a href="${pageContext.request.contextPath}/ui/first">First</a> |
