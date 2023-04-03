@@ -1,0 +1,33 @@
+<!--VARIABLES {"title": "Patch 8787b67b11429a6f0369395418dfca87a74a1ab6"}--> 
+<div class="patch_block">
+
+<span class="diff">diff --git a/projects/web-app-spring-sessions/src/main/webapp/WEB-INF/view/index.jsp b/projects/web-app-spring-sessions/src/main/webapp/WEB-INF/view/index.jsp</span><br />
+
+<span class="index">index ce856e2..0a2892c 100644</span><br />
+
+<span class="tree_minuses">--- a/projects/web-app-spring-sessions/src/main/webapp/WEB-INF/view/index.jsp</span><br />
+
+<span class="tree_pluses">+++ b/projects/web-app-spring-sessions/src/main/webapp/WEB-INF/view/index.jsp</span><br />
+
+<span class="two_ats">@@ -13,6 +13,9 @@ body {background-color: plum;}</span><br />
+
+<span> &lt;hr /&gt;</span><br />
+
+<span> &lt;strong&gt;First name: &lt;/strong&gt;${firstName}&lt;br /&gt;</span><br />
+
+<span> &lt;strong&gt;Last name: &lt;/strong&gt;${lastName}&lt;br /&gt;</span><br />
+
+<ins>+&lt;br /&gt;</ins><br />
+
+<ins>+&lt;strong&gt;First name from the request: &lt;/strong&gt;${requestScope.firstName}&lt;br /&gt;</ins><br />
+
+<ins>+&lt;strong&gt;First name from the session: &lt;/strong&gt;${sessionScope.firstName}&lt;br /&gt;</ins><br />
+
+<span> &lt;hr /&gt;</span><br />
+
+<span> &lt;p&gt;</span><br />
+
+<span> &lt;a href=&quot;${pageContext.request.contextPath}/ui/first&quot;&gt;First&lt;/a&gt; |</span><br />
+
+</div>
+

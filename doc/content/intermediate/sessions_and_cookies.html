@@ -71,6 +71,9 @@ class="header_item" href="../index_page.html">Index</a>
 <li><a href="#using-sessionattributes-annotation">Using @SessionAttributes annotation</a></li>
 <li><a href="#conversational-scope">Conversational scope</a><ul>
 <li><a href="#request-scope">Request scope</a></li>
+<li><a href="#adding-conversational-scope">Adding conversational scope</a></li>
+<li><a href="#specify-scope-explicitly-in-jsp-page">Specify scope explicitly in JSP page</a></li>
+<li><a href="#get-things-simpler">Get things simpler</a></li>
 </ul>
 </li>
 </ul>
@@ -240,7 +243,7 @@ we just remove the explicit session handling code.</p>
 <p>Apr 3, 2023</p>
 <p><a name="index_entry_index_6"></a><a name="conversational_scope"></a></p>
 <h1 id="conversational-scope">Conversational scope</h1>
-<p>new simple project created to make the description more clear. The URL is 
+<p>New simple project created to make the description more clear. The URL is 
 <a href="http://localhost:8080/web-app-spring-sessions/ui/first">http://localhost:8080/web-app-spring-sessions/ui/first</a>.</p>
 <p>[<a href="../references.html#ref_2_14">2.14</a>, <a href="https://youtu.be/ezty6XhOpF8?t=40">0:40</a>]</p>
 <blockquote>
@@ -255,7 +258,10 @@ new project created for sessions investigation</p>
 request receipt to the response result sending. As the request is processed (like the rendered view
 is sent to the client) the request scope is destroyed.</p>
 <p>Two controller methods are defined:</p>
-<pre class="highlight"><code class="language-code">    @RequestMapping("/first")
+<pre class="highlight"><code class="language-code">@Controller
+public class FirstController {
+
+    @RequestMapping("/first")
     public String firstHandler(Model model) {
         model.addAttribute("firstName", "Jan");
         model.addAttribute("lastName", "Hus");
@@ -267,19 +273,77 @@ is sent to the client) the request scope is destroyed.</p>
         String firstName = (String) model.getAttribute("firstName");
         System.out.println("firstName=" + firstName);
         return "index";
-    }</code></pre>
-<p>The first one sets two model attributes and the second one tries to asses it. The <code>Model</code> object
+    }
+}</code></pre>
+<p>The first one sets two model attributes and the second one tries to access it. The <code>Model</code> object
 here has the request scope so the instances are different for the two requests and so in the
 second method the requested attribute is absent:</p>
 <pre class="highlight"><code class="language-shell">firstName=null</code></pre>
 <p>The page is going to look like this:</p>
 <p><img alt="" src="../../pict/request_scope.png" /></p>
-<p>The first URL is <a href="http://localhost:8080/web-app-spring-sessions/ui/first">http://localhost:8080/web-app-spring-sessions/ui/first</a>.</p>
+<p>The first URL is <a href="http://localhost:8080/web-app-spring-sessions/ui/first">http://localhost:8080/web-app-spring-sessions/ui/first</a>. As for now the second 
+link opens the page where all fields are empty.</p>
 <blockquote>
 <p>Git commit: <a href="../patches/705e5a346357e303c5b7dec577c7e82bcf1592a5.html"><code>705e5a346357e303c5b7dec577c7e82bcf1592a5</code></a>
 request scope demonstrated</p>
 </blockquote>
+<h2 id="adding-conversational-scope">Adding conversational scope</h2>
 <p>[<a href="../references.html#ref_2_14">2.14</a>, <a href="https://youtu.be/ezty6XhOpF8?t=977">16:17</a>]</p>
+<p>Just add the <code>@SessionAttributes("firstName")</code> annotation to the <code>FirstController</code> controller
+()see above) and see what happens:</p>
+<pre class="highlight"><code class="language-code">@Controller
+@SessionAttributes("firstName")
+public class FirstController {
+.  .  .</code></pre>
+<p><img src="../../pict/session_scope_01.png" class="floatRight" /></p>
+
+<p>When the first handler method is being called the two model attributes still exist in the <em>request 
+scope</em> but the attribute <code>firstName</code> also gets copied to the <em>session scope</em> (fig. 1).</p>
+<p>When the first method is finished the two model attributes are removed from the <em>request scope</em>
+but the attribute <code>firstName</code> remains in the <em>session scope</em> (fig. 2).</p>
+<p>When the second handler method is called the session scope attributes get copied to the 
+request scope (fig. 3).</p>
+<p style="clear: both;"></p>
+
+<p>So unlike the previous case we see:</p>
+<pre class="highlight"><code class="language-shell">firstName=Jan</code></pre>
+<p>And the second link shown above opens the page where the first field "First name" is filled.</p>
+<blockquote>
+<p>Git commit: <a href="../patches/c858def2e0084a4d7b40a7e045101bcb7f2017dc.html"><code>c858def2e0084a4d7b40a7e045101bcb7f2017dc</code></a>
+@SessionAttributes annotation added</p>
+</blockquote>
+<p><a name="index_entry_index_8"></a></p>
+<h2 id="specify-scope-explicitly-in-jsp-page">Specify scope explicitly in JSP page</h2>
+<p>[<a href="../references.html#ref_2_14">2.14</a>, <a href="https://youtu.be/ezty6XhOpF8?t=1970">32:50</a>]</p>
+<p>In the JSP page add:</p>
+<pre class="highlight"><code class="language-xml">.  .  .
+&lt;strong&gt;First name from the request: &lt;/strong&gt;${requestScope.firstName}&lt;br /&gt;
+&lt;strong&gt;First name from the session: &lt;/strong&gt;${sessionScope.firstName}&lt;br /&gt;
+.  .  .</code></pre>
+<p>that'll show that the attribute values are the same.</p>
+<blockquote>
+<p>Git commit: <a href="../patches/8787b67b11429a6f0369395418dfca87a74a1ab6.html"><code>8787b67b11429a6f0369395418dfca87a74a1ab6</code></a>
+scopes explicitly specified</p>
+</blockquote>
+<h2 id="get-things-simpler">Get things simpler</h2>
+<p>Specify the other field as session scoped:</p>
+<p><pre class="highlight"><code class="language-code">@Controller
+@SessionAttributes({"firstName", "lastName"})
+public class FirstController {
+.  .  .</code></pre>
+[<a href="../references.html#ref_2_14">2.14</a>, <a href="https://youtu.be/ezty6XhOpF8?t=1970">32:50</a>]
+Now we don't need to even mention the model attributes in the second handler:</p>
+<pre class="highlight"><code class="language-code">    @RequestMapping("/second")
+    public String secondHandler() {
+        return "index";
+    }</code></pre>
+<p>This will work as in the JSP page the attributes <code>${firstName}</code> and <code>${lastName}</code> will be first
+looked up in the request scope and then, if not found, in the session scope.</p>
+<blockquote>
+<p>Git commit: <a href="../patches/e51ab82cd5dbff738d0564796176a933e39987be.html"><code>e51ab82cd5dbff738d0564796176a933e39987be</code></a>
+all attributes added to the session scope</p>
+</blockquote>
+<p>[<a href="../references.html#ref_2_14">2.14</a>, <a href="https://youtu.be/ezty6XhOpF8?t=2704">45:04</a>]</p>
 <p>&nbsp;</p>
 <hr />
 

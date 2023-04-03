@@ -305,6 +305,16 @@
       "entry": "request scope",
       "link": "intermediate/sessions_and_cookies.html#index_entry_index_7",
       "title": "Sessions and cookies"
+    },
+    {
+      "entry": "requestScope, JSP attribute",
+      "link": "intermediate/sessions_and_cookies.html#index_entry_index_8",
+      "title": "Sessions and cookies"
+    },
+    {
+      "entry": "sessionScope, JSP attribute",
+      "link": "intermediate/sessions_and_cookies.html#index_entry_index_8",
+      "title": "Sessions and cookies"
     }
   ],
   "doc/content/patches/cb8843c8ea7c29ae9f62b19fa915e14a8d9c74e4.html": [],
@@ -354,5 +364,8 @@
   "doc/content/patches/41ac2ee44af044b776a036a7bd891d9cf4347cf5.html": [],
   "doc/content/patches/82d604c452010585bc401a28bb02907f8c378314.html": [],
   "doc/content/patches/92ef2e0ce13ce794115d2d47695b80ec1b2d8ea4.html": [],
-  "doc/content/patches/705e5a346357e303c5b7dec577c7e82bcf1592a5.html": []
+  "doc/content/patches/705e5a346357e303c5b7dec577c7e82bcf1592a5.html": [],
+  "doc/content/patches/c858def2e0084a4d7b40a7e045101bcb7f2017dc.html": [],
+  "doc/content/patches/8787b67b11429a6f0369395418dfca87a74a1ab6.html": [],
+  "doc/content/patches/e51ab82cd5dbff738d0564796176a933e39987be.html": []
 }

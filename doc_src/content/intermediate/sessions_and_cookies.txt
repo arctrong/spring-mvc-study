@@ -238,7 +238,7 @@ Apr 3, 2023
 <!--index ["conversational scope"]--><a name="conversational_scope"></a>
 # Conversational scope
 
-new simple project created to make the description more clear. The URL is 
+New simple project created to make the description more clear. The URL is 
 <http://localhost:8080/web-app-spring-sessions/ui/first>.
 
 [[2.14][], [0:40](https://youtu.be/ezty6XhOpF8?t=40)]
@@ -262,6 +262,9 @@ is sent to the client) the request scope is destroyed.
 Two controller methods are defined:
 
 ````code
+@Controller
+public class FirstController {
+
     @RequestMapping("/first")
     public String firstHandler(Model model) {
         model.addAttribute("firstName", "Jan");
@@ -275,9 +278,10 @@ Two controller methods are defined:
         System.out.println("firstName=" + firstName);
         return "index";
     }
+}
 ````
 
-The first one sets two model attributes and the second one tries to asses it. The `Model` object
+The first one sets two model attributes and the second one tries to access it. The `Model` object
 here has the request scope so the instances are different for the two requests and so in the
 second method the requested attribute is absent:
 
@@ -289,12 +293,116 @@ The page is going to look like this:
 
 ![](<!--path pict-->request_scope.png)
 
-The first URL is <http://localhost:8080/web-app-spring-sessions/ui/first>.
+The first URL is <http://localhost:8080/web-app-spring-sessions/ui/first>. As for now the second 
+link opens the page where all fields are empty.
 
 > Git commit: [`705e5a346357e303c5b7dec577c7e82bcf1592a5`](
 > <!--path patches-->705e5a346357e303c5b7dec577c7e82bcf1592a5.html)
 > request scope demonstrated
 
+
+## Adding conversational scope
+
 [[2.14][], [16:17](https://youtu.be/ezty6XhOpF8?t=977)]
+
+Just add the `@SessionAttributes("firstName")` annotation to the `FirstController` controller
+()see above) and see what happens:
+
+````code
+@Controller
+@SessionAttributes("firstName")
+public class FirstController {
+.  .  .
+````
+
+<p><img src="<!--path pict-->session_scope_01.png" class="floatRight" /></p>
+
+When the first handler method is being called the two model attributes still exist in the *request 
+scope* but the attribute `firstName` also gets copied to the *session scope* (fig. 1).
+
+When the first method is finished the two model attributes are removed from the *request scope*
+but the attribute `firstName` remains in the *session scope* (fig. 2).
+
+When the second handler method is called the session scope attributes get copied to the 
+request scope (fig. 3).
+
+<p style="clear: both;"></p>
+
+So unlike the previous case we see:
+
+````shell
+firstName=Jan
+````
+
+And the second link shown above opens the page where the first field "First name" is filled.
+
+> Git commit: [`c858def2e0084a4d7b40a7e045101bcb7f2017dc`](
+> <!--path patches-->c858def2e0084a4d7b40a7e045101bcb7f2017dc.html)
+> @SessionAttributes annotation added
+
+
+<!--index ["requestScope, JSP attribute", "sessionScope, JSP attribute"]-->
+## Specify scope explicitly in JSP page
+
+[[2.14][], [32:50](https://youtu.be/ezty6XhOpF8?t=1970)]
+
+In the JSP page add:
+
+````xml
+.  .  .
+<strong>First name from the request: </strong>${requestScope.firstName}<br />
+<strong>First name from the session: </strong>${sessionScope.firstName}<br />
+.  .  .
+````
+
+that'll show that the attribute values are the same.
+
+> Git commit: [`8787b67b11429a6f0369395418dfca87a74a1ab6`](
+> <!--path patches-->8787b67b11429a6f0369395418dfca87a74a1ab6.html)
+> scopes explicitly specified
+
+
+## Get things simpler
+
+Specify the other field as session scoped:
+
+````code
+@Controller
+@SessionAttributes({"firstName", "lastName"})
+public class FirstController {
+.  .  .
+````
+[[2.14][], [32:50](https://youtu.be/ezty6XhOpF8?t=1970)]
+Now we don't need to even mention the model attributes in the second handler:
+
+````code
+    @RequestMapping("/second")
+    public String secondHandler() {
+        return "index";
+    }
+````
+
+This will work as in the JSP page the attributes `${firstName}` and `${lastName}` will be first
+looked up in the request scope and then, if not found, in the session scope.
+
+> Git commit: [`e51ab82cd5dbff738d0564796176a933e39987be`](
+> <!--path patches-->e51ab82cd5dbff738d0564796176a933e39987be.html)
+> all attributes added to the session scope
+
+
+
+[[2.14][], [45:04](https://youtu.be/ezty6XhOpF8?t=2704)]
+
+
+
+
+
+
+
+
+
+
+
+
 
 
