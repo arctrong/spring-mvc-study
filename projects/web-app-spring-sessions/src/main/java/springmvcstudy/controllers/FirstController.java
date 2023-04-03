@@ -34,4 +34,10 @@ public class FirstController {
         model.addAttribute("address", address + " - GREAT!");
         return "index";
     }
+
+    @RequestMapping("/invalidate")
+    public String invalidateHandler(HttpSession session) {
+        session.invalidate();
+        return "index";
+    }
 }

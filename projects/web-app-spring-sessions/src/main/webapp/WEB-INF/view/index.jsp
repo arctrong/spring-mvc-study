@@ -19,7 +19,8 @@ body {background-color: plum;}
 <a href="${pageContext.request.contextPath}/ui/first">First</a> |
 <a href="${pageContext.request.contextPath}/ui/second">Second</a> |
 <a href="${pageContext.request.contextPath}/ui/third">Third</a> |
-<a href="${pageContext.request.contextPath}/ui/normalMethod">Normal method</a>
+<a href="${pageContext.request.contextPath}/ui/normalMethod">Normal method</a> |
+<a href="${pageContext.request.contextPath}/ui/invalidate">Invalidate session</a>
 </p>
 
 </body></html>
