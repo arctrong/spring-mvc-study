@@ -11,5 +11,12 @@ body {background-color: plum;}
 
 <h1>Studying sessions</h1>
 <hr />
+<strong>First name: </strong>${firstName}<br />
+<strong>Last name: </strong>${lastName}<br />
+<hr />
+<p>
+<a href="${pageContext.request.contextPath}/ui/first">First</a> |
+<a href="${pageContext.request.contextPath}/ui/second">Second</a>
+</p>
 
 </body></html>
