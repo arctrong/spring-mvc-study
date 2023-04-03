@@ -330,6 +330,11 @@
       "entry": "@SessionAttribute",
       "link": "intermediate/sessions_and_cookies.html#index_entry_index_10",
       "title": "Sessions and cookies"
+    },
+    {
+      "entry": "invalidate(), session",
+      "link": "intermediate/sessions_and_cookies.html#index_entry_index_11",
+      "title": "Sessions and cookies"
     }
   ],
   "doc/content/patches/cb8843c8ea7c29ae9f62b19fa915e14a8d9c74e4.html": [],
@@ -385,5 +390,7 @@
   "doc/content/patches/e51ab82cd5dbff738d0564796176a933e39987be.html": [],
   "doc/content/patches/2977906fc61c5574f67e1db43f7ed544a2fbae5d.html": [],
   "doc/content/patches/5792cc2961b7f92a288581b8a93ca8ffddff5a6a.html": [],
-  "doc/content/patches/f5377bfa2557f2f886c9163fa47dc86190fb92f3.html": []
+  "doc/content/patches/f5377bfa2557f2f886c9163fa47dc86190fb92f3.html": [],
+  "doc/content/patches/df17124ddbd0c955434884fd7aed6f9240ecf5ec.html": [],
+  "doc/content/patches/276a86a1e8fb969778a9cafcb060e23de6436b69.html": []
 }

@@ -413,6 +413,12 @@ parameter and using it for the session completion:
 
 After that, in the third handler method the session attributes will be absent.
 
+!!! note
+    Note that the `setComplete()` method clears up only the attributes that were set using the 
+    `@SessionAttributes` annotation. This method does not remove the session attributes that were
+    set using the `javax.servlet.http.HttpSession` object (see 
+    [below](<!--page sessions_and_cookies-->)#httpsession_vs_sessionattribute).
+
 > Git commit: [`2977906fc61c5574f67e1db43f7ed544a2fbae5d`](
 > <!--path patches-->2977906fc61c5574f67e1db43f7ed544a2fbae5d.html)
 > conversation completing demonstrated
@@ -496,9 +502,46 @@ HTTP ERROR 400 Missing session attribute 'firstName' of type String
 > problem with @SessionAttribute annotation
 
 
+<a name="httpsession_vs_sessionattribute"></a>
 ## `HttpSession` vs `@SessionAttribute`
 
 [[2.14][], [1:33:41](https://youtu.be/ezty6XhOpF8?t=5621)]
+
+The changes were done to add a new attribute `address` to the normal `HttpSession` session.
+See the below commit for more details.
+
+!!! note
+    `HttpSession` and `@SessionAttribute` are managed differently. So the 
+    `SessionStatus#setComplete` method does not clear the `HttpSession` object attributes.
+
+> Git commit: [`df17124ddbd0c955434884fd7aed6f9240ecf5ec`](
+> <!--path patches-->df17124ddbd0c955434884fd7aed6f9240ecf5ec.html)
+> using HttpSession object
+
+
+<!--index ["invalidate(), session"]-->
+## Clearing up the `HttpSession` session
+
+[[2.14][], [1:51:42](https://youtu.be/ezty6XhOpF8?t=6702)]
+
+`HttpSession` may be invalidating using the `invalidate()` method:
+
+````code
+    @RequestMapping("/invalidate")
+    public String invalidateHandler(HttpSession session) {
+        session.invalidate();
+        return "index";
+    }
+````
+
+!!! note
+    Note that the attribute set by the `@SessionAttributes` annotation will not be removed by the 
+    `invalidate()` method.
+
+> Git commit: [`276a86a1e8fb969778a9cafcb060e23de6436b69`](
+> <!--path patches-->276a86a1e8fb969778a9cafcb060e23de6436b69.html)
+> invalidating HttpSession object
+
 
 
 

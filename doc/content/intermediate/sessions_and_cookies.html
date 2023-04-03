@@ -77,6 +77,7 @@ class="header_item" href="../index_page.html">Index</a>
 <li><a href="#completing-the-conversation">Completing the conversation</a></li>
 <li><a href="#restrictions-on-sessionattributes-annotation">Restrictions on @SessionAttributes annotation</a></li>
 <li><a href="#httpsession-vs-sessionattribute">HttpSession vs @SessionAttribute</a></li>
+<li><a href="#clearing-up-the-httpsession-session">Clearing up the HttpSession session</a></li>
 </ul>
 </li>
 </ul>
@@ -362,6 +363,13 @@ parameter and using it for the session completion:</p>
         return "index";
     }</code></pre>
 <p>After that, in the third handler method the session attributes will be absent.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Note that the <code>setComplete()</code> method clears up only the attributes that were set using the 
+<code>@SessionAttributes</code> annotation. This method does not remove the session attributes that were
+set using the <code>javax.servlet.http.HttpSession</code> object (see 
+<a href="sessions_and_cookies.html">below</a>#httpsession_vs_sessionattribute).</p>
+</div>
 <blockquote>
 <p>Git commit: <a href="../patches/2977906fc61c5574f67e1db43f7ed544a2fbae5d.html"><code>2977906fc61c5574f67e1db43f7ed544a2fbae5d</code></a>
 conversation completing demonstrated</p>
@@ -416,8 +424,33 @@ completed) the following error will be returned:</p>
 <p>Git commit: <a href="../patches/f5377bfa2557f2f886c9163fa47dc86190fb92f3.html"><code>f5377bfa2557f2f886c9163fa47dc86190fb92f3</code></a>
 problem with @SessionAttribute annotation</p>
 </blockquote>
+<p><a name="httpsession_vs_sessionattribute"></a></p>
 <h2 id="httpsession-vs-sessionattribute"><code>HttpSession</code> vs <code>@SessionAttribute</code></h2>
 <p>[<a href="../references.html#ref_2_14">2.14</a>, <a href="https://youtu.be/ezty6XhOpF8?t=5621">1:33:41</a>]</p>
+<p>The changes were done to add a new attribute <code>address</code> to the normal <code>HttpSession</code> session.
+See the below commit for more details.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><code>HttpSession</code> and <code>@SessionAttribute</code> are managed differently. So the 
+<code>SessionStatus#setComplete</code> method does not clear the <code>HttpSession</code> object attributes.</p>
+</div>
+<blockquote>
+<p>Git commit: <a href="../patches/df17124ddbd0c955434884fd7aed6f9240ecf5ec.html"><code>df17124ddbd0c955434884fd7aed6f9240ecf5ec</code></a>
+using HttpSession object</p>
+</blockquote>
+<p><a name="index_entry_index_11"></a></p>
+<h2 id="clearing-up-the-httpsession-session">Clearing up the <code>HttpSession</code> session</h2>
+<p>[<a href="../references.html#ref_2_14">2.14</a>, <a href="https://youtu.be/ezty6XhOpF8?t=6702">1:51:42</a>]</p>
+<p><code>HttpSession</code> may be invalidating using the <code>invalidate()</code> method:</p>
+<pre class="highlight"><code class="language-code">    @RequestMapping("/invalidate")
+    public String invalidateHandler(HttpSession session) {
+        session.invalidate();
+        return "index";
+    }</code></pre>
+<blockquote>
+<p>Git commit: <a href="../patches/276a86a1e8fb969778a9cafcb060e23de6436b69.html"><code>276a86a1e8fb969778a9cafcb060e23de6436b69</code></a>
+invalidating HttpSession object</p>
+</blockquote>
 <p>&nbsp;</p>
 <hr />
 
