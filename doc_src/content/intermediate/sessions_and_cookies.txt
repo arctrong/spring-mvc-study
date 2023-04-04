@@ -4,6 +4,7 @@
 
 [2.13]: <!--page refs-->#ref_2_13
 [2.14]: <!--page refs-->#ref_2_14
+[2.15]: <!--page refs-->#ref_2_15
 [16]: <!--page refs-->#ref_16
 
 ----------------------------------------------------------------------------------------------------
@@ -541,6 +542,17 @@ See the below commit for more details.
 > Git commit: [`276a86a1e8fb969778a9cafcb060e23de6436b69`](
 > <!--path patches-->276a86a1e8fb969778a9cafcb060e23de6436b69.html)
 > invalidating HttpSession object
+
+----------------------------------------------------------------------------------------------------
+<!--index ["cookies, URL encoding", "URL encoding, cookies"]-->
+# Cookies URL encoding
+
+[[2.15][], [2:28:32](https://youtu.be/laZnez5VzV4?t=8912)]
+
+If a user disables cookies in their browser Spring MVC can probably transmit the session ID
+through the URL. This needs additional exploration.
+
+
 
 
 

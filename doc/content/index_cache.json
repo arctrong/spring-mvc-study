@@ -335,6 +335,16 @@
       "entry": "invalidate(), session",
       "link": "intermediate/sessions_and_cookies.html#index_entry_index_11",
       "title": "Sessions and cookies"
+    },
+    {
+      "entry": "cookies, URL encoding",
+      "link": "intermediate/sessions_and_cookies.html#index_entry_index_12",
+      "title": "Sessions and cookies"
+    },
+    {
+      "entry": "URL encoding, cookies",
+      "link": "intermediate/sessions_and_cookies.html#index_entry_index_12",
+      "title": "Sessions and cookies"
     }
   ],
   "doc/content/patches/cb8843c8ea7c29ae9f62b19fa915e14a8d9c74e4.html": [],
@@ -439,5 +449,6 @@
   ],
   "doc/content/patches/4adb1d429d9bd13274e5576a984624785a0ecfa3.html": [],
   "doc/content/patches/d980473dd58c9c0c4129a3e8a0531335166c5b46.html": [],
-  "doc/content/patches/a2a8a641bc4bfba150449cbf50665749b7bcdb4b.html": []
+  "doc/content/patches/a2a8a641bc4bfba150449cbf50665749b7bcdb4b.html": [],
+  "doc/content/patches/fd9b6a7bbd179367f8660c82a737e8d4b4a5121c.html": []
 }

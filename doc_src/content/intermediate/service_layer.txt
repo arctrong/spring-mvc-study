@@ -170,13 +170,16 @@ If the message is sent successfully the following email must be visible in the e
 
 [[2.15][], [1:29:09](https://youtu.be/laZnez5VzV4?t=5349)]
 
+The implementation is pretty similar to the previous one so see the below commit for the exact
+details.
+
+> Git commit: [`fd9b6a7bbd179367f8660c82a737e8d4b4a5121c`](
+> <!--path patches-->fd9b6a7bbd179367f8660c82a737e8d4b4a5121c.html)
+> calculation service implemented
 
 
 
-
-
-
-
+[[2.15][], [2:20:04](https://youtu.be/laZnez5VzV4?t=8404)]
 
 
 
