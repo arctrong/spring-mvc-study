@@ -38,7 +38,10 @@ class="header_item{{#current}} selected{{/current}}" href="{{link}}">{{title}}</
             {{/beginner}}            
             <h3>Intermediate</h3>
             {{#intermediate}}<div class="sidebar_item{{#current}} selected{{/current}}"><a href="{{link}}">{{title}}</a></div>
-            {{/intermediate}}            
+            {{/intermediate}}   
+            <h3>Sidesteps</h3>            
+            {{#sidesteps}}<div class="sidebar_item{{#current}} selected{{/current}}"><a href="{{link}}">{{title}}</a></div>
+            {{/sidesteps}}            
             {{#useful_links.not_empty}}
             <h3>Useful links</h3>
             {{#useful_links}}<div class="sidebar_item{{#current}} selected{{/current}}"><a href="{{link}}">{{title}}</a></div>

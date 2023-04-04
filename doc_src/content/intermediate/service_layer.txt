@@ -16,12 +16,134 @@ version untouched.
 > Git commit: `0939cb4dab0ac839cc742d39e5c933c6f6157105` project web-app-spring-adv4 copied from project web-app-spring-adv3
 
 ----------------------------------------------------------------------------------------------------
-# ???
+# Local mail server setup
 
-[[2.15][]]
+Google mail service toughened up its security requirement so it's become too complex or impossible
+for testing mail sending while this application development.
+
+[Another solution](<!--page sidesteps-->#setup_local_mail_server) was applied instead.
+
+----------------------------------------------------------------------------------------------------
+# Implementing Spring mail API
+
+[[2.15][], [13:20](https://youtu.be/laZnez5VzV4?t=800)]
+
+Add the following dependencies to the POM:
+
+````xml
+        .  .  .
+        <dependency>
+            <groupId>javax.mail</groupId>
+            <artifactId>mail</artifactId>
+            <version>1.4.7</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context-support</artifactId>
+            <version>${org.springframework.version}</version>
+        </dependency>
+        .  .  .
+````
+
+
+To the [`EmailController`](
+<!--path code-->web-app-spring-adv4/src/main/java/springmvcstudy2/controllers/EmailController.java)
+class add the email sending function:
+
+````code
+    .  .  .
+    @Autowired
+    private MyAppEmailService emailService;
+    .  .  .
+    @RequestMapping("/process-email")
+    public String processEmail(
+            @SessionAttribute("userInfoDto") UserInfoValidatedDto userInfoDto,
+            @ModelAttribute SendEmailDto sendEmailDto) {
+
+        emailService.sendEmail(userInfoDto.getName1(), sendEmailDto.getUserEmail(), "GOOD");
+
+        return "process-email-page";
+    }
+    .  .  .
+````
+
+`MyAppEmailService` is an interface. The implementation is the [`MyAppEmailServiceImpl`](
+<!--path code-->web-app-spring-adv4/src/main/java/springmvcstudy2/service/MyAppEmailServiceImpl.java)
+class:
+
+````code
+@Service
+public class MyAppEmailServiceImpl implements MyAppEmailService {
+
+    @Autowired
+    private JavaMailSender mailSender;
+
+    @Override
+    public void sendEmail(String userName, String userEmail, String result) {
+        SimpleMailMessage newEmail = new SimpleMailMessage();
+        newEmail.setFrom("noreply@myapp.com");
+        newEmail.setTo(userEmail);
+        newEmail.setSubject("Test massage (may be deleted any time)");
+        newEmail.setText("Hi " + userName + ", your result is: " + result);
+
+        mailSender.send(newEmail);
+    }
+}
+````
+
+!!! note
+    <!--index ["@Service"]-->
+    The `@Service` annotation is itself annotated with the `@Component` annotation.
+
+The autowired `mailSender` comes from the [`MyApplicationConfig`](
+<!--path code-->web-app-spring-adv4/src/main/java/springmvcstudy2/config/MyApplicationConfig.java)
+configuration class:
+
+````code
+    .  .  .
+    @Bean
+    public JavaMailSender mailSender() {
+        JavaMailSenderImpl mailSender = new JavaMailSenderImpl();
+        mailSender.setHost("localhost");
+        mailSender.setPort(2500);
+        mailSender.setUsername("someone@somewhere.com"); // looks like it's not used
+        mailSender.setPassword("someone"); // looks like it's not used
+        return mailSender;
+    }
+    .  .  .
+````
+
+For testing need to go through the following steps:
+
+- start MailSlurper (or other) local mail server like this: `mailslurper.exe` (see above for
+    the setup instructions);
+- in a browser navigate to <http://localhost:8025> (or other URL if configured differently)
+    and assure the mail server's UI works;
+- copy the built `*.war` file to the `%JETTY_BASE%/webapps` directory;
+- start the server with the command `java -jar %JETTY_HOME%\start.jar`, or see 
+    [here](<!--page sidesteps-->#remote_server_debugging) if debugging is required;
+- <http://localhost:8080/web-app-spring-adv4/ui/validate>, fill up the field and press the 
+    "Send" button;
+- [http://localhost:8080/web-app-spring-adv4/ui/validate-submit?name1=...](
+    http://localhost:8080/web-app-spring-adv4/ui/validate-submit?name1=Bob&name2=Welma&notARobot=true&_notARobot=on),
+    click the "Send result to your email" link;
+- <http://localhost:8080/web-app-spring-adv4/ui/sendEmail>, enter any email and press the 
+    "Send" button.
+
+If the message is sent successfully the following email must be visible in the email server UI:
+
+![](<!--path pict-->mail_is_sent.png)
+
+> Git commit: [`4adb1d429d9bd13274e5576a984624785a0ecfa3`](
+> <!--path patches-->4adb1d429d9bd13274e5576a984624785a0ecfa3.html)
+> sending email implemented
 
 
 
 
+
+
+Best practices
+[[2.15][], [50:19](https://youtu.be/laZnez5VzV4?t=3019)]
 
 

@@ -21,6 +21,9 @@
         { "input-glob": "intermediate/*.txt", "page-flows": ["intermediate", "nav"], 
             "title-from-variable": "title", "code-from-variable": "code", 
             "sort-by-variable": "SORT_ORDER" },
+        { "input-glob": "sidesteps/*.txt", "page-flows": ["sidesteps", "nav"], 
+            "title-from-variable": "title", "code-from-variable": "code", 
+            "sort-by-variable": "SORT_ORDER" },
             
         { "input-root": "doc_src", "output-root": "doc/content", 
             "add-link-css": ["doc/patch.css"],

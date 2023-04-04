@@ -393,5 +393,29 @@
   "doc/content/patches/f5377bfa2557f2f886c9163fa47dc86190fb92f3.html": [],
   "doc/content/patches/df17124ddbd0c955434884fd7aed6f9240ecf5ec.html": [],
   "doc/content/patches/276a86a1e8fb969778a9cafcb060e23de6436b69.html": [],
-  "doc/content/intermediate/service_layer.html": []
+  "doc/content/intermediate/service_layer.html": [
+    {
+      "entry": "@Service",
+      "link": "intermediate/service_layer.html#index_entry_index_1",
+      "title": "Service layer"
+    }
+  ],
+  "doc/content/sidesteps/sidesteps.html": [
+    {
+      "entry": "MailSlurper",
+      "link": "sidesteps/sidesteps.html#index_entry_index_1",
+      "title": "Sidesteps"
+    },
+    {
+      "entry": "mail server, local",
+      "link": "sidesteps/sidesteps.html#index_entry_index_1",
+      "title": "Sidesteps"
+    },
+    {
+      "entry": "debugging",
+      "link": "sidesteps/sidesteps.html#index_entry_index_2",
+      "title": "Sidesteps"
+    }
+  ],
+  "doc/content/patches/4adb1d429d9bd13274e5576a984624785a0ecfa3.html": []
 }

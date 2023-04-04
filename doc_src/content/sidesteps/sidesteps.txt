@@ -1,0 +1,55 @@
+<!--VARIABLES {"title": "Sidesteps", "SORT_ORDER": "010", "code": "sidesteps"}-->
+
+[TOC]
+
+----------------------------------------------------------------------------------------------------
+Apr 4, 2023
+
+<!--index ["MailSlurper", "mail server, local"]--><a name="setup_local_mail_server"></a>
+# Setting up local mail server
+
+MailSlurper mail server was tried and found convenient and suitable enough at least for testing
+applications on development phase.
+
+License: MIT    
+Home page: <https://www.mailslurper.com/>    
+GitHub: <https://github.com/mailslurper/mailslurper>
+
+**Usage.** Unpack the installation ZIP (e.g. `mailslurper-1.14.1-windows.zip`) archive to
+a directory by choice and run the `mailslurper.exe` executable. It maybe useful to open the
+`config.json` file and to change the `wwwPort` option to, for example, 8025 --- this will avoid
+conflicts with the local web applications running on the port 8080.
+
+Use port 2500 for sending emails and <http://localhost:8025> for viewing the result.
+
+----------------------------------------------------------------------------------------------------
+Apr 4, 2023
+
+<!--index debugging--><a name="remote_server_debugging"></a>
+# Remote server debugging
+
+While starting the Jetty server add the JVM options like this:
+
+````wrapped-shell
+>java -agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=56000 -jar -Ddebug=1 %JETTY_HOME%\start.jar
+````
+
+Then connect to this endpoint in the IDE for debugging.
+
+The following code may help catch the initialization steps ([`MyApplicationInitializer`](
+<!--path code-->web-app-spring-adv4/src/main/java/springmvcstudy2/config/MyApplicationInitializer.java)):
+
+````code
+        .  .  .
+        if (System.getProperty("debug") != null) {
+            System.out.println("Connect a debugger and press Enter key to continue...");
+            try {
+                System.in.read();
+            } catch (Exception ignored) {
+            }
+        }
+        .  .  .
+````
+
+
+
