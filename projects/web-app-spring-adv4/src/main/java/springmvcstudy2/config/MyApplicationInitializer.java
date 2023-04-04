@@ -7,13 +7,17 @@ import org.springframework.web.servlet.DispatcherServlet;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRegistration;
+import java.util.logging.Logger;
 
 public class MyApplicationInitializer implements WebApplicationInitializer {
+
+    private static final Logger logger =
+            Logger.getLogger(MyApplicationInitializer.class.getName());
 
     @Override
     public void onStartup(ServletContext servletContext) throws ServletException {
 
-        System.out.println(this.getClass().getSimpleName() + " onStartup method called");
+        logger.info(this.getClass().getSimpleName() + " onStartup method called");
 
         if (System.getProperty("debug") != null) {
             System.out.println("Connect a debugger and press Enter key to continue...");
