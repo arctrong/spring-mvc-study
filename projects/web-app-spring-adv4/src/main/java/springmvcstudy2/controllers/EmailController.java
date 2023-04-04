@@ -7,7 +7,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttribute;
 import springmvcstudy2.model.SendEmailDto;
-import springmvcstudy2.model.UserInfoDto;
 import springmvcstudy2.model.UserInfoValidatedDto;
 import springmvcstudy2.service.MyAppEmailService;
 
@@ -28,7 +27,8 @@ public class EmailController {
             @SessionAttribute("userInfoDto") UserInfoValidatedDto userInfoDto,
             @ModelAttribute SendEmailDto sendEmailDto) {
 
-        emailService.sendEmail(userInfoDto.getName1(), sendEmailDto.getUserEmail(), "GOOD");
+        emailService.sendEmail(userInfoDto.getName1(), sendEmailDto.getUserEmail(),
+                userInfoDto.getCalculationResult());
 
         return "process-email-page";
     }

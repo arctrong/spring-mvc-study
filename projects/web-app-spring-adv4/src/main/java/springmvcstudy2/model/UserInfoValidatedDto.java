@@ -17,6 +17,8 @@ public class UserInfoValidatedDto {
     @AssertTrue(message = " * Only humans are allowed to use this site")
     private boolean notARobot;
 
+    private String calculationResult;
+
     @Override
     public String toString() {
         return "UserInfoDto{" +
@@ -47,5 +49,13 @@ public class UserInfoValidatedDto {
 
     public void setNotARobot(boolean notARobot) {
         this.notARobot = notARobot;
+    }
+
+    public String getCalculationResult() {
+        return calculationResult;
+    }
+
+    public void setCalculationResult(String calculationResult) {
+        this.calculationResult = calculationResult;
     }
 }
