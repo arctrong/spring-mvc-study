@@ -1,10 +1,13 @@
 package springmvcstudy2.config;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.context.support.ResourceBundleMessageSource;
+import org.springframework.core.env.Environment;
 import org.springframework.format.FormatterRegistry;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.JavaMailSenderImpl;
@@ -15,13 +18,15 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import springmvcstudy2.config.formatter.PhoneNumberFormatter;
 
-import java.util.Properties;
-
 @EnableWebMvc
 @Configuration
 @ComponentScan(basePackages = {"springmvcstudy2.controllers", "springmvcstudy2.validators",
         "springmvcstudy2.service"})
+@PropertySource("classpath:application.properties")
 public class MyApplicationConfig implements WebMvcConfigurer {
+
+    @Autowired
+    private Environment env;
 
     @Bean
     public InternalResourceViewResolver viewResolver() {
@@ -41,10 +46,11 @@ public class MyApplicationConfig implements WebMvcConfigurer {
     @Bean
     public JavaMailSender mailSender() {
         JavaMailSenderImpl mailSender = new JavaMailSenderImpl();
-        mailSender.setHost("localhost");
-        mailSender.setPort(2500);
-        mailSender.setUsername("someone@somewhere.com"); // looks like it's not used
-        mailSender.setPassword("someone"); // looks like it's not used
+        mailSender.setHost(env.getProperty("mail.host"));
+        //noinspection null
+        mailSender.setPort(Integer.parseInt(env.getProperty("mail.port")));
+        mailSender.setUsername(env.getProperty("mail.username")); // looks like it's not used
+        mailSender.setPassword(env.getProperty("mail.password")); // looks like it's not used
         return mailSender;
     }
 
