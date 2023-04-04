@@ -7,6 +7,12 @@
 ----------------------------------------------------------------------------------------------------
 Mar 29, 2023
 
+# About this sections
+
+In this section only an email sending form and a stub are created. The actual email sending is
+going to be implemented [later](<!--page service_layer-->).
+
+----------------------------------------------------------------------------------------------------
 # Project arrangements
 
 Maven project `web-app-spring-adv2` was copied to `web-app-spring-adv3` to leave the previous

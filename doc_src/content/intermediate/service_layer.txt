@@ -1,0 +1,27 @@
+<!--VARIABLES {"title": "Service layer", "SORT_ORDER": "090", "code": "service_layer"}-->
+
+[TOC]
+
+[2.15]: <!--page refs-->#ref_2_15
+
+
+----------------------------------------------------------------------------------------------------
+Apr 4, 2023
+
+# Project arrangements
+
+Maven project `web-app-spring-adv3` was copied to `web-app-spring-adv4` to leave the previous
+version untouched.
+
+> Git commit: `0939cb4dab0ac839cc742d39e5c933c6f6157105` project web-app-spring-adv4 copied from project web-app-spring-adv3
+
+----------------------------------------------------------------------------------------------------
+# ???
+
+[[2.15][]]
+
+
+
+
+
+
