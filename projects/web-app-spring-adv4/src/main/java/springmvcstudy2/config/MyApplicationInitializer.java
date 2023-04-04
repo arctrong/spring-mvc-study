@@ -15,6 +15,14 @@ public class MyApplicationInitializer implements WebApplicationInitializer {
 
         System.out.println(this.getClass().getSimpleName() + " onStartup method called");
 
+        if (System.getProperty("debug") != null) {
+            System.out.println("Connect a debugger and press Enter key to continue...");
+            try {
+                System.in.read();
+            } catch (Exception ignored) {
+            }
+        }
+
         AnnotationConfigWebApplicationContext webApplicationContext =
                 new AnnotationConfigWebApplicationContext();
         webApplicationContext.register(MyApplicationConfig.class);

@@ -10,4 +10,9 @@
 
 <h2>Email was successfully sent to ${sendEmailDto.userEmail}</h2>
 
+<hr />
+<p>
+<a href="${pageContext.request.contextPath}/ui/validate">Try again</a>
+</p>
+
 </body></html>

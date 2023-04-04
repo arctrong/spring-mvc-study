@@ -19,4 +19,9 @@ body {background-color: #d2efc5;}
     <input type="submit" value="Send"/></p>
 </form:form>
 
+<hr />
+<p>
+<a href="${pageContext.request.contextPath}/ui/validate">Try again</a>
+</p>
+
 </body></html>
