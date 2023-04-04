@@ -398,6 +398,26 @@
       "entry": "@Service",
       "link": "intermediate/service_layer.html#index_entry_index_1",
       "title": "Service layer"
+    },
+    {
+      "entry": "properties files",
+      "link": "intermediate/service_layer.html#index_entry_index_2",
+      "title": "Service layer"
+    },
+    {
+      "entry": "@PropertySource",
+      "link": "intermediate/service_layer.html#index_entry_index_2",
+      "title": "Service layer"
+    },
+    {
+      "entry": "@PropertySources",
+      "link": "intermediate/service_layer.html#index_entry_index_2",
+      "title": "Service layer"
+    },
+    {
+      "entry": "logger",
+      "link": "intermediate/service_layer.html#index_entry_index_3",
+      "title": "Service layer"
     }
   ],
   "doc/content/sidesteps/sidesteps.html": [
@@ -417,5 +437,7 @@
       "title": "Sidesteps"
     }
   ],
-  "doc/content/patches/4adb1d429d9bd13274e5576a984624785a0ecfa3.html": []
+  "doc/content/patches/4adb1d429d9bd13274e5576a984624785a0ecfa3.html": [],
+  "doc/content/patches/d980473dd58c9c0c4129a3e8a0531335166c5b46.html": [],
+  "doc/content/patches/a2a8a641bc4bfba150449cbf50665749b7bcdb4b.html": []
 }

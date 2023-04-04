@@ -69,6 +69,12 @@ class="header_item" href="../index_page.html">Index</a>
 <li><a href="#project-arrangements">Project arrangements</a></li>
 <li><a href="#local-mail-server-setup">Local mail server setup</a></li>
 <li><a href="#implementing-spring-mail-api">Implementing Spring mail API</a></li>
+<li><a href="#best-practices">Best practices</a><ul>
+<li><a href="#using-properties-file">Using properties file</a></li>
+<li><a href="#using-logger">Using logger</a></li>
+</ul>
+</li>
+<li><a href="#add-result-calculation-service">Add result calculation service</a></li>
 </ul>
 </div>
 <hr />
@@ -175,8 +181,31 @@ configuration class:</p>
 <p>Git commit: <a href="../patches/4adb1d429d9bd13274e5576a984624785a0ecfa3.html"><code>4adb1d429d9bd13274e5576a984624785a0ecfa3</code></a>
 sending email implemented</p>
 </blockquote>
-<p>Best practices
-[<a href="../references.html#ref_2_15">2.15</a>, <a href="https://youtu.be/laZnez5VzV4?t=3019">50:19</a>]</p>
+<hr />
+<h1 id="best-practices">Best practices</h1>
+<p>[<a href="../references.html#ref_2_15">2.15</a>, <a href="https://youtu.be/laZnez5VzV4?t=3019">50:19</a>]</p>
+<p><a name="index_entry_index_2"></a></p>
+<h2 id="using-properties-file">Using properties file</h2>
+<blockquote>
+<p>Git commit: <a href="../patches/d980473dd58c9c0c4129a3e8a0531335166c5b46.html"><code>d980473dd58c9c0c4129a3e8a0531335166c5b46</code></a>
+using properties file</p>
+</blockquote>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The <code>@PropertySource</code> annotation may be used several times to define several property sources.
+Also the <code>@PropertySources</code> annotation may be used that allow specify severs <code>@PropertySource</code>
+annotation inside.</p>
+</div>
+<p><a name="index_entry_index_3"></a></p>
+<h2 id="using-logger">Using logger</h2>
+<p>[<a href="../references.html#ref_2_15">2.15</a>, <a href="https://youtu.be/laZnez5VzV4?t=4294">1:11:34</a>]</p>
+<blockquote>
+<p>Git commit: <a href="../patches/a2a8a641bc4bfba150449cbf50665749b7bcdb4b.html"><code>a2a8a641bc4bfba150449cbf50665749b7bcdb4b</code></a>
+using a logger</p>
+</blockquote>
+<hr />
+<h1 id="add-result-calculation-service">Add result calculation service</h1>
+<p>[<a href="../references.html#ref_2_15">2.15</a>, <a href="https://youtu.be/laZnez5VzV4?t=5349">1:29:09</a>]</p>
 <p>&nbsp;</p>
 <hr />
 

@@ -1,0 +1,131 @@
+<!--VARIABLES {"title": "Patch d980473dd58c9c0c4129a3e8a0531335166c5b46"}--> 
+<div class="patch_block">
+
+<span class="diff">diff --git a/projects/web-app-spring-adv4/src/main/java/springmvcstudy2/config/MyApplicationConfig.java b/projects/web-app-spring-adv4/src/main/java/springmvcstudy2/config/MyApplicationConfig.java</span><br />
+
+<span class="index">index 500d66c..a1c093a 100644</span><br />
+
+<span class="tree_minuses">--- a/projects/web-app-spring-adv4/src/main/java/springmvcstudy2/config/MyApplicationConfig.java</span><br />
+
+<span class="tree_pluses">+++ b/projects/web-app-spring-adv4/src/main/java/springmvcstudy2/config/MyApplicationConfig.java</span><br />
+
+<span class="two_ats">@@ -1,10 +1,13 @@</span><br />
+
+<span> package springmvcstudy2.config;</span><br />
+
+<span> </span><br />
+
+<ins>+import org.springframework.beans.factory.annotation.Autowired;</ins><br />
+
+<span> import org.springframework.context.MessageSource;</span><br />
+
+<span> import org.springframework.context.annotation.Bean;</span><br />
+
+<span> import org.springframework.context.annotation.ComponentScan;</span><br />
+
+<span> import org.springframework.context.annotation.Configuration;</span><br />
+
+<ins>+import org.springframework.context.annotation.PropertySource;</ins><br />
+
+<span> import org.springframework.context.support.ResourceBundleMessageSource;</span><br />
+
+<ins>+import org.springframework.core.env.Environment;</ins><br />
+
+<span> import org.springframework.format.FormatterRegistry;</span><br />
+
+<span> import org.springframework.mail.javamail.JavaMailSender;</span><br />
+
+<span> import org.springframework.mail.javamail.JavaMailSenderImpl;</span><br />
+
+<span class="two_ats">@@ -15,14 +18,16 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;</span><br />
+
+<span> import org.springframework.web.servlet.view.InternalResourceViewResolver;</span><br />
+
+<span> import springmvcstudy2.config.formatter.PhoneNumberFormatter;</span><br />
+
+<span> </span><br />
+
+<del>-import java.util.Properties;</del><br />
+
+<del>-</del><br />
+
+<span> @EnableWebMvc</span><br />
+
+<span> @Configuration</span><br />
+
+<span> @ComponentScan(basePackages = {&quot;springmvcstudy2.controllers&quot;, &quot;springmvcstudy2.validators&quot;,</span><br />
+
+<span>         &quot;springmvcstudy2.service&quot;})</span><br />
+
+<ins>+@PropertySource(&quot;classpath:application.properties&quot;)</ins><br />
+
+<span> public class MyApplicationConfig implements WebMvcConfigurer {</span><br />
+
+<span> </span><br />
+
+<ins>+    @Autowired</ins><br />
+
+<ins>+    private Environment env;</ins><br />
+
+<ins>+</ins><br />
+
+<span>     @Bean</span><br />
+
+<span>     public InternalResourceViewResolver viewResolver() {</span><br />
+
+<span>         InternalResourceViewResolver viewResolver = new InternalResourceViewResolver();</span><br />
+
+<span class="two_ats">@@ -41,10 +46,11 @@ public class MyApplicationConfig implements WebMvcConfigurer {</span><br />
+
+<span>     @Bean</span><br />
+
+<span>     public JavaMailSender mailSender() {</span><br />
+
+<span>         JavaMailSenderImpl mailSender = new JavaMailSenderImpl();</span><br />
+
+<del>-        mailSender.setHost(&quot;localhost&quot;);</del><br />
+
+<del>-        mailSender.setPort(2500);</del><br />
+
+<del>-        mailSender.setUsername(&quot;someone@somewhere.com&quot;); // looks like it&#x27;s not used</del><br />
+
+<del>-        mailSender.setPassword(&quot;someone&quot;); // looks like it&#x27;s not used</del><br />
+
+<ins>+        mailSender.setHost(env.getProperty(&quot;mail.host&quot;));</ins><br />
+
+<ins>+        //noinspection null</ins><br />
+
+<ins>+        mailSender.setPort(Integer.parseInt(env.getProperty(&quot;mail.port&quot;)));</ins><br />
+
+<ins>+        mailSender.setUsername(env.getProperty(&quot;mail.username&quot;)); // looks like it&#x27;s not used</ins><br />
+
+<ins>+        mailSender.setPassword(env.getProperty(&quot;mail.password&quot;)); // looks like it&#x27;s not used</ins><br />
+
+<span>         return mailSender;</span><br />
+
+<span>     }</span><br />
+
+<span> </span><br />
+
+<span class="diff">diff --git a/projects/web-app-spring-adv4/src/main/resources/application.properties b/projects/web-app-spring-adv4/src/main/resources/application.properties</span><br />
+
+<span>new file mode 100644</span><br />
+
+<span class="index">index 0000000..8fa98cb</span><br />
+
+<span class="tree_minuses">--- /dev/null</span><br />
+
+<span class="tree_pluses">+++ b/projects/web-app-spring-adv4/src/main/resources/application.properties</span><br />
+
+<span class="two_ats">@@ -0,0 +1,4 @@</span><br />
+
+<ins>+&quot;mail.host=localhost</ins><br />
+
+<ins>+mail.port=2500</ins><br />
+
+<ins>+mail.username=someone@somewhere.com</ins><br />
+
+<ins>+mail.password=someone</ins><br />
+
+</div>
+

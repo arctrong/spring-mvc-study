@@ -138,12 +138,49 @@ If the message is sent successfully the following email must be visible in the e
 > <!--path patches-->4adb1d429d9bd13274e5576a984624785a0ecfa3.html)
 > sending email implemented
 
+----------------------------------------------------------------------------------------------------
+# Best practices
 
-
-
-
-
-Best practices
 [[2.15][], [50:19](https://youtu.be/laZnez5VzV4?t=3019)]
+
+
+<!--index ["properties files", "@PropertySource", "@PropertySources"]-->
+## Using properties file
+
+> Git commit: [`d980473dd58c9c0c4129a3e8a0531335166c5b46`](
+> <!--path patches-->d980473dd58c9c0c4129a3e8a0531335166c5b46.html)
+> using properties file
+
+!!! note
+    The `@PropertySource` annotation may be used several times to define several property sources.
+    Also the `@PropertySources` annotation may be used that allow specify severs `@PropertySource`
+    annotation inside.
+
+<!--index ["logger"]-->
+## Using logger
+
+[[2.15][], [1:11:34](https://youtu.be/laZnez5VzV4?t=4294)]
+
+> Git commit: [`a2a8a641bc4bfba150449cbf50665749b7bcdb4b`](
+> <!--path patches-->a2a8a641bc4bfba150449cbf50665749b7bcdb4b.html)
+> using a logger
+
+----------------------------------------------------------------------------------------------------
+# Add result calculation service
+
+[[2.15][], [1:29:09](https://youtu.be/laZnez5VzV4?t=5349)]
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
