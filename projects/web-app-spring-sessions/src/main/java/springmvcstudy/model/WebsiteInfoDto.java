@@ -9,6 +9,10 @@ public class WebsiteInfoDto {
         return websiteName;
     }
 
+    public WebsiteInfoDto() {
+        System.out.println("Inside " + this.getClass().getSimpleName() + " constructor");
+    }
+
     public void setWebsiteName(String websiteName) {
         this.websiteName = websiteName;
     }
