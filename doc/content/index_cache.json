@@ -150,6 +150,11 @@
       "entry": "@ModelAttribute",
       "link": "intermediate/data_binding.html#index_entry_index_5",
       "title": "Data binding"
+    },
+    {
+      "entry": "@ModelAttribute, method level",
+      "link": "intermediate/data_binding.html#index_entry_index_6",
+      "title": "Data binding"
     }
   ],
   "doc/content/intermediate/registration_form.html": [
@@ -450,5 +455,6 @@
   "doc/content/patches/4adb1d429d9bd13274e5576a984624785a0ecfa3.html": [],
   "doc/content/patches/d980473dd58c9c0c4129a3e8a0531335166c5b46.html": [],
   "doc/content/patches/a2a8a641bc4bfba150449cbf50665749b7bcdb4b.html": [],
-  "doc/content/patches/fd9b6a7bbd179367f8660c82a737e8d4b4a5121c.html": []
+  "doc/content/patches/fd9b6a7bbd179367f8660c82a737e8d4b4a5121c.html": [],
+  "doc/content/patches/509a7b32fd5d3dfcde4bea7cf853be5e7139b0a2.html": []
 }

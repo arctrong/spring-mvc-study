@@ -1,0 +1,143 @@
+<!--VARIABLES {"title": "Patch 509a7b32fd5d3dfcde4bea7cf853be5e7139b0a2"}--> 
+<div class="patch_block">
+
+<span class="diff">diff --git a/projects/web-app-spring-sessions/src/main/java/springmvcstudy/controllers/MyWebsiteController.java b/projects/web-app-spring-sessions/src/main/java/springmvcstudy/controllers/MyWebsiteController.java</span><br />
+
+<span>new file mode 100644</span><br />
+
+<span class="index">index 0000000..10552bf</span><br />
+
+<span class="tree_minuses">--- /dev/null</span><br />
+
+<span class="tree_pluses">+++ b/projects/web-app-spring-sessions/src/main/java/springmvcstudy/controllers/MyWebsiteController.java</span><br />
+
+<span class="two_ats">@@ -0,0 +1,13 @@</span><br />
+
+<ins>+package springmvcstudy.controllers;</ins><br />
+
+<ins>+</ins><br />
+
+<ins>+import org.springframework.stereotype.Controller;</ins><br />
+
+<ins>+import org.springframework.web.bind.annotation.RequestMapping;</ins><br />
+
+<ins>+</ins><br />
+
+<ins>+@Controller</ins><br />
+
+<ins>+public class MyWebsiteController {</ins><br />
+
+<ins>+</ins><br />
+
+<ins>+    @RequestMapping(&quot;/info&quot;)</ins><br />
+
+<ins>+    public String showWebsiteInfo() {</ins><br />
+
+<ins>+        return &quot;info&quot;;</ins><br />
+
+<ins>+    }</ins><br />
+
+<ins>+}</ins><br />
+
+<span class="diff">diff --git a/projects/web-app-spring-sessions/src/main/java/springmvcstudy/model/WebsiteInfoDto.java b/projects/web-app-spring-sessions/src/main/java/springmvcstudy/model/WebsiteInfoDto.java</span><br />
+
+<span>new file mode 100644</span><br />
+
+<span class="index">index 0000000..0ae44cd</span><br />
+
+<span class="tree_minuses">--- /dev/null</span><br />
+
+<span class="tree_pluses">+++ b/projects/web-app-spring-sessions/src/main/java/springmvcstudy/model/WebsiteInfoDto.java</span><br />
+
+<span class="two_ats">@@ -0,0 +1,23 @@</span><br />
+
+<ins>+package springmvcstudy.model;</ins><br />
+
+<ins>+</ins><br />
+
+<ins>+public class WebsiteInfoDto {</ins><br />
+
+<ins>+</ins><br />
+
+<ins>+    private String websiteName;</ins><br />
+
+<ins>+    private String websiteCategory;</ins><br />
+
+<ins>+</ins><br />
+
+<ins>+    public String getWebsiteName() {</ins><br />
+
+<ins>+        return websiteName;</ins><br />
+
+<ins>+    }</ins><br />
+
+<ins>+</ins><br />
+
+<ins>+    public void setWebsiteName(String websiteName) {</ins><br />
+
+<ins>+        this.websiteName = websiteName;</ins><br />
+
+<ins>+    }</ins><br />
+
+<ins>+</ins><br />
+
+<ins>+    public String getWebsiteCategory() {</ins><br />
+
+<ins>+        return websiteCategory;</ins><br />
+
+<ins>+    }</ins><br />
+
+<ins>+</ins><br />
+
+<ins>+    public void setWebsiteCategory(String websiteCategory) {</ins><br />
+
+<ins>+        this.websiteCategory = websiteCategory;</ins><br />
+
+<ins>+    }</ins><br />
+
+<ins>+}</ins><br />
+
+<span class="diff">diff --git a/projects/web-app-spring-sessions/src/main/webapp/WEB-INF/view/info.jsp b/projects/web-app-spring-sessions/src/main/webapp/WEB-INF/view/info.jsp</span><br />
+
+<span>new file mode 100644</span><br />
+
+<span class="index">index 0000000..4f522fc</span><br />
+
+<span class="tree_minuses">--- /dev/null</span><br />
+
+<span class="tree_pluses">+++ b/projects/web-app-spring-sessions/src/main/webapp/WEB-INF/view/info.jsp</span><br />
+
+<span class="two_ats">@@ -0,0 +1,15 @@</span><br />
+
+<ins>+&lt;%@ page language=&quot;java&quot; contentType=&quot;text/html; charset=UTF-8&quot; pageEncoding=&quot;UTF-8&quot;%&gt;</ins><br />
+
+<ins>+&lt;%@page isELIgnored=&quot;false&quot;%&gt;</ins><br />
+
+<ins>+&lt;!DOCTYPE html&gt;</ins><br />
+
+<ins>+&lt;html&gt;&lt;head&gt;&lt;meta charset=&quot;UTF-8&quot;&gt;</ins><br />
+
+<ins>+&lt;title&gt;Using @ModelAttribute&lt;/title&gt;</ins><br />
+
+<ins>+&lt;style&gt;</ins><br />
+
+<ins>+body {background-color: darkslategray; color: wheat;}</ins><br />
+
+<ins>+.error {color: red; position: fixed; text-align: left; margin-left: 20px;}</ins><br />
+
+<ins>+&lt;/style&gt;</ins><br />
+
+<ins>+&lt;/head&gt;&lt;body&gt;</ins><br />
+
+<ins>+</ins><br />
+
+<ins>+&lt;h1&gt;Using @ModelAttribute at the method level&lt;/h1&gt;</ins><br />
+
+<ins>+&lt;hr /&gt;</ins><br />
+
+<ins>+</ins><br />
+
+<ins>+&lt;/body&gt;&lt;/html&gt;</ins><br />
+
+</div>
+
