@@ -4,6 +4,7 @@ import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import springmvcstudy.model.WebsiteInfoDto;
@@ -12,6 +13,7 @@ import static org.apache.commons.lang3.builder.ToStringBuilder.*;
 import static org.apache.commons.lang3.builder.ToStringStyle.*;
 
 @Controller
+@ControllerAdvice(assignableTypes = MyTestController.class)
 public class MyWebsiteController {
 
     @ModelAttribute("websiteInfo")

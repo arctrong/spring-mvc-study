@@ -19,7 +19,8 @@ strong {color: darksalmon;}
 <hr />
 <p>
 <a href="${pageContext.request.contextPath}/ui/siteInfo">Site info</a> |
-<a href="${pageContext.request.contextPath}/ui/companyInfo">Company info</a>
+<a href="${pageContext.request.contextPath}/ui/companyInfo">Company info</a> |
+<a href="${pageContext.request.contextPath}/ui/test">Test info</a>
 </p>
 
 </body></html>
