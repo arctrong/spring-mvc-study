@@ -71,7 +71,11 @@ class="header_item" href="../index_page.html">Index</a>
 <li><a href="#form-processing-with-a-model">Form processing with a Model</a></li>
 <li><a href="#adding-a-dto">Adding a DTO</a></li>
 <li><a href="#using-spring-mvc-form-tag">Using Spring MVC form tag</a></li>
-<li><a href="#modelattribute-at-the-method-level">@ModelAttribute at the method level</a></li>
+<li><a href="#modelattribute-at-the-method-level">@ModelAttribute at the method level</a><ul>
+<li><a href="#make-model-attributes-global">Make model attributes global</a></li>
+<li><a href="#when-to-use-the-modelattribute-annotation">When to use the @ModelAttribute annotation</a></li>
+</ul>
+</li>
 </ul>
 </div>
 <hr />
@@ -303,6 +307,38 @@ annotated method.</p>
 <p>Git commit: <a href="../patches/2da1ab9ffd15ef0c36785dcf9a8ffbd808d7b9a9.html"><code>2da1ab9ffd15ef0c36785dcf9a8ffbd808d7b9a9</code></a>
 @ModelAttribute annotation used</p>
 </blockquote>
+<p><a name="index_entry_index_7"></a></p>
+<h2 id="make-model-attributes-global">Make model attributes global</h2>
+<p>[<a href="../references.html#ref_2_16">2.16</a>, <a href="https://youtu.be/_Nafv53TKYY?t=2481">41:21</a>]</p>
+<p>If we add another controller <a href="../../../projects/web-app-spring-sessions/src/main/java/springmvcstudy/controllers/MyTestController.java"><code>MyTestController</code></a>:</p>
+<pre class="highlight"><code class="language-code">@Controller
+public class MyTestController {
+
+    @RequestMapping("/test")
+    public String showTestInfo(@ModelAttribute("websiteInfo") WebsiteInfoDto websiteInfo) {
+        System.out.println("Inside showTestInfo() method");
+        System.out.println("websiteInfo=" + reflectionToString(websiteInfo, JSON_STYLE));
+        return "info";
+    }
+}</code></pre>
+<p>then of cause the <code>websiteInfo</code> model attribute will be created anew and the view fields will be 
+empty.</p>
+<p>The <code>@org.springframework.web.bind.annotation.ControllerAdvice</code> annotation on the first controller
+<a href="../../../projects/web-app-spring-sessions/src/main/java/springmvcstudy/controllers/MyWebsiteController.java"><code>MyWebsiteController</code></a>
+will make this controller <code>getWebsiteInfo()</code> method execute on the other controllers:</p>
+<pre class="highlight"><code class="language-code">@Controller
+@ControllerAdvice(assignableTypes = MyTestController.class)
+public class MyWebsiteController {
+.  .  .</code></pre>
+<p>The <code>assignableTypes</code> parameter allows to restrict the controller classes that are affected by this
+annotation. If no arguments are specified then all controllers will be affected. There's also the 
+self explanatory <code>basePackages</code> parameter.</p>
+<blockquote>
+<p>Git commit: <a href="../patches/4f6de7ebb7a3eed19715100827bd8068bea3e7fd.html"><code>4f6de7ebb7a3eed19715100827bd8068bea3e7fd</code></a>
+@ControllerAdvice annotation used</p>
+</blockquote>
+<h2 id="when-to-use-the-modelattribute-annotation">When to use the <code>@ModelAttribute</code> annotation</h2>
+<p>[<a href="../references.html#ref_2_16">2.16</a>, <a href="https://youtu.be/_Nafv53TKYY?t=3106">51:46</a>]</p>
 <p>&nbsp;</p>
 <hr />
 

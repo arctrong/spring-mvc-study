@@ -306,6 +306,66 @@ annotated method.
 > @ModelAttribute annotation used
 
 
+<!--index ["@ControllerAdvice"]-->
+## Make model attributes global
+
+[[2.16][], [41:21](https://youtu.be/_Nafv53TKYY?t=2481)]
+
+If we add another controller [`MyTestController`](
+<!--path code-->web-app-spring-sessions/src/main/java/springmvcstudy/controllers/MyTestController.java):
+
+````code
+@Controller
+public class MyTestController {
+
+    @RequestMapping("/test")
+    public String showTestInfo(@ModelAttribute("websiteInfo") WebsiteInfoDto websiteInfo) {
+        System.out.println("Inside showTestInfo() method");
+        System.out.println("websiteInfo=" + reflectionToString(websiteInfo, JSON_STYLE));
+        return "info";
+    }
+}
+````
+
+then of cause the `websiteInfo` model attribute will be created anew and the view fields will be 
+empty.
+
+The `@org.springframework.web.bind.annotation.ControllerAdvice` annotation on the first controller
+[`MyWebsiteController`](
+<!--path code-->web-app-spring-sessions/src/main/java/springmvcstudy/controllers/MyWebsiteController.java)
+will make this controller `getWebsiteInfo()` method execute on the other controllers:
+
+````code
+@Controller
+@ControllerAdvice(assignableTypes = MyTestController.class)
+public class MyWebsiteController {
+.  .  .
+````
+
+The `assignableTypes` parameter allows to restrict the controller classes that are affected by this
+annotation. If no arguments are specified then all controllers will be affected. There's also the 
+self explanatory `basePackages` parameter.
+
+> Git commit: [`4f6de7ebb7a3eed19715100827bd8068bea3e7fd`](
+> <!--path patches-->4f6de7ebb7a3eed19715100827bd8068bea3e7fd.html)
+> @ControllerAdvice annotation used
+
+
+
+
+## When to use the `@ModelAttribute` annotation
+
+[[2.16][], [51:46](https://youtu.be/_Nafv53TKYY?t=3106)]
+
+
+
+
+
+
+
+
+
+
 
 
 
