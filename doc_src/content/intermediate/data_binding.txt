@@ -351,18 +351,31 @@ self explanatory `basePackages` parameter.
 > @ControllerAdvice annotation used
 
 
+<a name="combination_modelattribute_and_sessionattributes"></a>
+## Combination with the `@SessionAttributes` annotation
+
+[[2.16][], [51:46](https://youtu.be/_Nafv53TKYY?t=3106)] 
 
 
-## When to use the `@ModelAttribute` annotation
+When we use the 
+[`@SessionAttributes` annotation](<!--page sessions_and_cookies-->#using_sessionattributes_annotation)
+on the controller the `@ModelAttribute` annotated method is invoked only if the 
+*conversational scope* does not contain the specified attributes:
 
-[[2.16][], [51:46](https://youtu.be/_Nafv53TKYY?t=3106)]
+````code
+@Controller
+@ControllerAdvice(assignableTypes = MyTestController.class)
+@SessionAttributes("websiteInfo")
+public class MyWebsiteController {
+.  .  .
+````
 
+As we add the `@SessionAttributes` annotation the model attribute ones created is persisted in the
+session and is not created anymore. See the bellow commit for more details.
 
-
-
-
-
-
+> Git commit: [`63d3af3c2cfa111c8d75b3ef77d8897043339d4f`](
+> <!--path patches-->63d3af3c2cfa111c8d75b3ef77d8897043339d4f.html)
+> @ModelAttribute conbined with @SessionAttributes 
 
 
 

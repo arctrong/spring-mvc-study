@@ -178,7 +178,7 @@ It's proved that after 20 seconds of inactivity the session attribute `userName`
 available. We are now not going to preserve this code in the project.
 
 ----------------------------------------------------------------------------------------------------
-<!--index ["@SessionAttributes"]-->
+<!--index ["@SessionAttributes"]--><a name="using_sessionattributes_annotation"></a>
 # Using `@SessionAttributes` annotation
 
 [[2.13][], [1:26:59](https://youtu.be/cpFfzE9eGT0?t=5219)]
@@ -187,6 +187,9 @@ available. We are now not going to preserve this code in the project.
     Using the following approach may be pretty tricky and may take much time for investigation of
     possible errors. See [here](<!--page sessions_and_cookies-->#conversational_scope) for more
     extensive explanation.
+    
+    Also see [here](<!--page data_binding-->#combination_modelattribute_and_sessionattributes)
+    to find information about combination of this and the `@ModelAttribute` annotations.
 
 The `@org.springframework.web.bind.annotation.SessionAttributes` annotation is added to the 
 [`ValidatedController`](

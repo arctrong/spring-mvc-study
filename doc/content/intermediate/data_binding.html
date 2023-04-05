@@ -73,7 +73,7 @@ class="header_item" href="../index_page.html">Index</a>
 <li><a href="#using-spring-mvc-form-tag">Using Spring MVC form tag</a></li>
 <li><a href="#modelattribute-at-the-method-level">@ModelAttribute at the method level</a><ul>
 <li><a href="#make-model-attributes-global">Make model attributes global</a></li>
-<li><a href="#when-to-use-the-modelattribute-annotation">When to use the @ModelAttribute annotation</a></li>
+<li><a href="#combination-with-the-sessionattributes-annotation">Combination with the @SessionAttributes annotation</a></li>
 </ul>
 </li>
 </ul>
@@ -337,8 +337,24 @@ self explanatory <code>basePackages</code> parameter.</p>
 <p>Git commit: <a href="../patches/4f6de7ebb7a3eed19715100827bd8068bea3e7fd.html"><code>4f6de7ebb7a3eed19715100827bd8068bea3e7fd</code></a>
 @ControllerAdvice annotation used</p>
 </blockquote>
-<h2 id="when-to-use-the-modelattribute-annotation">When to use the <code>@ModelAttribute</code> annotation</h2>
-<p>[<a href="../references.html#ref_2_16">2.16</a>, <a href="https://youtu.be/_Nafv53TKYY?t=3106">51:46</a>]</p>
+<p><a name="combination_modelattribute_and_sessionattributes"></a></p>
+<h2 id="combination-with-the-sessionattributes-annotation">Combination with the <code>@SessionAttributes</code> annotation</h2>
+<p>[<a href="../references.html#ref_2_16">2.16</a>, <a href="https://youtu.be/_Nafv53TKYY?t=3106">51:46</a>] </p>
+<p>When we use the 
+<a href="sessions_and_cookies.html#using_sessionattributes_annotation"><code>@SessionAttributes</code> annotation</a>
+on the controller the <code>@ModelAttribute</code> annotated method is invoked only if the 
+<em>conversational scope</em> does not contain the specified attributes:</p>
+<pre class="highlight"><code class="language-code">@Controller
+@ControllerAdvice(assignableTypes = MyTestController.class)
+@SessionAttributes("websiteInfo")
+public class MyWebsiteController {
+.  .  .</code></pre>
+<p>As we add the <code>@SessionAttributes</code> annotation the model attribute ones created is persisted in the
+session and is not created anymore. See the bellow commit for more details.</p>
+<blockquote>
+<p>Git commit: <a href="../patches/63d3af3c2cfa111c8d75b3ef77d8897043339d4f.html"><code>63d3af3c2cfa111c8d75b3ef77d8897043339d4f</code></a>
+@ModelAttribute conbined with @SessionAttributes </p>
+</blockquote>
 <p>&nbsp;</p>
 <hr />
 

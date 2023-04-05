@@ -205,7 +205,7 @@ class) the <code>javax.servlet.http.HttpSession</code> object may be used for th
 <p>It's proved that after 20 seconds of inactivity the session attribute <code>userName</code> is no longer
 available. We are now not going to preserve this code in the project.</p>
 <hr />
-<p><a name="index_entry_index_5"></a></p>
+<p><a name="index_entry_index_5"></a><a name="using_sessionattributes_annotation"></a></p>
 <h1 id="using-sessionattributes-annotation">Using <code>@SessionAttributes</code> annotation</h1>
 <p>[<a href="../references.html#ref_2_13">2.13</a>, <a href="https://youtu.be/cpFfzE9eGT0?t=5219">1:26:59</a>]</p>
 <div class="admonition note">
@@ -213,6 +213,8 @@ available. We are now not going to preserve this code in the project.</p>
 <p>Using the following approach may be pretty tricky and may take much time for investigation of
 possible errors. See <a href="sessions_and_cookies.html#conversational_scope">here</a> for more
 extensive explanation.</p>
+<p>Also see <a href="data_binding.html#combination_modelattribute_and_sessionattributes">here</a>
+to find information about combination of this and the <code>@ModelAttribute</code> annotations.</p>
 </div>
 <p>The <code>@org.springframework.web.bind.annotation.SessionAttributes</code> annotation is added to the 
 <a href="../../../projects/web-app-spring-adv3/src/main/java/springmvcstudy2/controllers/ValidatedController.java"><code>ValidatedController</code></a>
