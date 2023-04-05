@@ -13,8 +13,8 @@ strong {color: darksalmon;}
 
 <h1>Using @ModelAttribute at the method level</h1>
 <hr />
-<strong>Website name: </strong>${websiteInfoDto.websiteName}<br />
-<strong>Website category: </strong>${websiteInfoDto.websiteCategory}<br />
+<strong>Website name: </strong>${websiteInfo.websiteName}<br />
+<strong>Website category: </strong>${websiteInfo.websiteCategory}<br />
 
 <hr />
 <p>

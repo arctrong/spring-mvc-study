@@ -14,7 +14,7 @@ import static org.apache.commons.lang3.builder.ToStringStyle.*;
 @Controller
 public class MyWebsiteController {
 
-    @ModelAttribute
+    @ModelAttribute("websiteInfo")
     private WebsiteInfoDto getWebsiteInfo() {
         System.out.println("Inside getWebsiteInfo() method");
         WebsiteInfoDto websiteInfo = new WebsiteInfoDto();
@@ -26,14 +26,15 @@ public class MyWebsiteController {
     @RequestMapping("/siteInfo")
     public String showWebsiteInfo(Model model) {
         System.out.println("Inside showWebsiteInfo() method");
-        WebsiteInfoDto websiteInfo = (WebsiteInfoDto) model.getAttribute("websiteInfoDto");
+        WebsiteInfoDto websiteInfo = (WebsiteInfoDto) model.getAttribute("websiteInfo");
         System.out.println("websiteInfo=" + reflectionToString(websiteInfo, JSON_STYLE));
         return "info";
     }
 
     @RequestMapping("/companyInfo")
-    public String showCompanyInfo() {
+    public String showCompanyInfo(@ModelAttribute("websiteInfo") WebsiteInfoDto websiteInfo) {
         System.out.println("Inside showCompanyInfo() method");
+        System.out.println("websiteInfo=" + reflectionToString(websiteInfo, JSON_STYLE));
         return "info";
     }
 }
