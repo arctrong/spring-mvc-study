@@ -1,0 +1,97 @@
+<!--VARIABLES {"title": "Patch 715821ba117134712d15787f9dc05d88206c152e"}--> 
+<div class="patch_block">
+
+<span class="diff">diff --git a/projects/web-app-spring-sessions/src/main/java/springmvcstudy/controllers/MyWebsiteController.java b/projects/web-app-spring-sessions/src/main/java/springmvcstudy/controllers/MyWebsiteController.java</span><br />
+
+<span class="index">index 10552bf..7218ebf 100644</span><br />
+
+<span class="tree_minuses">--- a/projects/web-app-spring-sessions/src/main/java/springmvcstudy/controllers/MyWebsiteController.java</span><br />
+
+<span class="tree_pluses">+++ b/projects/web-app-spring-sessions/src/main/java/springmvcstudy/controllers/MyWebsiteController.java</span><br />
+
+<span class="two_ats">@@ -1,13 +1,19 @@</span><br />
+
+<span> package springmvcstudy.controllers;</span><br />
+
+<span> </span><br />
+
+<span> import org.springframework.stereotype.Controller;</span><br />
+
+<ins>+import org.springframework.ui.Model;</ins><br />
+
+<span> import org.springframework.web.bind.annotation.RequestMapping;</span><br />
+
+<ins>+import springmvcstudy.model.WebsiteInfoDto;</ins><br />
+
+<span> </span><br />
+
+<span> @Controller</span><br />
+
+<span> public class MyWebsiteController {</span><br />
+
+<span> </span><br />
+
+<del>-    @RequestMapping(&quot;/info&quot;)</del><br />
+
+<del>-    public String showWebsiteInfo() {</del><br />
+
+<ins>+    @RequestMapping(&quot;/siteInfo&quot;)</ins><br />
+
+<ins>+    public String showWebsiteInfo(Model model) {</ins><br />
+
+<ins>+        WebsiteInfoDto websiteInfo = new WebsiteInfoDto();</ins><br />
+
+<ins>+        websiteInfo.setWebsiteName(&quot;need-for-spring.edu&quot;);</ins><br />
+
+<ins>+        websiteInfo.setWebsiteCategory(&quot;education&quot;);</ins><br />
+
+<ins>+        model.addAttribute(&quot;websiteInfo&quot;, websiteInfo);</ins><br />
+
+<span>         return &quot;info&quot;;</span><br />
+
+<span>     }</span><br />
+
+<span> }</span><br />
+
+<span class="diff">diff --git a/projects/web-app-spring-sessions/src/main/webapp/WEB-INF/view/info.jsp b/projects/web-app-spring-sessions/src/main/webapp/WEB-INF/view/info.jsp</span><br />
+
+<span class="index">index 4f522fc..ceed207 100644</span><br />
+
+<span class="tree_minuses">--- a/projects/web-app-spring-sessions/src/main/webapp/WEB-INF/view/info.jsp</span><br />
+
+<span class="tree_pluses">+++ b/projects/web-app-spring-sessions/src/main/webapp/WEB-INF/view/info.jsp</span><br />
+
+<span class="two_ats">@@ -4,12 +4,14 @@</span><br />
+
+<span> &lt;html&gt;&lt;head&gt;&lt;meta charset=&quot;UTF-8&quot;&gt;</span><br />
+
+<span> &lt;title&gt;Using @ModelAttribute&lt;/title&gt;</span><br />
+
+<span> &lt;style&gt;</span><br />
+
+<del>-body {background-color: darkslategray; color: wheat;}</del><br />
+
+<ins>+body {background-color: darkslategray; color: wheat; font-size: larger;}</ins><br />
+
+<span> .error {color: red; position: fixed; text-align: left; margin-left: 20px;}</span><br />
+
+<span> &lt;/style&gt;</span><br />
+
+<span> &lt;/head&gt;&lt;body&gt;</span><br />
+
+<span> </span><br />
+
+<span> &lt;h1&gt;Using @ModelAttribute at the method level&lt;/h1&gt;</span><br />
+
+<span> &lt;hr /&gt;</span><br />
+
+<ins>+&lt;strong&gt;Website name: &lt;/strong&gt;${websiteInfo.websiteName}&lt;br /&gt;</ins><br />
+
+<ins>+&lt;strong&gt;Website category: &lt;/strong&gt;${websiteInfo.websiteCategory}&lt;br /&gt;</ins><br />
+
+<span> </span><br />
+
+<span> &lt;/body&gt;&lt;/html&gt;</span><br />
+
+</div>
+
