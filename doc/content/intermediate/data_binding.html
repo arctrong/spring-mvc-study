@@ -290,6 +290,19 @@ websiteInfo={"websiteCategory":"education","websiteName":"need-for-spring.edu"}<
 @ModelAttribute at method level implemented</p>
 </blockquote>
 <p>[<a href="../references.html#ref_2_16">2.16</a>, <a href="https://youtu.be/_Nafv53TKYY?t=1428">23:48</a>]</p>
+<p>If in the <code>showCompanyInfo()</code> handler method we declare the model attribute like this:</p>
+<pre class="highlight"><code class="language-code">    @RequestMapping("/companyInfo")
+    public String showCompanyInfo(@ModelAttribute("websiteInfo") WebsiteInfoDto websiteInfo) {
+        System.out.println("Inside showCompanyInfo() method");
+        System.out.println("websiteInfo=" + reflectionToString(websiteInfo, JSON_STYLE));
+        return "info";
+    }</code></pre>
+<p>we will find out that a new model is not created if it's already created by the <code>@ModelAttribute</code>
+annotated method.</p>
+<blockquote>
+<p>Git commit: <a href="../patches/2da1ab9ffd15ef0c36785dcf9a8ffbd808d7b9a9.html"><code>2da1ab9ffd15ef0c36785dcf9a8ffbd808d7b9a9</code></a>
+@ModelAttribute annotation used</p>
+</blockquote>
 <p>&nbsp;</p>
 <hr />
 

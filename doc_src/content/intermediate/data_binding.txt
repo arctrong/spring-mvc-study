@@ -285,13 +285,27 @@ The both pages shows the same dynamic field values.
 > <!--path patches-->de5d6102b6f41918fd2c42d5ffb99fc2fdd56c75.html)
 > @ModelAttribute at method level implemented
 
-
-
-
-
-
-
 [[2.16][], [23:48](https://youtu.be/_Nafv53TKYY?t=1428)]
+
+If in the `showCompanyInfo()` handler method we declare the model attribute like this:
+
+````code
+    @RequestMapping("/companyInfo")
+    public String showCompanyInfo(@ModelAttribute("websiteInfo") WebsiteInfoDto websiteInfo) {
+        System.out.println("Inside showCompanyInfo() method");
+        System.out.println("websiteInfo=" + reflectionToString(websiteInfo, JSON_STYLE));
+        return "info";
+    }
+````
+
+we will find out that a new model is not created if it's already created by the `@ModelAttribute`
+annotated method.
+
+> Git commit: [`2da1ab9ffd15ef0c36785dcf9a8ffbd808d7b9a9`](
+> <!--path patches-->2da1ab9ffd15ef0c36785dcf9a8ffbd808d7b9a9.html)
+> @ModelAttribute annotation used
+
+
 
 
 
