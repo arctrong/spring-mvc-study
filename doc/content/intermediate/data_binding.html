@@ -235,7 +235,7 @@ controller methods simplified</p>
 <p>Apr 5, 2023</p>
 <p><a name="index_entry_index_6"></a><a name="modelattribute_method_level"></a></p>
 <h1 id="modelattribute-at-the-method-level"><code>@ModelAttribute</code> at the method level</h1>
-<p>[<a href="../references.html#ref_2_16">2.16</a>]</p>
+<p>[<a href="../references.html#ref_2_16">2.16</a>], also see [<a href="../references.html#ref_17">17</a>]</p>
 <p>In the Youtube course this material is given much later than the other material in this section.</p>
 <p>The existing project 
 <a href="sessions_and_cookies.html#conversational_scope"><code>web-app-spring-sessions</code></a> 
@@ -247,6 +247,49 @@ initial setup for @ModelAttribute investigation</p>
 <p>Git commit: <a href="../patches/715821ba117134712d15787f9dc05d88206c152e.html"><code>715821ba117134712d15787f9dc05d88206c152e</code></a>
 simple model usage demonstrated</p>
 </blockquote>
+<p>[<a href="../references.html#ref_2_16">2.16</a>, <a href="https://youtu.be/_Nafv53TKYY?t=743">12:23</a>]</p>
+<p>The new <a href="../../../projects/web-app-spring-sessions/src/main/java/springmvcstudy/controllers/MyWebsiteController.java"><code>MyWebsiteController</code></a>
+class version is:</p>
+<pre class="highlight"><code class="language-code">@Controller
+public class MyWebsiteController {
+
+    @ModelAttribute
+    private WebsiteInfoDto getWebsiteInfo() {
+        System.out.println("Inside getWebsiteInfo() method");
+        WebsiteInfoDto websiteInfo = new WebsiteInfoDto();
+        websiteInfo.setWebsiteName("need-for-spring.edu");
+        websiteInfo.setWebsiteCategory("education");
+        return websiteInfo;
+    }
+
+    @RequestMapping("/siteInfo")
+    public String showWebsiteInfo(Model model) {
+        System.out.println("Inside showWebsiteInfo() method");
+        WebsiteInfoDto websiteInfo = (WebsiteInfoDto) model.getAttribute("websiteInfoDto");
+        System.out.println("websiteInfo=" + reflectionToString(websiteInfo, JSON_STYLE));
+        return "info";
+    }
+
+    @RequestMapping("/companyInfo")
+    public String showCompanyInfo() {
+        System.out.println("Inside showCompanyInfo() method");
+        return "info";
+    }
+}</code></pre>
+<p>The <code>getWebsiteInfo()</code> method annotated with the <code>@ModelAttribute</code> is called before calling every
+controller handler method:</p>
+<pre class="highlight"><code class="language-shell">Inside getWebsiteInfo() method
+Inside WebsiteInfoDto constructor
+Inside showWebsiteInfo() method
+websiteInfo={"websiteCategory":"education","websiteName":"need-for-spring.edu"}</code></pre>
+<p>The web page looks like this:</p>
+<p><img alt="" src="../../pict/modelattribute.png" /></p>
+<p>The both pages shows the same dynamic field values.</p>
+<blockquote>
+<p>Git commit: <a href="../patches/de5d6102b6f41918fd2c42d5ffb99fc2fdd56c75.html"><code>de5d6102b6f41918fd2c42d5ffb99fc2fdd56c75</code></a>
+@ModelAttribute at method level implemented</p>
+</blockquote>
+<p>[<a href="../references.html#ref_2_16">2.16</a>, <a href="https://youtu.be/_Nafv53TKYY?t=1428">23:48</a>]</p>
 <p>&nbsp;</p>
 <hr />
 

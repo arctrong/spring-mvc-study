@@ -5,6 +5,7 @@
 [2.6]: <!--page refs-->#ref_2_6
 [2.16]: <!--page refs-->#ref_2_16
 [11]: <!--page refs-->#ref_11
+[17]: <!--page refs-->#ref_17
 
 ----------------------------------------------------------------------------------------------------
 Mar 23, 2023
@@ -211,7 +212,7 @@ Apr 5, 2023
 <!--index ["@ModelAttribute, method level"]--><a name="modelattribute_method_level"></a>
 # `@ModelAttribute` at the method level
 
-[[2.16][]]
+[[2.16][]], also see [[17][]]
 
 In the Youtube course this material is given much later than the other material in this section.
 
@@ -229,6 +230,60 @@ Some initial objects (a controller, a view and a model) are created:
 > <!--path patches-->715821ba117134712d15787f9dc05d88206c152e.html)
 > simple model usage demonstrated
 
+[[2.16][], [12:23](https://youtu.be/_Nafv53TKYY?t=743)]
+
+The new [`MyWebsiteController`](
+<!--path code-->web-app-spring-sessions/src/main/java/springmvcstudy/controllers/MyWebsiteController.java)
+class version is:
+
+````code
+@Controller
+public class MyWebsiteController {
+
+    @ModelAttribute
+    private WebsiteInfoDto getWebsiteInfo() {
+        System.out.println("Inside getWebsiteInfo() method");
+        WebsiteInfoDto websiteInfo = new WebsiteInfoDto();
+        websiteInfo.setWebsiteName("need-for-spring.edu");
+        websiteInfo.setWebsiteCategory("education");
+        return websiteInfo;
+    }
+
+    @RequestMapping("/siteInfo")
+    public String showWebsiteInfo(Model model) {
+        System.out.println("Inside showWebsiteInfo() method");
+        WebsiteInfoDto websiteInfo = (WebsiteInfoDto) model.getAttribute("websiteInfoDto");
+        System.out.println("websiteInfo=" + reflectionToString(websiteInfo, JSON_STYLE));
+        return "info";
+    }
+
+    @RequestMapping("/companyInfo")
+    public String showCompanyInfo() {
+        System.out.println("Inside showCompanyInfo() method");
+        return "info";
+    }
+}
+````
+
+The `getWebsiteInfo()` method annotated with the `@ModelAttribute` is called before calling every
+controller handler method:
+
+````shell
+Inside getWebsiteInfo() method
+Inside WebsiteInfoDto constructor
+Inside showWebsiteInfo() method
+websiteInfo={"websiteCategory":"education","websiteName":"need-for-spring.edu"}
+````
+
+The web page looks like this:
+
+![](<!--path pict-->modelattribute.png)
+
+The both pages shows the same dynamic field values.
+
+> Git commit: [`de5d6102b6f41918fd2c42d5ffb99fc2fdd56c75`](
+> <!--path patches-->de5d6102b6f41918fd2c42d5ffb99fc2fdd56c75.html)
+> @ModelAttribute at method level implemented
 
 
 
@@ -236,7 +291,7 @@ Some initial objects (a controller, a view and a model) are created:
 
 
 
-
+[[2.16][], [23:48](https://youtu.be/_Nafv53TKYY?t=1428)]
 
 
 
