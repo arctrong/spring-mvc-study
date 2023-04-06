@@ -21,7 +21,8 @@ strong {color: darksalmon;}
 <a href="${pageContext.request.contextPath}/ui/siteInfo">Site info</a> |
 <a href="${pageContext.request.contextPath}/ui/companyInfo">Company info</a> |
 <a href="${pageContext.request.contextPath}/ui/test">Test info</a> |
-<a href="${pageContext.request.contextPath}/ui/errorInfo">Error info</a>
+<a href="${pageContext.request.contextPath}/ui/errorInfo">Error info</a> |
+<a href="${pageContext.request.contextPath}/ui/divByZero">Divide by zero</a>
 </p>
 
 </body></html>

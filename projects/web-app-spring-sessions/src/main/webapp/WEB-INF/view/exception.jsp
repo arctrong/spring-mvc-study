@@ -11,7 +11,7 @@ strong {color: darksalmon;}
 </style>
 </head><body>
 
-<h1><code>NullPointerException</code> happened</h1>
+<h1>Oops! <code>${exception}</code> happened...</h1>
 <hr />
 <p>We know about it and we are working on it. Sorry for your inconvenience.</p>
 

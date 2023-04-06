@@ -44,4 +44,10 @@ public class MyWebsiteController {
         websiteInfo.setWebsiteCategory(websiteInfo.getWebsiteCategory() + COUNT.incrementAndGet());
         return "info";
     }
+
+    @RequestMapping("/divByZero")
+    public String divideByZero() {
+        int quotient = 57 / 0;
+        return "info";
+    }
 }
