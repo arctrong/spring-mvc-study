@@ -192,6 +192,10 @@ Mar 28, 2023
 
 [[2.11][], [5:30](https://youtu.be/ms4ywje7EYI?t=330)]
 
+!!! note
+    See [here](<!--page data_binding-->#controlleradvice_annotation) for information about using
+    this annotation **globally**.
+
 In the [`RegistrationController`](
 <!--path code-->web-app-spring-adv2/src/main/java/springmvcstudy2/controllers/RegistrationController.java)
 class add the following method:

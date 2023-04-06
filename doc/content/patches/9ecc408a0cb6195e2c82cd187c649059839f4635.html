@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<head><title>Patch 509a7b32fd5d3dfcde4bea7cf853be5e7139b0a2</title>
+<head><title>Patch 9ecc408a0cb6195e2c82cd187c649059839f4635</title>
 <meta charset="utf-8">
 <link rel="shortcut icon" type="image/png" href="../../favicon.png"/>
 <link rel="stylesheet" type="text/css" href="../../layout/styles.css"/>
@@ -17,7 +17,7 @@
 class="header_item" href="../../../readme.html">About</a><a 
 class="header_item" href="../index_page.html">Index</a>
 
-<a href="../../../doc_src/patches/509a7b32fd5d3dfcde4bea7cf853be5e7139b0a2.txt " class="header_item_source" title="Source text">&lt;/&gt;</a>
+<a href="../../../doc_src/patches/9ecc408a0cb6195e2c82cd187c649059839f4635.txt " class="header_item_source" title="Source text">&lt;/&gt;</a>
 
 
 
@@ -25,7 +25,7 @@ class="header_item" href="../index_page.html">Index</a>
 
 <img class="headerNavArrows" src="../../layout/pict/next_page_h18px_inactive.png"/>
 
-<span class="headerTitle">Patch 509a7b32fd5d3dfcde4bea7cf853be5e7139b0a2</span>
+<span class="headerTitle">Patch 9ecc408a0cb6195e2c82cd187c649059839f4635</span>
 
 </div>
 
@@ -63,21 +63,21 @@ class="header_item" href="../index_page.html">Index</a>
     </table>
 </div>
 
-<p style="font-size:44px;font-weight:bold;margin:0 0 30px 0;">Patch 509a7b32fd5d3dfcde4bea7cf853be5e7139b0a2</p>
+<p style="font-size:44px;font-weight:bold;margin:0 0 30px 0;">Patch 9ecc408a0cb6195e2c82cd187c649059839f4635</p>
 
 <div class="patch_block">
 
-<span class="diff">diff --git a/projects/web-app-spring-sessions/src/main/java/springmvcstudy/controllers/MyWebsiteController.java b/projects/web-app-spring-sessions/src/main/java/springmvcstudy/controllers/MyWebsiteController.java</span><br />
+<span class="diff">diff --git a/projects/web-app-spring-sessions/src/main/java/springmvcstudy/controllers/ErroneousController.java b/projects/web-app-spring-sessions/src/main/java/springmvcstudy/controllers/ErroneousController.java</span><br />
 
 <span>new file mode 100644</span><br />
 
-<span class="index">index 0000000..10552bf</span><br />
+<span class="index">index 0000000..2b099e1</span><br />
 
 <span class="tree_minuses">--- /dev/null</span><br />
 
-<span class="tree_pluses">+++ b/projects/web-app-spring-sessions/src/main/java/springmvcstudy/controllers/MyWebsiteController.java</span><br />
+<span class="tree_pluses">+++ b/projects/web-app-spring-sessions/src/main/java/springmvcstudy/controllers/ErroneousController.java</span><br />
 
-<span class="two_ats">@@ -0,0 +1,13 @@</span><br />
+<span class="two_ats">@@ -0,0 +1,24 @@</span><br />
 
 <ins>+package springmvcstudy.controllers;</ins><br />
 
@@ -85,79 +85,43 @@ class="header_item" href="../index_page.html">Index</a>
 
 <ins>+import org.springframework.stereotype.Controller;</ins><br />
 
+<ins>+import org.springframework.web.bind.annotation.ExceptionHandler;</ins><br />
+
 <ins>+import org.springframework.web.bind.annotation.RequestMapping;</ins><br />
+
+<ins>+import springmvcstudy.model.WebsiteInfoDto;</ins><br />
 
 <ins>+</ins><br />
 
 <ins>+@Controller</ins><br />
 
-<ins>+public class MyWebsiteController {</ins><br />
+<ins>+public class ErroneousController {</ins><br />
 
 <ins>+</ins><br />
 
-<ins>+    @RequestMapping(&quot;/info&quot;)</ins><br />
+<ins>+    WebsiteInfoDto websiteInfo; // intentionally not initialized</ins><br />
+
+<ins>+</ins><br />
+
+<ins>+    @RequestMapping(&quot;/errorInfo&quot;)</ins><br />
 
 <ins>+    public String showWebsiteInfo() {</ins><br />
+
+<ins>+        System.out.println(websiteInfo.getWebsiteName());</ins><br />
+
+<ins>+        System.out.println(websiteInfo.getWebsiteCategory());</ins><br />
 
 <ins>+        return &quot;info&quot;;</ins><br />
 
 <ins>+    }</ins><br />
 
-<ins>+}</ins><br />
-
-<span class="diff">diff --git a/projects/web-app-spring-sessions/src/main/java/springmvcstudy/model/WebsiteInfoDto.java b/projects/web-app-spring-sessions/src/main/java/springmvcstudy/model/WebsiteInfoDto.java</span><br />
-
-<span>new file mode 100644</span><br />
-
-<span class="index">index 0000000..0ae44cd</span><br />
-
-<span class="tree_minuses">--- /dev/null</span><br />
-
-<span class="tree_pluses">+++ b/projects/web-app-spring-sessions/src/main/java/springmvcstudy/model/WebsiteInfoDto.java</span><br />
-
-<span class="two_ats">@@ -0,0 +1,23 @@</span><br />
-
-<ins>+package springmvcstudy.model;</ins><br />
-
 <ins>+</ins><br />
 
-<ins>+public class WebsiteInfoDto {</ins><br />
+<ins>+    @ExceptionHandler(value = NullPointerException.class)</ins><br />
 
-<ins>+</ins><br />
+<ins>+    public String showErrorPage() {</ins><br />
 
-<ins>+    private String websiteName;</ins><br />
-
-<ins>+    private String websiteCategory;</ins><br />
-
-<ins>+</ins><br />
-
-<ins>+    public String getWebsiteName() {</ins><br />
-
-<ins>+        return websiteName;</ins><br />
-
-<ins>+    }</ins><br />
-
-<ins>+</ins><br />
-
-<ins>+    public void setWebsiteName(String websiteName) {</ins><br />
-
-<ins>+        this.websiteName = websiteName;</ins><br />
-
-<ins>+    }</ins><br />
-
-<ins>+</ins><br />
-
-<ins>+    public String getWebsiteCategory() {</ins><br />
-
-<ins>+        return websiteCategory;</ins><br />
-
-<ins>+    }</ins><br />
-
-<ins>+</ins><br />
-
-<ins>+    public void setWebsiteCategory(String websiteCategory) {</ins><br />
-
-<ins>+        this.websiteCategory = websiteCategory;</ins><br />
+<ins>+        return &quot;nullPointerException&quot;;</ins><br />
 
 <ins>+    }</ins><br />
 
@@ -165,15 +129,43 @@ class="header_item" href="../index_page.html">Index</a>
 
 <span class="diff">diff --git a/projects/web-app-spring-sessions/src/main/webapp/WEB-INF/view/info.jsp b/projects/web-app-spring-sessions/src/main/webapp/WEB-INF/view/info.jsp</span><br />
 
-<span>new file mode 100644</span><br />
+<span class="index">index 8ed7c5f..fe1146d 100644</span><br />
 
-<span class="index">index 0000000..4f522fc</span><br />
-
-<span class="tree_minuses">--- /dev/null</span><br />
+<span class="tree_minuses">--- a/projects/web-app-spring-sessions/src/main/webapp/WEB-INF/view/info.jsp</span><br />
 
 <span class="tree_pluses">+++ b/projects/web-app-spring-sessions/src/main/webapp/WEB-INF/view/info.jsp</span><br />
 
-<span class="two_ats">@@ -0,0 +1,15 @@</span><br />
+<span class="two_ats">@@ -20,7 +20,8 @@ strong {color: darksalmon;}</span><br />
+
+<span> &lt;p&gt;</span><br />
+
+<span> &lt;a href=&quot;${pageContext.request.contextPath}/ui/siteInfo&quot;&gt;Site info&lt;/a&gt; |</span><br />
+
+<span> &lt;a href=&quot;${pageContext.request.contextPath}/ui/companyInfo&quot;&gt;Company info&lt;/a&gt; |</span><br />
+
+<del>-&lt;a href=&quot;${pageContext.request.contextPath}/ui/test&quot;&gt;Test info&lt;/a&gt;</del><br />
+
+<ins>+&lt;a href=&quot;${pageContext.request.contextPath}/ui/test&quot;&gt;Test info&lt;/a&gt; |</ins><br />
+
+<ins>+&lt;a href=&quot;${pageContext.request.contextPath}/ui/errorInfo&quot;&gt;Error info&lt;/a&gt;</ins><br />
+
+<span> &lt;/p&gt;</span><br />
+
+<span> </span><br />
+
+<span> &lt;/body&gt;&lt;/html&gt;</span><br />
+
+<span class="diff">diff --git a/projects/web-app-spring-sessions/src/main/webapp/WEB-INF/view/nullPointerException.jsp b/projects/web-app-spring-sessions/src/main/webapp/WEB-INF/view/nullPointerException.jsp</span><br />
+
+<span>new file mode 100644</span><br />
+
+<span class="index">index 0000000..5c1e855</span><br />
+
+<span class="tree_minuses">--- /dev/null</span><br />
+
+<span class="tree_pluses">+++ b/projects/web-app-spring-sessions/src/main/webapp/WEB-INF/view/nullPointerException.jsp</span><br />
+
+<span class="two_ats">@@ -0,0 +1,23 @@</span><br />
 
 <ins>+&lt;%@ page language=&quot;java&quot; contentType=&quot;text/html; charset=UTF-8&quot; pageEncoding=&quot;UTF-8&quot;%&gt;</ins><br />
 
@@ -183,11 +175,15 @@ class="header_item" href="../index_page.html">Index</a>
 
 <ins>+&lt;html&gt;&lt;head&gt;&lt;meta charset=&quot;UTF-8&quot;&gt;</ins><br />
 
-<ins>+&lt;title&gt;Using @ModelAttribute&lt;/title&gt;</ins><br />
+<ins>+&lt;title&gt;Error&lt;/title&gt;</ins><br />
 
 <ins>+&lt;style&gt;</ins><br />
 
-<ins>+body {background-color: darkslategray; color: wheat;}</ins><br />
+<ins>+body {background-color: darkslategray; color: coral; font-size: larger;}</ins><br />
+
+<ins>+a:link, a:visited, a:hover, a:active {color: wheat;}</ins><br />
+
+<ins>+strong {color: darksalmon;}</ins><br />
 
 <ins>+.error {color: red; position: fixed; text-align: left; margin-left: 20px;}</ins><br />
 
@@ -197,9 +193,21 @@ class="header_item" href="../index_page.html">Index</a>
 
 <ins>+</ins><br />
 
-<ins>+&lt;h1&gt;Using @ModelAttribute at the method level&lt;/h1&gt;</ins><br />
+<ins>+&lt;h1&gt;&lt;code&gt;NullPointerException&lt;/code&gt; happened&lt;/h1&gt;</ins><br />
 
 <ins>+&lt;hr /&gt;</ins><br />
+
+<ins>+&lt;p&gt;We know about it and working on it. Sorry for your inconvenience.&lt;/p&gt;</ins><br />
+
+<ins>+</ins><br />
+
+<ins>+&lt;hr /&gt;</ins><br />
+
+<ins>+&lt;p&gt;</ins><br />
+
+<ins>+&lt;a href=&quot;${pageContext.request.contextPath}/ui/siteInfo&quot;&gt;Site info&lt;/a&gt;</ins><br />
+
+<ins>+&lt;/p&gt;</ins><br />
 
 <ins>+</ins><br />
 

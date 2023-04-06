@@ -1,0 +1,82 @@
+<!--VARIABLES {"title": "Exception handling", "SORT_ORDER": "100", "code": "exception_handling"}-->
+
+[TOC]
+
+[2.17]: <!--page refs-->#ref_2_17
+[18]: <!--page refs-->#ref_18
+
+----------------------------------------------------------------------------------------------------
+Apr 6, 2023
+
+<!--index ["exception handling"]-->
+# Exception handling
+
+[[2.17][], [52:48](https://youtu.be/Suxp_fSMse4?t=3168)], also see [[18][],
+[1.3.6. Exceptions](https://docs.spring.io/spring-framework/docs/5.3.9/reference/html/web.html#mvc-ann-exceptionhandler)]
+
+Create a new controller [`ErroneousController`](
+<!--path code-->web-app-spring-sessions/src/main/java/springmvcstudy/controllers/ErroneousController.java):
+
+````code
+@Controller
+public class ErroneousController {
+
+    WebsiteInfoDto websiteInfo; // intentionally not initialized
+
+    @RequestMapping("/errorInfo")
+    public String showWebsiteInfo() {
+        System.out.println(websiteInfo.getWebsiteName());
+        System.out.println(websiteInfo.getWebsiteCategory());
+        return "info";
+    }
+}
+````
+
+<!--index ["@ExceptionHandler"]-->
+When navigating to the URL <http://localhost:8080/web-app-spring-sessions/ui/errorInfo> we, 
+of cause, get an unpleasant error page which states a `NullPointerException` occurred. 
+If we add an exception handler then we can make the error page nicer:
+
+````code
+    .  .  .
+    @ExceptionHandler(value = NullPointerException.class)
+    public String showErrorPage() {
+        return "nullPointerException";
+    }
+    .  .  .
+````
+
+> Git commit: [`9ecc408a0cb6195e2c82cd187c649059839f4635`](
+> <!--path patches-->9ecc408a0cb6195e2c82cd187c649059839f4635.html)
+> exception handler implemented
+
+----------------------------------------------------------------------------------------------------
+# Global exception handler
+
+[[2.17][], [1:12:02](https://youtu.be/Suxp_fSMse4?t=4322)]
+
+The above solution needs adding exception handlers into all controllers where we need the exception 
+handling. As a better alternative we can create a separate class, e.g. [`GlobalExceptionHandler`](
+<!--path code-->web-app-spring-sessions/src/main/java/springmvcstudy/controllers/GlobalExceptionHandler.java),
+and mark it with `@ControllerAdvice` (also see 
+[here](<!--page data_binding-->#controlleradvice_annotation)).
+Exception handlers defined in this class will affect all the controllers:
+
+````code
+@ControllerAdvice
+public class GlobalExceptionHandler {
+
+    @ExceptionHandler
+    public String showErrorPage(Exception exception, Model model) {
+        model.addAttribute("exception", exception.getClass().getSimpleName());
+        return "exception";
+    }
+}
+````
+
+> Git commit: [`1be3c30cb862955039e1de863dd565d8c9636f09`](
+> <!--path patches-->1be3c30cb862955039e1de863dd565d8c9636f09.html)
+> global exception handling implemented
+
+
+
