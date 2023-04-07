@@ -12,7 +12,7 @@
     "documents": [
         { "input-root": "", "output-root": "", "input": "readme.txt", "title": "About the course", 
             "page-flows": ["sections", "nav"] },
-        { "input-glob": "*.txt", "page-flows": ["sections", "nav"], 
+        { "input-glob": "*.txt", "page-flows": ["sections", "nav"],
             "title-from-variable": "title", "code-from-variable": "code", 
             "sort-by-variable": "SORT_ORDER" },
         { "input-glob": "beginner/*.txt", "page-flows": ["beginner", "nav"], 
@@ -36,6 +36,7 @@
             "markers": ["path"],
             "paths": {
                 "resource_path": "doc/",
+                "material_path": "../../../study_commons/",
                 "pict": "doc/pict/",
                 "materials": "materials/",
                 "code": "projects/",
@@ -51,7 +52,8 @@
 #                { "link": "https://spring.io/", "title": "Spring site", "external": true }
             ]
         },
-        "variables": {"logo": "<b><span style=\"color:greenyellow;margin-right:7px;\">Spring Web</span></b>" },
+        "variables": {"logo": 
+            "<b><span style=\"color:greenyellow;margin-right:7px;\">Spring Web<span class=\"localOnly\" title=\"Unrestricted\">*</span></span></b>" },
         "index": {"index": {"output": "index_page.html", "title": "Index", "index-cache": "index_cache.json", 
                     "index-cache-relative": true, "letters": true, "letters-block": true }
         },

@@ -1,4 +1,5 @@
-<!--VARIABLES {"title": "References", "SORT_ORDER": "020", "code": "refs"}-->
+<!--VARIABLES {"title": "References", "SORT_ORDER": "020", "code": "refs",
+"addRestrictedScript": true}-->
 
 <a name="ref_1"></a>**[1]** Youtube playlist:
 [Spring MVC for complete beginners :  [Running course]](
@@ -51,8 +52,8 @@ https://www.youtube.com/playlist?list=PL3NrzZBjk6m_2jw8sC0BkEwSPFHxgQDWr),
 version 9.4.51.v20230217, last updated 2023-02-17 05:32:21 UTC 
 
 <a name="ref_5"></a>**[5]** Baeldung: [Java EE vs J2EE vs Jakarta EE](
-https://www.baeldung.com/java-enterprise-evolution), 
-[saved](<!--path materials-->Baeldung_Java_EE_vs_J2EE_vs_Jakarta_EE.html)
+https://www.baeldung.com/java-enterprise-evolution)<span class="localOnly">,
+<a href="javascript:void(openLocal('Baeldung_Java_EE_vs_J2EE_vs_Jakarta_EE.html'))">local</a></span>
 
 <a name="ref_6"></a>**[6]** [Spring Web MVC official documentation (version 5.3.9)](
 https://docs.spring.io/spring-framework/docs/5.3.9/reference/html/web.html)
@@ -62,34 +63,41 @@ https://docs.spring.io/spring-framework/docs/5.3.9/reference/html/web.html)
 <div class="noBullets"></div>
 
 - <a name="ref_7_1"></a>[7.1] [Spring MVC XML Configuration Example](
-    https://memorynotfound.com/spring-mvc-xml-configuration-example/), 
-    [saved page](<!--path materials-->Spring_MVC_XML_Configuration_Example/Spring_MVC_XML_Configuration_Example.htm),    
-    saved demo project [spring-mvc-xml-configuration-example.zip](
-    <!--path materials-->Spring_MVC_XML_Configuration_Example/spring-mvc-xml-configuration-example.zip)
+    https://memorynotfound.com/spring-mvc-xml-configuration-example/)<span class="localOnly">,
+    <a href="javascript:void(openLocal('Spring_MVC_XML_Configuration_Example/Spring_MVC_XML_Configuration_Example.htm'))">local</a>
+    </span><span class="localOnly">, saved demo project<br />
+    <a href="javascript:void(openLocal('Spring_MVC_XML_Configuration_Example/spring-mvc-xml-configuration-example.zip'))"
+    >spring-mvc-xml-configuration-example.zip</a></span>
 - <a name="ref_7_2"></a>[7.2] [Spring MVC Static Resources + WebJars + Caching](
-    https://memorynotfound.com/spring-mvc-static-resources-webjars-caching/), 
-    [saved page](<!--path materials-->Spring_MVC_Static_Resources_WebJars_Caching/Spring_MVC_Static_Resources_WebJars_Caching.htm),    
-    saved demo projects: [spring-mvc-static-resouces-webjars-caching-xml-config.zip](
-    <!--path materials-->Spring_MVC_Static_Resources_WebJars_Caching/spring-mvc-static-resouces-webjars-caching-xml-config.zip),
-    [spring-mvc-static-resources-webjars-caching-java-config-example.zip](
-    <!--path materials-->Spring_MVC_Static_Resources_WebJars_Caching/spring-mvc-static-resources-webjars-caching-java-config-example.zip)
+    https://memorynotfound.com/spring-mvc-static-resources-webjars-caching/)<span class="localOnly">,
+    <a href="javascript:void(openLocal('Spring_MVC_Static_Resources_WebJars_Caching/Spring_MVC_Static_Resources_WebJars_Caching.htm'))"
+    >local</a></span><span class="localOnly">, saved demo projects:<br />
+    <a href="javascript:void(openLocal(
+    'Spring_MVC_Static_Resources_WebJars_Caching/spring-mvc-static-resouces-webjars-caching-xml-config.zip'))"
+    >spring-mvc-static-resouces-webjars-caching-xml-config.zip</a>,<br />
+    <a href="javascript:void(openLocal(
+    'Spring_MVC_Static_Resources_WebJars_Caching/spring-mvc-static-resources-webjars-caching-java-config-example.zip'))"
+    >spring-mvc-static-resources-webjars-caching-java-config-example.zip</a></span>
 - <a name="ref_7_3"></a>[7.3] [Spring MVC with XML Configuration](
-    https://springjava.com/spring-mvc/spring-mvc-with-xml-configuration-example), 
-    [saved page](<!--path materials-->Spring_MVC_with_XML_Configuration_Example.htm)
+    https://springjava.com/spring-mvc/spring-mvc-with-xml-configuration-example)<span class="localOnly">,
+    <a href="javascript:void(openLocal('Spring_MVC_with_XML_Configuration_Example.htm'))">local</a>
+    </span>
 
 <a name="ref_8"></a>**[8]** Wikipedia:
 [Front controller](https://en.wikipedia.org/wiki/Front_controller)
 
 <a name="ref_9"></a>**[9]** Baeldung: [A Guide to the Front Controller Pattern in Java](
-https://www.baeldung.com/java-front-controller-pattern), 
-[saved](<!--path materials-->Baeldung_A_Guide_to_the_Front_Controller_Pattern_in_Java.html)
+https://www.baeldung.com/java-front-controller-pattern)<span class="localOnly">,
+<a href="javascript:void(openLocal('Baeldung_A_Guide_to_the_Front_Controller_Pattern_in_Java.html'))">local</a>
+</span>
 
 <a name="ref_10"></a>**[10]** Spring: [Guides](https://spring.io/guides). Provides a lot of guides
 from simple 20 min "Hello world" examples to 2...3 hours in-depth tutorials.
 
 <a name="ref_11"></a>**[11]** Baeldung: [Getting Started with Forms in Spring MVC](
-https://www.baeldung.com/spring-mvc-form-tutorial), 
-[saved](<!--path materials-->Baeldung_Getting_Started_with_Forms_in_Spring_MVC.html)
+https://www.baeldung.com/spring-mvc-form-tutorial)<span class="localOnly">,
+<a href="javascript:void(openLocal('Baeldung_Getting_Started_with_Forms_in_Spring_MVC.html'))">local</a>
+</span>
 
 <a name="ref_12"></a>**[12]** Java Community Process (JCP):
 
@@ -104,8 +112,8 @@ https://www.baeldung.com/spring-mvc-form-tutorial),
     also [here](https://beanvalidation.org/2.0-jsr380/)
 
 <a name="ref_13"></a>**[13]** Baeldung: [Java Bean Validation Basics](
-https://www.baeldung.com/javax-validation), 
-[saved](<!--path materials-->Baeldung_Java_Bean_Validation_Basics.html)
+https://www.baeldung.com/javax-validation)<span class="localOnly">,
+<a href="javascript:void(openLocal('Baeldung_Java_Bean_Validation_Basics.html'))">local</a></span>
 
 <a name="ref_14"></a>**[14]** JSR 380 (Bean Validation) implementations:
 
@@ -127,6 +135,10 @@ https://www.seleniumexpress.com/modelattribute-at-the-method-level/)
 
 <a name="ref_18"></a>**[18]** [Spring MVC Reference Documentation, 5.3.9](
 https://docs.spring.io/spring-framework/docs/5.3.9/reference/html/web.html)
+
+
+
+
 
 
 

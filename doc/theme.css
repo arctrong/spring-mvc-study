@@ -48,4 +48,8 @@ code, .code {
   border: lightgray solid 1px;
 }
 
+.localOnly {
+    display: none;
+}
+
 

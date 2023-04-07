@@ -6,6 +6,9 @@
 <link rel="stylesheet" type="text/css" href="{{resource_path}}layout/styles.css"/>
 <link rel="stylesheet" type="text/css" href="{{resource_path}}layout/layout.css"/>
 <link rel="stylesheet" type="text/css" href="{{resource_path}}theme.css"/>
+{{#addRestrictedScript}}
+<link rel="stylesheet" type="text/css" href="{{material_path}}materials_spring_mvc.css">
+{{/addRestrictedScript}}
 {{{styles}}}
 <style>
 .headerNavArrows {position: relative; top: 3px;}
@@ -70,6 +73,16 @@ src="{{resource_path}}layout/pict/next_page.png"/></a>{{/nav.next}}
 {{/nav.has_navigation}}
 
 <div style="height: 1000px;"><p>&nbsp;</p></div>
+
+{{#addRestrictedScript}}
+<span style="display:none" id="baseurl"></span>
+<script type="text/javascript" defer>
+let baseUrl = getComputedStyle(document.getElementById("baseurl"), "::before").content.slice(1, -1);
+function openLocal(url) {
+    window.location = baseUrl + url;
+}
+</script>
+{{/addRestrictedScript}}
 
 </body>
 </html>
