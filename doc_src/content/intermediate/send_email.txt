@@ -59,8 +59,8 @@ the model DTO is [`SendEmailDto`](
 
 See the below commit for the implementation details.
 
-> Git commit: [`c23f1c1ba16e42cc1b8a702951b488830930c8ac`](
-> <!--path patches-->c23f1c1ba16e42cc1b8a702951b488830930c8ac.html)
+> Git commit: [`79228a9bab74fe632ea1df52d90b29c00f940689`](
+> <!--path patches-->79228a9bab74fe632ea1df52d90b29c00f940689.html)
 > send email skeleton forms created
 
 See [here](<!--page server_setup-->#project_start_on_server) for information about the project start.
@@ -112,8 +112,8 @@ using the new model attribute:
 .  .  .
 ````
 
-> Git commit: [`236fe6a16456e9d45e935d6849e5adb8bb1eb7e8`](
-> <!--path patches-->236fe6a16456e9d45e935d6849e5adb8bb1eb7e8.html)
+> Git commit: [`6318ea0fb1a271faf2ac446d92b244cb39ff9f6e`](
+> <!--path patches-->6318ea0fb1a271faf2ac446d92b244cb39ff9f6e.html)
 > path variable used
 
 
@@ -134,8 +134,8 @@ class):
     }
 ````
 
-> Git commit: [`cb8843c8ea7c29ae9f62b19fa915e14a8d9c74e4`](
-> <!--path patches-->cb8843c8ea7c29ae9f62b19fa915e14a8d9c74e4.html)
+> Git commit: [`70e1cc42d8ed040bcd93490d7bc2c76663659862`](
+> <!--path patches-->70e1cc42d8ed040bcd93490d7bc2c76663659862.html)
 > path variable used with a Map
 
 ----------------------------------------------------------------------------------------------------

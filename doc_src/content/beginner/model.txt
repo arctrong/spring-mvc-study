@@ -49,8 +49,8 @@ The order page URL is <http://localhost:8080/web-app-spring/cafe/processOrder>:
 
 ![](<!--path pict-->my_cafe_order_page.png)
 
-> Git commit: [`f0d793424cef293a99f6bddb6064fc2d682eecbc`](
-> <!--path patches-->f0d793424cef293a99f6bddb6064fc2d682eecbc.html)
+> Git commit: [`04e5417f17badeaf22f599db5ad04715645a8a60`](
+> <!--path patches-->04e5417f17badeaf22f599db5ad04715645a8a60.html)
 > form processing investigated
 
 

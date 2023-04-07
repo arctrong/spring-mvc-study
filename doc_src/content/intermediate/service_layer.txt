@@ -13,7 +13,7 @@ Apr 4, 2023
 Maven project `web-app-spring-adv3` was copied to `web-app-spring-adv4` to leave the previous
 version untouched.
 
-> Git commit: `0939cb4dab0ac839cc742d39e5c933c6f6157105` project web-app-spring-adv4 copied from project web-app-spring-adv3
+> Git commit: `3d6cecc8078c7ab3049832f2254ed241740d31ad` project web-app-spring-adv4 copied from project web-app-spring-adv3
 
 ----------------------------------------------------------------------------------------------------
 # Local mail server setup
@@ -134,8 +134,8 @@ If the message is sent successfully the following email must be visible in the e
 
 ![](<!--path pict-->mail_is_sent.png)
 
-> Git commit: [`4adb1d429d9bd13274e5576a984624785a0ecfa3`](
-> <!--path patches-->4adb1d429d9bd13274e5576a984624785a0ecfa3.html)
+> Git commit: [`943d19db5647d17fc5a42eae2070fe0003180edf`](
+> <!--path patches-->943d19db5647d17fc5a42eae2070fe0003180edf.html)
 > sending email implemented
 
 ----------------------------------------------------------------------------------------------------
@@ -147,8 +147,8 @@ If the message is sent successfully the following email must be visible in the e
 <!--index ["properties files", "@PropertySource", "@PropertySources"]-->
 ## Using properties file
 
-> Git commit: [`d980473dd58c9c0c4129a3e8a0531335166c5b46`](
-> <!--path patches-->d980473dd58c9c0c4129a3e8a0531335166c5b46.html)
+> Git commit: [`c3637ff1c2615984c7d5d1e8370db443dfdfb08e`](
+> <!--path patches-->c3637ff1c2615984c7d5d1e8370db443dfdfb08e.html)
 > using properties file
 
 !!! note
@@ -161,8 +161,8 @@ If the message is sent successfully the following email must be visible in the e
 
 [[2.15][], [1:11:34](https://youtu.be/laZnez5VzV4?t=4294)]
 
-> Git commit: [`a2a8a641bc4bfba150449cbf50665749b7bcdb4b`](
-> <!--path patches-->a2a8a641bc4bfba150449cbf50665749b7bcdb4b.html)
+> Git commit: [`1a95f6e32e101c1a2ceb76305558718ae65dff0b`](
+> <!--path patches-->1a95f6e32e101c1a2ceb76305558718ae65dff0b.html)
 > using a logger
 
 ----------------------------------------------------------------------------------------------------
@@ -173,8 +173,8 @@ If the message is sent successfully the following email must be visible in the e
 The implementation is pretty similar to the previous one so see the below commit for the exact
 details.
 
-> Git commit: [`fd9b6a7bbd179367f8660c82a737e8d4b4a5121c`](
-> <!--path patches-->fd9b6a7bbd179367f8660c82a737e8d4b4a5121c.html)
+> Git commit: [`db2dba43f74d040855c6cf863d7d44b71d57a32e`](
+> <!--path patches-->db2dba43f74d040855c6cf863d7d44b71d57a32e.html)
 > calculation service implemented
 
 

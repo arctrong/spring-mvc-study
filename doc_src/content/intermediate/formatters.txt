@@ -53,8 +53,8 @@ On the other hand the field `private int age;` is accepted successfully as Sprin
 automatically convert some known data types. The solution about the `phone` field is going to be 
 discussed later.
 
-> Git commit: [`5a14f9a34017c2c5e63c04cf25ec035718df987d`](
-> <!--path patches-->5a14f9a34017c2c5e63c04cf25ec035718df987d.html)
+> Git commit: [`8e67a743ed9bd4a6f84f8dec1d00123de0d5ef38`](
+> <!--path patches-->8e67a743ed9bd4a6f84f8dec1d00123de0d5ef38.html)
 > composite DTOs implemented
 
 ----------------------------------------------------------------------------------------------------
@@ -128,8 +128,8 @@ like this:
 The pictures are not going to be demonstrated as they are not changed very much. The previous 
 versions od these forms can be view [here](<!--page registration_form-->#registration_forms).
 
-> Git commit: [`5d9d526ce3ef71d5d231c5d1e2230ff77e4c50c3`](
-> <!--path patches-->5d9d526ce3ef71d5d231c5d1e2230ff77e4c50c3.html)
+> Git commit: [`ba324d4a9f5375be278136b3cdf3198fdeb968f6`](
+> <!--path patches-->ba324d4a9f5375be278136b3cdf3198fdeb968f6.html)
 > Spring NVC Formatter used
 
 ----------------------------------------------------------------------------------------------------
@@ -172,8 +172,8 @@ is changed like this:
 
 So now when the form is initially loaded the phone number is "000-0000000000".
 
-> Git commit: [`8d937092461422607d8595e0eb3c91ad7db42a56`](
-> <!--path patches-->8d937092461422607d8595e0eb3c91ad7db42a56.html)
+> Git commit: [`50c94fbb64875de6ee9617331b4dbf017e120919`](
+> <!--path patches-->50c94fbb64875de6ee9617331b4dbf017e120919.html)
 > formatter print() method demonstrated
 
 ----------------------------------------------------------------------------------------------------
@@ -220,8 +220,8 @@ In this example it removes the field named `name` from the data model.
     `http://localhost:8080/web-app-spring-adv2/ui/registration-success?name=aaaaa&userName=bbbbb&...`,
     it's just not shown on the page.
     
-> Git commit: [`79b9c52328730769fd4f43190a81e98357105220`](
-> <!--path patches-->79b9c52328730769fd4f43190a81e98357105220.html)
+> Git commit: [`1527bd366728db43257229b25a07075f2cafe129`](
+> <!--path patches-->1527bd366728db43257229b25a07075f2cafe129.html)
 > property editor basics
     
 ----------------------------------------------------------------------------------------------------
@@ -319,8 +319,8 @@ class:
     Looks like the previous `StringTrimmerEditor` property editor stops working after registering
     a new property editor.
 
-> Git commit: [`8e545bf252eed82ecc3cb873937c975470860df2`](
-> <!--path patches-->8e545bf252eed82ecc3cb873937c975470860df2.html)
+> Git commit: [`c79fdca26537262bbae1c0de5f2e54955cb425f2`](
+> <!--path patches-->c79fdca26537262bbae1c0de5f2e54955cb425f2.html)
 > custom property editor implemented
 
 ----------------------------------------------------------------------------------------------------

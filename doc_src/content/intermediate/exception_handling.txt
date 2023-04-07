@@ -46,8 +46,8 @@ If we add an exception handler then we can make the error page nicer:
     .  .  .
 ````
 
-> Git commit: [`9ecc408a0cb6195e2c82cd187c649059839f4635`](
-> <!--path patches-->9ecc408a0cb6195e2c82cd187c649059839f4635.html)
+> Git commit: [`1cc970cac739bfd54dbcd6ee7d9bfa9d03da75bd`](
+> <!--path patches-->1cc970cac739bfd54dbcd6ee7d9bfa9d03da75bd.html)
 > exception handler implemented
 
 ----------------------------------------------------------------------------------------------------
@@ -74,8 +74,8 @@ public class GlobalExceptionHandler {
 }
 ````
 
-> Git commit: [`1be3c30cb862955039e1de863dd565d8c9636f09`](
-> <!--path patches-->1be3c30cb862955039e1de863dd565d8c9636f09.html)
+> Git commit: [`76ce43874f9b68a326b34721eaa35da14101905a`](
+> <!--path patches-->76ce43874f9b68a326b34721eaa35da14101905a.html)
 > global exception handling implemented
 
 

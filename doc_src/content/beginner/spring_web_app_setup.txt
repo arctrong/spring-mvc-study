@@ -10,7 +10,7 @@ In this section Spring MVC is added to the basic web project created in the
 [previous section](<!--page server_setup-->).
 
 
-[[1.2][]] ???
+[[1.2][]]
 
 [1.2]: <!--page refs-->#ref_1_2
 [1.7]: <!--page refs-->#ref_1_7
@@ -154,8 +154,8 @@ the `<servlet-class>` section):
 
 Then the context configuration file must be renamed to `front-controller-context.xml`.
 
-> Git commit: [`6e88ef4c5cc3ce4f1401213d9e2c37338179127a`](
-> <!--path patches-->6e88ef4c5cc3ce4f1401213d9e2c37338179127a.html)
+> Git commit: [`9fa1fac04edc8078f2e2e2435a313b816135a1f2`](
+> <!--path patches-->9fa1fac04edc8078f2e2e2435a313b816135a1f2.html)
 > change dispatcher servlet context configuration file name
 > 
 > This commit was reverted right then as we don't need this renaming and it was done for 

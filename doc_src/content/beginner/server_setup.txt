@@ -195,8 +195,8 @@ Navigate to <http://localhost:8080/web-app-jetty/> to see the result:
 > Git commit: [`429b1fd4f65f6182962255078e0d32bd02949b50`](
 > <!--path patches-->429b1fd4f65f6182962255078e0d32bd02949b50.html)
 > simplest web app run in Jetty    
-> Git commit: [`38af79b94dec0dd45bc785e5e3ae08fa5b2e4411`](
-> <!--path patches-->38af79b94dec0dd45bc785e5e3ae08fa5b2e4411.html)
+> Git commit: [`31a1cc7364bc8d81cbba2230eedd929714ddd8a0`](
+> <!--path patches-->31a1cc7364bc8d81cbba2230eedd929714ddd8a0.html)
 > Maven target directories redefined
 
 ----------------------------------------------------------------------------------------------------
@@ -241,8 +241,8 @@ So the URL <http://localhost:8080/web-app-spring/html/static.html> returns the p
 
 For more details and examples see [[7.1][]] and [[7.2][]].
 
-> Git commit: [`32389ab361df68e582006f5c98e8e3aa28a56e32`](
-> <!--path patches-->32389ab361df68e582006f5c98e8e3aa28a56e32.html)
+> Git commit: [`51b4238098206ff2e119614a2909db12355a206f`](
+> <!--path patches-->51b4238098206ff2e119614a2909db12355a206f.html)
 > serving static content added
 
 

@@ -27,8 +27,8 @@ Also see [[16][]].
 
 This is the first simple implementation that is probably not to be used in production.
 
-> Git commit: [`84ef7a5077be8aebf246e238b4f66d4efc2f220a`](
-> <!--path patches-->84ef7a5077be8aebf246e238b4f66d4efc2f220a.html)
+> Git commit: [`24df68c254b3e3173d927e87505a419c41997009`](
+> <!--path patches-->24df68c254b3e3173d927e87505a419c41997009.html)
 > first simple cookie usage demonstrated
 
 In the `/validate-submit` endpoint we create a `Cookie` and add it to the `HttpServletResponse`
@@ -60,8 +60,8 @@ class):
     }
 ````
 
-> Git commit: [`fe7f898864fc585ea03e2e6e195c46e9700cf9ac`](
-> <!--path patches-->fe7f898864fc585ea03e2e6e195c46e9700cf9ac.html)
+> Git commit: [`c24fc1711dc1fcf02609152e8135f838b886fdd6`](
+> <!--path patches-->c24fc1711dc1fcf02609152e8135f838b886fdd6.html)
 > using @CookieValue annotation
 
 ----------------------------------------------------------------------------------------------------
@@ -135,8 +135,8 @@ class:
 As servers have still limited storage capacity and the number of requests and different sessions 
 may be huge, it's not recommended to store unnecessary data in sessions.
 
-> Git commit: [`41ac2ee44af044b776a036a7bd891d9cf4347cf5`](
-> <!--path patches-->41ac2ee44af044b776a036a7bd891d9cf4347cf5.html)
+> Git commit: [`8075a5220613199f779944e74dbadb0662189b24`](
+> <!--path patches-->8075a5220613199f779944e74dbadb0662189b24.html)
 > session usage demonstrated
 
 ----------------------------------------------------------------------------------------------------
@@ -232,8 +232,8 @@ We just use the specified session attribute like this:
 .  .  .
 ````
     
-> Git commit: [`82d604c452010585bc401a28bb02907f8c378314`](
-> <!--path patches-->82d604c452010585bc401a28bb02907f8c378314.html)
+> Git commit: [`c9a8051e03ffaea64b73eb4289e30bc8b7757769`](
+> <!--path patches-->c9a8051e03ffaea64b73eb4289e30bc8b7757769.html)
 > @SessionAttributes annotation used
 
 ----------------------------------------------------------------------------------------------------
@@ -247,8 +247,8 @@ New simple project created to make the description more clear. The URL is
 
 [[2.14][], [0:40](https://youtu.be/ezty6XhOpF8?t=40)]
 
-> Git commit: [`92ef2e0ce13ce794115d2d47695b80ec1b2d8ea4`](
-> <!--path patches-->92ef2e0ce13ce794115d2d47695b80ec1b2d8ea4.html)
+> Git commit: [`cb5ad3e48f0e4437d2489f1c89d0247019116045`](
+> <!--path patches-->cb5ad3e48f0e4437d2489f1c89d0247019116045.html)
 > new project created for sessions investigation
 
 
@@ -300,8 +300,8 @@ The page is going to look like this:
 The first URL is <http://localhost:8080/web-app-spring-sessions/ui/first>. As for now the second 
 link opens the page where all fields are empty.
 
-> Git commit: [`705e5a346357e303c5b7dec577c7e82bcf1592a5`](
-> <!--path patches-->705e5a346357e303c5b7dec577c7e82bcf1592a5.html)
+> Git commit: [`d436f2b6408024785fc0db78d60fb17afb87ba32`](
+> <!--path patches-->d436f2b6408024785fc0db78d60fb17afb87ba32.html)
 > request scope demonstrated
 
 
@@ -340,8 +340,8 @@ firstName=Jan
 
 And the second link shown above opens the page where the first field "First name" is filled.
 
-> Git commit: [`c858def2e0084a4d7b40a7e045101bcb7f2017dc`](
-> <!--path patches-->c858def2e0084a4d7b40a7e045101bcb7f2017dc.html)
+> Git commit: [`1d9d6953266063c12e596435649660927dd3f4e9`](
+> <!--path patches-->1d9d6953266063c12e596435649660927dd3f4e9.html)
 > @SessionAttributes annotation added
 
 
@@ -361,8 +361,8 @@ In the JSP page add:
 
 that'll show that the attribute values are the same.
 
-> Git commit: [`8787b67b11429a6f0369395418dfca87a74a1ab6`](
-> <!--path patches-->8787b67b11429a6f0369395418dfca87a74a1ab6.html)
+> Git commit: [`16b36af28355aa6dbd3fcafcdb86a6c5416cf0c2`](
+> <!--path patches-->16b36af28355aa6dbd3fcafcdb86a6c5416cf0c2.html)
 > scopes explicitly specified
 
 
@@ -389,8 +389,8 @@ Now we don't need to even mention the model attributes in the second handler:
 This will work as in the JSP page the attributes `${firstName}` and `${lastName}` will be first
 looked up in the request scope and then, if not found, in the session scope.
 
-> Git commit: [`e51ab82cd5dbff738d0564796176a933e39987be`](
-> <!--path patches-->e51ab82cd5dbff738d0564796176a933e39987be.html)
+> Git commit: [`b01d7a7d88001fca72b3a270b4f6e085293c1d05`](
+> <!--path patches-->b01d7a7d88001fca72b3a270b4f6e085293c1d05.html)
 > all attributes added to the session scope
 
 
@@ -423,8 +423,8 @@ After that, in the third handler method the session attributes will be absent.
     set using the `javax.servlet.http.HttpSession` object (see 
     [below](<!--page sessions_and_cookies-->)#httpsession_vs_sessionattribute).
 
-> Git commit: [`2977906fc61c5574f67e1db43f7ed544a2fbae5d`](
-> <!--path patches-->2977906fc61c5574f67e1db43f7ed544a2fbae5d.html)
+> Git commit: [`d83ff8a17189a88904f1f954e80e976b68f44e99`](
+> <!--path patches-->d83ff8a17189a88904f1f954e80e976b68f44e99.html)
 > conversation completing demonstrated
 
 
@@ -501,8 +501,8 @@ completed) the following error will be returned:
 HTTP ERROR 400 Missing session attribute 'firstName' of type String
 ````
 
-> Git commit: [`f5377bfa2557f2f886c9163fa47dc86190fb92f3`](
-> <!--path patches-->f5377bfa2557f2f886c9163fa47dc86190fb92f3.html)
+> Git commit: [`24248224450db59173c41fd9960d39482c0cc206`](
+> <!--path patches-->24248224450db59173c41fd9960d39482c0cc206.html)
 > problem with @SessionAttribute annotation
 
 
@@ -518,8 +518,8 @@ See the below commit for more details.
     `HttpSession` and `@SessionAttribute` are managed differently. So the 
     `SessionStatus#setComplete` method does not clear the `HttpSession` object attributes.
 
-> Git commit: [`df17124ddbd0c955434884fd7aed6f9240ecf5ec`](
-> <!--path patches-->df17124ddbd0c955434884fd7aed6f9240ecf5ec.html)
+> Git commit: [`f4f5cca9ade31118a069a5c9b6209e5cc3b0cd2f`](
+> <!--path patches-->f4f5cca9ade31118a069a5c9b6209e5cc3b0cd2f.html)
 > using HttpSession object
 
 
@@ -542,8 +542,8 @@ See the below commit for more details.
     Note that the attribute set by the `@SessionAttributes` annotation will not be removed by the 
     `invalidate()` method.
 
-> Git commit: [`276a86a1e8fb969778a9cafcb060e23de6436b69`](
-> <!--path patches-->276a86a1e8fb969778a9cafcb060e23de6436b69.html)
+> Git commit: [`3e1a46fdea00dc7ef5c96e0bc9876b8d5e978402`](
+> <!--path patches-->3e1a46fdea00dc7ef5c96e0bc9876b8d5e978402.html)
 > invalidating HttpSession object
 
 ----------------------------------------------------------------------------------------------------
