@@ -1,0 +1,94 @@
+<!--VARIABLES {"title": "Patch 492be58a46a2f62eaa5e255dcf99abbe69e6089b"}--> 
+ 
+<strong>Commit message:</strong> 
+@ModelAttribute conbined with @SessionAttributes
+
+ 
+<div class="patch_block">
+
+<span class="diff">diff --git a/projects/web-app-spring-sessions/src/main/java/springmvcstudy/controllers/MyWebsiteController.java b/projects/web-app-spring-sessions/src/main/java/springmvcstudy/controllers/MyWebsiteController.java</span><br />
+
+<span class="index">index 299f304..0d48832 100644</span><br />
+
+<span class="tree_minuses">--- a/projects/web-app-spring-sessions/src/main/java/springmvcstudy/controllers/MyWebsiteController.java</span><br />
+
+<span class="tree_pluses">+++ b/projects/web-app-spring-sessions/src/main/java/springmvcstudy/controllers/MyWebsiteController.java</span><br />
+
+<span class="two_ats">@@ -1,21 +1,25 @@</span><br />
+
+<span> package springmvcstudy.controllers;</span><br />
+
+<span> </span><br />
+
+<del>-import org.apache.commons.lang3.builder.ToStringBuilder;</del><br />
+
+<del>-import org.apache.commons.lang3.builder.ToStringStyle;</del><br />
+
+<span> import org.springframework.stereotype.Controller;</span><br />
+
+<span> import org.springframework.ui.Model;</span><br />
+
+<span> import org.springframework.web.bind.annotation.ControllerAdvice;</span><br />
+
+<span> import org.springframework.web.bind.annotation.ModelAttribute;</span><br />
+
+<span> import org.springframework.web.bind.annotation.RequestMapping;</span><br />
+
+<ins>+import org.springframework.web.bind.annotation.SessionAttributes;</ins><br />
+
+<span> import springmvcstudy.model.WebsiteInfoDto;</span><br />
+
+<span> </span><br />
+
+<del>-import static org.apache.commons.lang3.builder.ToStringBuilder.*;</del><br />
+
+<del>-import static org.apache.commons.lang3.builder.ToStringStyle.*;</del><br />
+
+<ins>+import java.util.concurrent.atomic.AtomicInteger;</ins><br />
+
+<ins>+</ins><br />
+
+<ins>+import static org.apache.commons.lang3.builder.ToStringBuilder.reflectionToString;</ins><br />
+
+<ins>+import static org.apache.commons.lang3.builder.ToStringStyle.JSON_STYLE;</ins><br />
+
+<span> </span><br />
+
+<span> @Controller</span><br />
+
+<span> @ControllerAdvice(assignableTypes = MyTestController.class)</span><br />
+
+<ins>+@SessionAttributes(&quot;websiteInfo&quot;)</ins><br />
+
+<span> public class MyWebsiteController {</span><br />
+
+<span> </span><br />
+
+<ins>+    private static AtomicInteger COUNT = new AtomicInteger(0);</ins><br />
+
+<ins>+</ins><br />
+
+<span>     @ModelAttribute(&quot;websiteInfo&quot;)</span><br />
+
+<span>     private WebsiteInfoDto getWebsiteInfo() {</span><br />
+
+<span>         System.out.println(&quot;Inside getWebsiteInfo() method&quot;);</span><br />
+
+<span class="two_ats">@@ -37,6 +41,7 @@ public class MyWebsiteController {</span><br />
+
+<span>     public String showCompanyInfo(@ModelAttribute(&quot;websiteInfo&quot;) WebsiteInfoDto websiteInfo) {</span><br />
+
+<span>         System.out.println(&quot;Inside showCompanyInfo() method&quot;);</span><br />
+
+<span>         System.out.println(&quot;websiteInfo=&quot; + reflectionToString(websiteInfo, JSON_STYLE));</span><br />
+
+<ins>+        websiteInfo.setWebsiteCategory(websiteInfo.getWebsiteCategory() + COUNT.incrementAndGet());</ins><br />
+
+<span>         return &quot;info&quot;;</span><br />
+
+<span>     }</span><br />
+
+<span> }</span><br />
+
+</div>
+

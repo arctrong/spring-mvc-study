@@ -1,0 +1,46 @@
+<!--VARIABLES {"title": "Patch 1958f656893ebb734c26078e27acaa0947554ec6"}--> 
+ 
+<strong>Commit message:</strong> 
+validation messages customization investigated
+
+ 
+<div class="patch_block">
+
+<span class="diff">diff --git a/projects/web-app-spring-adv2/src/main/java/springmvcstudy2/model/UserInfoValidatedDto.java b/projects/web-app-spring-adv2/src/main/java/springmvcstudy2/model/UserInfoValidatedDto.java</span><br />
+
+<span class="index">index ce0def7..ccd928c 100644</span><br />
+
+<span class="tree_minuses">--- a/projects/web-app-spring-adv2/src/main/java/springmvcstudy2/model/UserInfoValidatedDto.java</span><br />
+
+<span class="tree_pluses">+++ b/projects/web-app-spring-adv2/src/main/java/springmvcstudy2/model/UserInfoValidatedDto.java</span><br />
+
+<span class="two_ats">@@ -7,11 +7,11 @@ import javax.validation.constraints.Size;</span><br />
+
+<span> public class UserInfoValidatedDto {</span><br />
+
+<span> </span><br />
+
+<span>     @NotBlank(message = &quot; * can&#x27;t be blank&quot;)</span><br />
+
+<del>-    @Size(min = 3, max = 10, message = &quot; * must have 3 to 10 characters&quot;)</del><br />
+
+<ins>+    @Size(min = 3, max = 10, message = &quot; * must have from {min} to {max} characters&quot;)</ins><br />
+
+<span>     private String name1;</span><br />
+
+<span> </span><br />
+
+<span>     @NotBlank(message = &quot; * can&#x27;t be blank&quot;)</span><br />
+
+<del>-    @Size(min = 3, max = 10, message = &quot; * must have 3 to 10 characters&quot;)</del><br />
+
+<ins>+    @Size(min = 3, max = 10)</ins><br />
+
+<span>     private String name2;</span><br />
+
+<span> </span><br />
+
+<span>     @AssertTrue(message = &quot; * Only humans are allowed to use this site&quot;)</span><br />
+
+</div>
+

@@ -1,0 +1,92 @@
+<!--VARIABLES {"title": "Patch d83ff8a17189a88904f1f954e80e976b68f44e99"}--> 
+ 
+<strong>Commit message:</strong> 
+conversation completing demonstrated
+
+ 
+<div class="patch_block">
+
+<span class="diff">diff --git a/projects/web-app-spring-sessions/src/main/java/springmvcstudy/controllers/FirstController.java b/projects/web-app-spring-sessions/src/main/java/springmvcstudy/controllers/FirstController.java</span><br />
+
+<span class="index">index 4c131b9..6a438de 100644</span><br />
+
+<span class="tree_minuses">--- a/projects/web-app-spring-sessions/src/main/java/springmvcstudy/controllers/FirstController.java</span><br />
+
+<span class="tree_pluses">+++ b/projects/web-app-spring-sessions/src/main/java/springmvcstudy/controllers/FirstController.java</span><br />
+
+<span class="two_ats">@@ -4,6 +4,7 @@ import org.springframework.stereotype.Controller;</span><br />
+
+<span> import org.springframework.ui.Model;</span><br />
+
+<span> import org.springframework.web.bind.annotation.RequestMapping;</span><br />
+
+<span> import org.springframework.web.bind.annotation.SessionAttributes;</span><br />
+
+<ins>+import org.springframework.web.bind.support.SessionStatus;</ins><br />
+
+<span> </span><br />
+
+<span> @Controller</span><br />
+
+<span> @SessionAttributes({&quot;firstName&quot;, &quot;lastName&quot;})</span><br />
+
+<span class="two_ats">@@ -17,7 +18,13 @@ public class FirstController {</span><br />
+
+<span>     }</span><br />
+
+<span> </span><br />
+
+<span>     @RequestMapping(&quot;/second&quot;)</span><br />
+
+<del>-    public String secondHandler() {</del><br />
+
+<ins>+    public String secondHandler(SessionStatus status) {</ins><br />
+
+<ins>+        status.setComplete();</ins><br />
+
+<ins>+        return &quot;index&quot;;</ins><br />
+
+<ins>+    }</ins><br />
+
+<ins>+</ins><br />
+
+<ins>+    @RequestMapping(&quot;/third&quot;)</ins><br />
+
+<ins>+    public String thirdHandler() {</ins><br />
+
+<span>         return &quot;index&quot;;</span><br />
+
+<span>     }</span><br />
+
+<span> }</span><br />
+
+<span class="diff">diff --git a/projects/web-app-spring-sessions/src/main/webapp/WEB-INF/view/index.jsp b/projects/web-app-spring-sessions/src/main/webapp/WEB-INF/view/index.jsp</span><br />
+
+<span class="index">index ce856e2..c85ac90 100644</span><br />
+
+<span class="tree_minuses">--- a/projects/web-app-spring-sessions/src/main/webapp/WEB-INF/view/index.jsp</span><br />
+
+<span class="tree_pluses">+++ b/projects/web-app-spring-sessions/src/main/webapp/WEB-INF/view/index.jsp</span><br />
+
+<span class="two_ats">@@ -16,7 +16,8 @@ body {background-color: plum;}</span><br />
+
+<span> &lt;hr /&gt;</span><br />
+
+<span> &lt;p&gt;</span><br />
+
+<span> &lt;a href=&quot;${pageContext.request.contextPath}/ui/first&quot;&gt;First&lt;/a&gt; |</span><br />
+
+<del>-&lt;a href=&quot;${pageContext.request.contextPath}/ui/second&quot;&gt;Second&lt;/a&gt;</del><br />
+
+<ins>+&lt;a href=&quot;${pageContext.request.contextPath}/ui/second&quot;&gt;Second&lt;/a&gt; |</ins><br />
+
+<ins>+&lt;a href=&quot;${pageContext.request.contextPath}/ui/third&quot;&gt;Third&lt;/a&gt;</ins><br />
+
+<span> &lt;/p&gt;</span><br />
+
+<span> </span><br />
+
+<span> &lt;/body&gt;&lt;/html&gt;</span><br />
+
+</div>
+

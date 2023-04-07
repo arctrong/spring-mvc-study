@@ -1,0 +1,160 @@
+<!--VARIABLES {"title": "Patch 739f7315adc191045fa7fa18d5b4e0a291445974"}--> 
+ 
+<strong>Commit message:</strong> 
+MyApplicationInitializer introduced
+
+ 
+<div class="patch_block">
+
+<span class="diff">diff --git a/projects/web-app-spring-adv1/pom.xml b/projects/web-app-spring-adv1/pom.xml</span><br />
+
+<span class="index">index 722ad26..cd7cc4e 100644</span><br />
+
+<span class="tree_minuses">--- a/projects/web-app-spring-adv1/pom.xml</span><br />
+
+<span class="tree_pluses">+++ b/projects/web-app-spring-adv1/pom.xml</span><br />
+
+<span class="two_ats">@@ -14,13 +14,34 @@</span><br />
+
+<span>         &lt;project.build.sourceEncoding&gt;UTF-8&lt;/project.build.sourceEncoding&gt;</span><br />
+
+<span>         &lt;maven.compiler.source&gt;8&lt;/maven.compiler.source&gt;</span><br />
+
+<span>         &lt;maven.compiler.target&gt;8&lt;/maven.compiler.target&gt;</span><br />
+
+<ins>+        &lt;org.springframework.version&gt;5.3.9&lt;/org.springframework.version&gt;</ins><br />
+
+<span>     &lt;/properties&gt;</span><br />
+
+<span> </span><br />
+
+<span>     &lt;dependencies&gt;</span><br />
+
+<del>-</del><br />
+
+<ins>+        &lt;dependency&gt;</ins><br />
+
+<ins>+            &lt;groupId&gt;org.springframework&lt;/groupId&gt;</ins><br />
+
+<ins>+            &lt;artifactId&gt;spring-webmvc&lt;/artifactId&gt;</ins><br />
+
+<ins>+            &lt;version&gt;${org.springframework.version}&lt;/version&gt;</ins><br />
+
+<ins>+        &lt;/dependency&gt;</ins><br />
+
+<ins>+        &lt;dependency&gt;</ins><br />
+
+<ins>+            &lt;groupId&gt;javax.servlet&lt;/groupId&gt;</ins><br />
+
+<ins>+            &lt;artifactId&gt;javax.servlet-api&lt;/artifactId&gt;</ins><br />
+
+<ins>+            &lt;version&gt;4.0.1&lt;/version&gt;</ins><br />
+
+<ins>+            &lt;scope&gt;provided&lt;/scope&gt;</ins><br />
+
+<ins>+        &lt;/dependency&gt;</ins><br />
+
+<span>     &lt;/dependencies&gt;</span><br />
+
+<span> </span><br />
+
+<span>     &lt;build&gt;</span><br />
+
+<span>         &lt;finalName&gt;${project.artifactId}&lt;/finalName&gt;</span><br />
+
+<ins>+        &lt;plugins&gt;</ins><br />
+
+<ins>+            &lt;plugin&gt;</ins><br />
+
+<ins>+                &lt;groupId&gt;org.apache.maven.plugins&lt;/groupId&gt;</ins><br />
+
+<ins>+                &lt;artifactId&gt;maven-war-plugin&lt;/artifactId&gt;</ins><br />
+
+<ins>+                &lt;version&gt;3.3.2&lt;/version&gt;</ins><br />
+
+<ins>+                &lt;configuration&gt;</ins><br />
+
+<ins>+                    &lt;failOnMissingWebXml&gt;false&lt;/failOnMissingWebXml&gt;</ins><br />
+
+<ins>+                &lt;/configuration&gt;</ins><br />
+
+<ins>+            &lt;/plugin&gt;</ins><br />
+
+<ins>+        &lt;/plugins&gt;</ins><br />
+
+<span>     &lt;/build&gt;</span><br />
+
+<span> &lt;/project&gt;</span><br />
+
+<span class="diff">diff --git a/projects/web-app-spring-adv1/src/main/java/springmvcstudy2/config/MyApplicationInitializer.java b/projects/web-app-spring-adv1/src/main/java/springmvcstudy2/config/MyApplicationInitializer.java</span><br />
+
+<span>new file mode 100644</span><br />
+
+<span class="index">index 0000000..0e884d7</span><br />
+
+<span class="tree_minuses">--- /dev/null</span><br />
+
+<span class="tree_pluses">+++ b/projects/web-app-spring-adv1/src/main/java/springmvcstudy2/config/MyApplicationInitializer.java</span><br />
+
+<span class="two_ats">@@ -0,0 +1,16 @@</span><br />
+
+<ins>+package springmvcstudy2.config;</ins><br />
+
+<ins>+</ins><br />
+
+<ins>+import org.springframework.web.WebApplicationInitializer;</ins><br />
+
+<ins>+</ins><br />
+
+<ins>+import javax.servlet.ServletContext;</ins><br />
+
+<ins>+import javax.servlet.ServletException;</ins><br />
+
+<ins>+</ins><br />
+
+<ins>+public class MyApplicationInitializer implements WebApplicationInitializer {</ins><br />
+
+<ins>+</ins><br />
+
+<ins>+    @Override</ins><br />
+
+<ins>+    public void onStartup(ServletContext servletContext) throws ServletException {</ins><br />
+
+<ins>+</ins><br />
+
+<ins>+        System.out.println(&quot;WebApplicationInitializer introduced!&quot;);</ins><br />
+
+<ins>+</ins><br />
+
+<ins>+    }</ins><br />
+
+<ins>+}</ins><br />
+
+<span class="diff">diff --git a/projects/web-app-spring-adv1/src/main/webapp/WEB-INF/web.xml b/projects/web-app-spring-adv1/src/main/webapp/WEB-INF/web.xml</span><br />
+
+<span>deleted file mode 100644</span><br />
+
+<span class="index">index e426a43..0000000</span><br />
+
+<span class="tree_minuses">--- a/projects/web-app-spring-adv1/src/main/webapp/WEB-INF/web.xml</span><br />
+
+<span class="tree_pluses">+++ /dev/null</span><br />
+
+<span class="two_ats">@@ -1,7 +0,0 @@</span><br />
+
+<del>-&lt;!DOCTYPE web-app PUBLIC</del><br />
+
+<del>-        &quot;-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN&quot;</del><br />
+
+<del>-        &quot;http://java.sun.com/dtd/web-app_2_3.dtd&quot; &gt;</del><br />
+
+<del>-</del><br />
+
+<del>-&lt;web-app&gt;</del><br />
+
+<del>-    &lt;display-name&gt;Spring Web Application Advanced Example&lt;/display-name&gt;</del><br />
+
+<del>-&lt;/web-app&gt;</del><br />
+
+</div>
+

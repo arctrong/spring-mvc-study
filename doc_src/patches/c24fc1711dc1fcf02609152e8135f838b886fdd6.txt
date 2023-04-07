@@ -1,0 +1,88 @@
+<!--VARIABLES {"title": "Patch c24fc1711dc1fcf02609152e8135f838b886fdd6"}--> 
+ 
+<strong>Commit message:</strong> 
+using @CookieValue annotation
+
+ 
+<div class="patch_block">
+
+<span class="diff">diff --git a/projects/web-app-spring-adv3/src/main/java/springmvcstudy2/controllers/EmailController.java b/projects/web-app-spring-adv3/src/main/java/springmvcstudy2/controllers/EmailController.java</span><br />
+
+<span class="index">index c804002..8e24449 100644</span><br />
+
+<span class="tree_minuses">--- a/projects/web-app-spring-adv3/src/main/java/springmvcstudy2/controllers/EmailController.java</span><br />
+
+<span class="tree_pluses">+++ b/projects/web-app-spring-adv3/src/main/java/springmvcstudy2/controllers/EmailController.java</span><br />
+
+<span class="two_ats">@@ -2,6 +2,7 @@ package springmvcstudy2.controllers;</span><br />
+
+<span> </span><br />
+
+<span> import org.springframework.stereotype.Controller;</span><br />
+
+<span> import org.springframework.ui.Model;</span><br />
+
+<ins>+import org.springframework.web.bind.annotation.CookieValue;</ins><br />
+
+<span> import org.springframework.web.bind.annotation.ModelAttribute;</span><br />
+
+<span> import org.springframework.web.bind.annotation.PathVariable;</span><br />
+
+<span> import org.springframework.web.bind.annotation.RequestMapping;</span><br />
+
+<span class="two_ats">@@ -12,10 +13,10 @@ import java.util.Map;</span><br />
+
+<span> @Controller</span><br />
+
+<span> public class EmailController {</span><br />
+
+<span> </span><br />
+
+<del>-    @RequestMapping(&quot;/sendEmail/{userName}&quot;)</del><br />
+
+<del>-    public String sendEmail(@PathVariable Map&lt;String, String&gt; pathVariables, Model model) {</del><br />
+
+<ins>+    @RequestMapping(&quot;/sendEmail&quot;)</ins><br />
+
+<ins>+    public String sendEmail(@CookieValue(&quot;myApp.userName&quot;) String userName, Model model) {</ins><br />
+
+<span>         model.addAttribute(&quot;sendEmailDto&quot;, new SendEmailDto());</span><br />
+
+<del>-        model.addAttribute(&quot;userName&quot;, pathVariables.get(&quot;userName&quot;));</del><br />
+
+<ins>+        model.addAttribute(&quot;userName&quot;, userName);</ins><br />
+
+<span>         return &quot;send-email-page&quot;;</span><br />
+
+<span>     }</span><br />
+
+<span> </span><br />
+
+<span class="diff">diff --git a/projects/web-app-spring-adv3/src/main/webapp/WEB-INF/view/result-page-spring.jsp b/projects/web-app-spring-adv3/src/main/webapp/WEB-INF/view/result-page-spring.jsp</span><br />
+
+<span class="index">index a7c6f18..b8e630a 100644</span><br />
+
+<span class="tree_minuses">--- a/projects/web-app-spring-adv3/src/main/webapp/WEB-INF/view/result-page-spring.jsp</span><br />
+
+<span class="tree_pluses">+++ b/projects/web-app-spring-adv3/src/main/webapp/WEB-INF/view/result-page-spring.jsp</span><br />
+
+<span class="two_ats">@@ -13,7 +13,7 @@</span><br />
+
+<span> &lt;p&gt;Name 2 is: ${dto.name2}&lt;/p&gt;</span><br />
+
+<span> &lt;p&gt;Result is: ${result} GOOD&lt;/p&gt;</span><br />
+
+<span> </span><br />
+
+<del>-&lt;p&gt;&lt;a href=&quot;${pageContext.request.contextPath}/ui/sendEmail/${dto.name1}&quot;</del><br />
+
+<ins>+&lt;p&gt;&lt;a href=&quot;${pageContext.request.contextPath}/ui/sendEmail&quot;</ins><br />
+
+<span> &gt;Send result to your email&lt;/a&gt;&lt;/p&gt;</span><br />
+
+<span> </span><br />
+
+<span> &lt;/body&gt;&lt;/html&gt;</span><br />
+
+</div>
+

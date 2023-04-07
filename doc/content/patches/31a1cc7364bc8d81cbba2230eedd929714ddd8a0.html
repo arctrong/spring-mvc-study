@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<head><title>Patch 429b1fd4f65f6182962255078e0d32bd02949b50</title>
+<head><title>Patch 31a1cc7364bc8d81cbba2230eedd929714ddd8a0</title>
 <meta charset="utf-8">
 <link rel="shortcut icon" type="image/png" href="../../favicon.png"/>
 <link rel="stylesheet" type="text/css" href="../../layout/styles.css"/>
@@ -17,7 +17,7 @@
 class="header_item" href="../../../readme.html">About</a><a 
 class="header_item" href="../index_page.html">Index</a>
 
-<a href="../../../doc_src/patches/429b1fd4f65f6182962255078e0d32bd02949b50.txt " class="header_item_source" title="Source text">&lt;/&gt;</a>
+<a href="../../../doc_src/patches/31a1cc7364bc8d81cbba2230eedd929714ddd8a0.txt " class="header_item_source" title="Source text">&lt;/&gt;</a>
 
 
 
@@ -25,7 +25,7 @@ class="header_item" href="../index_page.html">Index</a>
 
 <img class="headerNavArrows" src="../../layout/pict/next_page_h18px_inactive.png"/>
 
-<span class="headerTitle">Patch 429b1fd4f65f6182962255078e0d32bd02949b50</span>
+<span class="headerTitle">Patch 31a1cc7364bc8d81cbba2230eedd929714ddd8a0</span>
 
 </div>
 
@@ -63,121 +63,103 @@ class="header_item" href="../index_page.html">Index</a>
     </table>
 </div>
 
-<p style="font-size:44px;font-weight:bold;margin:0 0 30px 0;">Patch 429b1fd4f65f6182962255078e0d32bd02949b50</p>
+<p style="font-size:44px;font-weight:bold;margin:0 0 30px 0;">Patch 31a1cc7364bc8d81cbba2230eedd929714ddd8a0</p>
 
 <p><strong>Commit message:</strong> 
-simplest web app run in Jetty</p>
+Maven target directories redefined</p>
 <div class="patch_block">
 
 <span class="diff">diff --git a/projects/web-app-jetty/pom.xml b/projects/web-app-jetty/pom.xml</span><br />
 
-<span>new file mode 100644</span><br />
+<span class="index">index bfc9fd6..3caf69f 100644</span><br />
 
-<span class="index">index 0000000..bfc9fd6</span><br />
-
-<span class="tree_minuses">--- /dev/null</span><br />
+<span class="tree_minuses">--- a/projects/web-app-jetty/pom.xml</span><br />
 
 <span class="tree_pluses">+++ b/projects/web-app-jetty/pom.xml</span><br />
 
-<span class="two_ats">@@ -0,0 +1,22 @@</span><br />
+<span class="two_ats">@@ -18,5 +18,6 @@</span><br />
 
-<ins>+&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</ins><br />
+<span> </span><br />
 
-<ins>+&lt;project xmlns=&quot;http://maven.apache.org/POM/4.0.0&quot;</ins><br />
+<span>     &lt;build&gt;</span><br />
 
-<ins>+         xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</ins><br />
+<span>         &lt;finalName&gt;${project.artifactId}&lt;/finalName&gt;</span><br />
 
-<ins>+         xsi:schemaLocation=&quot;http://maven.apache.org/POM/4.0.0</ins><br />
+<ins>+        &lt;directory&gt;${TMP_MAVEN_BUILDS_DIR}${project.artifactId}&lt;/directory&gt;</ins><br />
 
-<ins>+          http://maven.apache.org/xsd/maven-4.0.0.xsd&quot;&gt;</ins><br />
+<span>     &lt;/build&gt;</span><br />
 
-<ins>+    &lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt;</ins><br />
+<span> &lt;/project&gt;</span><br />
 
-<ins>+</ins><br />
+<span class="diff">diff --git a/projects/web-app-spring-adv1/pom.xml b/projects/web-app-spring-adv1/pom.xml</span><br />
 
-<ins>+    &lt;groupId&gt;world.someone&lt;/groupId&gt;</ins><br />
+<span class="index">index 163dccb..c0a24db 100644</span><br />
 
-<ins>+    &lt;artifactId&gt;web-app-jetty&lt;/artifactId&gt;</ins><br />
+<span class="tree_minuses">--- a/projects/web-app-spring-adv1/pom.xml</span><br />
 
-<ins>+    &lt;version&gt;1.0-SNAPSHOT&lt;/version&gt;</ins><br />
+<span class="tree_pluses">+++ b/projects/web-app-spring-adv1/pom.xml</span><br />
 
-<ins>+    &lt;packaging&gt;war&lt;/packaging&gt;</ins><br />
+<span class="two_ats">@@ -34,6 +34,7 @@</span><br />
 
-<ins>+</ins><br />
+<span> </span><br />
 
-<ins>+    &lt;properties&gt;</ins><br />
+<span>     &lt;build&gt;</span><br />
 
-<ins>+        &lt;project.build.sourceEncoding&gt;UTF-8&lt;/project.build.sourceEncoding&gt;</ins><br />
+<span>         &lt;finalName&gt;${project.artifactId}&lt;/finalName&gt;</span><br />
 
-<ins>+        &lt;maven.compiler.source&gt;8&lt;/maven.compiler.source&gt;</ins><br />
+<ins>+        &lt;directory&gt;${TMP_MAVEN_BUILDS_DIR}${project.artifactId}&lt;/directory&gt;</ins><br />
 
-<ins>+        &lt;maven.compiler.target&gt;8&lt;/maven.compiler.target&gt;</ins><br />
+<span>         &lt;plugins&gt;</span><br />
 
-<ins>+    &lt;/properties&gt;</ins><br />
+<span>             &lt;plugin&gt;</span><br />
 
-<ins>+</ins><br />
+<span>                 &lt;groupId&gt;org.apache.maven.plugins&lt;/groupId&gt;</span><br />
 
-<ins>+    &lt;build&gt;</ins><br />
+<span class="diff">diff --git a/projects/web-app-spring-adv2/pom.xml b/projects/web-app-spring-adv2/pom.xml</span><br />
 
-<ins>+        &lt;finalName&gt;${project.artifactId}&lt;/finalName&gt;</ins><br />
+<span class="index">index 9719f4e..31b1c03 100644</span><br />
 
-<ins>+    &lt;/build&gt;</ins><br />
+<span class="tree_minuses">--- a/projects/web-app-spring-adv2/pom.xml</span><br />
 
-<ins>+&lt;/project&gt;</ins><br />
+<span class="tree_pluses">+++ b/projects/web-app-spring-adv2/pom.xml</span><br />
 
-<span class="diff">diff --git a/projects/web-app-jetty/src/main/webapp/WEB-INF/web.xml b/projects/web-app-jetty/src/main/webapp/WEB-INF/web.xml</span><br />
+<span class="two_ats">@@ -49,6 +49,7 @@</span><br />
 
-<span>new file mode 100644</span><br />
+<span> </span><br />
 
-<span class="index">index 0000000..fa44478</span><br />
+<span>     &lt;build&gt;</span><br />
 
-<span class="tree_minuses">--- /dev/null</span><br />
+<span>         &lt;finalName&gt;${project.artifactId}&lt;/finalName&gt;</span><br />
 
-<span class="tree_pluses">+++ b/projects/web-app-jetty/src/main/webapp/WEB-INF/web.xml</span><br />
+<ins>+        &lt;directory&gt;${TMP_MAVEN_BUILDS_DIR}${project.artifactId}&lt;/directory&gt;</ins><br />
 
-<span class="two_ats">@@ -0,0 +1,7 @@</span><br />
+<span>         &lt;plugins&gt;</span><br />
 
-<ins>+&lt;!DOCTYPE web-app PUBLIC</ins><br />
+<span>             &lt;plugin&gt;</span><br />
 
-<ins>+        &quot;-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN&quot;</ins><br />
+<span>                 &lt;groupId&gt;org.apache.maven.plugins&lt;/groupId&gt;</span><br />
 
-<ins>+        &quot;http://java.sun.com/dtd/web-app_2_3.dtd&quot;&gt;</ins><br />
+<span class="diff">diff --git a/projects/web-app-spring/pom.xml b/projects/web-app-spring/pom.xml</span><br />
 
-<ins>+</ins><br />
+<span class="index">index 8762111..a39178f 100644</span><br />
 
-<ins>+&lt;web-app&gt;</ins><br />
+<span class="tree_minuses">--- a/projects/web-app-spring/pom.xml</span><br />
 
-<ins>+    &lt;display-name&gt;JSP Example Application&lt;/display-name&gt;</ins><br />
+<span class="tree_pluses">+++ b/projects/web-app-spring/pom.xml</span><br />
 
-<ins>+&lt;/web-app&gt;</ins><br />
+<span class="two_ats">@@ -32,5 +32,6 @@</span><br />
 
-<span class="diff">diff --git a/projects/web-app-jetty/src/main/webapp/index.jsp b/projects/web-app-jetty/src/main/webapp/index.jsp</span><br />
+<span> </span><br />
 
-<span>new file mode 100644</span><br />
+<span>     &lt;build&gt;</span><br />
 
-<span class="index">index 0000000..c4ec92a</span><br />
+<span>         &lt;finalName&gt;${project.artifactId}&lt;/finalName&gt;</span><br />
 
-<span class="tree_minuses">--- /dev/null</span><br />
+<ins>+        &lt;directory&gt;${TMP_MAVEN_BUILDS_DIR}${project.artifactId}&lt;/directory&gt;</ins><br />
 
-<span class="tree_pluses">+++ b/projects/web-app-jetty/src/main/webapp/index.jsp</span><br />
+<span>     &lt;/build&gt;</span><br />
 
-<span class="two_ats">@@ -0,0 +1,8 @@</span><br />
-
-<ins>+&lt;html&gt;&lt;body&gt;</ins><br />
-
-<ins>+&lt;h2&gt;Hello World!&lt;/h2&gt;</ins><br />
-
-<ins>+&lt;p&gt;Counting to three:</ins><br />
-
-<ins>+&lt;% for (int i=1; i&lt;4; i++) { %&gt;</ins><br />
-
-<ins>+    &lt;%= i %&gt;,</ins><br />
-
-<ins>+&lt;% } %&gt;</ins><br />
-
-<ins>+OK.&lt;/p&gt;</ins><br />
-
-<ins>+&lt;/body&gt;&lt;/html&gt;</ins><br />
+<span> &lt;/project&gt;</span><br />
 
 </div>
 <p>&nbsp;</p>

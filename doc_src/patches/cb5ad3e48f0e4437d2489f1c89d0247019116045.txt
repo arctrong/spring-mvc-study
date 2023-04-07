@@ -1,0 +1,324 @@
+<!--VARIABLES {"title": "Patch cb5ad3e48f0e4437d2489f1c89d0247019116045"}--> 
+ 
+<strong>Commit message:</strong> 
+new project created for sessions investigation
+
+ 
+<div class="patch_block">
+
+<span class="diff">diff --git a/projects/web-app-spring-sessions/pom.xml b/projects/web-app-spring-sessions/pom.xml</span><br />
+
+<span>new file mode 100644</span><br />
+
+<span class="index">index 0000000..8a8f2c5</span><br />
+
+<span class="tree_minuses">--- /dev/null</span><br />
+
+<span class="tree_pluses">+++ b/projects/web-app-spring-sessions/pom.xml</span><br />
+
+<span class="two_ats">@@ -0,0 +1,51 @@</span><br />
+
+<ins>+&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</ins><br />
+
+<ins>+&lt;project xmlns=&quot;http://maven.apache.org/POM/4.0.0&quot;</ins><br />
+
+<ins>+         xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</ins><br />
+
+<ins>+         xsi:schemaLocation=&quot;http://maven.apache.org/POM/4.0.0</ins><br />
+
+<ins>+          http://maven.apache.org/xsd/maven-4.0.0.xsd&quot;&gt;</ins><br />
+
+<ins>+    &lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt;</ins><br />
+
+<ins>+</ins><br />
+
+<ins>+    &lt;groupId&gt;world.someone&lt;/groupId&gt;</ins><br />
+
+<ins>+    &lt;artifactId&gt;web-app-spring-sessions&lt;/artifactId&gt;</ins><br />
+
+<ins>+    &lt;version&gt;1.0-SNAPSHOT&lt;/version&gt;</ins><br />
+
+<ins>+    &lt;packaging&gt;war&lt;/packaging&gt;</ins><br />
+
+<ins>+</ins><br />
+
+<ins>+    &lt;properties&gt;</ins><br />
+
+<ins>+        &lt;project.build.sourceEncoding&gt;UTF-8&lt;/project.build.sourceEncoding&gt;</ins><br />
+
+<ins>+        &lt;maven.compiler.source&gt;8&lt;/maven.compiler.source&gt;</ins><br />
+
+<ins>+        &lt;maven.compiler.target&gt;8&lt;/maven.compiler.target&gt;</ins><br />
+
+<ins>+        &lt;failOnMissingWebXml&gt;false&lt;/failOnMissingWebXml&gt;</ins><br />
+
+<ins>+        &lt;org.springframework.version&gt;5.3.9&lt;/org.springframework.version&gt;</ins><br />
+
+<ins>+    &lt;/properties&gt;</ins><br />
+
+<ins>+</ins><br />
+
+<ins>+    &lt;dependencies&gt;</ins><br />
+
+<ins>+        &lt;dependency&gt;</ins><br />
+
+<ins>+            &lt;groupId&gt;org.springframework&lt;/groupId&gt;</ins><br />
+
+<ins>+            &lt;artifactId&gt;spring-webmvc&lt;/artifactId&gt;</ins><br />
+
+<ins>+            &lt;version&gt;${org.springframework.version}&lt;/version&gt;</ins><br />
+
+<ins>+        &lt;/dependency&gt;</ins><br />
+
+<ins>+        &lt;dependency&gt;</ins><br />
+
+<ins>+            &lt;groupId&gt;javax.servlet&lt;/groupId&gt;</ins><br />
+
+<ins>+            &lt;artifactId&gt;javax.servlet-api&lt;/artifactId&gt;</ins><br />
+
+<ins>+            &lt;version&gt;4.0.1&lt;/version&gt;</ins><br />
+
+<ins>+            &lt;scope&gt;provided&lt;/scope&gt;</ins><br />
+
+<ins>+        &lt;/dependency&gt;</ins><br />
+
+<ins>+        &lt;dependency&gt;</ins><br />
+
+<ins>+            &lt;groupId&gt;jstl&lt;/groupId&gt;</ins><br />
+
+<ins>+            &lt;artifactId&gt;jstl&lt;/artifactId&gt;</ins><br />
+
+<ins>+            &lt;version&gt;1.2&lt;/version&gt;</ins><br />
+
+<ins>+        &lt;/dependency&gt;</ins><br />
+
+<ins>+    &lt;/dependencies&gt;</ins><br />
+
+<ins>+</ins><br />
+
+<ins>+    &lt;build&gt;</ins><br />
+
+<ins>+        &lt;finalName&gt;${project.artifactId}&lt;/finalName&gt;</ins><br />
+
+<ins>+        &lt;directory&gt;${TMP_MAVEN_BUILDS_DIR}${project.artifactId}&lt;/directory&gt;</ins><br />
+
+<ins>+        &lt;plugins&gt;</ins><br />
+
+<ins>+            &lt;plugin&gt;</ins><br />
+
+<ins>+                &lt;groupId&gt;org.apache.maven.plugins&lt;/groupId&gt;</ins><br />
+
+<ins>+                &lt;artifactId&gt;maven-war-plugin&lt;/artifactId&gt;</ins><br />
+
+<ins>+                &lt;version&gt;3.3.2&lt;/version&gt;</ins><br />
+
+<ins>+            &lt;/plugin&gt;</ins><br />
+
+<ins>+        &lt;/plugins&gt;</ins><br />
+
+<ins>+    &lt;/build&gt;</ins><br />
+
+<ins>+&lt;/project&gt;</ins><br />
+
+<span class="diff">diff --git a/projects/web-app-spring-sessions/src/main/java/springmvcstudy/config/MyApplicationConfig.java b/projects/web-app-spring-sessions/src/main/java/springmvcstudy/config/MyApplicationConfig.java</span><br />
+
+<span>new file mode 100644</span><br />
+
+<span class="index">index 0000000..3391cc4</span><br />
+
+<span class="tree_minuses">--- /dev/null</span><br />
+
+<span class="tree_pluses">+++ b/projects/web-app-spring-sessions/src/main/java/springmvcstudy/config/MyApplicationConfig.java</span><br />
+
+<span class="two_ats">@@ -0,0 +1,21 @@</span><br />
+
+<ins>+package springmvcstudy.config;</ins><br />
+
+<ins>+</ins><br />
+
+<ins>+import org.springframework.context.annotation.Bean;</ins><br />
+
+<ins>+import org.springframework.context.annotation.ComponentScan;</ins><br />
+
+<ins>+import org.springframework.context.annotation.Configuration;</ins><br />
+
+<ins>+import org.springframework.web.servlet.config.annotation.EnableWebMvc;</ins><br />
+
+<ins>+import org.springframework.web.servlet.view.InternalResourceViewResolver;</ins><br />
+
+<ins>+</ins><br />
+
+<ins>+@EnableWebMvc</ins><br />
+
+<ins>+@Configuration</ins><br />
+
+<ins>+@ComponentScan(basePackages = &quot;springmvcstudy.controllers&quot;)</ins><br />
+
+<ins>+public class MyApplicationConfig {</ins><br />
+
+<ins>+</ins><br />
+
+<ins>+    @Bean</ins><br />
+
+<ins>+    public InternalResourceViewResolver viewResolver() {</ins><br />
+
+<ins>+        InternalResourceViewResolver viewResolver = new InternalResourceViewResolver();</ins><br />
+
+<ins>+        viewResolver.setPrefix(&quot;/WEB-INF/view/&quot;);</ins><br />
+
+<ins>+        viewResolver.setSuffix(&quot;.jsp&quot;);</ins><br />
+
+<ins>+        return viewResolver;</ins><br />
+
+<ins>+    }</ins><br />
+
+<ins>+}</ins><br />
+
+<span class="diff">diff --git a/projects/web-app-spring-sessions/src/main/java/springmvcstudy/config/MyApplicationInitializer.java b/projects/web-app-spring-sessions/src/main/java/springmvcstudy/config/MyApplicationInitializer.java</span><br />
+
+<span>new file mode 100644</span><br />
+
+<span class="index">index 0000000..c02abb4</span><br />
+
+<span class="tree_minuses">--- /dev/null</span><br />
+
+<span class="tree_pluses">+++ b/projects/web-app-spring-sessions/src/main/java/springmvcstudy/config/MyApplicationInitializer.java</span><br />
+
+<span class="two_ats">@@ -0,0 +1,27 @@</span><br />
+
+<ins>+package springmvcstudy.config;</ins><br />
+
+<ins>+</ins><br />
+
+<ins>+import org.springframework.web.WebApplicationInitializer;</ins><br />
+
+<ins>+import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;</ins><br />
+
+<ins>+import org.springframework.web.servlet.DispatcherServlet;</ins><br />
+
+<ins>+</ins><br />
+
+<ins>+import javax.servlet.ServletContext;</ins><br />
+
+<ins>+import javax.servlet.ServletException;</ins><br />
+
+<ins>+import javax.servlet.ServletRegistration;</ins><br />
+
+<ins>+</ins><br />
+
+<ins>+public class MyApplicationInitializer implements WebApplicationInitializer {</ins><br />
+
+<ins>+</ins><br />
+
+<ins>+    @Override</ins><br />
+
+<ins>+    public void onStartup(ServletContext servletContext) throws ServletException {</ins><br />
+
+<ins>+</ins><br />
+
+<ins>+        AnnotationConfigWebApplicationContext webApplicationContext =</ins><br />
+
+<ins>+                new AnnotationConfigWebApplicationContext();</ins><br />
+
+<ins>+        webApplicationContext.register(MyApplicationConfig.class);</ins><br />
+
+<ins>+</ins><br />
+
+<ins>+        DispatcherServlet dispatcherServlet = new DispatcherServlet(webApplicationContext);</ins><br />
+
+<ins>+        ServletRegistration.Dynamic registration =</ins><br />
+
+<ins>+                servletContext.addServlet(&quot;front-controller&quot;, dispatcherServlet);</ins><br />
+
+<ins>+</ins><br />
+
+<ins>+        registration.setLoadOnStartup(1);</ins><br />
+
+<ins>+        registration.addMapping(&quot;/ui/*&quot;);</ins><br />
+
+<ins>+    }</ins><br />
+
+<ins>+}</ins><br />
+
+<span class="diff">diff --git a/projects/web-app-spring-sessions/src/main/java/springmvcstudy/controllers/FirstController.java b/projects/web-app-spring-sessions/src/main/java/springmvcstudy/controllers/FirstController.java</span><br />
+
+<span>new file mode 100644</span><br />
+
+<span class="index">index 0000000..015b82e</span><br />
+
+<span class="tree_minuses">--- /dev/null</span><br />
+
+<span class="tree_pluses">+++ b/projects/web-app-spring-sessions/src/main/java/springmvcstudy/controllers/FirstController.java</span><br />
+
+<span class="two_ats">@@ -0,0 +1,13 @@</span><br />
+
+<ins>+package springmvcstudy.controllers;</ins><br />
+
+<ins>+</ins><br />
+
+<ins>+import org.springframework.stereotype.Controller;</ins><br />
+
+<ins>+import org.springframework.web.bind.annotation.RequestMapping;</ins><br />
+
+<ins>+</ins><br />
+
+<ins>+@Controller</ins><br />
+
+<ins>+public class FirstController {</ins><br />
+
+<ins>+</ins><br />
+
+<ins>+    @RequestMapping(&quot;/first&quot;)</ins><br />
+
+<ins>+    public String firstHandler() {</ins><br />
+
+<ins>+        return &quot;index&quot;;</ins><br />
+
+<ins>+    }</ins><br />
+
+<ins>+}</ins><br />
+
+<span class="diff">diff --git a/projects/web-app-spring-sessions/src/main/webapp/WEB-INF/view/index.jsp b/projects/web-app-spring-sessions/src/main/webapp/WEB-INF/view/index.jsp</span><br />
+
+<span>new file mode 100644</span><br />
+
+<span class="index">index 0000000..ed6d7fd</span><br />
+
+<span class="tree_minuses">--- /dev/null</span><br />
+
+<span class="tree_pluses">+++ b/projects/web-app-spring-sessions/src/main/webapp/WEB-INF/view/index.jsp</span><br />
+
+<span class="two_ats">@@ -0,0 +1,15 @@</span><br />
+
+<ins>+&lt;%@ page language=&quot;java&quot; contentType=&quot;text/html; charset=UTF-8&quot; pageEncoding=&quot;UTF-8&quot;%&gt;</ins><br />
+
+<ins>+&lt;%@page isELIgnored=&quot;false&quot;%&gt;</ins><br />
+
+<ins>+&lt;!DOCTYPE html&gt;</ins><br />
+
+<ins>+&lt;html&gt;&lt;head&gt;&lt;meta charset=&quot;UTF-8&quot;&gt;</ins><br />
+
+<ins>+&lt;title&gt;Studying sessions&lt;/title&gt;</ins><br />
+
+<ins>+&lt;style&gt;</ins><br />
+
+<ins>+body {background-color: plum;}</ins><br />
+
+<ins>+.error {color: red; position: fixed; text-align: left; margin-left: 20px;}</ins><br />
+
+<ins>+&lt;/style&gt;</ins><br />
+
+<ins>+&lt;/head&gt;&lt;body&gt;</ins><br />
+
+<ins>+</ins><br />
+
+<ins>+&lt;h1&gt;Studying sessions&lt;/h1&gt;</ins><br />
+
+<ins>+&lt;hr /&gt;</ins><br />
+
+<ins>+</ins><br />
+
+<ins>+&lt;/body&gt;&lt;/html&gt;</ins><br />
+
+</div>
+

@@ -1,0 +1,140 @@
+<!--VARIABLES {"title": "Patch 8634591eab3f8e99840061bb59171202dd96985a"}--> 
+ 
+<strong>Commit message:</strong> 
+final steps
+
+ 
+<div class="patch_block">
+
+<span class="diff">diff --git a/projects/web-app-spring-adv2/src/main/java/springmvcstudy2/model/UserInfoValidatedDto.java b/projects/web-app-spring-adv2/src/main/java/springmvcstudy2/model/UserInfoValidatedDto.java</span><br />
+
+<span class="index">index 86e8a5c..ce0def7 100644</span><br />
+
+<span class="tree_minuses">--- a/projects/web-app-spring-adv2/src/main/java/springmvcstudy2/model/UserInfoValidatedDto.java</span><br />
+
+<span class="tree_pluses">+++ b/projects/web-app-spring-adv2/src/main/java/springmvcstudy2/model/UserInfoValidatedDto.java</span><br />
+
+<span class="two_ats">@@ -1,5 +1,6 @@</span><br />
+
+<span> package springmvcstudy2.model;</span><br />
+
+<span> </span><br />
+
+<ins>+import javax.validation.constraints.AssertTrue;</ins><br />
+
+<span> import javax.validation.constraints.NotBlank;</span><br />
+
+<span> import javax.validation.constraints.Size;</span><br />
+
+<span> </span><br />
+
+<span class="two_ats">@@ -8,8 +9,14 @@ public class UserInfoValidatedDto {</span><br />
+
+<span>     @NotBlank(message = &quot; * can&#x27;t be blank&quot;)</span><br />
+
+<span>     @Size(min = 3, max = 10, message = &quot; * must have 3 to 10 characters&quot;)</span><br />
+
+<span>     private String name1;</span><br />
+
+<ins>+</ins><br />
+
+<ins>+    @NotBlank(message = &quot; * can&#x27;t be blank&quot;)</ins><br />
+
+<ins>+    @Size(min = 3, max = 10, message = &quot; * must have 3 to 10 characters&quot;)</ins><br />
+
+<span>     private String name2;</span><br />
+
+<span> </span><br />
+
+<ins>+    @AssertTrue(message = &quot; * Only humans are allowed to use this site&quot;)</ins><br />
+
+<ins>+    private boolean notARobot;</ins><br />
+
+<ins>+</ins><br />
+
+<span>     @Override</span><br />
+
+<span>     public String toString() {</span><br />
+
+<span>         return &quot;UserInfoDto{&quot; +</span><br />
+
+<span class="two_ats">@@ -33,4 +40,12 @@ public class UserInfoValidatedDto {</span><br />
+
+<span>     public void setName2(String name2) {</span><br />
+
+<span>         this.name2 = name2;</span><br />
+
+<span>     }</span><br />
+
+<ins>+</ins><br />
+
+<ins>+    public boolean isNotARobot() {</ins><br />
+
+<ins>+        return notARobot;</ins><br />
+
+<ins>+    }</ins><br />
+
+<ins>+</ins><br />
+
+<ins>+    public void setNotARobot(boolean notARobot) {</ins><br />
+
+<ins>+        this.notARobot = notARobot;</ins><br />
+
+<ins>+    }</ins><br />
+
+<span> }</span><br />
+
+<span class="diff">diff --git a/projects/web-app-spring-adv2/src/main/webapp/view/home-page-validated.jsp b/projects/web-app-spring-adv2/src/main/webapp/view/home-page-validated.jsp</span><br />
+
+<span class="index">index a82cec8..4b6c5bc 100644</span><br />
+
+<span class="tree_minuses">--- a/projects/web-app-spring-adv2/src/main/webapp/view/home-page-validated.jsp</span><br />
+
+<span class="tree_pluses">+++ b/projects/web-app-spring-adv2/src/main/webapp/view/home-page-validated.jsp</span><br />
+
+<span class="two_ats">@@ -14,10 +14,17 @@ body {background-color: aliceblue;}</span><br />
+
+<span> &lt;hr/&gt;</span><br />
+
+<span> </span><br />
+
+<span> &lt;form:form action=&quot;validate-submit&quot; method=&quot;GET&quot; modelAttribute=&quot;dto&quot;&gt;</span><br />
+
+<del>-&lt;p&gt;&lt;label for=&quot;name1&quot;&gt;Name 1: &lt;/label&gt;&lt;form:input id=&quot;name1&quot; path=&quot;name1&quot;/&gt;</del><br />
+
+<del>-&lt;form:errors path=&quot;name1&quot; cssClass=&quot;error&quot;/&gt;&lt;/p&gt;</del><br />
+
+<del>-&lt;p&gt;&lt;label for=&quot;name2&quot;&gt;Name 2: &lt;/label&gt;&lt;form:input id=&quot;name2&quot; path=&quot;name2&quot;/&gt;&lt;/p&gt;</del><br />
+
+<del>-&lt;input type=&quot;submit&quot; value=&quot;calculate&quot;/&gt;</del><br />
+
+<ins>+    &lt;p&gt;&lt;label for=&quot;name1&quot;&gt;Name 1: &lt;/label&gt;&lt;form:input id=&quot;name1&quot; path=&quot;name1&quot;/&gt;</ins><br />
+
+<ins>+    &lt;form:errors path=&quot;name1&quot; cssClass=&quot;error&quot;/&gt;&lt;/p&gt;</ins><br />
+
+<ins>+</ins><br />
+
+<ins>+    &lt;p&gt;&lt;label for=&quot;name2&quot;&gt;Name 2: &lt;/label&gt;&lt;form:input id=&quot;name2&quot; path=&quot;name2&quot;/&gt;</ins><br />
+
+<ins>+    &lt;form:errors path=&quot;name2&quot; cssClass=&quot;error&quot;/&gt;&lt;/p&gt;</ins><br />
+
+<ins>+</ins><br />
+
+<ins>+    &lt;p&gt;&lt;form:checkbox path=&quot;notARobot&quot; id=&quot;notARobot&quot;/&gt;</ins><br />
+
+<ins>+    &lt;label for=&quot;notARobot&quot;&gt;I am not a robot&lt;/label&gt;</ins><br />
+
+<ins>+    &lt;form:errors path=&quot;notARobot&quot; cssClass=&quot;error&quot;/&gt;&lt;/p&gt;</ins><br />
+
+<ins>+</ins><br />
+
+<ins>+    &lt;input type=&quot;submit&quot; value=&quot;calculate&quot;/&gt;</ins><br />
+
+<span> &lt;/form:form&gt;</span><br />
+
+<span> </span><br />
+
+<span> &lt;/body&gt;&lt;/html&gt;</span><br />
+
+</div>
+

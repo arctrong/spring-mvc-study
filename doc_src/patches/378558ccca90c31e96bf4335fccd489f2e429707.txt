@@ -1,4 +1,9 @@
 <!--VARIABLES {"title": "Patch 378558ccca90c31e96bf4335fccd489f2e429707"}--> 
+ 
+<strong>Commit message:</strong> 
+simple spring web app run
+
+ 
 <div class="patch_block">
 
 <span class="diff">diff --git a/projects/web-app-spring/pom.xml b/projects/web-app-spring/pom.xml</span><br />

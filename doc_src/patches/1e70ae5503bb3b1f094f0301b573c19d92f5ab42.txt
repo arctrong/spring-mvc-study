@@ -1,0 +1,178 @@
+<!--VARIABLES {"title": "Patch 1e70ae5503bb3b1f094f0301b573c19d92f5ab42"}--> 
+ 
+<strong>Commit message:</strong> 
+properties file used for error messages
+
+ 
+<div class="patch_block">
+
+<span class="diff">diff --git a/projects/web-app-spring-adv2/src/main/java/springmvcstudy2/config/MyApplicationConfig.java b/projects/web-app-spring-adv2/src/main/java/springmvcstudy2/config/MyApplicationConfig.java</span><br />
+
+<span class="index">index 44ed9aa..69535e4 100644</span><br />
+
+<span class="tree_minuses">--- a/projects/web-app-spring-adv2/src/main/java/springmvcstudy2/config/MyApplicationConfig.java</span><br />
+
+<span class="tree_pluses">+++ b/projects/web-app-spring-adv2/src/main/java/springmvcstudy2/config/MyApplicationConfig.java</span><br />
+
+<span class="two_ats">@@ -26,6 +26,7 @@ public class MyApplicationConfig implements WebMvcConfigurer {</span><br />
+
+<span>         return viewResolver;</span><br />
+
+<span>     }</span><br />
+
+<span> </span><br />
+
+<ins>+    @Bean</ins><br />
+
+<span>     public MessageSource messageSource() {</span><br />
+
+<span>         ResourceBundleMessageSource messageSource = new ResourceBundleMessageSource();</span><br />
+
+<span>         messageSource.setBasenames(&quot;messages&quot;);</span><br />
+
+<span class="diff">diff --git a/projects/web-app-spring-adv2/src/main/java/springmvcstudy2/controllers/RegistrationController.java b/projects/web-app-spring-adv2/src/main/java/springmvcstudy2/controllers/RegistrationController.java</span><br />
+
+<span class="index">index 6fd6fa8..708c280 100644</span><br />
+
+<span class="tree_minuses">--- a/projects/web-app-spring-adv2/src/main/java/springmvcstudy2/controllers/RegistrationController.java</span><br />
+
+<span class="tree_pluses">+++ b/projects/web-app-spring-adv2/src/main/java/springmvcstudy2/controllers/RegistrationController.java</span><br />
+
+<span class="two_ats">@@ -11,6 +11,7 @@ import springmvcstudy2.model.CommunicationDto;</span><br />
+
+<span> import springmvcstudy2.model.PhoneDto;</span><br />
+
+<span> import springmvcstudy2.model.RegistrationDto;</span><br />
+
+<span> import springmvcstudy2.propertyeditor.NamePropertyEditor;</span><br />
+
+<ins>+import springmvcstudy2.validators.EmailValidator;</ins><br />
+
+<span> import springmvcstudy2.validators.UserNameValidator;</span><br />
+
+<span> </span><br />
+
+<span> import javax.validation.Valid;</span><br />
+
+<span class="two_ats">@@ -48,5 +49,6 @@ public class RegistrationController {</span><br />
+
+<span>         dataBinder.registerCustomEditor(String.class, &quot;name&quot;, trimmerEditor);</span><br />
+
+<span>         dataBinder.registerCustomEditor(String.class, &quot;name&quot;, new NamePropertyEditor());</span><br />
+
+<span>         dataBinder.addValidators(new UserNameValidator());</span><br />
+
+<ins>+        dataBinder.addValidators(new EmailValidator());</ins><br />
+
+<span>     }</span><br />
+
+<span> }</span><br />
+
+<span class="diff">diff --git a/projects/web-app-spring-adv2/src/main/java/springmvcstudy2/validators/EmailValidator.java b/projects/web-app-spring-adv2/src/main/java/springmvcstudy2/validators/EmailValidator.java</span><br />
+
+<span>new file mode 100644</span><br />
+
+<span class="index">index 0000000..cda9496</span><br />
+
+<span class="tree_minuses">--- /dev/null</span><br />
+
+<span class="tree_pluses">+++ b/projects/web-app-spring-adv2/src/main/java/springmvcstudy2/validators/EmailValidator.java</span><br />
+
+<span class="two_ats">@@ -0,0 +1,23 @@</span><br />
+
+<ins>+package springmvcstudy2.validators;</ins><br />
+
+<ins>+</ins><br />
+
+<ins>+import org.springframework.validation.Errors;</ins><br />
+
+<ins>+import org.springframework.validation.ValidationUtils;</ins><br />
+
+<ins>+import org.springframework.validation.Validator;</ins><br />
+
+<ins>+import springmvcstudy2.model.RegistrationDto;</ins><br />
+
+<ins>+</ins><br />
+
+<ins>+public class EmailValidator implements Validator {</ins><br />
+
+<ins>+</ins><br />
+
+<ins>+    @Override</ins><br />
+
+<ins>+    public boolean supports(Class&lt;?&gt; clazz) {</ins><br />
+
+<ins>+        return RegistrationDto.class.equals(clazz);</ins><br />
+
+<ins>+    }</ins><br />
+
+<ins>+</ins><br />
+
+<ins>+    @Override</ins><br />
+
+<ins>+    public void validate(Object target, Errors errors) {</ins><br />
+
+<ins>+        ValidationUtils.rejectIfEmptyOrWhitespace(errors, &quot;communicationDto.email&quot;, &quot;email.empty&quot;);</ins><br />
+
+<ins>+        String email = ((RegistrationDto) target).getCommunicationDto().getEmail();</ins><br />
+
+<ins>+        if (!email.endsWith(&quot;@certain-domain.com&quot;)) {</ins><br />
+
+<ins>+            errors.rejectValue(&quot;communicationDto.email&quot;, &quot;email.invalidDomain&quot;);</ins><br />
+
+<ins>+        }</ins><br />
+
+<ins>+    }</ins><br />
+
+<ins>+}</ins><br />
+
+<span class="diff">diff --git a/projects/web-app-spring-adv2/src/main/resources/messages.properties b/projects/web-app-spring-adv2/src/main/resources/messages.properties</span><br />
+
+<span class="index">index 1838e52..c35ebeb 100644</span><br />
+
+<span class="tree_minuses">--- a/projects/web-app-spring-adv2/src/main/resources/messages.properties</span><br />
+
+<span class="tree_pluses">+++ b/projects/web-app-spring-adv2/src/main/resources/messages.properties</span><br />
+
+<span class="two_ats">@@ -1 +1,3 @@</span><br />
+
+<span> invalidAgeMessage=age should be between {lower} and {upper}</span><br />
+
+<ins>+email.empty=&quot;Email should not be empty&quot;</ins><br />
+
+<ins>+email.invalidDomain=&quot;Email should end with &#x27;@certain-domain.com&#x27;&quot;</ins><br />
+
+<span class="diff">diff --git a/projects/web-app-spring-adv2/src/main/webapp/view/registration-page.jsp b/projects/web-app-spring-adv2/src/main/webapp/view/registration-page.jsp</span><br />
+
+<span class="index">index 2b34642..554a3cf 100644</span><br />
+
+<span class="tree_minuses">--- a/projects/web-app-spring-adv2/src/main/webapp/view/registration-page.jsp</span><br />
+
+<span class="tree_pluses">+++ b/projects/web-app-spring-adv2/src/main/webapp/view/registration-page.jsp</span><br />
+
+<span class="two_ats">@@ -39,8 +39,9 @@ body {background-color: lemonchiffon; text-align: center;}</span><br />
+
+<span> &lt;form:errors path=&quot;age&quot; cssClass=&quot;error&quot;/&gt;&lt;/p&gt;</span><br />
+
+<span> </span><br />
+
+<span> &lt;p&gt;Communication:&lt;/p&gt;</span><br />
+
+<del>-&lt;/p&gt;&lt;label for=&quot;email&quot;&gt;Email: &lt;/label&gt;&lt;form:input id=&quot;email&quot; path=&quot;communicationDto.email&quot;/&gt;&amp;nbsp;</del><br />
+
+<del>-&lt;label for=&quot;phone&quot;&gt;Phone: &lt;/label&gt;&lt;form:input id=&quot;phone&quot; path=&quot;communicationDto.phone&quot;/&gt;&lt;/p&gt;</del><br />
+
+<ins>+&lt;/p&gt;&lt;label for=&quot;email&quot;&gt;Email: &lt;/label&gt;&lt;form:input id=&quot;email&quot; path=&quot;communicationDto.email&quot;/&gt;</ins><br />
+
+<ins>+&lt;form:errors path=&quot;communicationDto.email&quot; cssClass=&quot;error&quot;/&gt;&lt;/p&gt;</ins><br />
+
+<ins>+&lt;/p&gt;&lt;label for=&quot;phone&quot;&gt;Phone: &lt;/label&gt;&lt;form:input id=&quot;phone&quot; path=&quot;communicationDto.phone&quot;/&gt;&lt;/p&gt;</ins><br />
+
+<span> </span><br />
+
+<span> &lt;input type=&quot;submit&quot; value=&quot;register&quot;/&gt;</span><br />
+
+<span> &lt;/form:form&gt;</span><br />
+
+</div>
+

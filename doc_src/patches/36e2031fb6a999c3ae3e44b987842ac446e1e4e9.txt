@@ -1,0 +1,130 @@
+<!--VARIABLES {"title": "Patch 36e2031fb6a999c3ae3e44b987842ac446e1e4e9"}--> 
+ 
+<strong>Commit message:</strong> 
+@ControllerAdvice annotation used
+
+ 
+<div class="patch_block">
+
+<span class="diff">diff --git a/projects/web-app-spring-sessions/src/main/java/springmvcstudy/controllers/MyTestController.java b/projects/web-app-spring-sessions/src/main/java/springmvcstudy/controllers/MyTestController.java</span><br />
+
+<span>new file mode 100644</span><br />
+
+<span class="index">index 0000000..07a4ecc</span><br />
+
+<span class="tree_minuses">--- /dev/null</span><br />
+
+<span class="tree_pluses">+++ b/projects/web-app-spring-sessions/src/main/java/springmvcstudy/controllers/MyTestController.java</span><br />
+
+<span class="two_ats">@@ -0,0 +1,20 @@</span><br />
+
+<ins>+package springmvcstudy.controllers;</ins><br />
+
+<ins>+</ins><br />
+
+<ins>+import org.springframework.stereotype.Controller;</ins><br />
+
+<ins>+import org.springframework.web.bind.annotation.ModelAttribute;</ins><br />
+
+<ins>+import org.springframework.web.bind.annotation.RequestMapping;</ins><br />
+
+<ins>+import springmvcstudy.model.WebsiteInfoDto;</ins><br />
+
+<ins>+</ins><br />
+
+<ins>+import static org.apache.commons.lang3.builder.ToStringBuilder.reflectionToString;</ins><br />
+
+<ins>+import static org.apache.commons.lang3.builder.ToStringStyle.JSON_STYLE;</ins><br />
+
+<ins>+</ins><br />
+
+<ins>+@Controller</ins><br />
+
+<ins>+public class MyTestController {</ins><br />
+
+<ins>+</ins><br />
+
+<ins>+    @RequestMapping(&quot;/test&quot;)</ins><br />
+
+<ins>+    public String showTestInfo(@ModelAttribute(&quot;websiteInfo&quot;) WebsiteInfoDto websiteInfo) {</ins><br />
+
+<ins>+        System.out.println(&quot;Inside showTestInfo() method&quot;);</ins><br />
+
+<ins>+        System.out.println(&quot;websiteInfo=&quot; + reflectionToString(websiteInfo, JSON_STYLE));</ins><br />
+
+<ins>+        return &quot;info&quot;;</ins><br />
+
+<ins>+    }</ins><br />
+
+<ins>+}</ins><br />
+
+<span class="diff">diff --git a/projects/web-app-spring-sessions/src/main/java/springmvcstudy/controllers/MyWebsiteController.java b/projects/web-app-spring-sessions/src/main/java/springmvcstudy/controllers/MyWebsiteController.java</span><br />
+
+<span class="index">index 46630c7..299f304 100644</span><br />
+
+<span class="tree_minuses">--- a/projects/web-app-spring-sessions/src/main/java/springmvcstudy/controllers/MyWebsiteController.java</span><br />
+
+<span class="tree_pluses">+++ b/projects/web-app-spring-sessions/src/main/java/springmvcstudy/controllers/MyWebsiteController.java</span><br />
+
+<span class="two_ats">@@ -4,6 +4,7 @@ import org.apache.commons.lang3.builder.ToStringBuilder;</span><br />
+
+<span> import org.apache.commons.lang3.builder.ToStringStyle;</span><br />
+
+<span> import org.springframework.stereotype.Controller;</span><br />
+
+<span> import org.springframework.ui.Model;</span><br />
+
+<ins>+import org.springframework.web.bind.annotation.ControllerAdvice;</ins><br />
+
+<span> import org.springframework.web.bind.annotation.ModelAttribute;</span><br />
+
+<span> import org.springframework.web.bind.annotation.RequestMapping;</span><br />
+
+<span> import springmvcstudy.model.WebsiteInfoDto;</span><br />
+
+<span class="two_ats">@@ -12,6 +13,7 @@ import static org.apache.commons.lang3.builder.ToStringBuilder.*;</span><br />
+
+<span> import static org.apache.commons.lang3.builder.ToStringStyle.*;</span><br />
+
+<span> </span><br />
+
+<span> @Controller</span><br />
+
+<ins>+@ControllerAdvice(assignableTypes = MyTestController.class)</ins><br />
+
+<span> public class MyWebsiteController {</span><br />
+
+<span> </span><br />
+
+<span>     @ModelAttribute(&quot;websiteInfo&quot;)</span><br />
+
+<span class="diff">diff --git a/projects/web-app-spring-sessions/src/main/webapp/WEB-INF/view/info.jsp b/projects/web-app-spring-sessions/src/main/webapp/WEB-INF/view/info.jsp</span><br />
+
+<span class="index">index 4b2e343..8ed7c5f 100644</span><br />
+
+<span class="tree_minuses">--- a/projects/web-app-spring-sessions/src/main/webapp/WEB-INF/view/info.jsp</span><br />
+
+<span class="tree_pluses">+++ b/projects/web-app-spring-sessions/src/main/webapp/WEB-INF/view/info.jsp</span><br />
+
+<span class="two_ats">@@ -19,7 +19,8 @@ strong {color: darksalmon;}</span><br />
+
+<span> &lt;hr /&gt;</span><br />
+
+<span> &lt;p&gt;</span><br />
+
+<span> &lt;a href=&quot;${pageContext.request.contextPath}/ui/siteInfo&quot;&gt;Site info&lt;/a&gt; |</span><br />
+
+<del>-&lt;a href=&quot;${pageContext.request.contextPath}/ui/companyInfo&quot;&gt;Company info&lt;/a&gt;</del><br />
+
+<ins>+&lt;a href=&quot;${pageContext.request.contextPath}/ui/companyInfo&quot;&gt;Company info&lt;/a&gt; |</ins><br />
+
+<ins>+&lt;a href=&quot;${pageContext.request.contextPath}/ui/test&quot;&gt;Test info&lt;/a&gt;</ins><br />
+
+<span> &lt;/p&gt;</span><br />
+
+<span> </span><br />
+
+<span> &lt;/body&gt;&lt;/html&gt;</span><br />
+
+</div>
+

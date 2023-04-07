@@ -1,0 +1,54 @@
+<!--VARIABLES {"title": "Patch c7437105e3651661f6fefdb05cb0d4a1cf0876f2"}--> 
+ 
+<strong>Commit message:</strong> 
+email validator used manually
+
+ 
+<div class="patch_block">
+
+<span class="diff">diff --git a/projects/web-app-spring-adv2/src/main/java/springmvcstudy2/controllers/RegistrationController.java b/projects/web-app-spring-adv2/src/main/java/springmvcstudy2/controllers/RegistrationController.java</span><br />
+
+<span class="index">index 708c280..9cafe38 100644</span><br />
+
+<span class="tree_minuses">--- a/projects/web-app-spring-adv2/src/main/java/springmvcstudy2/controllers/RegistrationController.java</span><br />
+
+<span class="tree_pluses">+++ b/projects/web-app-spring-adv2/src/main/java/springmvcstudy2/controllers/RegistrationController.java</span><br />
+
+<span class="two_ats">@@ -35,6 +35,9 @@ public class RegistrationController {</span><br />
+
+<span>     @RequestMapping(&quot;/registration-success&quot;)</span><br />
+
+<span>     public String processUserRegistration(@Valid @ModelAttribute(&quot;userReg&quot;) RegistrationDto userReg,</span><br />
+
+<span>                                           BindingResult result) {</span><br />
+
+<ins>+        EmailValidator emailValidator = new EmailValidator();</ins><br />
+
+<ins>+        emailValidator.validate(userReg, result);</ins><br />
+
+<ins>+</ins><br />
+
+<span>         if (result.hasErrors()) {</span><br />
+
+<span>             return &quot;registration-page&quot;;</span><br />
+
+<span>         }</span><br />
+
+<span class="two_ats">@@ -49,6 +52,6 @@ public class RegistrationController {</span><br />
+
+<span>         dataBinder.registerCustomEditor(String.class, &quot;name&quot;, trimmerEditor);</span><br />
+
+<span>         dataBinder.registerCustomEditor(String.class, &quot;name&quot;, new NamePropertyEditor());</span><br />
+
+<span>         dataBinder.addValidators(new UserNameValidator());</span><br />
+
+<del>-        dataBinder.addValidators(new EmailValidator());</del><br />
+
+<ins>+//        dataBinder.addValidators(new EmailValidator());</ins><br />
+
+<span>     }</span><br />
+
+<span> }</span><br />
+
+</div>
+

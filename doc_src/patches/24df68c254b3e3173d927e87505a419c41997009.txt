@@ -1,0 +1,104 @@
+<!--VARIABLES {"title": "Patch 24df68c254b3e3173d927e87505a419c41997009"}--> 
+ 
+<strong>Commit message:</strong> 
+first simple cookie usage demonstrated
+
+ 
+<div class="patch_block">
+
+<span class="diff">diff --git a/projects/web-app-spring-adv3/src/main/java/springmvcstudy2/controllers/ValidatedController.java b/projects/web-app-spring-adv3/src/main/java/springmvcstudy2/controllers/ValidatedController.java</span><br />
+
+<span class="index">index f3eeee6..9b817e6 100644</span><br />
+
+<span class="tree_minuses">--- a/projects/web-app-spring-adv3/src/main/java/springmvcstudy2/controllers/ValidatedController.java</span><br />
+
+<span class="tree_pluses">+++ b/projects/web-app-spring-adv3/src/main/java/springmvcstudy2/controllers/ValidatedController.java</span><br />
+
+<span class="two_ats">@@ -7,25 +7,40 @@ import org.springframework.web.bind.annotation.ModelAttribute;</span><br />
+
+<span> import org.springframework.web.bind.annotation.RequestMapping;</span><br />
+
+<span> import springmvcstudy2.model.UserInfoValidatedDto;</span><br />
+
+<span> </span><br />
+
+<ins>+import javax.servlet.http.Cookie;</ins><br />
+
+<ins>+import javax.servlet.http.HttpServletRequest;</ins><br />
+
+<ins>+import javax.servlet.http.HttpServletResponse;</ins><br />
+
+<span> import javax.validation.Valid;</span><br />
+
+<span> </span><br />
+
+<span> @Controller</span><br />
+
+<span> public class ValidatedController {</span><br />
+
+<span> </span><br />
+
+<span>     @RequestMapping(&quot;/validate&quot;)</span><br />
+
+<del>-    public String showHomePageSpring(@ModelAttribute(&quot;dto&quot;) UserInfoValidatedDto dto) {</del><br />
+
+<ins>+    public String showHomePageSpring(@ModelAttribute(&quot;dto&quot;) UserInfoValidatedDto dto,</ins><br />
+
+<ins>+                                     HttpServletRequest request) {</ins><br />
+
+<ins>+        for (Cookie cookie : request.getCookies()) {</ins><br />
+
+<ins>+            if (&quot;myApp.userName&quot;.equals(cookie.getName())) {</ins><br />
+
+<ins>+                dto.setName1(cookie.getValue());</ins><br />
+
+<ins>+            }</ins><br />
+
+<ins>+        }</ins><br />
+
+<span>         return &quot;home-page-validated&quot;;</span><br />
+
+<span>     }</span><br />
+
+<span> </span><br />
+
+<span>     @RequestMapping(&quot;/validate-submit&quot;)</span><br />
+
+<span>     public String showCalculatePageSpring(@Valid @ModelAttribute(&quot;dto&quot;) UserInfoValidatedDto dto,</span><br />
+
+<del>-                                          BindingResult result) {</del><br />
+
+<ins>+                                          BindingResult result,</ins><br />
+
+<ins>+                                          HttpServletResponse response) {</ins><br />
+
+<span>         System.out.println(&quot;showCalculatePageSpring called&quot;);</span><br />
+
+<span>         if (result.hasErrors()) {</span><br />
+
+<span>             System.out.println(&quot;VALIDATION: form has errors&quot;);</span><br />
+
+<span>             result.getAllErrors().forEach(System.out::println);</span><br />
+
+<span>             return &quot;home-page-validated&quot;;</span><br />
+
+<span>         }</span><br />
+
+<ins>+</ins><br />
+
+<ins>+        Cookie cookie = new Cookie(&quot;myApp.userName&quot;, dto.getName1());</ins><br />
+
+<ins>+        cookie.setMaxAge(24 * 60 * 60);</ins><br />
+
+<ins>+        response.addCookie(cookie);</ins><br />
+
+<ins>+</ins><br />
+
+<span>         return &quot;result-page-spring&quot;;</span><br />
+
+<span>     }</span><br />
+
+<span> }</span><br />
+
+</div>
+

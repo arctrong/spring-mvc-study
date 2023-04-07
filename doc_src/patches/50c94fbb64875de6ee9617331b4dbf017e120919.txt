@@ -1,0 +1,94 @@
+<!--VARIABLES {"title": "Patch 50c94fbb64875de6ee9617331b4dbf017e120919"}--> 
+ 
+<strong>Commit message:</strong> 
+formatter print() method demonstrated
+
+ 
+<div class="patch_block">
+
+<span class="diff">diff --git a/projects/web-app-spring-adv2/src/main/java/springmvcstudy2/config/formatter/PhoneNumberFormatter.java b/projects/web-app-spring-adv2/src/main/java/springmvcstudy2/config/formatter/PhoneNumberFormatter.java</span><br />
+
+<span class="index">index 3b2dacc..34d3cf1 100644</span><br />
+
+<span class="tree_minuses">--- a/projects/web-app-spring-adv2/src/main/java/springmvcstudy2/config/formatter/PhoneNumberFormatter.java</span><br />
+
+<span class="tree_pluses">+++ b/projects/web-app-spring-adv2/src/main/java/springmvcstudy2/config/formatter/PhoneNumberFormatter.java</span><br />
+
+<span class="two_ats">@@ -9,7 +9,7 @@ public class PhoneNumberFormatter implements Formatter&lt;PhoneDto&gt; {</span><br />
+
+<span> </span><br />
+
+<span>     @Override</span><br />
+
+<span>     public String print(PhoneDto object, Locale locale) {</span><br />
+
+<del>-        return null;</del><br />
+
+<ins>+        return object.getCountryCode() + &quot;-&quot; + object.getUserNumber();</ins><br />
+
+<span>     }</span><br />
+
+<span> </span><br />
+
+<span>     @Override</span><br />
+
+<span class="diff">diff --git a/projects/web-app-spring-adv2/src/main/java/springmvcstudy2/controllers/RegistrationController.java b/projects/web-app-spring-adv2/src/main/java/springmvcstudy2/controllers/RegistrationController.java</span><br />
+
+<span class="index">index 364259b..5ac981d 100644</span><br />
+
+<span class="tree_minuses">--- a/projects/web-app-spring-adv2/src/main/java/springmvcstudy2/controllers/RegistrationController.java</span><br />
+
+<span class="tree_pluses">+++ b/projects/web-app-spring-adv2/src/main/java/springmvcstudy2/controllers/RegistrationController.java</span><br />
+
+<span class="two_ats">@@ -3,14 +3,23 @@ package springmvcstudy2.controllers;</span><br />
+
+<span> import org.springframework.stereotype.Controller;</span><br />
+
+<span> import org.springframework.web.bind.annotation.ModelAttribute;</span><br />
+
+<span> import org.springframework.web.bind.annotation.RequestMapping;</span><br />
+
+<ins>+import springmvcstudy2.model.CommunicationDto;</ins><br />
+
+<ins>+import springmvcstudy2.model.PhoneDto;</ins><br />
+
+<span> import springmvcstudy2.model.RegistrationDto;</span><br />
+
+<del>-import springmvcstudy2.model.UserInfoDto;</del><br />
+
+<span> </span><br />
+
+<span> @Controller</span><br />
+
+<span> public class RegistrationController {</span><br />
+
+<span> </span><br />
+
+<span>     @RequestMapping(&quot;/register&quot;)</span><br />
+
+<span>     public String showRegistrationPage(@ModelAttribute(&quot;userReg&quot;) RegistrationDto userReg) {</span><br />
+
+<ins>+</ins><br />
+
+<ins>+        CommunicationDto communicationDto = new CommunicationDto();</ins><br />
+
+<ins>+        PhoneDto phoneDto = new PhoneDto();</ins><br />
+
+<ins>+        phoneDto.setCountryCode(&quot;000&quot;);</ins><br />
+
+<ins>+        phoneDto.setUserNumber(&quot;0000000000&quot;);</ins><br />
+
+<ins>+        communicationDto.setPhone(phoneDto);</ins><br />
+
+<ins>+        userReg.setCommunicationDto(communicationDto);</ins><br />
+
+<ins>+</ins><br />
+
+<span>         return &quot;registration-page&quot;;</span><br />
+
+<span>     }</span><br />
+
+<span> </span><br />
+
+</div>
+

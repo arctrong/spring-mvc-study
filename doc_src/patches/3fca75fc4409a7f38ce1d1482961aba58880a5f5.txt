@@ -1,0 +1,290 @@
+<!--VARIABLES {"title": "Patch 3fca75fc4409a7f38ce1d1482961aba58880a5f5"}--> 
+ 
+<strong>Commit message:</strong> 
+server-side form validation implemented
+
+ 
+<div class="patch_block">
+
+<span class="diff">diff --git a/projects/web-app-spring-adv2/pom.xml b/projects/web-app-spring-adv2/pom.xml</span><br />
+
+<span class="index">index 77d60ac..9719f4e 100644</span><br />
+
+<span class="tree_minuses">--- a/projects/web-app-spring-adv2/pom.xml</span><br />
+
+<span class="tree_pluses">+++ b/projects/web-app-spring-adv2/pom.xml</span><br />
+
+<span class="two_ats">@@ -35,6 +35,16 @@</span><br />
+
+<span>             &lt;artifactId&gt;jstl&lt;/artifactId&gt;</span><br />
+
+<span>             &lt;version&gt;1.2&lt;/version&gt;</span><br />
+
+<span>         &lt;/dependency&gt;</span><br />
+
+<ins>+        &lt;dependency&gt;</ins><br />
+
+<ins>+            &lt;groupId&gt;javax.validation&lt;/groupId&gt;</ins><br />
+
+<ins>+            &lt;artifactId&gt;validation-api&lt;/artifactId&gt;</ins><br />
+
+<ins>+            &lt;version&gt;2.0.1.Final&lt;/version&gt;</ins><br />
+
+<ins>+        &lt;/dependency&gt;</ins><br />
+
+<ins>+        &lt;dependency&gt;</ins><br />
+
+<ins>+            &lt;groupId&gt;org.hibernate&lt;/groupId&gt;</ins><br />
+
+<ins>+            &lt;artifactId&gt;hibernate-validator&lt;/artifactId&gt;</ins><br />
+
+<ins>+            &lt;version&gt;6.1.6.Final&lt;/version&gt;</ins><br />
+
+<ins>+        &lt;/dependency&gt;</ins><br />
+
+<span>     &lt;/dependencies&gt;</span><br />
+
+<span> </span><br />
+
+<span>     &lt;build&gt;</span><br />
+
+<span class="diff">diff --git a/projects/web-app-spring-adv2/src/main/java/springmvcstudy2/config/MyApplicationConfig.java b/projects/web-app-spring-adv2/src/main/java/springmvcstudy2/config/MyApplicationConfig.java</span><br />
+
+<span class="index">index b53864b..586d873 100644</span><br />
+
+<span class="tree_minuses">--- a/projects/web-app-spring-adv2/src/main/java/springmvcstudy2/config/MyApplicationConfig.java</span><br />
+
+<span class="tree_pluses">+++ b/projects/web-app-spring-adv2/src/main/java/springmvcstudy2/config/MyApplicationConfig.java</span><br />
+
+<span class="two_ats">@@ -6,7 +6,7 @@ import org.springframework.context.annotation.Configuration;</span><br />
+
+<span> import org.springframework.web.servlet.config.annotation.EnableWebMvc;</span><br />
+
+<span> import org.springframework.web.servlet.view.InternalResourceViewResolver;</span><br />
+
+<span> </span><br />
+
+<del>-//@EnableWebMvc</del><br />
+
+<ins>+@EnableWebMvc</ins><br />
+
+<span> @Configuration</span><br />
+
+<span> @ComponentScan(basePackages = &quot;springmvcstudy2.controllers&quot;)</span><br />
+
+<span> public class MyApplicationConfig {</span><br />
+
+<span class="diff">diff --git a/projects/web-app-spring-adv2/src/main/java/springmvcstudy2/controllers/ValidatedController.java b/projects/web-app-spring-adv2/src/main/java/springmvcstudy2/controllers/ValidatedController.java</span><br />
+
+<span>new file mode 100644</span><br />
+
+<span class="index">index 0000000..f3eeee6</span><br />
+
+<span class="tree_minuses">--- /dev/null</span><br />
+
+<span class="tree_pluses">+++ b/projects/web-app-spring-adv2/src/main/java/springmvcstudy2/controllers/ValidatedController.java</span><br />
+
+<span class="two_ats">@@ -0,0 +1,31 @@</span><br />
+
+<ins>+package springmvcstudy2.controllers;</ins><br />
+
+<ins>+</ins><br />
+
+<ins>+import org.springframework.stereotype.Controller;</ins><br />
+
+<ins>+import org.springframework.ui.Model;</ins><br />
+
+<ins>+import org.springframework.validation.BindingResult;</ins><br />
+
+<ins>+import org.springframework.web.bind.annotation.ModelAttribute;</ins><br />
+
+<ins>+import org.springframework.web.bind.annotation.RequestMapping;</ins><br />
+
+<ins>+import springmvcstudy2.model.UserInfoValidatedDto;</ins><br />
+
+<ins>+</ins><br />
+
+<ins>+import javax.validation.Valid;</ins><br />
+
+<ins>+</ins><br />
+
+<ins>+@Controller</ins><br />
+
+<ins>+public class ValidatedController {</ins><br />
+
+<ins>+</ins><br />
+
+<ins>+    @RequestMapping(&quot;/validate&quot;)</ins><br />
+
+<ins>+    public String showHomePageSpring(@ModelAttribute(&quot;dto&quot;) UserInfoValidatedDto dto) {</ins><br />
+
+<ins>+        return &quot;home-page-validated&quot;;</ins><br />
+
+<ins>+    }</ins><br />
+
+<ins>+</ins><br />
+
+<ins>+    @RequestMapping(&quot;/validate-submit&quot;)</ins><br />
+
+<ins>+    public String showCalculatePageSpring(@Valid @ModelAttribute(&quot;dto&quot;) UserInfoValidatedDto dto,</ins><br />
+
+<ins>+                                          BindingResult result) {</ins><br />
+
+<ins>+        System.out.println(&quot;showCalculatePageSpring called&quot;);</ins><br />
+
+<ins>+        if (result.hasErrors()) {</ins><br />
+
+<ins>+            System.out.println(&quot;VALIDATION: form has errors&quot;);</ins><br />
+
+<ins>+            result.getAllErrors().forEach(System.out::println);</ins><br />
+
+<ins>+            return &quot;home-page-validated&quot;;</ins><br />
+
+<ins>+        }</ins><br />
+
+<ins>+        return &quot;result-page-spring&quot;;</ins><br />
+
+<ins>+    }</ins><br />
+
+<ins>+}</ins><br />
+
+<span class="diff">diff --git a/projects/web-app-spring-adv2/src/main/java/springmvcstudy2/model/UserInfoValidatedDto.java b/projects/web-app-spring-adv2/src/main/java/springmvcstudy2/model/UserInfoValidatedDto.java</span><br />
+
+<span>new file mode 100644</span><br />
+
+<span class="index">index 0000000..3588bc6</span><br />
+
+<span class="tree_minuses">--- /dev/null</span><br />
+
+<span class="tree_pluses">+++ b/projects/web-app-spring-adv2/src/main/java/springmvcstudy2/model/UserInfoValidatedDto.java</span><br />
+
+<span class="two_ats">@@ -0,0 +1,37 @@</span><br />
+
+<ins>+package springmvcstudy2.model;</ins><br />
+
+<ins>+</ins><br />
+
+<ins>+import org.hibernate.validator.constraints.Length;</ins><br />
+
+<ins>+</ins><br />
+
+<ins>+import javax.validation.constraints.NotBlank;</ins><br />
+
+<ins>+</ins><br />
+
+<ins>+public class UserInfoValidatedDto {</ins><br />
+
+<ins>+</ins><br />
+
+<ins>+    @NotBlank(message = &quot; * can&#x27;t be blank&quot;)</ins><br />
+
+<ins>+    @Length(min = 3, message = &quot; * must have at least 3 characters&quot;)</ins><br />
+
+<ins>+    private String name1;</ins><br />
+
+<ins>+    private String name2;</ins><br />
+
+<ins>+</ins><br />
+
+<ins>+    @Override</ins><br />
+
+<ins>+    public String toString() {</ins><br />
+
+<ins>+        return &quot;UserInfoDto{&quot; +</ins><br />
+
+<ins>+                &quot;name1=&#x27;&quot; + name1 + &#x27;\&#x27;&#x27; +</ins><br />
+
+<ins>+                &quot;, name2=&#x27;&quot; + name2 + &#x27;\&#x27;&#x27; +</ins><br />
+
+<ins>+                &#x27;}&#x27;;</ins><br />
+
+<ins>+    }</ins><br />
+
+<ins>+</ins><br />
+
+<ins>+    public String getName1() {</ins><br />
+
+<ins>+        return name1;</ins><br />
+
+<ins>+    }</ins><br />
+
+<ins>+</ins><br />
+
+<ins>+    public void setName1(String name1) {</ins><br />
+
+<ins>+        this.name1 = name1;</ins><br />
+
+<ins>+    }</ins><br />
+
+<ins>+</ins><br />
+
+<ins>+    public String getName2() {</ins><br />
+
+<ins>+        return name2;</ins><br />
+
+<ins>+    }</ins><br />
+
+<ins>+</ins><br />
+
+<ins>+    public void setName2(String name2) {</ins><br />
+
+<ins>+        this.name2 = name2;</ins><br />
+
+<ins>+    }</ins><br />
+
+<ins>+}</ins><br />
+
+<span class="diff">diff --git a/projects/web-app-spring-adv2/src/main/webapp/view/home-page-validated.jsp b/projects/web-app-spring-adv2/src/main/webapp/view/home-page-validated.jsp</span><br />
+
+<span>new file mode 100644</span><br />
+
+<span class="index">index 0000000..14cc658</span><br />
+
+<span class="tree_minuses">--- /dev/null</span><br />
+
+<span class="tree_pluses">+++ b/projects/web-app-spring-adv2/src/main/webapp/view/home-page-validated.jsp</span><br />
+
+<span class="two_ats">@@ -0,0 +1,20 @@</span><br />
+
+<ins>+&lt;%@ page language=&quot;java&quot; contentType=&quot;text/html; charset=UTF-8&quot; pageEncoding=&quot;UTF-8&quot;%&gt;</ins><br />
+
+<ins>+&lt;%@ taglib prefix=&quot;form&quot; uri=&quot;http://www.springframework.org/tags/form&quot;%&gt;</ins><br />
+
+<ins>+&lt;%@page isELIgnored=&quot;false&quot;%&gt;</ins><br />
+
+<ins>+&lt;!DOCTYPE html&gt;</ins><br />
+
+<ins>+&lt;html&gt;&lt;head&gt;&lt;meta charset=&quot;UTF-8&quot;&gt;</ins><br />
+
+<ins>+&lt;title&gt;Home page (validated)&lt;/title&gt;</ins><br />
+
+<ins>+&lt;style&gt;body {background-color: aliceblue;}&lt;/style&gt;</ins><br />
+
+<ins>+&lt;/head&gt;&lt;body&gt;</ins><br />
+
+<ins>+</ins><br />
+
+<ins>+&lt;h1&gt;Home page (validated)&lt;/h1&gt;</ins><br />
+
+<ins>+&lt;hr/&gt;</ins><br />
+
+<ins>+</ins><br />
+
+<ins>+&lt;form:form action=&quot;validate-submit&quot; method=&quot;GET&quot; modelAttribute=&quot;dto&quot;&gt;</ins><br />
+
+<ins>+&lt;p&gt;&lt;label for=&quot;name1&quot;&gt;Name 1: &lt;/label&gt;&lt;form:input id=&quot;name1&quot; path=&quot;name1&quot;/&gt;</ins><br />
+
+<ins>+&lt;form:errors path=&quot;name1&quot;/&gt;&lt;/p&gt;</ins><br />
+
+<ins>+&lt;p&gt;&lt;label for=&quot;name2&quot;&gt;Name 2: &lt;/label&gt;&lt;form:input id=&quot;name2&quot; path=&quot;name2&quot;/&gt;&lt;/p&gt;</ins><br />
+
+<ins>+&lt;input type=&quot;submit&quot; value=&quot;calculate&quot;/&gt;</ins><br />
+
+<ins>+&lt;/form:form&gt;</ins><br />
+
+<ins>+</ins><br />
+
+<ins>+&lt;/body&gt;&lt;/html&gt;</ins><br />
+
+</div>
+

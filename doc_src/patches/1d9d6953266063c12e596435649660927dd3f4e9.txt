@@ -1,0 +1,40 @@
+<!--VARIABLES {"title": "Patch 1d9d6953266063c12e596435649660927dd3f4e9"}--> 
+ 
+<strong>Commit message:</strong> 
+@SessionAttributes annotation added
+
+ 
+<div class="patch_block">
+
+<span class="diff">diff --git a/projects/web-app-spring-sessions/src/main/java/springmvcstudy/controllers/FirstController.java b/projects/web-app-spring-sessions/src/main/java/springmvcstudy/controllers/FirstController.java</span><br />
+
+<span class="index">index 7bf8a03..f28063b 100644</span><br />
+
+<span class="tree_minuses">--- a/projects/web-app-spring-sessions/src/main/java/springmvcstudy/controllers/FirstController.java</span><br />
+
+<span class="tree_pluses">+++ b/projects/web-app-spring-sessions/src/main/java/springmvcstudy/controllers/FirstController.java</span><br />
+
+<span class="two_ats">@@ -3,8 +3,10 @@ package springmvcstudy.controllers;</span><br />
+
+<span> import org.springframework.stereotype.Controller;</span><br />
+
+<span> import org.springframework.ui.Model;</span><br />
+
+<span> import org.springframework.web.bind.annotation.RequestMapping;</span><br />
+
+<ins>+import org.springframework.web.bind.annotation.SessionAttributes;</ins><br />
+
+<span> </span><br />
+
+<span> @Controller</span><br />
+
+<ins>+@SessionAttributes(&quot;firstName&quot;)</ins><br />
+
+<span> public class FirstController {</span><br />
+
+<span> </span><br />
+
+<span>     @RequestMapping(&quot;/first&quot;)</span><br />
+
+</div>
+

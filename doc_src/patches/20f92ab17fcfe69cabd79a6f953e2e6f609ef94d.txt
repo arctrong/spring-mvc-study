@@ -1,22 +1,22 @@
-<!--VARIABLES {"title": "Patch 429b1fd4f65f6182962255078e0d32bd02949b50"}--> 
+<!--VARIABLES {"title": "Patch 20f92ab17fcfe69cabd79a6f953e2e6f609ef94d"}--> 
  
 <strong>Commit message:</strong> 
-simplest web app run in Jetty
+first advanced web application initialized
 
  
 <div class="patch_block">
 
-<span class="diff">diff --git a/projects/web-app-jetty/pom.xml b/projects/web-app-jetty/pom.xml</span><br />
+<span class="diff">diff --git a/projects/web-app-spring-adv1/pom.xml b/projects/web-app-spring-adv1/pom.xml</span><br />
 
 <span>new file mode 100644</span><br />
 
-<span class="index">index 0000000..bfc9fd6</span><br />
+<span class="index">index 0000000..722ad26</span><br />
 
 <span class="tree_minuses">--- /dev/null</span><br />
 
-<span class="tree_pluses">+++ b/projects/web-app-jetty/pom.xml</span><br />
+<span class="tree_pluses">+++ b/projects/web-app-spring-adv1/pom.xml</span><br />
 
-<span class="two_ats">@@ -0,0 +1,22 @@</span><br />
+<span class="two_ats">@@ -0,0 +1,26 @@</span><br />
 
 <ins>+&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</ins><br />
 
@@ -34,7 +34,7 @@ simplest web app run in Jetty
 
 <ins>+    &lt;groupId&gt;world.someone&lt;/groupId&gt;</ins><br />
 
-<ins>+    &lt;artifactId&gt;web-app-jetty&lt;/artifactId&gt;</ins><br />
+<ins>+    &lt;artifactId&gt;web-app-spring-adv1&lt;/artifactId&gt;</ins><br />
 
 <ins>+    &lt;version&gt;1.0-SNAPSHOT&lt;/version&gt;</ins><br />
 
@@ -54,6 +54,14 @@ simplest web app run in Jetty
 
 <ins>+</ins><br />
 
+<ins>+    &lt;dependencies&gt;</ins><br />
+
+<ins>+</ins><br />
+
+<ins>+    &lt;/dependencies&gt;</ins><br />
+
+<ins>+</ins><br />
+
 <ins>+    &lt;build&gt;</ins><br />
 
 <ins>+        &lt;finalName&gt;${project.artifactId}&lt;/finalName&gt;</ins><br />
@@ -62,15 +70,15 @@ simplest web app run in Jetty
 
 <ins>+&lt;/project&gt;</ins><br />
 
-<span class="diff">diff --git a/projects/web-app-jetty/src/main/webapp/WEB-INF/web.xml b/projects/web-app-jetty/src/main/webapp/WEB-INF/web.xml</span><br />
+<span class="diff">diff --git a/projects/web-app-spring-adv1/src/main/webapp/WEB-INF/web.xml b/projects/web-app-spring-adv1/src/main/webapp/WEB-INF/web.xml</span><br />
 
 <span>new file mode 100644</span><br />
 
-<span class="index">index 0000000..fa44478</span><br />
+<span class="index">index 0000000..e426a43</span><br />
 
 <span class="tree_minuses">--- /dev/null</span><br />
 
-<span class="tree_pluses">+++ b/projects/web-app-jetty/src/main/webapp/WEB-INF/web.xml</span><br />
+<span class="tree_pluses">+++ b/projects/web-app-spring-adv1/src/main/webapp/WEB-INF/web.xml</span><br />
 
 <span class="two_ats">@@ -0,0 +1,7 @@</span><br />
 
@@ -78,43 +86,37 @@ simplest web app run in Jetty
 
 <ins>+        &quot;-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN&quot;</ins><br />
 
-<ins>+        &quot;http://java.sun.com/dtd/web-app_2_3.dtd&quot;&gt;</ins><br />
+<ins>+        &quot;http://java.sun.com/dtd/web-app_2_3.dtd&quot; &gt;</ins><br />
 
 <ins>+</ins><br />
 
 <ins>+&lt;web-app&gt;</ins><br />
 
-<ins>+    &lt;display-name&gt;JSP Example Application&lt;/display-name&gt;</ins><br />
+<ins>+    &lt;display-name&gt;Spring Web Application Advanced Example&lt;/display-name&gt;</ins><br />
 
 <ins>+&lt;/web-app&gt;</ins><br />
 
-<span class="diff">diff --git a/projects/web-app-jetty/src/main/webapp/index.jsp b/projects/web-app-jetty/src/main/webapp/index.jsp</span><br />
+<span class="diff">diff --git a/projects/web-app-spring-adv1/src/main/webapp/index.jsp b/projects/web-app-spring-adv1/src/main/webapp/index.jsp</span><br />
 
 <span>new file mode 100644</span><br />
 
-<span class="index">index 0000000..c4ec92a</span><br />
+<span class="index">index 0000000..c38169b</span><br />
 
 <span class="tree_minuses">--- /dev/null</span><br />
 
-<span class="tree_pluses">+++ b/projects/web-app-jetty/src/main/webapp/index.jsp</span><br />
+<span class="tree_pluses">+++ b/projects/web-app-spring-adv1/src/main/webapp/index.jsp</span><br />
 
-<span class="two_ats">@@ -0,0 +1,8 @@</span><br />
+<span class="two_ats">@@ -0,0 +1,5 @@</span><br />
 
-<ins>+&lt;html&gt;&lt;body&gt;</ins><br />
+<ins>+&lt;html&gt;</ins><br />
+
+<ins>+&lt;body&gt;</ins><br />
 
 <ins>+&lt;h2&gt;Hello World!&lt;/h2&gt;</ins><br />
 
-<ins>+&lt;p&gt;Counting to three:</ins><br />
+<ins>+&lt;/body&gt;</ins><br />
 
-<ins>+&lt;% for (int i=1; i&lt;4; i++) { %&gt;</ins><br />
-
-<ins>+    &lt;%= i %&gt;,</ins><br />
-
-<ins>+&lt;% } %&gt;</ins><br />
-
-<ins>+OK.&lt;/p&gt;</ins><br />
-
-<ins>+&lt;/body&gt;&lt;/html&gt;</ins><br />
+<ins>+&lt;/html&gt;</ins><br />
 
 </div>
 
