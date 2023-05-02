@@ -6,6 +6,7 @@
 [2.4]: <!--page refs-->#ref_2_4
 [2.5]: <!--page refs-->#ref_2_5
 [6]: <!--page refs-->#ref_6
+[19]: <!--page refs-->#ref_19
 
 ----------------------------------------------------------------------------------------------------
 Mar 22, 2023
@@ -132,6 +133,15 @@ The URL <http://localhost:8080/web-app-spring-adv1/> returns the same hello page
 > Git commit: [`739f7315adc191045fa7fa18d5b4e0a291445974`](
 > <!--path patches-->739f7315adc191045fa7fa18d5b4e0a291445974.html)
 > MyApplicationInitializer introduced
+
+Here's a small investigation result:
+
+- There's the `javax.servlet.ServletContainerInitializer` interface in the Maven artifact 
+    `javax.servlet:javax.servlet-api:3.1.0`.
+- This interface is implemented by the `org.springframework.web.SpringServletContainerInitializer`
+    class fro the Maven artifact `org.springframework:spring-web:5.3.9`.
+    
+Also see [[19][], look for "4.4 Configuration methods"].
 
 ----------------------------------------------------------------------------------------------------
 # Adjust dispatcher servlet

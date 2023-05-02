@@ -4,6 +4,16 @@
 
 [5]: <!--page refs-->#ref_5
 [12]: <!--page refs-->#ref_12
+[18]: <!--page refs-->#ref_18
+
+----------------------------------------------------------------------------------------------------
+# Context Hierarchy
+
+[[18][]], [1.1.1. Context Hierarchy](
+https://docs.spring.io/spring-framework/docs/5.3.9/reference/html/web.html#mvc-servlet-context-hierarchy)
+
+![](<!--path pict-->mvc_context_hierarchy.png)
+
 
 ----------------------------------------------------------------------------------------------------
 <!--index JEE standard-->

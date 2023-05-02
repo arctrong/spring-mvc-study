@@ -22,6 +22,8 @@ conflicts with the local web applications running on the port 8080.
 
 Use port 2500 for sending emails and <http://localhost:8025> for viewing the result.
 
+See [here](<!--page service_layer-->#local_mail_server_setup) for a usage example.
+
 ----------------------------------------------------------------------------------------------------
 Apr 4, 2023
 

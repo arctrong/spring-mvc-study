@@ -85,8 +85,13 @@
   ],
   "doc/content/beginner/view_resolver.html": [
     {
-      "entry": "view resolver",
+      "entry": "URL mapping",
       "link": "beginner/view_resolver.html#index_entry_index_1",
+      "title": "View resolver"
+    },
+    {
+      "entry": "view resolver",
+      "link": "beginner/view_resolver.html#index_entry_index_2",
       "title": "View resolver"
     }
   ],

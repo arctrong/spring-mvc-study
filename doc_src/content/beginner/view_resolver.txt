@@ -3,6 +3,9 @@
 
 [TOC]
 
+[1.8]: <!--page refs-->#ref_1_8
+[19]: <!--page refs-->#ref_19
+
 ----------------------------------------------------------------------------------------------------
 Mar 20, 2023
 
@@ -10,7 +13,6 @@ Mar 20, 2023
 
 [[1.8][]]
 
-[1.8]: <!--page refs-->#ref_1_8
 
 ----------------------------------------------------------------------------------------------------
 # Specifying direct view file location
@@ -65,6 +67,28 @@ is created:
     Mar 20, 2023 11:05:12 AM org.springframework.web.servlet.DispatcherServlet noHandlerFound
     WARNING: No mapping for GET /web-app-spring/view/jspHello.jsp
     ````
+    
+    <!--index ["URL mapping"]-->
+    Also see [[19][], look for "12.2 Specification of Mappings"]:
+    
+    > In the Web application deployment descriptor, the following syntax is used to define
+    > mappings:
+    >
+    > - A string beginning with a `/` character and ending with a `/*` suffix is used for
+    >     path mapping.
+    > - A string beginning with a `*.` prefix is used as an extension mapping.
+    > - The empty string ("") is a special URL pattern that exactly maps to the
+    >     application's context root, i.e., requests of the form 
+    >     `http://host:port/<context-root>/`. In this case the path info is `/` and the servlet
+    >     path and context path is empty string ("").
+    > - A string containing only the `/` character indicates the "default" servlet of the
+    >     application. In this case the servlet path is the request URI minus the context path
+    >     and the path info is null.
+    > - All other strings are used for exact matches only.
+    > 
+    > If the effective `web.xml` (after merging information from fragments and
+    > annotations) contains any url-patterns that are mapped to multiple servlets then the
+    > deployment must fail.
 
 After navigating to <http://localhost:8080/web-app-spring/jsp/hello> we see:
 
