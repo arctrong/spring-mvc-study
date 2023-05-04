@@ -9,33 +9,20 @@
     <groupId>world.someone</groupId>
     <artifactId>jetty-embedded-live-war</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <packaging>war</packaging>
+    <packaging>pom</packaging>
+    <modules>
+        <module>my-webapp</module>
+    </modules>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>8</maven.compiler.source>
         <maven.compiler.target>8</maven.compiler.target>
-        <failOnMissingWebXml>false</failOnMissingWebXml>
         <org.springframework.version>5.3.9</org.springframework.version>
         <org.eclipse.jetty.version>9.4.50.v20221201</org.eclipse.jetty.version>
     </properties>
 
-    <dependencies>
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-webmvc</artifactId>
-            <version>${org.springframework.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>javax.servlet</groupId>
-            <artifactId>javax.servlet-api</artifactId>
-            <version>4.0.1</version>
-            <scope>provided</scope>
-        </dependency>
-    </dependencies>
-
     <build>
-        <finalName>${project.artifactId}</finalName>
         <directory>${TMP_MAVEN_BUILDS_DIR}${project.artifactId}</directory>
     </build>
 </project>

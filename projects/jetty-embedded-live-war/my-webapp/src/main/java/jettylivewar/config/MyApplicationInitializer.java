@@ -1,4 +1,4 @@
-package jettylifewar.config;
+package jettylivewar.config;
 
 import org.springframework.web.WebApplicationInitializer;
 import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;
@@ -12,6 +12,8 @@ public class MyApplicationInitializer implements WebApplicationInitializer {
 
     @Override
     public void onStartup(ServletContext servletContext) throws ServletException {
+
+        System.out.println(this.getClass().getSimpleName() + ": onStartup method called");
 
         AnnotationConfigWebApplicationContext webApplicationContext =
                 new AnnotationConfigWebApplicationContext();
