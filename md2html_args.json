@@ -50,7 +50,8 @@
             "sidesteps": {"title": "Sidesteps", "groups": ["sidebar"] },
             "header": [
                 { "link": "readme.html", "title": "About" },
-                { "link": "doc/content/index_page.html", "title": "Index" }
+                { "link": "doc/content/index_page.html", "title": "Index" },
+                { "link": "https://github.com/arctrong/spring-mvc-study", "title": "GitHub", "external": true }
             ],
             "useful_links": { "title": "Useful links", "groups": [], "items": [
 #                { "link": "https://spring.io/", "title": "Spring site", "external": true }

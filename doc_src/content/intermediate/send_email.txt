@@ -29,8 +29,10 @@ adding a link for sending an email:
 
 ![](<!--path pict-->send_email_01.png)
 
-<!--index ["pageContext, variable"]-->
-The `pageContext` is an implicit variable accessible in all JSP pages.
+<!--index ["pageContext, variable", "links to the root"]-->
+The `pageContext` is an implicit variable accessible in all JSP pages. Here it's used for linking
+to the site's root. See the expresion `<a href="${pageContext.request.contextPath}/ui/sendEmail">`
+in the below commit.
 
 The URL is [http://localhost:8080/web-app-spring-adv3/ui/validate-submit?...](
 http://localhost:8080/web-app-spring-adv3/ui/validate-submit?name1=Bob&name2=Claudia&notARobot=true&_notARobot=on).

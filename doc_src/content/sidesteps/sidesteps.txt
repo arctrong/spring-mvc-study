@@ -33,7 +33,7 @@ Apr 4, 2023
 While starting the Jetty server add the JVM options like this:
 
 ````wrapped-shell
->java -agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=56000 -jar -Ddebug=1 %JETTY_HOME%\start.jar
+>java -agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=5005 -jar -Ddebug=1 %JETTY_HOME%\start.jar
 ````
 
 Then connect to this endpoint in the IDE for debugging.
@@ -42,15 +42,17 @@ The following code may help catch the initialization steps ([`MyApplicationIniti
 <!--path code-->web-app-spring-adv4/src/main/java/springmvcstudy2/config/MyApplicationInitializer.java)):
 
 ````code
-        .  .  .
+.  .  .
+    private static void waitForDebuggerConnection() {
         if (System.getProperty("debug") != null) {
             System.out.println("Connect a debugger and press Enter key to continue...");
             try {
-                System.in.read();
+                int ignore = System.in.read();
             } catch (Exception ignored) {
             }
         }
-        .  .  .
+    }
+.  .  .
 ````
 
 

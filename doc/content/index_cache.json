@@ -270,6 +270,11 @@
       "title": "Send email"
     },
     {
+      "entry": "links to the root",
+      "link": "intermediate/send_email.html#index_entry_index_1",
+      "title": "Send email"
+    },
+    {
       "entry": "path variables",
       "link": "intermediate/send_email.html#index_entry_index_2",
       "title": "Send email"
@@ -552,5 +557,12 @@
   "doc/content/patches/f06feedadf46df06346b0dc9ead83ba80ec74b3a.html": [],
   "doc/content/patches/f4f5cca9ade31118a069a5c9b6209e5cc3b0cd2f.html": [],
   "doc/content/patches/fe0c5863eb2c9d27daab8056cd585baefe4d49ce.html": [],
-  "doc/content/patches/11111.html": []
+  "doc/content/patches/11111.html": [],
+  "doc/content/sidesteps/embedded_server.html": [
+    {
+      "entry": "live WAR",
+      "link": "sidesteps/embedded_server.html#index_entry_index_1",
+      "title": "Embedded server"
+    }
+  ]
 }

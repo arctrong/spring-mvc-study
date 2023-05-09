@@ -155,7 +155,8 @@ https://github.com/jetty-project):
 
 > Additional Jetty repositories not covered by the Eclipse Foundation IP policy.
 
-May be looked up for recipes for typical Jetty server usage and configuration.
+May be looked up for recipes for typical Jetty server usage and configuration. Following are
+some projects that are probably the most interesting.
 
 <div class="noBullets"></div>
 
@@ -188,37 +189,34 @@ Here are some videos that may be most interesting:
 https://www.baeldung.com/spring-web-contexts)<span class="localOnly">,
 <a href="javascript:void(openLocal('Baeldung_Spring_Web_Contexts.html'))">local</a></span>
 
-<a name="ref_23"></a>**[23]**
-[Inverting dependency between Jetty and Spring in standalone JAX-RS application (no-boot)](
-https://medium.com/@artur.dzidzoiev/inverting-dependency-between-jetty-and-spring-in-standalone-jax-rs-application-no-boot-e7c452d87a4b
-)<span class="localOnly">, <a href=
-"javascript:void(openLocal('Jetty_and_Spring_in_standalone_application/Jetty_and_Spring_in_standalone_application.htm'))"
-dummy="dummy">local</a> (also see the GitHub repository included)</span>
+<a name="ref_23"></a>**[23]** Jetty embedded setup
 
-<a name="ref_24"></a>**[24]** [Spring Jetty](https://zetcode.com/spring/jetty/)<span class="localOnly">,
-<a href="javascript:void(openLocal('Running_Spring_application_in_Jetty_server.htm'))">local</a></span>
+<div class="noBullets"></div>
 
-<a name="ref_25"></a>**[25]** [Spring WebApplicationInitializer tutorial](
+- <a name="ref_23_1"></a>[23.1] [Inverting dependency between Jetty and Spring in standalone JAX-RS application (no-boot)](
+    https://medium.com/@artur.dzidzoiev/inverting-dependency-between-jetty-and-spring-in-standalone-jax-rs-application-no-boot-e7c452d87a4b
+    )<span class="localOnly">, <a href=
+    "javascript:void(openLocal('Jetty_and_Spring_in_standalone_application/Jetty_and_Spring_in_standalone_application.htm'))"
+    dummy="dummy">local</a> (also see the GitHub repository included)</span>
+- <a name="ref_23_2"></a>[23.2] [Spring Jetty](https://zetcode.com/spring/jetty/)<span class="localOnly">,
+    <a href="javascript:void(openLocal('Running_Spring_application_in_Jetty_server.htm'))">local</a></span>
+- <a name="ref_23_3"></a>[23.3] [Using Embedded Jetty With Spring MVC](
+    https://bartcode.co.uk/2013/11/using-embedded-jetty-spring-mvc)<span class="localOnly">,
+    <a href="javascript:void(openLocal('Embedded_Jetty_With_Spring_MVC.htm'))">local</a></span>
+- <a name="ref_23_4"></a>[23.4] [Setting up embedded Jetty 8 and Spring MVC with Maven](
+    http://steveliles.github.io/setting_up_embedded_jetty_8_and_spring_mvc_with_maven.html)<span class="localOnly">,
+    <a href="javascript:void(openLocal('Embedded_Jetty_8_and_Spring_MVC_with_Maven.htm'))">local</a></span>
+- <a name="ref_23_5"></a>[23.5] Habr: [Java-based конфигурирование embedded Jetty/Spring MVC/Spring Security](
+    https://habr.com/en/articles/255773/)<span class="localOnly">,
+    <a href="javascript:void(openLocal('Habr_Java_based_embedded_Jetty_Spring_MVC_Spring_Security_RU.htm'))"
+    dummy="dummy">local</a></span>
+- <a name="ref_23_6"></a>[23.6] GitHub: [Correct Usage of ServletContainerInitializer with @HandlesTypes](
+    https://github.com/eclipse/jetty.project/issues/5051)<span class="localOnly">,
+    <a href="javascript:void(openLocal('GitHub_Correct_Usage_of_ServletContainerInitializer.htm'))"
+    dummy="dummy">local</a></span>
+
+<a name="ref_24"></a>**[24]** [Spring WebApplicationInitializer tutorial](
 https://zetcode.com/spring/webapplicationinitializer/)<span class="localOnly">,
 <a href="javascript:void(openLocal('Spring_WebApplicationInitializer.htm'))">local</a></span>
-
-<a name="ref_26"></a>**[26]** [Using Embedded Jetty With Spring MVC](
-https://bartcode.co.uk/2013/11/using-embedded-jetty-spring-mvc)<span class="localOnly">,
-<a href="javascript:void(openLocal('Embedded_Jetty_With_Spring_MVC.htm'))">local</a></span>
-
-<a name="ref_27"></a>**[27]** [Setting up embedded Jetty 8 and Spring MVC with Maven](
-http://steveliles.github.io/setting_up_embedded_jetty_8_and_spring_mvc_with_maven.html)<span class="localOnly">,
-<a href="javascript:void(openLocal('Embedded_Jetty_8_and_Spring_MVC_with_Maven.htm'))">local</a></span>
-
-<a name="ref_28"></a>**[28]** Habr: [Java-based конфигурирование embedded Jetty/Spring MVC/Spring Security](
-https://habr.com/en/articles/255773/)<span class="localOnly">,
-<a href="javascript:void(openLocal('Habr_Java_based_embedded_Jetty_Spring_MVC_Spring_Security_RU.htm'))"
-dummy="dummy">local</a></span>
-
-<a name="ref_29"></a>**[29]** GitHub: [Correct Usage of ServletContainerInitializer with @HandlesTypes](
-https://github.com/eclipse/jetty.project/issues/5051)<span class="localOnly">,
-<a href="javascript:void(openLocal('GitHub_Correct_Usage_of_ServletContainerInitializer.htm'))"
-dummy="dummy">local</a></span>
-
 
 
