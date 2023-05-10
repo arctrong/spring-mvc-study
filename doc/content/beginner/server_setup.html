@@ -72,7 +72,10 @@ class="header_item" href="https://github.com/arctrong/spring-mvc-study">GitHub</
 <ul>
 <li><a href="#about-this-section">About this section</a></li>
 <li><a href="#install-and-setup-jetty-server">Install and setup Jetty server</a></li>
-<li><a href="#initialize-maven-project">Initialize Maven project</a></li>
+<li><a href="#initialize-maven-project">Initialize Maven project</a><ul>
+<li><a href="#project-deployment-and-running">Project deployment and running</a></li>
+</ul>
+</li>
 <li><a href="#serving-static-content">Serving static content</a></li>
 </ul>
 </div>
@@ -113,7 +116,7 @@ INFO  : Base directory was modified
 2023-03-18 11:36:14.306:INFO:oejs.Server:main: Started @630ms</code></pre>
 <p>In a browser navigate to <a href="http://localhost:8080/">http://localhost:8080/</a> to see an "Error 404 - Not Found" page. To stop
 the server press <code>Ctrl</code>+<code>C</code>.</p>
-<p><a name="activate_jetty_jsp_module"></a>
+<p><a name="index_entry_index_1"></a><a name="activate_jetty_jsp_module"></a>
 As we are going to use JSP, adding the <code>jsp</code> module, also see the Jetty documentation [<a href="../references.html#ref_4">4</a>]:</p>
 <ul>
 <li><a href="https://www.eclipse.org/jetty/documentation/jetty-9/index.html#configuring-jsp">Configuring JSP Support</a></li>
@@ -203,8 +206,9 @@ artifact:</p>
 <pre class="highlight"><code class="language-shell">&gt;cd web-app-jetty
 
 &gt;mvn clean package</code></pre>
-<p><a name="project_start_on_server"></a>
-Copy the file <code>web-app-jetty.war</code> from the current target directory into the <code>%JETTY_BASE%/webapps</code>
+<p><a name="project_start_on_server"></a></p>
+<h2 id="project-deployment-and-running">Project deployment and running</h2>
+<p>Copy the file <code>web-app-jetty.war</code> from the current target directory into the <code>%JETTY_BASE%/webapps</code>
 directory. Make sure that the Jetty <code>jsp</code> is activated 
 (see <a href="server_setup.html#activate_jetty_jsp_module">here</a>).
 Stop the Jetty server by pressing <code>Ctrl</code>+<code>C</code>, if it's running, and start it again:</p>
@@ -224,7 +228,7 @@ Git commit: <a href="../patches/31a1cc7364bc8d81cbba2230eedd929714ddd8a0.html"><
 Maven target directories redefined</p>
 </blockquote>
 <hr />
-<p><a name="index_entry_index_1"></a></p>
+<p><a name="index_entry_index_2"></a></p>
 <h1 id="serving-static-content">Serving static content</h1>
 <p>Serving static content from inside the WAR files was discussed in the StackOverflow question 
 <a href="https://stackoverflow.com/questions/75790960/serve-html-files-from-inside-war-file-with-jetty-server-and-spring-mvc">Serve HTML files from inside WAR file with Jetty server and Spring MVC</a>.</p>
@@ -235,7 +239,7 @@ particularly adding the following definitions into the servlet dispatcher XML co
     &lt;mvc:resources mapping="/html/**" location="/static/"/&gt;
     &lt;mvc:default-servlet-handler/&gt;
     .  .  .</code></pre>
-<p><a name="index_entry_index_2"></a>
+<p><a name="index_entry_index_3"></a>
 The <code>mvc</code> namespace should be declared the following way:</p>
 <pre class="highlight"><code class="language-xml">&lt;beans 
        .  .  .

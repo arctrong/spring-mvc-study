@@ -55,7 +55,7 @@ INFO  : Base directory was modified
 In a browser navigate to <http://localhost:8080/> to see an "Error 404 - Not Found" page. To stop
 the server press `Ctrl`+`C`.
 
-<a name="activate_jetty_jsp_module"></a>
+<!--index ["JSP, support"]--><a name="activate_jetty_jsp_module"></a>
 As we are going to use JSP, adding the `jsp` module, also see the Jetty documentation [[4][]]:
 
 - [Configuring JSP Support](
@@ -173,7 +173,10 @@ artifact:
 >mvn clean package
 ````
 
+
 <a name="project_start_on_server"></a>
+## Project deployment and running
+
 Copy the file `web-app-jetty.war` from the current target directory into the `%JETTY_BASE%/webapps`
 directory. Make sure that the Jetty `jsp` is activated 
 (see [here](<!--page server_setup-->#activate_jetty_jsp_module)).

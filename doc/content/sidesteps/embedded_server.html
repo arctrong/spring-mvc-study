@@ -71,7 +71,13 @@ class="header_item" href="https://github.com/arctrong/spring-mvc-study">GitHub</
 <div class="toc">
 <ul>
 <li><a href="#about-this-section">About this section</a></li>
-<li><a href="#jetty-live-war">Jetty live WAR</a></li>
+<li><a href="#jetty-live-war">Jetty live WAR</a><ul>
+<li><a href="#creating-standard-war-application">Creating standard WAR application</a></li>
+<li><a href="#converting-into-multi-module-maven-project">Converting into multi module Maven project</a></li>
+<li><a href="#adding-live-war-elements">Adding live WAR elements</a></li>
+<li><a href="#discussions-and-explanations">Discussions and explanations</a></li>
+</ul>
+</li>
 </ul>
 </div>
 <hr />
@@ -85,16 +91,113 @@ descriptions and explanations. Some of the materials are listed in [<a href="../
 <hr />
 <p><a name="index_entry_index_1"></a></p>
 <h1 id="jetty-live-war">Jetty live WAR</h1>
-<p>This implementation is made based on the material [<a href="../references.html#ref_20_1">20.1</a>]. The following was added:</p>
+<p>This implementation is made based on the material [<a href="../references.html#ref_20_1">20.1</a>]. The project is declared as being for
+investigation purpose. It uses custom class loader, <code>maven-dependency-plugin</code> and probably some
+other solutions that make it unstable and add problems when using in production.</p>
+<p>The following features were added:</p>
 <ul>
-<li>Spring MVC support</li>
-<li>JSP support</li>
-<li>necessary resource access restrictions</li>
+<li>Spring MVC support;</li>
+<li>JSP support;</li>
+<li>necessary resource access restrictions.</li>
 </ul>
-<p>http://localhost:8080/jettylivewar/bootstrap/JettyBootstrap.class
-http://localhost:8080/jettylivewar/bootstrap/LiveWarClassLoader.class
-http://localhost:8080/META-INF/MANIFEST.MF</p>
-<p>http://localhost:8080/WEB-INF/web.xml</p>
+<p>The project may be built and run:</p>
+<ul>
+<li>as a WAR file in a separate Servlet container;</li>
+<li>as an executable JAR file (with no Servlet container required);</li>
+<li>by running the executable main class inside IntelliJ IDEA IDE.</li>
+</ul>
+<p>Build directory is changed in the projects to move the generated artifacts out of the study notes
+directory:</p>
+<pre class="highlight"><code class="language-xml">    ...
+    &lt;build&gt;
+        &lt;directory&gt;${TMP_MAVEN_BUILDS_DIR}${project.parent.artifactId}/${project.artifactId}&lt;/directory&gt;
+    ...</code></pre>
+<h2 id="creating-standard-war-application">Creating standard WAR application</h2>
+<p><a href="../beginner/server_setup.html">This instructions</a> were used.</p>
+<blockquote>
+<p>Git commit: <a href="../patches/234605b0cbf55d1dc956b1ee06843bb72abeb7ea.html"><code>234605b0cbf55d1dc956b1ee06843bb72abeb7ea</code></a>
+embedded jetty: life war - before embedding</p>
+</blockquote>
+<p>Further modifications and improvements are going to be done in the next subsections.</p>
+<p>Just execute <code>mvn clean package</code> to build the project. Also see 
+<a href="../beginner/server_setup.html#project_start_on_server">here</a> for instructions on deployment and
+running.</p>
+<h2 id="converting-into-multi-module-maven-project">Converting into multi module Maven project</h2>
+<p>Just multi module structure created. Live WAR elements will be added later.</p>
+<blockquote>
+<p>Git commit: <a href="../patches/65666bbcaa8ee2a849ae57eba44dea629a3f7eb3.html"><code>65666bbcaa8ee2a849ae57eba44dea629a3f7eb3</code></a>
+web application converted into a module</p>
+</blockquote>
+<p>Executing <code>mvn clean package</code> for the parent project will generate the WAR file <code>my-webapp.war</code>
+the same way as in the previous version.</p>
+<h2 id="adding-live-war-elements">Adding live WAR elements</h2>
+<blockquote>
+<p>Git commit: <a href="../patches/6050a18e8235df32b09f73b75b5b76160434db0c.html"><code>6050a18e8235df32b09f73b75b5b76160434db0c</code></a>
+live WAR implemented</p>
+</blockquote>
+<p>The following are the Maven modules described:</p>
+<ul>
+<li><code>my-webapp</code> &mdash; the standard web application that is packaged as a WAR file.</li>
+<li><code>jetty_server</code> &mdash; the Jetty server that runs the above web application. It's also used for
+    for running the web application from inside an IDE (only IntelliJ IDEA was tested).</li>
+<li><code>server_bootstrap</code> &mdash; the module that starts the server from inside the live WAR file.</li>
+<li><code>livewar_assembly</code> &mdash; the module that uses the other modules and generates the final 
+    live WAR file.</li>
+</ul>
+<p>The build is done by executing <code>mvn clean package</code> for the parent project.</p>
+<p>The generated artifact is the file <code>my-webapp-livewar.war</code>.</p>
+<p>Also see <a href="../beginner/server_setup.html#project_start_on_server">here</a> for instructions on deployment
+and running.</p>
+<p>Running as a JAR file is done the following way:</p>
+<pre class="highlight"><code class="language-shell">&gt;java -jar livewar_assembly\my-webapp-livewar.war
+...
+2023-05-10 13:41:51.825:INFO:oejs.Server:main: Started @4803ms</code></pre>
+<p>In IntelliJ IDEA the class <code>jettylivewar.starter.ServerMain</code> from the project <code>jetty_server</code>
+may be used for running and debugging the project.</p>
+<p>Remote debugging may be done using the instructions
+<a href="sidesteps.html#remote_server_debugging">here</a>. Some additional output is added when 
+the option <code>-Ddebug=true</code> is used.</p>
+<p>The main page is accessible at <a href="http://localhost:8080/">http://localhost:8080/</a>:</p>
+<p><img alt="" src="../../pict/live_war_main_page.png" /></p>
+<h2 id="discussions-and-explanations">Discussions and explanations</h2>
+<p><strong>Adding Spring MVC</strong></p>
+<p>In the <code>my-webapp</code> module Spring MVC is added by adding the configuration classes 
+<code>MyApplicationInitializer</code> and <code>MyApplicationConfig</code> and the controller class <code>HelloController</code>.
+There are some detailed explanations <a href="../intermediate/get_rid_of_web_xml.html">here</a>. When run in a servlet
+container this configuration is found automatically.</p>
+<p>In the <code>jetty_server</code> module the following class list adjustment is used in the class
+<a href="../../../projects/jetty-embedded-live-war/jetty_server/src/main/java/jettylivewar/starter/ServerMain.java"><code>ServerMain</code></a>:</p>
+<p><a name="adjusting_configuration_class_list"></a>
+<pre class="highlight"><code class="language-code">        ...
+        Configuration.ClassList classlist = Configuration.ClassList
+                .setServerDefault(server);
+        classlist.addBefore(
+                "org.eclipse.jetty.webapp.JettyWebXmlConfiguration",
+                "org.eclipse.jetty.annotations.AnnotationConfiguration");
+        ...</code></pre></p>
+<p><a name="index_entry_index_2"></a>
+<strong>Adding JSP support</strong></p>
+<p>When the WAR file is run in the Jetty servlet container, JSP support is done externally by the
+Jetty's <code>jsp</code> module (also see <a href="../beginner/server_setup.html#activate_jetty_jsp_module">here</a>).
+No other actions required inside the standard WAR file.</p>
+<p>In the live WAR artifact when running standalone, the 
+<a href="embedded_server.html#adjusting_configuration_class_list">above adjustments</a> are required.
+Also there's a special procedure <code>enableEmbeddedJspSupport()</code> in the helper class 
+<a href="../../../projects/jetty-embedded-live-war/jetty_server/src/main/java/jettylivewar/starter/JspSupportEnablingHelper.java"><code>JspSupportEnablingHelper</code></a>
+that is called from the <code>ServerMain</code> class and fulfills all the adjustments.</p>
+<p><strong>Security adjustments</strong></p>
+<p>The demonstrated adjustments just cover the obvious breach caused by the dual nature of the
+generated WAR file that also works as an executable JAR. The server bootstrap classes in the
+directory <code>jettylivewar</code> are by default accessible to the web clients. The solution was made
+to forbid this directory using <code>&lt;security-constraint&gt;</code> tag in the file <a href="../../../projects/jetty-embedded-live-war/my-webapp/src/main/webapp/WEB-INF/web.xml"><code>web.xml</code></a>.</p>
+<p>There's also an alternative solution by setting equivalent restrictions programmatically &mdash; 
+see the method <code>applyRestrictions()</code> in the <code>ServerMain</code> class. This solution is preserved in
+the code for information purpose but it cannot be used in this project because the live WAR 
+file may also be called as a regular WAR file. The possible solutions may be:</p>
+<ul>
+<li>trying to set these restrictions in the Spring MVC configuration;</li>
+<li>using a traditional <code>web.xml</code> configuration (the accepted option).</li>
+</ul>
 <p>&nbsp;</p>
 <hr />
 

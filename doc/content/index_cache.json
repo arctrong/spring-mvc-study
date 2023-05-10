@@ -27,13 +27,18 @@
   "doc/content/beginner/about_part_1.html": [],
   "doc/content/beginner/server_setup.html": [
     {
-      "entry": "static content",
+      "entry": "JSP, support",
       "link": "beginner/server_setup.html#index_entry_index_1",
       "title": "Server setup"
     },
     {
-      "entry": "mvc namespace",
+      "entry": "static content",
       "link": "beginner/server_setup.html#index_entry_index_2",
+      "title": "Server setup"
+    },
+    {
+      "entry": "mvc namespace",
+      "link": "beginner/server_setup.html#index_entry_index_3",
       "title": "Server setup"
     }
   ],
@@ -563,6 +568,15 @@
       "entry": "live WAR",
       "link": "sidesteps/embedded_server.html#index_entry_index_1",
       "title": "Embedded server"
+    },
+    {
+      "entry": "JSP, support",
+      "link": "sidesteps/embedded_server.html#index_entry_index_2",
+      "title": "Embedded server"
     }
-  ]
+  ],
+  "doc/content/patches/234605b0cbf55d1dc956b1ee06843bb72abeb7ea.html": [],
+  "doc/content/patches/65666bbcaa8ee2a849ae57eba44dea629a3f7eb3.html": [],
+  "doc/content/patches/2600aec475c3093cb165d65fb45d969f3d2ed092.html": [],
+  "doc/content/patches/6050a18e8235df32b09f73b75b5b76160434db0c.html": []
 }
