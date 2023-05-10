@@ -1,3 +1,4 @@
 .idea
 /projects/*/target/
 /.$*.bkp
+/projects/**/*.iml
