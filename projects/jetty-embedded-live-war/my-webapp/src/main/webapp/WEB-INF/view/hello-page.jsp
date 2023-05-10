@@ -8,7 +8,7 @@
 <h1>Hello JSP page</h1>
 <hr/>
 
-<p><a href="${pageContext.request.contextPath}/">Go to the home page</a></p>
+<p><a href="${pageContext.request.contextPath}/">To the home page</a></p>
 
 <p>The generated servlet class is:
 <code><%= this.getClass().getSimpleName() %></code></p>

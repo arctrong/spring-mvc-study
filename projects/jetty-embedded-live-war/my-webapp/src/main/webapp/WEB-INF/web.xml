@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee
+         http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
+         version="3.1">
+
+    <context-param>
+        <param-name>org.eclipse.jetty.servlet.Default.dirAllowed</param-name>
+        <param-value>false</param-value>
+    </context-param>
+
+    <security-constraint>
+        <web-resource-collection>
+            <web-resource-name>Restricted folders</web-resource-name>
+            <url-pattern>/jettylivewar/*</url-pattern>
+            <url-pattern>/META-INF/*</url-pattern>
+            <url-pattern>/WEB-INF/*</url-pattern>
+        </web-resource-collection>
+        <auth-constraint />
+    </security-constraint>
+
+</web-app>

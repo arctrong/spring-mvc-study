@@ -11,7 +11,7 @@
 
 <h1>System properties</h1>
 <hr/>
-<p><a href="${pageContext.request.contextPath}/">Go to the home page</a></p>
+<p><a href="${pageContext.request.contextPath}/">To the home page</a></p>
 
 <p style='color:red;'>This table is just for demonstration. It is insecure
 to use it in a production environment.</p>

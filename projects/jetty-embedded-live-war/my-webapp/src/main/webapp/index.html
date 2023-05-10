@@ -1,11 +1,21 @@
 <!DOCTYPE html>
 <html>
-<head><meta charset="UTF-8"><title>Default page</title></head>
+<head><meta charset="UTF-8"><title>Default HTML page</title></head>
+<style>body {background-color: aliceblue;}</style>
 <body>
-<h1>Default page</h1>
+<h1>Default HTML page</h1>
 <hr/>
-<p><a href="ui/hello-jsp">Go to a JSP page</a></p>
-<p><a href="about.jsp">Go to the root JSP page</a></p>
-<p><a href="ui/system-properties">Go to the system properties JSP page</a></p>
+<p><a href="about.jsp">JSP page located in the resource root</a></p>
+<p><a href="ui/hello-jsp">JSP page managed by Spring MVC</a></p>
+<p><a href="ui/system-properties">System properties JSP page (managed by Spring MVC)</a></p>
+
+<h2>The following resources must not be accessible</h2>
+
+<p><a href="jettylivewar/bootstrap/">jettylivewar/bootstrap/</a></p>
+<p><a href="jettylivewar/bootstrap/JettyBootstrap.class">jettylivewar/bootstrap/JettyBootstrap.class</a></p>
+<p><a href="jettylivewar/bootstrap/LiveWarClassLoader.class">jettylivewar/bootstrap/LiveWarClassLoader.class</a></p>
+<p><a href="META-INF/MANIFEST.MF">META-INF/MANIFEST.MF</a></p>
+<p><a href="WEB-INF/web.xml">WEB-INF/web.xml</a></p>
+
 </body>
 </html>
