@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<head><title>Patch 1a95f6e32e101c1a2ceb76305558718ae65dff0b</title>
+<head><title>Patch c12f1479711095c55db1d715ed7177c86445a333</title>
 <meta charset="utf-8">
 <link rel="shortcut icon" type="image/png" href="../../favicon.png"/>
 <link rel="stylesheet" type="text/css" href="../../layout/styles.css"/>
@@ -18,7 +18,7 @@ class="header_item" href="../../../readme.html">About</a><a
 class="header_item" href="../index_page.html">Index</a><a 
 class="header_item" href="https://github.com/arctrong/spring-mvc-study">GitHub</a>
 
-<a href="../../../doc_src/patches/1a95f6e32e101c1a2ceb76305558718ae65dff0b.txt " class="header_item_source" title="Source text">&lt;/&gt;</a>
+<a href="../../../doc_src/patches/c12f1479711095c55db1d715ed7177c86445a333.txt " class="header_item_source" title="Source text">&lt;/&gt;</a>
 
 
 
@@ -26,7 +26,7 @@ class="header_item" href="https://github.com/arctrong/spring-mvc-study">GitHub</
 
 <img class="headerNavArrows" src="../../layout/pict/next_page_h18px_inactive.png"/>
 
-<span class="headerTitle">Patch 1a95f6e32e101c1a2ceb76305558718ae65dff0b</span>
+<span class="headerTitle">Patch c12f1479711095c55db1d715ed7177c86445a333</span>
 
 </div>
 
@@ -67,57 +67,55 @@ class="header_item" href="https://github.com/arctrong/spring-mvc-study">GitHub</
     </table>
 </div>
 
-<p style="font-size:44px;font-weight:bold;margin:0 0 30px 0;">Patch 1a95f6e32e101c1a2ceb76305558718ae65dff0b</p>
+<p style="font-size:44px;font-weight:bold;margin:0 0 30px 0;">Patch c12f1479711095c55db1d715ed7177c86445a333</p>
 
 <p><strong>Commit message:</strong> 
-using a logger</p>
+life WAR small change</p>
 <div class="patch_block">
 
-<span class="diff">diff --git a/projects/web-app-spring-adv4/src/main/java/springmvcstudy2/config/MyApplicationInitializer.java b/projects/web-app-spring-adv4/src/main/java/springmvcstudy2/config/MyApplicationInitializer.java</span><br />
+<span class="diff">diff --git a/projects/jetty-embedded-live-war/jetty_server/src/main/java/jettylivewar/starter/JspSupportEnablingHelper.java b/projects/jetty-embedded-live-war/jetty_server/src/main/java/jettylivewar/starter/JspSupportEnablingHelper.java</span><br />
 
-<span class="index">index 2d1fe8f..da4a9c3 100644</span><br />
+<span class="index">index ec0d7af..8b847bd 100644</span><br />
 
-<span class="tree_minuses">--- a/projects/web-app-spring-adv4/src/main/java/springmvcstudy2/config/MyApplicationInitializer.java</span><br />
+<span class="tree_minuses">--- a/projects/jetty-embedded-live-war/jetty_server/src/main/java/jettylivewar/starter/JspSupportEnablingHelper.java</span><br />
 
-<span class="tree_pluses">+++ b/projects/web-app-spring-adv4/src/main/java/springmvcstudy2/config/MyApplicationInitializer.java</span><br />
+<span class="tree_pluses">+++ b/projects/jetty-embedded-live-war/jetty_server/src/main/java/jettylivewar/starter/JspSupportEnablingHelper.java</span><br />
 
-<span class="two_ats">@@ -7,13 +7,17 @@ import org.springframework.web.servlet.DispatcherServlet;</span><br />
+<span class="two_ats">@@ -11,6 +11,7 @@ import java.io.File;</span><br />
 
-<span> import javax.servlet.ServletContext;</span><br />
-
-<span> import javax.servlet.ServletException;</span><br />
-
-<span> import javax.servlet.ServletRegistration;</span><br />
-
-<ins>+import java.util.logging.Logger;</ins><br />
+<span> import java.io.IOException;</span><br />
 
 <span> </span><br />
 
-<span> public class MyApplicationInitializer implements WebApplicationInitializer {</span><br />
+<span> import static org.eclipse.jetty.servlet.ServletContextHandler.ServletContainerInitializerCaller;</span><br />
+
+<ins>+import static org.eclipse.jetty.webapp.WebInfConfiguration.CONTAINER_JAR_PATTERN;</ins><br />
 
 <span> </span><br />
 
-<ins>+    private static final Logger logger =</ins><br />
-
-<ins>+            Logger.getLogger(MyApplicationInitializer.class.getName());</ins><br />
-
-<ins>+</ins><br />
-
-<span>     @Override</span><br />
-
-<span>     public void onStartup(ServletContext servletContext) throws ServletException {</span><br />
+<span> public class JspSupportEnablingHelper {</span><br />
 
 <span> </span><br />
 
-<del>-        System.out.println(this.getClass().getSimpleName() + &quot; onStartup method called&quot;);</del><br />
+<span class="two_ats">@@ -31,8 +32,7 @@ public class JspSupportEnablingHelper {</span><br />
 
-<ins>+        logger.info(this.getClass().getSimpleName() + &quot; onStartup method called&quot;);</ins><br />
+<span>         // container-path jars for TLDs, web-fragments etc.</span><br />
+
+<span>         // If you omit the JAR that contains the JSTL .tlds, the JSP engine will</span><br />
+
+<span>         // scan for them instead.</span><br />
+
+<del>-        servletContextHandler.setAttribute(</del><br />
+
+<del>-                &quot;org.eclipse.jetty.server.webapp.ContainerIncludeJarPattern&quot;,</del><br />
+
+<ins>+        servletContextHandler.setAttribute(CONTAINER_JAR_PATTERN,</ins><br />
+
+<span>                 &quot;.*/[^/]*servlet-api-[^/]*\\.jar$|.*/javax.servlet.jsp.jstl-.*\\.jar$|&quot; +</span><br />
+
+<span>                         &quot;.*/[^/]*taglibs.*\\.jar$&quot;);</span><br />
 
 <span> </span><br />
-
-<span>         if (System.getProperty(&quot;debug&quot;) != null) {</span><br />
-
-<span>             System.out.println(&quot;Connect a debugger and press Enter key to continue...&quot;);</span><br />
 
 </div>
 <p>&nbsp;</p>

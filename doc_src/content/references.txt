@@ -1,5 +1,5 @@
 <!--VARIABLES {"title": "References", "SORT_ORDER": "020", "code": "refs",
-"addRestrictedScript": true}-->
+"addRestrictedScript": true, "expandCollapseScript": true}-->
 
 <a name="ref_1"></a>**[1]** Youtube playlist:
 [Spring MVC for complete beginners :  [Running course]](
@@ -214,9 +214,93 @@ https://www.baeldung.com/spring-web-contexts)<span class="localOnly">,
     https://github.com/eclipse/jetty.project/issues/5051)<span class="localOnly">,
     <a href="javascript:void(openLocal('GitHub_Correct_Usage_of_ServletContainerInitializer.htm'))"
     dummy="dummy">local</a></span>
+- <a name="ref_23_7"></a>[23.7] Blogspot: [Embedded jetty executable war with Maven and Jetty 8.1](
+    http://uguptablog.blogspot.com/2012/09/embedded-jetty-executable-war-with.html?view=sidebar)<span class="localOnly">,
+    <a href="javascript:void(openLocal('Embedded_Jetty_8_executable_WAR_with_Maven.html'))"
+    dummy="dummy">local</a></span>
+- <a name="ref_23_8"></a>[23.8] James Ward: [Containerless Spring MVC](
+    https://jamesward.com/2012/08/13/containerless-spring-mvc/)<span class="localOnly">,
+    <a href="javascript:void(openLocal('Containerless_Spring_MVC.htm'))">local</a></span>
+- <a name="ref_23_9"></a>[23.9] [Happy Coding](https://happycoding.io/): [Hello World: Embedded Jetty (Maven)](
+    https://happycoding.io/tutorials/java-server/embedded-jetty/hello-world-embedded-jetty-maven)<span class="localOnly">,
+    <a href="javascript:void(openLocal('Hello_World_Embedded_Jetty_Maven.htm'))">local</a></span>
+- <a name="ref_23_10"></a>[23.10] iTecNote: [Spring 3.1 WebApplicationInitializer & Embedded Jetty 8 AnnotationConfiguration](
+    https://itecnote.com/tecnote/java-spring-3-1-webapplicationinitializer-embedded-jetty-8-annotationconfiguration/
+    )<span class="localOnly">,
+    <a href="javascript:void(openLocal('Spring_3_1_WebApplicationInitializer_and_Embedded_Jetty_8_AnnotationConfiguration.htm'))"
+    dummy="dummy">local</a></span>
+- <a name="ref_23_11"></a>[23.11] [Setting up embedded Jetty 8 and Spring MVC with Maven and NO XML](
+    https://steveliles.github.io/setting_up_embedded_jetty_8_and_spring_mvc_with_maven_and_no_xml.html)<span class="localOnly">,
+    <a href="javascript:void(openLocal('Setting_up_embedded_Jetty_8_and_Spring_MVC_with_Maven_and_NO_XML.htm'))"
+    dummy="dummy">local</a></span>
 
 <a name="ref_24"></a>**[24]** [Spring WebApplicationInitializer tutorial](
 https://zetcode.com/spring/webapplicationinitializer/)<span class="localOnly">,
 <a href="javascript:void(openLocal('Spring_WebApplicationInitializer.htm'))">local</a></span>
+
+<!--index ["Java EE", "Enterprise Edition, Java"]--><a name="ref_25"></a>**[25]** Youtube playlist:
+[Java EE 7 Tutorials](
+https://www.youtube.com/playlist?list=PLQnvNIEg5crMDvk7G5Z-WJMQNABl6YPM5),
+53 videos, last updated on Feb 24, 2020
+
+<div class="collapsed"></div>
+
+|  | Title | Duration |
+|----:|----|----:|
+1 | [1 - Introduction to Java EE 7](https://www.youtube.com/watch?v=GSDft-As5ao&list=PLQnvNIEg5crMDvk7G5Z-WJMQNABl6YPM5&index=1&pp=iAQB) | 5:53
+2 | [2 - Getting You Started](https://www.youtube.com/watch?v=RNFe-WmXsdE&list=PLQnvNIEg5crMDvk7G5Z-WJMQNABl6YPM5&index=2&pp=iAQB) | 10:42
+3 | [3 - Resource Creation](https://www.youtube.com/watch?v=61JJCrqTsHU&list=PLQnvNIEg5crMDvk7G5Z-WJMQNABl6YPM5&index=3&pp=iAQB) | 3:28
+4 | [4 - Injection](https://www.youtube.com/watch?v=Aajz75NRw_g&list=PLQnvNIEg5crMDvk7G5Z-WJMQNABl6YPM5&index=4&pp=iAQB) | 7:28
+5 | [5 - Packaging](https://www.youtube.com/watch?v=-gpG4_k4kls&list=PLQnvNIEg5crMDvk7G5Z-WJMQNABl6YPM5&index=5&pp=iAQB) | 4:31
+6 | [6 - Getting Started with Web Applications](https://www.youtube.com/watch?v=54ATyJW03Bs&list=PLQnvNIEg5crMDvk7G5Z-WJMQNABl6YPM5&index=6&pp=iAQB) | 11:33
+7 | [7 - JSF](https://www.youtube.com/watch?v=oUMt1xLlgwI&list=PLQnvNIEg5crMDvk7G5Z-WJMQNABl6YPM5&index=7&pp=iAQB) | 6:38
+8 | [8 - Facelets](https://www.youtube.com/watch?v=ZdRp1Dj7eVc&list=PLQnvNIEg5crMDvk7G5Z-WJMQNABl6YPM5&index=8&pp=iAQB) | 21:46
+9 | [9 - Expression Language](https://www.youtube.com/watch?v=k3JPHL5jNaE&list=PLQnvNIEg5crMDvk7G5Z-WJMQNABl6YPM5&index=9&pp=iAQB) | 3:31
+10 | [10 - JSF Tech in Web Pages](https://www.youtube.com/watch?v=7-0y9IAWZc4&list=PLQnvNIEg5crMDvk7G5Z-WJMQNABl6YPM5&index=10&pp=iAQB) | 10:00
+11 | [11 - Converters, Listeners & Validators](https://www.youtube.com/watch?v=X0AcywXj6Q4&list=PLQnvNIEg5crMDvk7G5Z-WJMQNABl6YPM5&index=11&pp=iAQB) | 5:40
+12 | [12 - Developing with JSF Technology](https://www.youtube.com/watch?v=MRzQARsfK5s&list=PLQnvNIEg5crMDvk7G5Z-WJMQNABl6YPM5&index=12&pp=iAQB) | 10:39
+13 | [13 - Using Ajax with JSF](https://www.youtube.com/watch?v=67VWxVTX-1E&list=PLQnvNIEg5crMDvk7G5Z-WJMQNABl6YPM5&index=13&pp=iAQB) | 10:01
+14 | [14 - Composite Components](https://www.youtube.com/watch?v=1MlI2a5W-_s&list=PLQnvNIEg5crMDvk7G5Z-WJMQNABl6YPM5&index=14&pp=iAQB) | 7:09
+15 | [15 - Creating Custom UI Components & Other Custom Objects](https://www.youtube.com/watch?v=UaxlTL6vdwo&list=PLQnvNIEg5crMDvk7G5Z-WJMQNABl6YPM5&index=15&pp=iAQB) | 10:12
+16 | [16 - Configuring JSF Applications](https://www.youtube.com/watch?v=gtTvGtPkpMI&list=PLQnvNIEg5crMDvk7G5Z-WJMQNABl6YPM5&index=16&pp=iAQB) | 17:55
+17 | [17 - Java Servlet Technology](https://www.youtube.com/watch?v=BncHad8Go7s&list=PLQnvNIEg5crMDvk7G5Z-WJMQNABl6YPM5&index=17&pp=iAQB) | 21:25
+18 | [18 - Java API for WebSocket](https://www.youtube.com/watch?v=1bDb0S5XEDs&list=PLQnvNIEg5crMDvk7G5Z-WJMQNABl6YPM5&index=18&pp=iAQB) | 11:25
+19 | [19 - JSON Processing](https://www.youtube.com/watch?v=KbxlC7b2gjI&list=PLQnvNIEg5crMDvk7G5Z-WJMQNABl6YPM5&index=19&pp=iAQB) | 10:58
+20 | [20 - Internationalization & Localizing of Web Applications](https://www.youtube.com/watch?v=3K5DIKogJE0&list=PLQnvNIEg5crMDvk7G5Z-WJMQNABl6YPM5&index=20&pp=iAQB) | 5:41
+21 | [21 - Introduction to Bean Validation](https://www.youtube.com/watch?v=t651432prc0&list=PLQnvNIEg5crMDvk7G5Z-WJMQNABl6YPM5&index=21&pp=iAQB) | 3:35
+22 | [22 - Bean Validation - Advanced Topics](https://www.youtube.com/watch?v=g_zhBZFkoyo&list=PLQnvNIEg5crMDvk7G5Z-WJMQNABl6YPM5&index=22&pp=iAQB) | 5:54
+23 | [23 & 24 - Intro to CDI for Java EE](https://www.youtube.com/watch?v=WQOM4Glvk9A&list=PLQnvNIEg5crMDvk7G5Z-WJMQNABl6YPM5&index=23&pp=iAQB) | 17:13
+24 | [25 & 26 - CDI for Java EE: Advanced Topics](https://www.youtube.com/watch?v=v81HktgGkF0&list=PLQnvNIEg5crMDvk7G5Z-WJMQNABl6YPM5&index=24&pp=iAQB) | 27:54
+25 | [27 - Introduction to Web Services](https://www.youtube.com/watch?v=ulOg_fmdiBE&list=PLQnvNIEg5crMDvk7G5Z-WJMQNABl6YPM5&index=25&pp=iAQB) | 3:42
+26 | [28 - Building Web Services with JAX-WS](https://www.youtube.com/watch?v=99jHeBgJz2Q&list=PLQnvNIEg5crMDvk7G5Z-WJMQNABl6YPM5&index=26&pp=iAQB) | 6:34
+27 | [29 - Building RESTful Web Services with JAX-RS](https://www.youtube.com/watch?v=4lh3AbviB6I&list=PLQnvNIEg5crMDvk7G5Z-WJMQNABl6YPM5&index=27&pp=iAQB) | 13:17
+28 | [30 - Accessing REST Resources with the JAX-RS Client API](https://www.youtube.com/watch?v=ER-S1jW_w-0&list=PLQnvNIEg5crMDvk7G5Z-WJMQNABl6YPM5&index=28&pp=iAQB) | 2:53
+29 | [31 - JAX-RS: Advanced Topics](https://www.youtube.com/watch?v=42KzxK3lTwE&list=PLQnvNIEg5crMDvk7G5Z-WJMQNABl6YPM5&index=29&pp=iAQB) | 16:27
+30 | [32 & 33 - Enterprise Beans](https://www.youtube.com/watch?v=LDOZ2g4IPEQ&list=PLQnvNIEg5crMDvk7G5Z-WJMQNABl6YPM5&index=30&pp=iAQB) | 17:49
+31 | [34 - Enterprise Bean Examples](https://www.youtube.com/watch?v=4HIBw_F2VdQ&list=PLQnvNIEg5crMDvk7G5Z-WJMQNABl6YPM5&index=31&pp=iAQB) | 14:43
+32 | [35 - Using the Embedded Enterprise Bean Container](https://www.youtube.com/watch?v=riWnx1Zu4sM&list=PLQnvNIEg5crMDvk7G5Z-WJMQNABl6YPM5&index=32&pp=iAQB) | 6:03
+33 | [36 - Using Asynchronous Method Invocation in Session Beans](https://www.youtube.com/watch?v=KCOGKX_C-_E&list=PLQnvNIEg5crMDvk7G5Z-WJMQNABl6YPM5&index=33&pp=iAQB) | 6:14
+34 | [37 & 38 - Introduction to the Java Persistence API](https://www.youtube.com/watch?v=Anoq_bbWgao&list=PLQnvNIEg5crMDvk7G5Z-WJMQNABl6YPM5&index=34&pp=iAQB) | 23:17
+35 | [39 - Java Persistence Query Language](https://www.youtube.com/watch?v=LRJ5JA4oAuA&list=PLQnvNIEg5crMDvk7G5Z-WJMQNABl6YPM5&index=35&pp=iAQB) | 6:24
+36 | [40 - Using the Criteria API to Create Queries](https://www.youtube.com/watch?v=kilyny1lMNo&list=PLQnvNIEg5crMDvk7G5Z-WJMQNABl6YPM5&index=36&pp=iAQB) | 3:07
+37 | [41 - Creating and Using String-Based Criteria Queries](https://www.youtube.com/watch?v=nQj6CJstoFA&list=PLQnvNIEg5crMDvk7G5Z-WJMQNABl6YPM5&index=37&pp=iAQB) | 3:05
+38 | [42 - Controlling Concurrent Access to Entity Data with Locking](https://www.youtube.com/watch?v=bmGbXi5kcp8&list=PLQnvNIEg5crMDvk7G5Z-WJMQNABl6YPM5&index=38&pp=iAQB) | 3:18
+39 | [43 - Creating Fetch Plans with Entity Graphs](https://www.youtube.com/watch?v=j4nKmpeblZg&list=PLQnvNIEg5crMDvk7G5Z-WJMQNABl6YPM5&index=39&pp=iAQB) | 4:15
+40 | [44 - Using a Second-Level Cache with JPA Applications](https://www.youtube.com/watch?v=7tUAZ3CMj1A&list=PLQnvNIEg5crMDvk7G5Z-WJMQNABl6YPM5&index=40&pp=iAQB) | 3:50
+41 | [45 - Java Message Service Concepts](https://www.youtube.com/watch?v=m_ieAxv0S2M&list=PLQnvNIEg5crMDvk7G5Z-WJMQNABl6YPM5&index=41&pp=iAQB) | 20:27
+42 | [46 - Java Message Service Examples](https://www.youtube.com/watch?v=LntIA3ADz3M&list=PLQnvNIEg5crMDvk7G5Z-WJMQNABl6YPM5&index=42&pp=iAQB) | 1:07:03
+43 | [47 - Introduction to Security in Java EE](https://www.youtube.com/watch?v=nhMiGt1Qlek&list=PLQnvNIEg5crMDvk7G5Z-WJMQNABl6YPM5&index=43&pp=iAQB) | 16:44
+44 | [48 - Getting Started Securing Web Applications](https://www.youtube.com/watch?v=aS3YCdLqc6Y&list=PLQnvNIEg5crMDvk7G5Z-WJMQNABl6YPM5&index=44&pp=iAQB) | 12:35
+45 | [49 - Getting Started Securing Enterprise Applications](https://www.youtube.com/watch?v=8_afAyy07yo&list=PLQnvNIEg5crMDvk7G5Z-WJMQNABl6YPM5&index=45&pp=iAQB) | 6:49
+46 | [50 - Java EE Security: Advanced Topics](https://www.youtube.com/watch?v=NWBsQ6S2e-w&list=PLQnvNIEg5crMDvk7G5Z-WJMQNABl6YPM5&index=46&pp=iAQB) | 5:20
+47 | [51 - Transactions](https://www.youtube.com/watch?v=Du41iM5KtWg&list=PLQnvNIEg5crMDvk7G5Z-WJMQNABl6YPM5&index=47&pp=iAQB) | 7:19
+48 | [52 - Using Java EE Interceptors](https://www.youtube.com/watch?v=JBXjo59sgdM&list=PLQnvNIEg5crMDvk7G5Z-WJMQNABl6YPM5&index=48&pp=iAQB) | 2:58
+49 | [53 - Batch Processing](https://www.youtube.com/watch?v=92dMKTiCnqU&list=PLQnvNIEg5crMDvk7G5Z-WJMQNABl6YPM5&index=49&pp=iAQB) | 10:31
+50 | [54 - Concurrency Utilities](https://www.youtube.com/watch?v=FfB29YjQvUE&list=PLQnvNIEg5crMDvk7G5Z-WJMQNABl6YPM5&index=50&pp=iAQB) | 12:13
+51 | [55 - Case Study 1 - Duke's Bookstore](https://www.youtube.com/watch?v=pob-cQfcLj4&list=PLQnvNIEg5crMDvk7G5Z-WJMQNABl6YPM5&index=51&pp=iAQB) | 9:49
+52 | [56 - Case Study 2 - Duke's Tutoring Example](https://www.youtube.com/watch?v=kI6rH7JeWHw&list=PLQnvNIEg5crMDvk7G5Z-WJMQNABl6YPM5&index=52&pp=iAQB) | 14:17
+53 | [57 - Case Study 3 - Duke's Forest Example](https://www.youtube.com/watch?v=_6jl1nPvSjM&list=PLQnvNIEg5crMDvk7G5Z-WJMQNABl6YPM5&index=53&pp=iAQB) | 11:43
+
+
 
 

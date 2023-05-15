@@ -6,7 +6,18 @@
       "title": "About the course"
     }
   ],
-  "doc/content/references.html": [],
+  "doc/content/references.html": [
+    {
+      "entry": "Java EE",
+      "link": "references.html#index_entry_index_1",
+      "title": "References"
+    },
+    {
+      "entry": "Enterprise Edition, Java",
+      "link": "references.html#index_entry_index_1",
+      "title": "References"
+    }
+  ],
   "doc/content/common_notes.html": [
     {
       "entry": "JEE standard",
@@ -573,10 +584,44 @@
       "entry": "JSP, support",
       "link": "sidesteps/embedded_server.html#index_entry_index_2",
       "title": "Embedded server"
+    },
+    {
+      "entry": "directory listing",
+      "link": "sidesteps/embedded_server.html#index_entry_index_3",
+      "title": "Embedded server"
+    },
+    {
+      "entry": "warless embedded Jetty server",
+      "link": "sidesteps/embedded_server.html#index_entry_index_4",
+      "title": "Embedded server"
     }
   ],
   "doc/content/patches/234605b0cbf55d1dc956b1ee06843bb72abeb7ea.html": [],
   "doc/content/patches/65666bbcaa8ee2a849ae57eba44dea629a3f7eb3.html": [],
   "doc/content/patches/2600aec475c3093cb165d65fb45d969f3d2ed092.html": [],
-  "doc/content/patches/6050a18e8235df32b09f73b75b5b76160434db0c.html": []
+  "doc/content/patches/6050a18e8235df32b09f73b75b5b76160434db0c.html": [],
+  "doc/content/sidesteps/jetty_server_notes.html": [
+    {
+      "entry": "default configuration classes, WebAppContext, Jetty",
+      "link": "sidesteps/jetty_server_notes.html#index_entry_index_1",
+      "title": "Jetty server notes"
+    },
+    {
+      "entry": "DEFAULT_CONFIGURATION_CLASSES",
+      "link": "sidesteps/jetty_server_notes.html#index_entry_index_1",
+      "title": "Jetty server notes"
+    },
+    {
+      "entry": "restrict WAR file directories, WebAppContext, Jetty",
+      "link": "sidesteps/jetty_server_notes.html#index_entry_index_2",
+      "title": "Jetty server notes"
+    },
+    {
+      "entry": "DEFAULT_PROTECTED_TARGETS",
+      "link": "sidesteps/jetty_server_notes.html#index_entry_index_2",
+      "title": "Jetty server notes"
+    }
+  ],
+  "doc/content/patches/c12f1479711095c55db1d715ed7177c86445a333.html": [],
+  "doc/content/patches/3944bb1851bdffd9f40e525e4f8abd573bc7c66c.html": []
 }

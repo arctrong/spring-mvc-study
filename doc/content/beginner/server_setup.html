@@ -58,6 +58,7 @@ class="header_item" href="https://github.com/arctrong/spring-mvc-study">GitHub</
 <a href="../intermediate/exception_handling.html" class="sidebar_item">Exception handling</a>
             <h3>Sidesteps</h3>
             <a href="../sidesteps/sidesteps.html" class="sidebar_item">Sidesteps</a>
+<a href="../sidesteps/jetty_server_notes.html" class="sidebar_item">Jetty server notes</a>
 <a href="../sidesteps/embedded_server.html" class="sidebar_item">Embedded server</a>
         </td></tr>
         <tr><td class="bottom" valign="bottom">
@@ -71,7 +72,10 @@ class="header_item" href="https://github.com/arctrong/spring-mvc-study">GitHub</
 <div class="toc">
 <ul>
 <li><a href="#about-this-section">About this section</a></li>
-<li><a href="#install-and-setup-jetty-server">Install and setup Jetty server</a></li>
+<li><a href="#install-and-setup-jetty-server">Install and setup Jetty server</a><ul>
+<li><a href="#activate-jetty-jsp-module">Activate Jetty JSP module</a></li>
+</ul>
+</li>
 <li><a href="#initialize-maven-project">Initialize Maven project</a><ul>
 <li><a href="#project-deployment-and-running">Project deployment and running</a></li>
 </ul>
@@ -83,6 +87,15 @@ class="header_item" href="https://github.com/arctrong/spring-mvc-study">GitHub</
 <h1 id="about-this-section">About this section</h1>
 <p>This section describes simple Jetty server installation and setup. Small useless application
 is going to be created and run for a sanity check.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>In this section standalone Jetty servlet container setup is discussed. The application is
+build as a normal WAR file and deployed to the server in a traditional way. This setup was
+used along this Spring MVC course.</p>
+<p>There are alternative ways that use embedding servlet containers into the application. Such
+variations probably might be used in the course, and they might probably be more convenient.
+The corresponding section is <a href="../sidesteps/embedded_server.html">here</a>.</p>
+</div>
 <hr />
 <h1 id="install-and-setup-jetty-server">Install and setup Jetty server</h1>
 <p>Home page: <a href="https://www.eclipse.org/jetty/">https://www.eclipse.org/jetty/</a>  <br />
@@ -116,8 +129,9 @@ INFO  : Base directory was modified
 2023-03-18 11:36:14.306:INFO:oejs.Server:main: Started @630ms</code></pre>
 <p>In a browser navigate to <a href="http://localhost:8080/">http://localhost:8080/</a> to see an "Error 404 - Not Found" page. To stop
 the server press <code>Ctrl</code>+<code>C</code>.</p>
-<p><a name="index_entry_index_1"></a><a name="activate_jetty_jsp_module"></a>
-As we are going to use JSP, adding the <code>jsp</code> module, also see the Jetty documentation [<a href="../references.html#ref_4">4</a>]:</p>
+<p><a name="index_entry_index_1"></a><a name="activate_jetty_jsp_module"></a></p>
+<h2 id="activate-jetty-jsp-module">Activate Jetty JSP module</h2>
+<p>As we are going to use JSP, adding the <code>jsp</code> module, also see the Jetty documentation [<a href="../references.html#ref_4">4</a>]:</p>
 <ul>
 <li><a href="https://www.eclipse.org/jetty/documentation/jetty-9/index.html#configuring-jsp">Configuring JSP Support</a></li>
 <li><a href="https://www.eclipse.org/jetty/documentation/jetty-9/index.html#startup-modules">Managing Startup Modules</a></li>
@@ -269,6 +283,8 @@ src="../../layout/pict/next_page.png"/></a>
 </p>
 
 <div style="height: 1000px;"><p>&nbsp;</p></div>
+
+
 
 
 </body>

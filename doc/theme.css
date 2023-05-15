@@ -52,4 +52,13 @@ code, .code {
     display: none;
 }
 
+.collapsed {
+    cursor: pointer;
+    font-size: smaller;
+    margin-bottom: 10px;
+    max-width: 900px;
+    color: blue;
+    border-bottom: dashed blue 1px;
+}
+
 

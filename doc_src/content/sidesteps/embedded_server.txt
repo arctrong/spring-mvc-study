@@ -1,7 +1,8 @@
-<!--VARIABLES {"title": "Embedded server", "SORT_ORDER": "020", "code": "embedded_server"}-->
+<!--VARIABLES {"title": "Embedded server", "SORT_ORDER": "030", "code": "embedded_server"}-->
 
 [TOC]
 
+[4]: <!--page refs-->#ref_4
 [20]: <!--page refs-->#ref_20
 [20.1]: <!--page refs-->#ref_20_1
 [23]: <!--page refs-->#ref_23
@@ -15,14 +16,13 @@ This section is intended for discussion on different ways of embedded server set
 
 The topic doesn't look to be simple and straightforward. There are quite many materials on the 
 Internet but they all probably cover the simplest use cases and contain very little or no 
-descriptions and explanations. Some of the materials are listed in [[23][]], [[20][]].
+descriptions and explanations. Some of the materials are listed in [[23][]] and [[20][]].
 
-Here more complex setups are going to be implemented and described.
-
+Here some certain setups are going to be implemented and explored.
 
 ----------------------------------------------------------------------------------------------------
 <!--index ["live WAR"]-->
-# Jetty live WAR
+# Jetty live WAR with JSP
 
 This implementation is made based on the material [[20.1][]]. The project is declared as being for
 investigation purpose. It uses custom class loader, `maven-dependency-plugin` and probably some
@@ -33,6 +33,10 @@ The following features were added:
 - Spring MVC support;
 - JSP support;
 - necessary resource access restrictions.
+
+Also see the StackOverflow question "[How to enable JSP in a Jetty server in a JAR file?](
+https://stackoverflow.com/questions/65637135/how-to-enable-jsp-in-a-jetty-server-in-a-jar-file)", 
+[this answer](https://stackoverflow.com/a/65637665/3868454).
 
 The project may be built and run:
 
@@ -83,6 +87,10 @@ the same way as in the previous version.
 > Git commit: [`6050a18e8235df32b09f73b75b5b76160434db0c`](
 > <!--path patches-->6050a18e8235df32b09f73b75b5b76160434db0c.html)
 > live WAR implemented
+> 
+> Git commit: [`c12f1479711095c55db1d715ed7177c86445a333`](
+> <!--path patches-->c12f1479711095c55db1d715ed7177c86445a333.html)
+> life WAR small change
 
 The following are the Maven modules described:
 
@@ -147,6 +155,8 @@ In the `jetty_server` module the following class list adjustment is used in the 
 <!--index ["JSP, support"]-->
 **Adding JSP support**
 
+[](https://www.eclipse.org/jetty/documentation/jetty-9/index.html#configuring-jsp)
+
 When the WAR file is run in the Jetty servlet container, JSP support is done externally by the
 Jetty's `jsp ` module (also see [here](<!--page server_setup-->#activate_jetty_jsp_module)).
 No other actions required inside the standard WAR file.
@@ -167,12 +177,103 @@ directory `jettylivewar` are by default accessible to the web clients. The solut
 to forbid this directory using `<security-constraint>` tag in the file [`web.xml`](
 <!--path code-->jetty-embedded-live-war/my-webapp/src/main/webapp/WEB-INF/web.xml).
 
+````xml
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee
+         http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
+         version="3.1">
+
+    <context-param>
+        <param-name>org.eclipse.jetty.servlet.Default.dirAllowed</param-name>
+        <param-value>false</param-value>
+    </context-param>
+
+    <security-constraint>
+        <web-resource-collection>
+            <web-resource-name>Restricted folders</web-resource-name>
+            <url-pattern>/jettylivewar/*</url-pattern>
+            <url-pattern>/META-INF/*</url-pattern>
+            <url-pattern>/WEB-INF/*</url-pattern>
+        </web-resource-collection>
+        <auth-constraint />
+    </security-constraint>
+
+</web-app>
+````
+
+<!--index ["directory listing"]-->
+Also directory listing was disabled using the parameter `dirAllowed`.
+
 There's also an alternative solution by setting equivalent restrictions programmatically --- 
 see the method `applyRestrictions()` in the `ServerMain` class. This solution is preserved in
 the code for information purpose but it cannot be used in this project because the live WAR 
-file may also be called as a regular WAR file. The possible solutions may be:
+file may also be called as a regular WAR file. So the possible solutions may be:
 
-- trying to set these restrictions in the Spring MVC configuration;
-- using a traditional `web.xml` configuration (the accepted option).
+- to set these restrictions in the Spring MVC configuration (not tried yet);
+- to use a traditional `web.xml` configuration (the accepted option).
+
+Also see this [related topic](<!--page jetty_server_notes-->#default_protected_targets).
+
+----------------------------------------------------------------------------------------------------
+<!--index ["warless embedded Jetty server"]-->
+# WARless JAR with JSP (incomplete)
+
+The following attempt was done to create an executable JAR with embedded Jetty server and JSP
+support. This result was achieved but only when the project is run in the IntelliJ Idea IDE.
+When run inside a package it doesn't work.
+
+> Git commit: [`3944bb1851bdffd9f40e525e4f8abd573bc7c66c`](
+> <!--path patches-->3944bb1851bdffd9f40e525e4f8abd573bc7c66c.html)
+> Embedded Jetty WARless packaging implemented (incomplete)
+
+Navigate to <localhost:8080> to see the result.
+
+The main difference between the IDE and self contained versions is probably in the following
+setting (class [`Main`](
+<!--path code-->jetty-embedded-warless/src/main/java/jettywarless/Main.java)):
+
+````code
+...
+webAppContext.setExtraClasspath(appClasspath);
+...
+````
+
+Inside the IDE the value is like `file:/X:/path/to/jetty-embedded-warless/classes/`, but when 
+running as the executable JAR it's like 
+`file:/X:/path/to/jetty-embedded-warless/jetty-embedded-warless-1.0-SNAPSHOT.jar`.
+
+So in the latter case much more classes fall into the initialization scope. The problem may 
+probably be solved by restricting the web application context class path, but a method for this
+was not found yet.
+
+The [answer](https://stackoverflow.com/a/48932175/3868454) to the StackOverflow question 
+[jetty embedded jsp issues](https://stackoverflow.com/questions/48928954/jetty-embedded-jsp-issues)
+may be notable for understanding the perspectives:
+
+> You have to setup JSP for Jetty, the mere existence of the JARs is insufficient.
+> 
+> ...
+> 
+> Finally, some things you need to consider with JSP/JSTL/EL support:
+> 
+> * Don't bundle up in OSGi (the JSTL/EL/Standard libraries do not support this usage. mainly
+>   due to classloader expectations)
+> * Don't use Java 9+ JPMS modules (the JSTL/EL/Standard libraries do not support this usage,
+>   mainly due to classloader expectations, and resource url expecations)
+> * Don't create an uber jar (the JSTL/EL/Standard libraries do not support this)
+> * Don't repackage the JSTL jars in any way, they need to stay as the JSTL/EL/Standard jars,
+>   available on the filesystem.
+> * Don't create custom classloaders. (The JSTL/EL/Standard libraries expect a very narrow
+>   definition of a Classloader)
+
+**Conclusions**
+
+- This method may be used if JSP is not required, like servlets with `@ResponseBody` or REST.
+- JSP is a hard technology to be set up and adjusted (at least with Jetty), and it must be avoided
+    wherever and whenever it's possible.
+
+
 
 

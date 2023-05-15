@@ -1,0 +1,43 @@
+<!--VARIABLES {"title": "Jetty server notes", "SORT_ORDER": "020", "code": "jetty_server_notes"}-->
+
+[TOC]
+
+----------------------------------------------------------------------------------------------------
+May 15, 2023
+
+# About this section
+
+This section contains various helpful notes on Jetty server that are not yet bound to some other
+certain sections.
+
+----------------------------------------------------------------------------------------------------
+<!--index ["default configuration classes, WebAppContext, Jetty", "DEFAULT_CONFIGURATION_CLASSES"]-->
+# WebAppContext default configuration classes
+
+Code point `org.eclipse.jetty.webapp.WebAppContext#DEFAULT_CONFIGURATION_CLASSES`:
+
+````code
+    public static final String[] DEFAULT_CONFIGURATION_CLASSES =
+        {
+            "org.eclipse.jetty.webapp.WebInfConfiguration",
+            "org.eclipse.jetty.webapp.WebXmlConfiguration",
+            "org.eclipse.jetty.webapp.MetaInfConfiguration",
+            "org.eclipse.jetty.webapp.FragmentConfiguration",
+            "org.eclipse.jetty.webapp.JettyWebXmlConfiguration"
+        };
+````
+
+----------------------------------------------------------------------------------------------------
+<!--index ["restrict WAR file directories, WebAppContext, Jetty", "DEFAULT_PROTECTED_TARGETS"]--><a 
+name="default_protected_targets"></a>
+# WebAppContext restrict WAR file directories
+
+Code point `org.eclipse.jetty.webapp.WebAppContext#DEFAULT_PROTECTED_TARGETS`:
+
+````code
+    private static final String[] DEFAULT_PROTECTED_TARGETS = {"/WEB-INF", "/META-INF"};
+````
+
+
+
+

@@ -21,7 +21,7 @@ class="header_item" href="https://github.com/arctrong/spring-mvc-study">GitHub</
 <a href="../../../doc_src/content/sidesteps/embedded_server.txt " class="header_item_source" title="Source text">&lt;/&gt;</a>
 
 
-<a href="sidesteps.html" title="Previous: Sidesteps"><img class="headerNavArrows" src="../../layout/pict/previous_page_h18px.png"/></a>
+<a href="jetty_server_notes.html" title="Previous: Jetty server notes"><img class="headerNavArrows" src="../../layout/pict/previous_page_h18px.png"/></a>
 
 
 <img class="headerNavArrows" src="../../layout/pict/next_page_h18px_inactive.png"/>
@@ -58,6 +58,7 @@ class="header_item" href="https://github.com/arctrong/spring-mvc-study">GitHub</
 <a href="../intermediate/exception_handling.html" class="sidebar_item">Exception handling</a>
             <h3>Sidesteps</h3>
             <a href="sidesteps.html" class="sidebar_item">Sidesteps</a>
+<a href="jetty_server_notes.html" class="sidebar_item">Jetty server notes</a>
 <a href="embedded_server.html" class="sidebar_item selected">Embedded server</a>
         </td></tr>
         <tr><td class="bottom" valign="bottom">
@@ -71,13 +72,14 @@ class="header_item" href="https://github.com/arctrong/spring-mvc-study">GitHub</
 <div class="toc">
 <ul>
 <li><a href="#about-this-section">About this section</a></li>
-<li><a href="#jetty-live-war">Jetty live WAR</a><ul>
+<li><a href="#jetty-live-war-with-jsp">Jetty live WAR with JSP</a><ul>
 <li><a href="#creating-standard-war-application">Creating standard WAR application</a></li>
 <li><a href="#converting-into-multi-module-maven-project">Converting into multi module Maven project</a></li>
 <li><a href="#adding-live-war-elements">Adding live WAR elements</a></li>
 <li><a href="#discussions-and-explanations">Discussions and explanations</a></li>
 </ul>
 </li>
+<li><a href="#warless-jar-with-jsp-incomplete">WARless JAR with JSP (incomplete)</a></li>
 </ul>
 </div>
 <hr />
@@ -86,11 +88,11 @@ class="header_item" href="https://github.com/arctrong/spring-mvc-study">GitHub</
 <p>This section is intended for discussion on different ways of embedded server setup with Spring MVC.</p>
 <p>The topic doesn't look to be simple and straightforward. There are quite many materials on the 
 Internet but they all probably cover the simplest use cases and contain very little or no 
-descriptions and explanations. Some of the materials are listed in [<a href="../references.html#ref_23">23</a>], [<a href="../references.html#ref_20">20</a>].</p>
-<p>Here more complex setups are going to be implemented and described.</p>
+descriptions and explanations. Some of the materials are listed in [<a href="../references.html#ref_23">23</a>] and [<a href="../references.html#ref_20">20</a>].</p>
+<p>Here some certain setups are going to be implemented and explored.</p>
 <hr />
 <p><a name="index_entry_index_1"></a></p>
-<h1 id="jetty-live-war">Jetty live WAR</h1>
+<h1 id="jetty-live-war-with-jsp">Jetty live WAR with JSP</h1>
 <p>This implementation is made based on the material [<a href="../references.html#ref_20_1">20.1</a>]. The project is declared as being for
 investigation purpose. It uses custom class loader, <code>maven-dependency-plugin</code> and probably some
 other solutions that make it unstable and add problems when using in production.</p>
@@ -100,6 +102,8 @@ other solutions that make it unstable and add problems when using in production.
 <li>JSP support;</li>
 <li>necessary resource access restrictions.</li>
 </ul>
+<p>Also see the StackOverflow question "<a href="https://stackoverflow.com/questions/65637135/how-to-enable-jsp-in-a-jetty-server-in-a-jar-file">How to enable JSP in a Jetty server in a JAR file?</a>", 
+<a href="https://stackoverflow.com/a/65637665/3868454">this answer</a>.</p>
 <p>The project may be built and run:</p>
 <ul>
 <li>as a WAR file in a separate Servlet container;</li>
@@ -134,6 +138,8 @@ the same way as in the previous version.</p>
 <blockquote>
 <p>Git commit: <a href="../patches/6050a18e8235df32b09f73b75b5b76160434db0c.html"><code>6050a18e8235df32b09f73b75b5b76160434db0c</code></a>
 live WAR implemented</p>
+<p>Git commit: <a href="../patches/c12f1479711095c55db1d715ed7177c86445a333.html"><code>c12f1479711095c55db1d715ed7177c86445a333</code></a>
+life WAR small change</p>
 </blockquote>
 <p>The following are the Maven modules described:</p>
 <ul>
@@ -177,6 +183,7 @@ container this configuration is found automatically.</p>
         ...</code></pre></p>
 <p><a name="index_entry_index_2"></a>
 <strong>Adding JSP support</strong></p>
+<p><a href="https://www.eclipse.org/jetty/documentation/jetty-9/index.html#configuring-jsp"></a></p>
 <p>When the WAR file is run in the Jetty servlet container, JSP support is done externally by the
 Jetty's <code>jsp</code> module (also see <a href="../beginner/server_setup.html#activate_jetty_jsp_module">here</a>).
 No other actions required inside the standard WAR file.</p>
@@ -190,24 +197,99 @@ that is called from the <code>ServerMain</code> class and fulfills all the adjus
 generated WAR file that also works as an executable JAR. The server bootstrap classes in the
 directory <code>jettylivewar</code> are by default accessible to the web clients. The solution was made
 to forbid this directory using <code>&lt;security-constraint&gt;</code> tag in the file <a href="../../../projects/jetty-embedded-live-war/my-webapp/src/main/webapp/WEB-INF/web.xml"><code>web.xml</code></a>.</p>
+<pre class="highlight"><code class="language-xml">&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee
+         http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
+         version="3.1"&gt;
+
+    &lt;context-param&gt;
+        &lt;param-name&gt;org.eclipse.jetty.servlet.Default.dirAllowed&lt;/param-name&gt;
+        &lt;param-value&gt;false&lt;/param-value&gt;
+    &lt;/context-param&gt;
+
+    &lt;security-constraint&gt;
+        &lt;web-resource-collection&gt;
+            &lt;web-resource-name&gt;Restricted folders&lt;/web-resource-name&gt;
+            &lt;url-pattern&gt;/jettylivewar/*&lt;/url-pattern&gt;
+            &lt;url-pattern&gt;/META-INF/*&lt;/url-pattern&gt;
+            &lt;url-pattern&gt;/WEB-INF/*&lt;/url-pattern&gt;
+        &lt;/web-resource-collection&gt;
+        &lt;auth-constraint /&gt;
+    &lt;/security-constraint&gt;
+
+&lt;/web-app&gt;</code></pre>
+<p><a name="index_entry_index_3"></a>
+Also directory listing was disabled using the parameter <code>dirAllowed</code>.</p>
 <p>There's also an alternative solution by setting equivalent restrictions programmatically &mdash; 
 see the method <code>applyRestrictions()</code> in the <code>ServerMain</code> class. This solution is preserved in
 the code for information purpose but it cannot be used in this project because the live WAR 
-file may also be called as a regular WAR file. The possible solutions may be:</p>
+file may also be called as a regular WAR file. So the possible solutions may be:</p>
 <ul>
-<li>trying to set these restrictions in the Spring MVC configuration;</li>
-<li>using a traditional <code>web.xml</code> configuration (the accepted option).</li>
+<li>to set these restrictions in the Spring MVC configuration (not tried yet);</li>
+<li>to use a traditional <code>web.xml</code> configuration (the accepted option).</li>
+</ul>
+<p>Also see this <a href="jetty_server_notes.html#default_protected_targets">related topic</a>.</p>
+<hr />
+<p><a name="index_entry_index_4"></a></p>
+<h1 id="warless-jar-with-jsp-incomplete">WARless JAR with JSP (incomplete)</h1>
+<p>The following attempt was done to create an executable JAR with embedded Jetty server and JSP
+support. This result was achieved but only when the project is run in the IntelliJ Idea IDE.
+When run inside a package it doesn't work.</p>
+<blockquote>
+<p>Git commit: <a href="../patches/3944bb1851bdffd9f40e525e4f8abd573bc7c66c.html"><code>3944bb1851bdffd9f40e525e4f8abd573bc7c66c</code></a>
+Embedded Jetty WARless packaging implemented (incomplete)</p>
+</blockquote>
+<p>Navigate to <localhost:8080> to see the result.</p>
+<p>The main difference between the IDE and self contained versions is probably in the following
+setting (class <a href="../../../projects/jetty-embedded-warless/src/main/java/jettywarless/Main.java"><code>Main</code></a>):</p>
+<pre class="highlight"><code class="language-code">...
+webAppContext.setExtraClasspath(appClasspath);
+...</code></pre>
+<p>Inside the IDE the value is like <code>file:/X:/path/to/jetty-embedded-warless/classes/</code>, but when 
+running as the executable JAR it's like 
+<code>file:/X:/path/to/jetty-embedded-warless/jetty-embedded-warless-1.0-SNAPSHOT.jar</code>.</p>
+<p>So in the latter case much more classes fall into the initialization scope. The problem may 
+probably be solved by restricting the web application context class path, but a method for this
+was not found yet.</p>
+<p>The <a href="https://stackoverflow.com/a/48932175/3868454">answer</a> to the StackOverflow question 
+<a href="https://stackoverflow.com/questions/48928954/jetty-embedded-jsp-issues">jetty embedded jsp issues</a>
+may be notable for understanding the perspectives:</p>
+<blockquote>
+<p>You have to setup JSP for Jetty, the mere existence of the JARs is insufficient.</p>
+<p>...</p>
+<p>Finally, some things you need to consider with JSP/JSTL/EL support:</p>
+<ul>
+<li>Don't bundle up in OSGi (the JSTL/EL/Standard libraries do not support this usage. mainly
+  due to classloader expectations)</li>
+<li>Don't use Java 9+ JPMS modules (the JSTL/EL/Standard libraries do not support this usage,
+  mainly due to classloader expectations, and resource url expecations)</li>
+<li>Don't create an uber jar (the JSTL/EL/Standard libraries do not support this)</li>
+<li>Don't repackage the JSTL jars in any way, they need to stay as the JSTL/EL/Standard jars,
+  available on the filesystem.</li>
+<li>Don't create custom classloaders. (The JSTL/EL/Standard libraries expect a very narrow
+  definition of a Classloader)</li>
+</ul>
+</blockquote>
+<p><strong>Conclusions</strong></p>
+<ul>
+<li>This method may be used if JSP is not required, like servlets with <code>@ResponseBody</code> or REST.</li>
+<li>JSP is a hard technology to be set up and adjusted (at least with Jetty), and it must be avoided
+    wherever and whenever it's possible.</li>
 </ul>
 <p>&nbsp;</p>
 <hr />
 
-<p style="margin-top:0px;margin-bottom:0px;text-align:right;"><a href="sidesteps.html" 
-title="Previous: Sidesteps"><img src="../../layout/pict/previous_page.png"/></a>
+<p style="margin-top:0px;margin-bottom:0px;text-align:right;"><a href="jetty_server_notes.html" 
+title="Previous: Jetty server notes"><img src="../../layout/pict/previous_page.png"/></a>
 
 
 <img src="../../layout/pict/next_page_inactive.png"/></p>
 
 <div style="height: 1000px;"><p>&nbsp;</p></div>
+
+
 
 
 </body>

@@ -8,6 +8,15 @@
 This section describes simple Jetty server installation and setup. Small useless application
 is going to be created and run for a sanity check.
 
+!!! note
+    In this section standalone Jetty servlet container setup is discussed. The application is
+    build as a normal WAR file and deployed to the server in a traditional way. This setup was
+    used along this Spring MVC course.
+    
+    There are alternative ways that use embedding servlet containers into the application. Such
+    variations probably might be used in the course, and they might probably be more convenient.
+    The corresponding section is [here](<!--page embedded_server-->).
+
 [3]: <!--page refs-->#ref_3
 [4]: <!--page refs-->#ref_4
 [6]: <!--page refs-->#ref_6
@@ -56,6 +65,8 @@ In a browser navigate to <http://localhost:8080/> to see an "Error 404 - Not Fou
 the server press `Ctrl`+`C`.
 
 <!--index ["JSP, support"]--><a name="activate_jetty_jsp_module"></a>
+## Activate Jetty JSP module
+
 As we are going to use JSP, adding the `jsp` module, also see the Jetty documentation [[4][]]:
 
 - [Configuring JSP Support](

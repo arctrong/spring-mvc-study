@@ -1,0 +1,54 @@
+<!--VARIABLES {"title": "Patch c12f1479711095c55db1d715ed7177c86445a333"}--> 
+ 
+<strong>Commit message:</strong> 
+life WAR small change
+
+ 
+<div class="patch_block">
+
+<span class="diff">diff --git a/projects/jetty-embedded-live-war/jetty_server/src/main/java/jettylivewar/starter/JspSupportEnablingHelper.java b/projects/jetty-embedded-live-war/jetty_server/src/main/java/jettylivewar/starter/JspSupportEnablingHelper.java</span><br />
+
+<span class="index">index ec0d7af..8b847bd 100644</span><br />
+
+<span class="tree_minuses">--- a/projects/jetty-embedded-live-war/jetty_server/src/main/java/jettylivewar/starter/JspSupportEnablingHelper.java</span><br />
+
+<span class="tree_pluses">+++ b/projects/jetty-embedded-live-war/jetty_server/src/main/java/jettylivewar/starter/JspSupportEnablingHelper.java</span><br />
+
+<span class="two_ats">@@ -11,6 +11,7 @@ import java.io.File;</span><br />
+
+<span> import java.io.IOException;</span><br />
+
+<span> </span><br />
+
+<span> import static org.eclipse.jetty.servlet.ServletContextHandler.ServletContainerInitializerCaller;</span><br />
+
+<ins>+import static org.eclipse.jetty.webapp.WebInfConfiguration.CONTAINER_JAR_PATTERN;</ins><br />
+
+<span> </span><br />
+
+<span> public class JspSupportEnablingHelper {</span><br />
+
+<span> </span><br />
+
+<span class="two_ats">@@ -31,8 +32,7 @@ public class JspSupportEnablingHelper {</span><br />
+
+<span>         // container-path jars for TLDs, web-fragments etc.</span><br />
+
+<span>         // If you omit the JAR that contains the JSTL .tlds, the JSP engine will</span><br />
+
+<span>         // scan for them instead.</span><br />
+
+<del>-        servletContextHandler.setAttribute(</del><br />
+
+<del>-                &quot;org.eclipse.jetty.server.webapp.ContainerIncludeJarPattern&quot;,</del><br />
+
+<ins>+        servletContextHandler.setAttribute(CONTAINER_JAR_PATTERN,</ins><br />
+
+<span>                 &quot;.*/[^/]*servlet-api-[^/]*\\.jar$|.*/javax.servlet.jsp.jstl-.*\\.jar$|&quot; +</span><br />
+
+<span>                         &quot;.*/[^/]*taglibs.*\\.jar$&quot;);</span><br />
+
+<span> </span><br />
+
+</div>
+

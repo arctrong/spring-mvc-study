@@ -68,10 +68,33 @@ src="{{resource_path}}layout/pict/next_page.png"/></a>{{/nav.next}}
 <script type="text/javascript" defer>
 let baseUrl = getComputedStyle(document.getElementById("baseurl"), "::before").content.slice(1, -1);
 function openLocal(url) {
-    window.location = baseUrl + url;
+    window.open(baseUrl + url, "_blank");
 }
 </script>
 {{/addRestrictedScript}}
+
+{{#expandCollapseScript}}
+<script>
+window.onload = function() {
+    let elements = document.getElementsByClassName('collapsed');
+    for(let i = 0; i < elements.length; i++) {
+        let element = elements[i];
+        element.innerText = "expand";
+        element.nextElementSibling.hidden = true;
+        element.onclick = function() {
+            let nextSibling = element.nextElementSibling;
+            nextSibling.hidden = !nextSibling.hidden;
+            if (nextSibling.hidden) {
+                element.innerText = "expand";
+            } else {
+                element.innerText = "collapse";
+            }
+        }
+    }
+}
+</script>
+{{/expandCollapseScript}}
+
 
 </body>
 </html>
