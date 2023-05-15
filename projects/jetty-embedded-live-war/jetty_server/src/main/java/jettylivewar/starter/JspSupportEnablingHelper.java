@@ -11,6 +11,7 @@ import java.io.File;
 import java.io.IOException;
 
 import static org.eclipse.jetty.servlet.ServletContextHandler.ServletContainerInitializerCaller;
+import static org.eclipse.jetty.webapp.WebInfConfiguration.CONTAINER_JAR_PATTERN;
 
 public class JspSupportEnablingHelper {
 
@@ -31,8 +32,7 @@ public class JspSupportEnablingHelper {
         // container-path jars for TLDs, web-fragments etc.
         // If you omit the JAR that contains the JSTL .tlds, the JSP engine will
         // scan for them instead.
-        servletContextHandler.setAttribute(
-                "org.eclipse.jetty.server.webapp.ContainerIncludeJarPattern",
+        servletContextHandler.setAttribute(CONTAINER_JAR_PATTERN,
                 ".*/[^/]*servlet-api-[^/]*\\.jar$|.*/javax.servlet.jsp.jstl-.*\\.jar$|" +
                         ".*/[^/]*taglibs.*\\.jar$");
 
