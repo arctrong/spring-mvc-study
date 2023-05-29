@@ -139,7 +139,7 @@ container this configuration is found automatically.
 
 In the `jetty_server` module the following class list adjustment is used in the class
 [`ServerMain`](
-<!--path code-->jetty-embedded-live-war/jetty_server/src/main/java/jettylivewar/starter/ServerMain.java):
+<!--wrap_java jetty-embedded-live-war/jetty_server/src/main/java/jettylivewar/starter/ServerMain.java-->):
 
 <a name="adjusting_configuration_class_list"></a>
 ````code
@@ -165,7 +165,7 @@ In the live WAR artifact when running standalone, the
 [above adjustments](<!--page embedded_server-->#adjusting_configuration_class_list) are required.
 Also there's a special procedure `enableEmbeddedJspSupport()` in the helper class 
 [`JspSupportEnablingHelper`](
-<!--path code-->jetty-embedded-live-war/jetty_server/src/main/java/jettylivewar/starter/JspSupportEnablingHelper.java)
+<!--wrap_java jetty-embedded-live-war/jetty_server/src/main/java/jettylivewar/starter/JspSupportEnablingHelper.java-->)
 that is called from the `ServerMain` class and fulfills all the adjustments.
 
 
@@ -175,7 +175,7 @@ The demonstrated adjustments just cover the obvious breach caused by the dual na
 generated WAR file that also works as an executable JAR. The server bootstrap classes in the
 directory `jettylivewar` are by default accessible to the web clients. The solution was made
 to forbid this directory using `<security-constraint>` tag in the file [`web.xml`](
-<!--path code-->jetty-embedded-live-war/my-webapp/src/main/webapp/WEB-INF/web.xml).
+<!--wrap_xml jetty-embedded-live-war/my-webapp/src/main/webapp/WEB-INF/web.xml-->).
 
 ````xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -232,7 +232,7 @@ Navigate to <localhost:8080> to see the result.
 
 The main difference between the IDE and self contained versions is probably in the following
 setting (class [`Main`](
-<!--path code-->jetty-embedded-warless/src/main/java/jettywarless/Main.java)):
+<!--wrap_java jetty-embedded-warless/src/main/java/jettywarless/Main.java-->)):
 
 ````code
 ...

@@ -225,7 +225,7 @@ The suggestion was to follow the instructions at [[6][], [1.11.10. Static Resour
 https://docs.spring.io/spring-framework/docs/5.3.9/reference/html/web.html#mvc-config-static-resources)], 
 particularly adding the following definitions into the servlet dispatcher XML configuration file
 [`front-controller-servlet.xml`](
-<!--path code-->web-app-spring/src/main/webapp/WEB-INF/front-controller-servlet.xml):
+<!--wrap_xml web-app-spring/src/main/webapp/WEB-INF/front-controller-servlet.xml-->):
 
 ````xml
     .  .  .

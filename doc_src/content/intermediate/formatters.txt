@@ -24,20 +24,20 @@ In this section the following implementations of data conversion mechanism is go
 [[2.9][], [6:21](https://youtu.be/q9hjjeJA7Yw?t=381)]
 
 A new DTO [`CommunicationDto`](
-<!--path code-->web-app-spring-adv2/src/main/java/springmvcstudy2/model/CommunicationDto.java)
+<!--wrap_java web-app-spring-adv2/src/main/java/springmvcstudy2/model/CommunicationDto.java-->)
 is created and added as the field `communicationDto` in the [`RegistrationDto`](
-<!--path code-->web-app-spring-adv2/src/main/java/springmvcstudy2/model/RegistrationDto.java)
+<!--wrap_java web-app-spring-adv2/src/main/java/springmvcstudy2/model/RegistrationDto.java-->)
 DTO.
 
 [`PhoneDto`](
-<!--path code-->web-app-spring-adv2/src/main/java/springmvcstudy2/model/PhoneDto.java) is created
+<!--wrap_java web-app-spring-adv2/src/main/java/springmvcstudy2/model/PhoneDto.java-->) is created
 and added to the `CommunicationDto`. This DTO contains two fields `countryCode` and `userNumber`
 but we will try to represent it in the view as a single text input field.
 
 The views [`registration-page.jsp`](
-<!--path code-->web-app-spring-adv2/src/main/webapp/view/registration-page.jsp)
+<!--wrap_xml web-app-spring-adv2/src/main/webapp/view/registration-page.jsp-->)
 and [`registration-success.jsp`](
-<!--path code-->web-app-spring-adv2/src/main/webapp/view/registration-success.jsp)
+<!--wrap_xml web-app-spring-adv2/src/main/webapp/view/registration-success.jsp-->)
 are updated to reflect the corresponding fields.
 
 In the view the email field is accessed the following way:
@@ -66,7 +66,7 @@ discussed later.
 The `org.springframework.format.Formatter` interface is used in Spring MVC and Spring Boot as well.
 
 the implementation [`PhoneNumberFormatter`](
-<!--path code-->web-app-spring-adv2/src/main/java/springmvcstudy2/config/formatter/PhoneNumberFormatter.java)
+<!--wrap_java web-app-spring-adv2/src/main/java/springmvcstudy2/config/formatter/PhoneNumberFormatter.java-->)
 is created:
 
 ````code
@@ -109,7 +109,7 @@ Looks like the `print()` method will not be used for converting from a `PhoneDto
 
 <!--index ["WebMvcConfigurer interface"]-->
 To register a `Formatter` in the [`MyApplicationConfig`](
-<!--path code-->web-app-spring-adv2/src/main/java/springmvcstudy2/config/MyApplicationConfig.java)
+<!--wrap_java web-app-spring-adv2/src/main/java/springmvcstudy2/config/MyApplicationConfig.java-->)
 configuration the configuration class must implement the interface
 `org.springframework.web.servlet.config.annotation.WebMvcConfigurer`. The registration is done
 like this:
@@ -141,7 +141,7 @@ versions od these forms can be view [here](<!--page registration_form-->#registr
 The print method is used when the form is populated with the model object that is already filled up,
 e.g. taken from a database. For demonstration the controller method `showRegistrationPage` of
 the controller [`RegistrationController`](
-<!--path code-->web-app-spring-adv2/src/main/java/springmvcstudy2/controllers/RegistrationController.java)
+<!--wrap_java web-app-spring-adv2/src/main/java/springmvcstudy2/controllers/RegistrationController.java-->)
 is changed to prepopulate the phone number:
 
 ````code
@@ -160,7 +160,7 @@ is changed to prepopulate the phone number:
 ````
 
 The `print()` method of the formatter [`PhoneNumberFormatter`](
-<!--path code-->web-app-spring-adv2/src/main/java/springmvcstudy2/config/formatter/PhoneNumberFormatter.java)
+<!--wrap_java web-app-spring-adv2/src/main/java/springmvcstudy2/config/formatter/PhoneNumberFormatter.java-->)
 is changed like this:
 
 ````code
@@ -197,7 +197,7 @@ Mar 28, 2023
     this annotation **globally**.
 
 In the [`RegistrationController`](
-<!--path code-->web-app-spring-adv2/src/main/java/springmvcstudy2/controllers/RegistrationController.java)
+<!--wrap_java web-app-spring-adv2/src/main/java/springmvcstudy2/controllers/RegistrationController.java-->)
 class add the following method:
 
 ````code
@@ -231,7 +231,7 @@ In this example it removes the field named `name` from the data model.
 [[2.11][], [31:51](https://youtu.be/ms4ywje7EYI?t=1911)]
 
 In the [`RegistrationController`](
-<!--path code-->web-app-spring-adv2/src/main/java/springmvcstudy2/controllers/RegistrationController.java)
+<!--wrap_java web-app-spring-adv2/src/main/java/springmvcstudy2/controllers/RegistrationController.java-->)
 class `@InitBinder` annotated method register a `StringTrimmerEditor`:
 
 ````code
@@ -279,7 +279,7 @@ not so much important for the goals of this course.
 
 We are going to convert the "Name" field to upper case. It's pretty simple. First create a new 
 property editor [`NamePropertyEditor`](
-<!--path code-->web-app-spring-adv2/src/main/java/springmvcstudy2/propertyeditor/NamePropertyEditor.java):
+<!--wrap_java web-app-spring-adv2/src/main/java/springmvcstudy2/propertyeditor/NamePropertyEditor.java-->):
 
 <!--index ["PropertyEditorSupport"]-->
 ````code
@@ -300,7 +300,7 @@ The `setValue()` method comes from the `java.beans.PropertyEditorSupport` base c
     [here](<!--page formatters-->#using_print_method)).
 
 Then we just add the newly created property editor to the [`RegistrationController`](
-<!--path code-->web-app-spring-adv2/src/main/java/springmvcstudy2/controllers/RegistrationController.java)
+<!--wrap_java web-app-spring-adv2/src/main/java/springmvcstudy2/controllers/RegistrationController.java-->)
 class:
 
 ````code
@@ -333,7 +333,7 @@ There's yet another mechanism for converting --- the parameterized
 `org.springframework.core.convert.converter.Converter` interface that has the `convert()` method
 that concrete converters must override and where actual conversion is performed.
 The converters must be added in the configuration class like [`MyApplicationConfig`](
-<!--path code-->web-app-spring-adv2/src/main/java/springmvcstudy2/config/MyApplicationConfig.java)
+<!--wrap_java web-app-spring-adv2/src/main/java/springmvcstudy2/config/MyApplicationConfig.java-->)
 in the `addFormatters()` method using the `FormatterRegistry#addConverter` method.
 
 The `Converter` interface has only a one-way conversion method. For the reverse conversion another 

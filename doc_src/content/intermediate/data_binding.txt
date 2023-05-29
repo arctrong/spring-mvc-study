@@ -52,7 +52,7 @@ created and tied up with the controller methods:
 In this example also the `@org.springframework.web.bind.annotation.RequestParam` annotation is
 used. This annotation is applied to controller method parameters and maps these parameters to
 the HTTP request parameters. Here the example in the file [`MyAppController`](
-<!--path code-->web-app-spring-adv2/src/main/java/springmvcstudy2/controllers/MyAppController.java):
+<!--wrap_java web-app-spring-adv2/src/main/java/springmvcstudy2/controllers/MyAppController.java-->):
 
 ````code
     .  .  .
@@ -78,7 +78,7 @@ the HTTP request parameters. Here the example in the file [`MyAppController`](
 [[2.6][], [48:19](https://youtu.be/3x4RoGGpETM?t=2899)]
 
 In the [`MyAppController`](
-<!--path code-->web-app-spring-adv2/src/main/java/springmvcstudy2/controllers/MyAppController.java)
+<!--wrap_java web-app-spring-adv2/src/main/java/springmvcstudy2/controllers/MyAppController.java-->)
 controller a new method is added:
 
 ````code
@@ -93,7 +93,7 @@ controller a new method is added:
 ````
 
 It uses the parameter `dto` of a newly created class [`UserInfoDto`](
-<!--path code-->web-app-spring-adv2/src/main/java/springmvcstudy2/model/UserInfoDto.java)
+<!--wrap_java web-app-spring-adv2/src/main/java/springmvcstudy2/model/UserInfoDto.java-->)
 that is a simple POJO with fields, setters and getters. the content of this object is filled 
 by the Spring MVC framework.
 
@@ -129,7 +129,7 @@ Need to activate these tags by adding the following tag library declaration to t
 ````
 
 Two additional controller methods were added into the [`MyAppController`](
-<!--path code-->web-app-spring-adv2/src/main/java/springmvcstudy2/controllers/MyAppController.java)
+<!--wrap_java web-app-spring-adv2/src/main/java/springmvcstudy2/controllers/MyAppController.java-->)
 controller:
 
 ````code
@@ -152,7 +152,7 @@ controller:
 Two views were added as well:
 
 - [`home-page-spring.jsp`](
-    <!--path code-->web-app-spring-adv2/src/main/webapp/view/home-page-spring.jsp), the fragment is:
+    <!--wrap_xml web-app-spring-adv2/src/main/webapp/view/home-page-spring.jsp-->), the fragment is:
     
     ````xml
     .  .  .
@@ -165,7 +165,7 @@ Two views were added as well:
     ````
 
 - [`result-page-spring.jsp`](
-    <!--path code-->web-app-spring-adv2/src/main/webapp/view/result-page-spring.jsp), the fragment is:
+    <!--wrap_xml web-app-spring-adv2/src/main/webapp/view/result-page-spring.jsp-->), the fragment is:
     
     ````xml
     .  .  .
@@ -235,7 +235,7 @@ Some initial objects (a controller, a view and a model) are created:
 [[2.16][], [12:23](https://youtu.be/_Nafv53TKYY?t=743)]
 
 The new [`MyWebsiteController`](
-<!--path code-->web-app-spring-sessions/src/main/java/springmvcstudy/controllers/MyWebsiteController.java)
+<!--wrap_java web-app-spring-sessions/src/main/java/springmvcstudy/controllers/MyWebsiteController.java-->)
 class version is:
 
 ````code
@@ -330,7 +330,7 @@ It's also explained in some more details at
 [[2.16][], [41:21](https://youtu.be/_Nafv53TKYY?t=2481)]
 
 If we add another controller [`MyTestController`](
-<!--path code-->web-app-spring-sessions/src/main/java/springmvcstudy/controllers/MyTestController.java):
+<!--wrap_java web-app-spring-sessions/src/main/java/springmvcstudy/controllers/MyTestController.java-->):
 
 ````code
 @Controller
@@ -350,7 +350,7 @@ empty.
 
 The `@org.springframework.web.bind.annotation.ControllerAdvice` annotation on the first controller
 [`MyWebsiteController`](
-<!--path code-->web-app-spring-sessions/src/main/java/springmvcstudy/controllers/MyWebsiteController.java)
+<!--wrap_java web-app-spring-sessions/src/main/java/springmvcstudy/controllers/MyWebsiteController.java-->)
 will make this controller `getWebsiteInfo()` method execute on the other controllers:
 
 ````code

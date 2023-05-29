@@ -26,13 +26,13 @@ and a successful registration page:
 The following artifacts may be viewed for the details:
 
 - controller [`RegistrationController`](
-    <!--path code-->web-app-spring-adv2/src/main/java/springmvcstudy2/controllers/RegistrationController.java)
+    <!--wrap_java web-app-spring-adv2/src/main/java/springmvcstudy2/controllers/RegistrationController.java-->)
 - DTO [`RegistrationDto`](
-    <!--path code-->web-app-spring-adv2/src/main/java/springmvcstudy2/model/RegistrationDto.java)
+    <!--wrap_java web-app-spring-adv2/src/main/java/springmvcstudy2/model/RegistrationDto.java-->)
 - registration form [`registration-page.jsp`](
-    <!--path code-->web-app-spring-adv2/src/main/webapp/view/registration-page.jsp)
+    <!--wrap_xml web-app-spring-adv2/src/main/webapp/view/registration-page.jsp-->)
 - registration details page [`registration-success.jsp`](
-    <!--path code-->web-app-spring-adv2/src/main/webapp/view/registration-success.jsp)
+    <!--wrap_xml web-app-spring-adv2/src/main/webapp/view/registration-success.jsp-->)
 
 <!--index ["JSTL"]-->
 To enable JSTL, the following maven dependency must be added to the POM:

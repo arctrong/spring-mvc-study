@@ -48,7 +48,7 @@ page like the one that is returned by the `/validate` endpoint.
 
 The above method is much inconvenient especially when used in a lot of controllers. The Spring 
 `@CookieValue` annotation may help simplify this task (see the [`EmailController`](
-<!--path code-->web-app-spring-adv3/src/main/java/springmvcstudy2/controllers/EmailController.java)
+<!--wrap_java web-app-spring-adv3/src/main/java/springmvcstudy2/controllers/EmailController.java-->)
 class):
 
 ````code
@@ -92,7 +92,7 @@ state by this session ID and returns to the client the customized response.
 <p style="clear: both;"></p>
 
 In the [`ValidatedController`](
-<!--path code-->web-app-spring-adv3/src/main/java/springmvcstudy2/controllers/ValidatedController.java)
+<!--wrap_java web-app-spring-adv3/src/main/java/springmvcstudy2/controllers/ValidatedController.java-->)
 class using setting a session attribute:
 
 ````code
@@ -106,7 +106,7 @@ class using setting a session attribute:
 ````
 
 Then this attribute may be used on the JSP page like [`process-email-page.jsp`](
-<!--path code-->web-app-spring-adv3/src/main/webapp/WEB-INF/view/process-email-page.jsp):
+<!--wrap_xml web-app-spring-adv3/src/main/webapp/WEB-INF/view/process-email-page.jsp-->):
 
 ````xml
 .  .  .
@@ -116,7 +116,7 @@ Then this attribute may be used on the JSP page like [`process-email-page.jsp`](
 
 Or the session attributes may be transformed and set into the model likes it's don in the
 [`EmailController`](
-<!--path code-->web-app-spring-adv3/src/main/java/springmvcstudy2/controllers/EmailController.java)
+<!--wrap_java web-app-spring-adv3/src/main/java/springmvcstudy2/controllers/EmailController.java-->)
 class:
 
 ````code
@@ -158,7 +158,7 @@ period of time (in minutes) the following parameter may be used in the `web.xml`
 ````
 
 In the code-based configuration (e.g. in the [`ValidatedController`](
-<!--path code-->web-app-spring-adv3/src/main/java/springmvcstudy2/controllers/ValidatedController.java)
+<!--wrap_java web-app-spring-adv3/src/main/java/springmvcstudy2/controllers/ValidatedController.java-->)
 class) the `javax.servlet.http.HttpSession` object may be used for that
 (in seconds):
 
@@ -193,7 +193,7 @@ available. We are now not going to preserve this code in the project.
 
 The `@org.springframework.web.bind.annotation.SessionAttributes` annotation is added to the 
 [`ValidatedController`](
-<!--path code-->web-app-spring-adv3/src/main/java/springmvcstudy2/controllers/ValidatedController.java)
+<!--wrap_java web-app-spring-adv3/src/main/java/springmvcstudy2/controllers/ValidatedController.java-->)
 class:
 
 ````code
@@ -214,15 +214,15 @@ public class ValidatedController {
     Also see [[2.13][], [1:39:39](https://youtu.be/cpFfzE9eGT0?t=5979)].
 
 In the [`EmailController`](
-<!--path code-->web-app-spring-adv3/src/main/java/springmvcstudy2/controllers/EmailController.java)
+<!--wrap_java web-app-spring-adv3/src/main/java/springmvcstudy2/controllers/EmailController.java-->)
 we just remove the explicit session handling code.
 
 In the views:
 
 - [`send-email-page.jsp`](
-    <!--path code-->web-app-spring-adv3/src/main/webapp/WEB-INF/view/send-email-page.jsp) and
+    <!--wrap_xml web-app-spring-adv3/src/main/webapp/WEB-INF/view/send-email-page.jsp-->) and
 - [`process-email-page.jsp`](
-    <!--path code-->web-app-spring-adv3/src/main/webapp/WEB-INF/view/process-email-page.jsp)
+    <!--wrap_xml web-app-spring-adv3/src/main/webapp/WEB-INF/view/process-email-page.jsp-->)
    
 We just use the specified session attribute like this:
 

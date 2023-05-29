@@ -18,7 +18,7 @@ Mar 20, 2023
 # Specifying direct view file location
 
 Now we create a new controller [`JspHelloController`](
-<!--path code-->web-app-spring/src/main/java/springmvcstudy/controllers/JspHelloController.java):
+<!--wrap_java web-app-spring/src/main/java/springmvcstudy/controllers/JspHelloController.java-->):
 
 ````code
 @Controller
@@ -36,7 +36,7 @@ Here we remove the `@ResponseBody` annotation that will instruct the Spring MVC 
 the method return value is not the exact page content but the view file location instead.
 
 A simple JSP file [`src/main/webapp/view/jspHello.jsp`](
-<!--path code-->web-app-spring/src/main/webapp/view/jspHello.jsp)
+<!--wrap_xml web-app-spring/src/main/webapp/view/jspHello.jsp-->)
 is created:
 
 ````xml
@@ -48,7 +48,7 @@ is created:
 ````
 
 !!! important
-    In the file [`web.xml`](<!--path code-->web-app-spring/src/main/webapp/WEB-INF/web.xml)
+    In the file [`web.xml`](<!--wrap_xml web-app-spring/src/main/webapp/WEB-INF/web.xml-->)
     make sure that servlet mapping URL pattern is `/`, not `/*`:
 
     ````xml
@@ -135,7 +135,7 @@ In Spring MVC the view resolver class is
 `org.springframework.web.servlet.view.InternalResourceViewResolver`.
 
 So in the dispatcher servlet configuration file [`front-controller-servlet.xml`](
-<!--path code-->web-app-spring/src/main/webapp/WEB-INF/front-controller-servlet.xml)
+<!--wrap_xml web-app-spring/src/main/webapp/WEB-INF/front-controller-servlet.xml-->)
 we add the following bean:
 
 ````xml
@@ -148,7 +148,7 @@ we add the following bean:
 ````
 
 And in the controller [`JspHelloController`](
-<!--path code-->web-app-spring/src/main/java/springmvcstudy/controllers/JspHelloController.java)
+<!--wrap_java web-app-spring/src/main/java/springmvcstudy/controllers/JspHelloController.java-->)
 we change the return value from `/view/jspHello.jsp` to `jspHello`:
 
 ````code

@@ -62,6 +62,14 @@
         "index": {"index": {"output": "index_page.html", "title": "Index", "index-cache": "index_cache.json", 
                     "index-cache-relative": true, "letters": true, "letters-block": true }
         },
-        "page-links": { "markers": ["page"] }
+        "page-links": { "markers": ["page"] },
+        "wrap-code": {
+            "wrap_java": {"style": "code", "input-root": "projects/", "output-root": "doc/content/code",
+                "template": "doc_src/templates/code.html", "variables": {"noPageTitle": true}},
+            "wrap_xml": {"style": "xml", "input-root": "projects/", "output-root": "doc/content/code",
+                "template": "doc_src/templates/code.html", "variables": {"noPageTitle": true}},
+            "wrap": {"style": "", "input-root": "projects/", "output-root": "doc/content/code",
+                "template": "doc_src/templates/code.html", "variables": {"noPageTitle": true}}
+        }
     }
 }

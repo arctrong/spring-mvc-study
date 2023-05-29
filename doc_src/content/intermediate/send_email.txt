@@ -24,7 +24,7 @@ changes untouched.
 [[2.12][], [7:56](https://youtu.be/xhKP9o9I85g?t=476)]
 
 On the existing view [`result-page-spring.jsp`](
-<!--path code-->web-app-spring-adv2/src/main/webapp/view/result-page-spring.jsp)
+<!--wrap_xml web-app-spring-adv2/src/main/webapp/view/result-page-spring.jsp-->)
 adding a link for sending an email:
 
 ![](<!--path pict-->send_email_01.png)
@@ -38,7 +38,7 @@ The URL is [http://localhost:8080/web-app-spring-adv3/ui/validate-submit?...](
 http://localhost:8080/web-app-spring-adv3/ui/validate-submit?name1=Bob&name2=Claudia&notARobot=true&_notARobot=on).
 
 The email inputting form [`send-email-page.jsp`](
-<!--path code-->web-app-spring-adv3/src/main/webapp/WEB-INF/view/send-email-page.jsp)
+<!--wrap_xml web-app-spring-adv3/src/main/webapp/WEB-INF/view/send-email-page.jsp-->)
 is created:
 
 ![](<!--path pict-->send_email_02.png)
@@ -46,7 +46,7 @@ is created:
 The URL is <http://localhost:8080/web-app-spring-adv3/ui/sendEmail>.
 
 The email sending successful page [`process-email-page.jsp`](
-<!--path code-->web-app-spring-adv3/src/main/webapp/WEB-INF/view/process-email-page.jsp)
+<!--wrap_xml web-app-spring-adv3/src/main/webapp/WEB-INF/view/process-email-page.jsp-->)
 is created:
 
 ![](<!--path pict-->send_email_03.png)
@@ -54,10 +54,10 @@ is created:
 The URL is <http://localhost:8080/web-app-spring-adv3/ui/process-email?userEmail=myemail%40domain.com>.
 
 The controller is [`EmailController`](
-<!--path code-->web-app-spring-adv3/src/main/java/springmvcstudy2/controllers/EmailController.java).
+<!--wrap_java web-app-spring-adv3/src/main/java/springmvcstudy2/controllers/EmailController.java-->).
 
 the model DTO is [`SendEmailDto`](
-<!--path code-->web-app-spring-adv3/src/main/java/springmvcstudy2/model/SendEmailDto.java).
+<!--wrap_java web-app-spring-adv3/src/main/java/springmvcstudy2/model/SendEmailDto.java-->).
 
 See the below commit for the implementation details.
 
@@ -76,7 +76,7 @@ See [here](<!--page server_setup-->#project_start_on_server) for information abo
 Here we are going to send the user name parameter through URL path.
 
 In the [`result-page-spring.jsp`](
-<!--path code-->web-app-spring-adv2/src/main/webapp/view/result-page-spring.jsp)
+<!--wrap_xml web-app-spring-adv2/src/main/webapp/view/result-page-spring.jsp-->)
 view adding a variable path segment to the link URL:
 
 ````xml
@@ -85,7 +85,7 @@ view adding a variable path segment to the link URL:
 ````
 
 In the [`EmailController`](
-<!--path code-->web-app-spring-adv3/src/main/java/springmvcstudy2/controllers/EmailController.java)
+<!--wrap_java web-app-spring-adv3/src/main/java/springmvcstudy2/controllers/EmailController.java-->)
 class do some modification to the corresponding controller method:
 
 ````code
@@ -105,7 +105,7 @@ After that is done, the URL will become like this:
 <http://localhost:8080/web-app-spring-adv3/ui/sendEmail/Bob>.
 
 In the [`send-email-page.jsp`](
-<!--path code-->web-app-spring-adv3/src/main/webapp/WEB-INF/view/send-email-page.jsp)
+<!--wrap_xml web-app-spring-adv3/src/main/webapp/WEB-INF/view/send-email-page.jsp-->)
 using the new model attribute:
 
 ````xml
@@ -124,7 +124,7 @@ using the new model attribute:
 [[2.12][], [47:37](https://youtu.be/xhKP9o9I85g?t=2857)]
 
 The alternative path variable access method is using a `Map` (see the [`EmailController`](
-<!--path code-->web-app-spring-adv3/src/main/java/springmvcstudy2/controllers/EmailController.java)
+<!--wrap_java web-app-spring-adv3/src/main/java/springmvcstudy2/controllers/EmailController.java-->)
 class):
 
 ````code

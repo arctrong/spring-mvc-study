@@ -48,7 +48,7 @@ Add the following dependencies to the POM:
 
 
 To the [`EmailController`](
-<!--path code-->web-app-spring-adv4/src/main/java/springmvcstudy2/controllers/EmailController.java)
+<!--wrap_java web-app-spring-adv4/src/main/java/springmvcstudy2/controllers/EmailController.java-->)
 class add the email sending function:
 
 ````code
@@ -69,7 +69,7 @@ class add the email sending function:
 ````
 
 `MyAppEmailService` is an interface. The implementation is the [`MyAppEmailServiceImpl`](
-<!--path code-->web-app-spring-adv4/src/main/java/springmvcstudy2/service/MyAppEmailServiceImpl.java)
+<!--wrap_java web-app-spring-adv4/src/main/java/springmvcstudy2/service/MyAppEmailServiceImpl.java-->)
 class:
 
 ````code
@@ -97,7 +97,7 @@ public class MyAppEmailServiceImpl implements MyAppEmailService {
     The `@Service` annotation is itself annotated with the `@Component` annotation.
 
 The autowired `mailSender` comes from the [`MyApplicationConfig`](
-<!--path code-->web-app-spring-adv4/src/main/java/springmvcstudy2/config/MyApplicationConfig.java)
+<!--wrap_java web-app-spring-adv4/src/main/java/springmvcstudy2/config/MyApplicationConfig.java-->)
 configuration class:
 
 ````code

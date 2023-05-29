@@ -35,10 +35,10 @@ In this part we create two standard pages:
 The main artifacts are:
 
 - controller class [`CafeController`](
-    <!--path code-->web-app-spring/src/main/java/springmvcstudy/cafe/controllers/CafeController.java)
-- view [`welcome-page.jsp`](<!--path code-->web-app-spring/src/main/webapp/view/welcome-page.jsp)
+    <!--wrap_java web-app-spring/src/main/java/springmvcstudy/cafe/controllers/CafeController.java-->)
+- view [`welcome-page.jsp`](<!--wrap_xml web-app-spring/src/main/webapp/view/welcome-page.jsp-->)
     that contains a form;
-- view [`process-order.jsp`](<!--path code-->web-app-spring/src/main/webapp/view/process-order.jsp)
+- view [`process-order.jsp`](<!--wrap_xml web-app-spring/src/main/webapp/view/process-order.jsp-->)
     that accepts and renders the form data.
 
 The welcome page URL is <http://localhost:8080/web-app-spring/cafe>:

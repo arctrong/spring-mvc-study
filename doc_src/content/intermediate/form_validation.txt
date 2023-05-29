@@ -21,7 +21,7 @@ Mar 27, 2023
 
 Why we need a server side validation rather than client side one? If we add a simple validation 
 in JavaScript like this (see the [`home-page.jsp`](
-<!--path code-->web-app-spring-adv2/src/main/webapp/view/home-page.jsp) file):
+<!--wrap_xml web-app-spring-adv2/src/main/webapp/view/home-page.jsp-->) file):
 
 ````code
 <script type="text/javascript">
@@ -71,14 +71,14 @@ discovered so far.
 For this demonstration we create separate artifacts:
 
 - a new controller [`ValidatedController`](
-    <!--path code-->web-app-spring-adv2/src/main/java/springmvcstudy2/controllers/ValidatedController.java)
+    <!--wrap_java web-app-spring-adv2/src/main/java/springmvcstudy2/controllers/ValidatedController.java-->)
 - a new DTO [`UserInfoValidatedDto`](
-    <!--path code-->web-app-spring-adv2/src/main/java/springmvcstudy2/model/UserInfoValidatedDto.java)
+    <!--wrap_java web-app-spring-adv2/src/main/java/springmvcstudy2/model/UserInfoValidatedDto.java-->)
     (probably with not a good name)
 - a new home page [`home-page-validated.jsp`](
-    <!--path code-->web-app-spring-adv2/src/main/webapp/view/home-page-validated.jsp)
+    <!--wrap_xml web-app-spring-adv2/src/main/webapp/view/home-page-validated.jsp-->)
 
-Need to add the following dependencies to the [POM](<!--path code-->web-app-spring-adv2/pom.xml):
+Need to add the following dependencies to the [POM](<!--wrap_xml web-app-spring-adv2/pom.xml-->):
 
 ````xml
         .  .  .
@@ -102,7 +102,7 @@ Without the later dependency validation will not work.
     <!--index ["@EnableWebMvc"]-->
     `@EnableWebMvc` annotation must be activated on the configuration to activate validation, 
     see the [`MyApplicationConfig`](
-    <!--path code-->web-app-spring-adv2/src/main/java/springmvcstudy2/config/MyApplicationConfig.java)
+    <!--wrap_java web-app-spring-adv2/src/main/java/springmvcstudy2/config/MyApplicationConfig.java-->)
     class.
 
 After validation is activated the following lines are output to the log when the server starts:
@@ -268,7 +268,7 @@ of the video. The coding itself is going to be started after the following time 
 [[2.10][], [55:52](https://youtu.be/aNpJGvFR5uI?t=3352)]
 
 Creating the [`@Age`](
-<!--path code-->web-app-spring-adv2/src/main/java/springmvcstudy2/validators/Age.java)
+<!--wrap_java web-app-spring-adv2/src/main/java/springmvcstudy2/validators/Age.java-->)
 annotation:
 
 ````code
@@ -291,7 +291,7 @@ The `groups()` and `payload()` fields are copied from the existing
 `@javax.validation.constraints.NotBlank` annotation.
 
 Creating the [`AgeValidator`](
-<!--path code-->web-app-spring-adv2/src/main/java/springmvcstudy2/validators/AgeValidator.java)
+<!--wrap_java web-app-spring-adv2/src/main/java/springmvcstudy2/validators/AgeValidator.java-->)
 validator class:
 
 ````code
@@ -314,7 +314,7 @@ public class AgeValidator implements ConstraintValidator<Age, Integer> {
 ````
 
 In the [`RegistrationDto`](
-<!--path code-->web-app-spring-adv2/src/main/java/springmvcstudy2/model/RegistrationDto.java)
+<!--wrap_java web-app-spring-adv2/src/main/java/springmvcstudy2/model/RegistrationDto.java-->)
 DTO class adding the newly created annotation to the field `age`:
 
 ````code
@@ -328,7 +328,7 @@ As the `ConstraintValidator` interface cannot accept primitive type parameters, 
 field type from `int` to `Integer`.
 
 Editing the [`RegistrationController`](
-<!--path code-->web-app-spring-adv2/src/main/java/springmvcstudy2/controllers/RegistrationController.java)
+<!--wrap_java web-app-spring-adv2/src/main/java/springmvcstudy2/controllers/RegistrationController.java-->)
 corresponding controller method:
 
 ````code
@@ -344,7 +344,7 @@ corresponding controller method:
 ````
 
 Updating the [`registration-page.jsp`](
-<!--path code-->web-app-spring-adv2/src/main/webapp/view/registration-page.jsp)
+<!--wrap_xml web-app-spring-adv2/src/main/webapp/view/registration-page.jsp-->)
 view to make it show the error messages:
 
 ````xml
@@ -368,7 +368,7 @@ By the URL <http://localhost:8080/web-app-spring-adv2/ui/register> we can confir
 Here the error message is going to be defined in a `*.properties` file.
 
 In the [`@Age`](
-<!--path code-->web-app-spring-adv2/src/main/java/springmvcstudy2/validators/Age.java)
+<!--wrap_java web-app-spring-adv2/src/main/java/springmvcstudy2/validators/Age.java-->)
 annotation we redefine the message like this:
 
 ````code
@@ -378,7 +378,7 @@ annotation we redefine the message like this:
 ````
 
 Then creating the [`messages.properties`](
-<!--path code-->web-app-spring-adv2/src/main/resources/messages.properties) file inside the 
+<!--wrap web-app-spring-adv2/src/main/resources/messages.properties-->) file inside the 
 `src/main/resources` directory:
 
 ````
@@ -390,7 +390,7 @@ invalidAgeMessage=age should be between {lower} and {upper}
     about *placeholders* usage.
 
 In the Spring MVC configuration class [`MyApplicationConfig`](
-<!--path code-->web-app-spring-adv2/src/main/java/springmvcstudy2/config/MyApplicationConfig.java)
+<!--wrap_java web-app-spring-adv2/src/main/java/springmvcstudy2/config/MyApplicationConfig.java-->)
 adding the following code:
 
 ````code
@@ -422,7 +422,7 @@ There's not much explanation about this code, just can confirm it works.
     problems in the future.
 
 In the [`RegistrationDto`](
-<!--path code-->web-app-spring-adv2/src/main/java/springmvcstudy2/model/RegistrationDto.java)
+<!--wrap_java web-app-spring-adv2/src/main/java/springmvcstudy2/model/RegistrationDto.java-->)
 DTO class removing the explicit message to check that the default message is used:
 
 ````code
@@ -452,7 +452,7 @@ The requirements are going to be fulfilled about the "User name" field:
 - it should contain an underscore (_).
 
 Creating a validator class [`UserNameValidator`](
-<!--path code-->web-app-spring-adv2/src/main/java/springmvcstudy2/validators/UserNameValidator.java):
+<!--wrap_java web-app-spring-adv2/src/main/java/springmvcstudy2/validators/UserNameValidator.java-->):
 
 ````code
 public class UserNameValidator implements Validator {
@@ -479,7 +479,7 @@ The implemented interface is `org.springframework.validation.Validator`.
 The `supports()` method decides whether the DTO object must be validated by this validator.
 
 The validator is added in the [`RegistrationController`](
-<!--path code-->web-app-spring-adv2/src/main/java/springmvcstudy2/controllers/RegistrationController.java):
+<!--wrap_java web-app-spring-adv2/src/main/java/springmvcstudy2/controllers/RegistrationController.java-->):
 
 ````code
     .  .  .
@@ -507,7 +507,7 @@ Here we add another validator that checks that the email ends with some certain 
 The coding part is pretty much the same as it was before, just several things must be pointed out.
 
 The new [`EmailValidator`](
-<!--path code-->web-app-spring-adv2/src/main/java/springmvcstudy2/validators/EmailValidator.java):
+<!--wrap_java web-app-spring-adv2/src/main/java/springmvcstudy2/validators/EmailValidator.java-->):
 
 ````code
     .  .  .
@@ -524,7 +524,7 @@ The new [`EmailValidator`](
 
 The difference is that the error messages are omitted, they will be taken from the properties file
 [`messages.properties`](
-<!--path code-->web-app-spring-adv2/src/main/resources/messages.properties).
+<!--wrap web-app-spring-adv2/src/main/resources/messages.properties-->).
 
 The URL is the same --- <http://localhost:8080/web-app-spring-adv2/ui/register>.
 
@@ -544,7 +544,7 @@ Comment out the line
 ````
 
 in the `@InitBinder` annotated method in the [`RegistrationController`](
-<!--path code-->web-app-spring-adv2/src/main/java/springmvcstudy2/controllers/RegistrationController.java).
+<!--wrap_java web-app-spring-adv2/src/main/java/springmvcstudy2/controllers/RegistrationController.java-->).
 
 Add the following call to the corresponding controller method:
 
@@ -558,7 +558,7 @@ Add the following call to the corresponding controller method:
 > email validator used manually
 
 To avoid creating the validator object on every request make the [`EmailValidator`](
-<!--path code-->web-app-spring-adv2/src/main/java/springmvcstudy2/validators/EmailValidator.java)
+<!--wrap_java web-app-spring-adv2/src/main/java/springmvcstudy2/validators/EmailValidator.java-->)
 a component (with the `@Component` annotation) and add the autowired field to the controller class:
 
 ````code
@@ -568,7 +568,7 @@ a component (with the `@Component` annotation) and add the autowired field to th
 
 Also need to update the component scan base package list in the configuration class 
 [`MyApplicationConfig`](
-<!--path code-->web-app-spring-adv2/src/main/java/springmvcstudy2/config/MyApplicationConfig.java):
+<!--wrap_java web-app-spring-adv2/src/main/java/springmvcstudy2/config/MyApplicationConfig.java-->):
 
 ````code
 @ComponentScan(basePackages = {"springmvcstudy2.controllers", "springmvcstudy2.validators"})
@@ -591,7 +591,7 @@ The both above variations work as before. The URL is
 annotations.
 
 In the [`messages.properties`](
-<!--path code-->web-app-spring-adv2/src/main/resources/messages.properties) file making the 
+<!--wrap web-app-spring-adv2/src/main/resources/messages.properties-->) file making the 
 following changes:
 
 ````
@@ -602,7 +602,7 @@ age=USER AGE
 ````
 
 In the [`RegistrationDto`](
-<!--path code-->web-app-spring-adv2/src/main/java/springmvcstudy2/model/RegistrationDto.java)
+<!--wrap_java web-app-spring-adv2/src/main/java/springmvcstudy2/model/RegistrationDto.java-->)
 using this property via a placeholder:
 
 ````code
@@ -646,7 +646,7 @@ Field error in object 'userReg' on field 'age': rejected value [rrtr]; codes [ty
 
 As we can see some `codes` are listed in the above message so we are adding the following
 property into our properties file [`messages.properties`](
-<!--path code-->web-app-spring-adv2/src/main/resources/messages.properties):
+<!--wrap web-app-spring-adv2/src/main/resources/messages.properties-->):
 
 ````
 typeMismatch.java.lang.Integer=Field {0} should be a valid number

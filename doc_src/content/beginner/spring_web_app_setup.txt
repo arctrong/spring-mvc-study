@@ -130,7 +130,7 @@ we can see our first "hello"!
 
 The `@RequestMapping` and `@ResponseBody` annotations may be used on a controller class.
 See the class [`ThingsController`](
-<!--path code-->web-app-spring/src/main/java/springmvcstudy/controllers/ThingsController.java)
+<!--wrap_java web-app-spring/src/main/java/springmvcstudy/controllers/ThingsController.java-->)
 as an example.
 
 > Git commit: [`378558ccca90c31e96bf4335fccd489f2e429707`](

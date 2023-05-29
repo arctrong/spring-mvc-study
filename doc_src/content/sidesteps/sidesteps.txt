@@ -39,7 +39,7 @@ While starting the Jetty server add the JVM options like this:
 Then connect to this endpoint in the IDE for debugging.
 
 The following code may help catch the initialization steps ([`MyApplicationInitializer`](
-<!--path code-->web-app-spring-adv4/src/main/java/springmvcstudy2/config/MyApplicationInitializer.java)):
+<!--wrap_java web-app-spring-adv4/src/main/java/springmvcstudy2/config/MyApplicationInitializer.java-->)):
 
 ````code
 .  .  .
